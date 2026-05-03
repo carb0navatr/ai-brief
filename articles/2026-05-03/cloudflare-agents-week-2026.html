@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Daily Brief - 2026年05月03日</title>
+    <style></style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumb">
+        <a href="../../brief-2026-05-03.html">AI Agent Daily Brief - 2026年05月03日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
+
+    <div class="article-body">
+        <h1>Cloudflare Agents Week 2026：构建Agent云的全栈基础设施</h1>
+        
+        <p><strong>发布日期</strong>: 2026年4月20日
+<strong>来源</strong>: <a href="https://blog.cloudflare.com/agents-week-in-review/" target="_blank" rel="noopener">Cloudflare官方博客</a> | <a href="https://webhosting.today/2026/04/20/cloudflare-agents-week-every-announcement-day-by-day/" target="_blank" rel="noopener">webhosting.today</a></p>
+<hr />
+<h2>事件概述</h2>
+<p>Cloudflare于2026年4月12日至17日举办了首届 <strong>Agents Week</strong>，这是该公司首次以&quot;AI Agent&quot;为核心主题的创新周。活动期间，Cloudflare在基础设施的每一层发布了超过20项新功能，从计算到安全，从开发者工具到Agent间的支付协议，展示了其构建&quot;Agent云&quot;（Agentic Cloud）的完整愿景。</p>
+<hr />
+<h2>为什么Cloudflare要做Agent云？</h2>
+<p>Cloudflare CTO Dane Knecht和VP of Product Rita Kozlov在开幕文章中指出了核心洞察：</p>
+<blockquote><p>如果全球知识工作者中只有一小部分人同时运行几个AI Agent，对计算容量的需求就已经达到数千万个并发会话的量级。</p>
+</blockquote>
+<p>传统云架构基于&quot;一个应用服务多个用户&quot;的模型构建，而Agent时代需要的是<strong>一个用户运行多个Agent并发</strong>的模式。这从根本上改变了计算、网络和安全的架构需求——而这正是Cloudflare的边缘网络优势所在。</p>
+<hr />
+<h2>核心发布：从计算到支付的完整堆栈</h2>
+<h3>1. 计算层：Workers + Durable Objects + Isolates</h3>
+<p>Cloudflare重新定位了其计算产品线作为Agent的基础运行时：</p>
+<ul><li><strong>Workers for Platforms</strong>：让平台提供商能够构建大规模多租户Agent运行环境，每个租户的Agent完全隔离</li>
+<li><strong>Durable Objects</strong>：为需要持久状态的Agent提供协调和状态管理（如多Agent协作时的状态一致性）</li>
+<li><strong>Hyperdrive</strong>：将Cloudflare的边缘数据库加速能力扩展到Agent的数据访问场景</li>
+</ul>
+<p>关键创新：<strong>Agents can now create Cloudflare accounts, buy domains, and deploy</strong> — 这意味着Agent可以成为Cloudflare的直接客户，无需人工介入即可注册账号、购买域名、部署代码并获取API Token。</p>
+<h3>2. 开发者工具层：Agent Toolbox</h3>
+<p>Cloudflare推出的Agent Toolbox是面向AI Agent开发者的完整工具包：</p>
+<ul><li><strong>Workers AI推理API</strong>：内置的AI推理能力，Agent可直接调用，无需自建基础设施</li>
+<li><strong>Vectorize + R2</strong>：为Agent提供向量检索和文件存储能力，支持RAG（检索增强生成）场景</li>
+<li><strong>AI Gateway</strong>：统一的Agent与AI模型之间的流量管理和观察平台</li>
+</ul>
+<h3>3. 安全层：Turnstile + mTLS + 身份</h3>
+<p>Agent身份与安全是Cloudflare在Agents Week重点解决的问题：</p>
+<ul><li><strong>Turnstile for Agents</strong>：将Cloudflare的反爬虫能力扩展到识别AI Agent流量，实现按Agent身份的访问控制</li>
+<li><strong>mTLS持久证书</strong>：为Agent间通信提供双向认证，防止中间人攻击</li>
+<li><strong>快速密钥验证</strong>：毫秒级验证响应，满足Agent间实时通信的安全需求</li>
+</ul>
+<h3>4. 协议层：Agents Communication Protocol</h3>
+<p>Cloudflare宣布了正在开发中的 <strong>Agent间通信协议</strong>（Agents Communication Protocol），核心目标是解决：</p>
+<ul><li>Agent如何验证另一方的身份</li>
+<li>Agent如何安全地交换信息（防止中间人攻击）</li>
+<li>Agent如何进行支付结算</li>
+</ul>
+<p>这一协议层在AI Agent生态中尚属空白，Cloudflare的介入可能成为行业事实标准。</p>
+<hr />
+<h2>商业模式：按Agent会话计费</h2>
+<p>Cloudflare正在探索的<strong>按Agent会话计费</strong>模式具有重要的行业意义：</p>
+<p>| 计费对象 | 模式 |
+|---------|------|
+| 传统云 | 按虚拟机/CPU使用时长计费 |
+| Agent云 | 按Agent任务完成数、会话数计费 |</p>
+<p>这一模式更符合Agent的使用特点——Agent执行的是离散任务，而非持续运行虚拟机。这也意味着Cloudflare正在重新定义云计算的定价模型。</p>
+<hr />
+<h2>生态定位：与巨头错位竞争</h2>
+<p>Cloudflare在AI Agent基础设施领域的定位值得关注：</p>
+<p>| 巨头选择 | Cloudflare选择 |
+|---------|--------------|
+| 自己做模型（OpenAI、Google） | 成为模型的连接层 |
+| 中心化训练/推理 | 分布式边缘推理 |
+| 企业内部Agent | Agent间协议 + 支付 |
+| 闭源生态 | 开放协议推动者 |</p>
+<p>通过专注于巨头不愿或无法覆盖的&quot;Agent间&quot;和&quot;边缘&quot;场景，Cloudflare避开了与OpenAI、Google的直接竞争，同时在AI Agent基础设施领域建立了独特价值。</p>
+<hr />
+<h2>行业意义：边缘计算的新时代</h2>
+<p>Cloudflare Agents Week代表了边缘计算在AI时代的新定位：</p>
+<p><strong>从&quot;CDN加速&quot;到&quot;Agent计算平台&quot;</strong></p>
+<p>Cloudflare的边缘网络已经覆盖了全球95%以上的互联网流量。在Agent时代，这些边缘节点不再只是加速内容分发，而是成为：</p>
+<ul><li>Agent的运行时环境</li>
+<li>Agent间安全通信的中间层</li>
+<li>Agent身份验证和支付清算的基础设施</li>
+</ul>
+<p>这与Salesforce Headless 360、Anthropic Claude Code Security形成呼应——AI Agent的生态系统正在从&quot;单体智能&quot;向&quot;协作网络&quot;演进，而提供协作基础设施的玩家正在重新定义行业边界。</p>
+<hr />
+<p><em>本文章由 AI Agent 自动生成并翻译，内容基于Cloudflare官方博客及科技媒体报道。</em></p>
+
+    </div>
+
+    <footer class="site-footer">
+        <a href="../../brief-2026-05-03.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
+    </footer>
+</div>
+</body>
+</html>
