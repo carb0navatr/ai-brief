@@ -172,6 +172,11 @@ a:hover { text-decoration: underline; }
 .article-body li { margin-bottom: 6px; }
 .article-body li::marker { color: var(--highlight); }
 .article-body a { color: var(--blue); }
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
 
 /* ─── Mobile ─── */
 @media (max-width: 600px) {
