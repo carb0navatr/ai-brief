@@ -202,6 +202,7 @@ a:hover { text-decoration: underline; }
         <p><strong>发布日期</strong>: 2026年4月15日
 <strong>来源</strong>: <a href="https://www.salesforce.com/au/news/stories/salesforce-headless-360-announcement/" target="_blank" rel="noopener">Salesforce官方博客</a> | <a href="https://venturebeat.com/technology/salesforce-launches-headless-360-to-turn-its-entire-platform-into-infrastructure-for-ai-agents" target="_blank" rel="noopener">VentureBeat</a></p>
 <hr />
+<p><img src="https://www.salesforce.com/au/news/wp-content/uploads/sites/19/2026/04/Agentforce-Developer-Experience-TDX-Release.png" alt="配图" /></p>
 <h2>事件概述</h2>
 <p>Salesforce于2026年4月15日正式发布 <strong>Headless 360</strong>，这是该公司25年历史上最重要的一次平台战略重组。核心转变是：将Salesforce的整个平台从&quot;人类操作界面&quot;转变为&quot;AI Agent的基础设施&quot;。这不是一个功能升级，而是一次彻底的架构重新定位。</p>
 <hr />
@@ -244,11 +245,28 @@ a:hover { text-decoration: underline; }
 <hr />
 <h2>技术架构：从UI层到API层的解耦</h2>
 <p>Headless 360的核心技术变革是<strong>彻底解耦UI层与业务逻辑层</strong>：</p>
-<p>| 传统模式 | Headless 360模式 |
-|---------|----------------|
-| 人类 → 浏览器 → UI → 业务逻辑 | Agent → API/MCP/CLI → 业务逻辑 |
-| 每次操作需要完整渲染界面 | 直接调用，无需渲染开销 |
-| 速度慢，无法规模化 | 毫秒级响应，支持并发 |</p>
+<table>
+<thead>
+<tr>
+  <th>传统模式</th>
+  <th>Headless 360模式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>人类 → 浏览器 → UI → 业务逻辑</td>
+  <td>Agent → API/MCP/CLI → 业务逻辑</td>
+</tr>
+<tr>
+  <td>每次操作需要完整渲染界面</td>
+  <td>直接调用，无需渲染开销</td>
+</tr>
+<tr>
+  <td>速度慢，无法规模化</td>
+  <td>毫秒级响应，支持并发</td>
+</tr>
+</tbody>
+</table>
 <p>这一转变的深远影响在于：Salesforce不再是一个&quot;应用&quot;，而是一个<strong>可编程的企业操作系统</strong>——任何AI Agent都可以通过API接入并操作企业数据。</p>
 <hr />
 <h2>行业意义：企业软件的范式转移</h2>
