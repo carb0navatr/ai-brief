@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Daily Brief - 2026年05月04日</title>
+    <style>/* ─── Reset & Base ─── */
+:root {
+    --primary:   #1a1a2e;
+    --secondary: #16213e;
+    --accent:    #0f3460;
+    --highlight: #e94560;
+    --text:      #eaeaea;
+    --muted:     #a0a0a0;
+    --card-bg:   #1a1a2e;
+    --border:    #2a2a4a;
+    --green:     #4ade80;
+    --blue:      #60a5fa;
+    --yellow:    #fbbf24;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f0f1a;
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Layout ─── */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ─── Nav Bar ─── */
+.nav-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; padding: 14px 20px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.nav-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    padding: 6px 12px; border-radius: 6px; text-decoration: none;
+    transition: all .2s;
+}
+.nav-btn:hover { color: #fff; background: var(--accent); text-decoration: none; }
+.nav-btn.disabled { opacity: .3; pointer-events: none; }
+.nav-date { font-size: 14px; font-weight: 600; color: var(--highlight); }
+
+/* ─── Header ─── */
+.brief-header { margin-bottom: 28px; }
+.badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--highlight); color: #fff;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 999px; margin-bottom: 10px; letter-spacing: .5px;
+}
+.brief-header h1 { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.3; }
+.brief-header .subtitle { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+
+/* ─── Quick Hits ─── */
+.quick-hits {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 28px;
+}
+.quick-hits ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.quick-hits li { font-size: 15px; }
+.quick-hits li strong { color: #fff; }
+.quick-hits li a { color: var(--blue); }
+
+/* ─── Section ─── */
+.section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin: 30px 0 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.section-header .emoji { font-size: 20px; }
+.section-header h2 { font-size: 16px; font-weight: 700; color: #fff; }
+
+/* ─── Item ─── */
+.item { margin-bottom: 28px; }
+.item h3 {
+    font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; line-height: 1.4; scroll-margin-top: 20px;
+}
+
+/* ─── Item Body (rendered markdown) ─── */
+.item-body { font-size: 14px; color: var(--muted); }
+.item-body p { margin-bottom: 10px; }
+.item-body p:last-child { margin-bottom: 0; }
+.item-body strong, .item-body b { color: #fff; font-weight: 600; }
+.item-body em, .item-body i { color: #ccc; font-style: italic; }
+.item-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.item-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+    overflow-x: auto;
+}
+.item-body pre code { background: none; padding: 0; font-size: 13px; }
+.item-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 10px 0; color: var(--muted);
+}
+.item-body ul, .item-body ol {
+    padding-left: 20px; margin: 8px 0;
+}
+.item-body li { margin-bottom: 5px; }
+.item-body li::marker { color: var(--highlight); }
+.item-body a { color: var(--blue); }
+.item-body a:hover { text-decoration: underline; }
+
+/* ─── Key Points Box ─── */
+.key-points {
+    background: var(--secondary); border-left: 3px solid var(--highlight);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 10px 0;
+}
+.key-points strong { color: var(--highlight); display: block; margin-bottom: 6px; }
+.key-points ul { list-style: none; padding: 0; margin: 0; }
+.key-points li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+.key-points li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
+
+/* ─── Item Meta (source + readable links) ─── */
+.item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.item-meta a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 500; padding: 4px 10px;
+    border-radius: 6px; text-decoration: none; transition: all .15s;
+}
+.item-meta .src-link { color: var(--blue); border: 1px solid #60a5fa33; }
+.item-meta .src-link:hover { background: #60a5fa22; }
+.item-meta .read-link { color: var(--green); border: 1px solid #4ade8033; }
+.item-meta .read-link:hover { background: #4ade8022; }
+
+/* ─── Footer ─── */
+.site-footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); text-align: center;
+}
+
+/* ─── Article Page ─── */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb .sep { color: var(--border); }
+
+.article-body {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px; margin-bottom: 24px;
+}
+.article-body h1 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.3; }
+.article-body .source-line {
+    font-size: 13px; color: var(--muted); margin-bottom: 18px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.article-body .source-line a { color: var(--blue); }
+.article-body p { margin-bottom: 14px; font-size: 15px; }
+.article-body strong, .article-body b { color: #fff; font-weight: 600; }
+.article-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.article-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto;
+}
+.article-body pre code { background: none; padding: 0; }
+.article-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 12px 0; color: var(--muted);
+}
+.article-body ul, .article-body ol { padding-left: 22px; margin: 10px 0; }
+.article-body li { margin-bottom: 6px; }
+.article-body li::marker { color: var(--highlight); }
+.article-body a { color: var(--blue); }
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+    .container { padding: 20px 14px 60px; }
+    .nav-bar { flex-wrap: wrap; gap: 8px; }
+    .nav-date { order: -1; width: 100%; text-align: center; }
+    .article-body { padding: 20px 18px; }
+    .brief-header h1 { font-size: 19px; }
+}</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumb">
+        <a href="../../brief-2026-05-04.html">AI Agent Daily Brief - 2026年05月04日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
+
+    <div class="article-body">
+        <h1>Okta警告：AI Agent安全缺口正在扩大</h1>
+        <div class="source-line">📰 <a href="https://securitybrief.com.au/story/okta-warns-australian-firms-on-ai-agent-security-gap" target="_blank" rel="noopener">SecurityBrief Australia</a> &nbsp;|&nbsp; 📅 2026-05-04</div>
+        <p>title: &quot;Okta警告：AI Agent安全缺口正在扩大&quot;
+date: 2026-05-04
+source: https://securitybrief.com.au/story/okta-warns-australian-firms-on-ai-agent-security-gap
+type: readable</p>
+<blockquote><p>🤖 阅读版本生成时间：2026-05-04 05:45</p>
+</blockquote>
+<h2>报告概述</h2>
+<p>Okta发布《Businesses at Work 2026》澳大利亚报告，揭示企业AI Agent采用速度远超安全建设速度的严峻现实。</p>
+<h2>核心数据</h2>
+<table>
+<thead>
+<tr>
+  <th>指标</th>
+  <th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>非人类身份vs人类用户比例</td>
+  <td>最高45:1</td>
+</tr>
+<tr>
+  <td>准备好保护非人类身份的企业</td>
+  <td>仅10%</td>
+</tr>
+<tr>
+  <td>没有单一团队负责AI安全</td>
+  <td>41%</td>
+</tr>
+<tr>
+  <td>报告AI Agent安全事件的企业</td>
+  <td>88%</td>
+</tr>
+</tbody>
+</table>
+<h2>问题分析</h2>
+<h3>1. 非人类身份的爆发式增长</h3>
+<p>企业内非人类身份（包括AI Agent、机器人、服务账号）的数量已远超人类用户。这意味着企业需要管理的身份类型和数量发生了根本性变化。</p>
+<h3>2. 治理滞后</h3>
+<p>AI Agent的部署速度远远领先于相应的安全治理措施。大多数企业仍在使用针对人类员工设计的身份管理系统来管理AI Agent。</p>
+<h3>3. 影子AI问题</h3>
+<p>大量未经正式审批的AI Agent正在企业内运作，这些Agent通常缺乏适当的可见性和控制。</p>
+<h3>4. 责任模糊</h3>
+<p>41%的企业表示没有单一团队对AI安全负责。这种责任缺失导致安全漏洞难以被识别和修复。</p>
+<h2>Okta for AI Agents解决方案</h2>
+<p>Okta推出了专为AI Agent设计的安全管理平台：</p>
+<h3>核心功能</h3>
+<ul><li><strong>统一身份管理</strong>：将AI Agent作为&quot;第一类身份&quot;进行管理</li>
+<li><strong>访问控制</strong>：基于最小权限原则控制Agent的系统访问</li>
+<li><strong>实时监控</strong>：追踪Agent的所有操作行为</li>
+<li><strong>影子AI检测</strong>：发现未经授权运行的Agent</li>
+<li><strong>生命周期管理</strong>：完整管理Agent从部署到撤销的整个周期</li>
+</ul>
+<h3>治理框架</h3>
+<p>Okta倡导将身份系统作为人类和非人类用户的主要控制层，确保：</p>
+<ul><li>相同的可见性标准</li>
+<li>相同的访问限制</li>
+<li>相同的治理标准</li>
+</ul>
+<h2>建议措施</h2>
+<ol><li><strong>建立AI Agent治理框架</strong>：明确谁负责AI安全决策</li>
+<li><strong>更新身份管理策略</strong>：将AI Agent纳入现有身份管理体系</li>
+<li><strong>加强监控和审计</strong>：追踪Agent的所有操作</li>
+<li><strong>限制过度访问</strong>：确保Agent仅能访问完成工作所需的资源</li>
+<li><strong>建立干预机制</strong>：能够在必要时实时撤销Agent权限</li>
+</ol>
+<h2>结论</h2>
+<p>AI Agent正在成为企业的新&quot;劳动力&quot;，但大多数企业尚未准备好保护和管理这些身份。Okta的报告揭示了一个紧迫的问题：企业必须立即采取行动，建立与AI Agent部署速度相匹配的安全治理措施。</p>
+<p><em>本页面为 AI Daily Brief 自动生成的中文阅读友好版本。原文版权归原作者所有，仅供学习交流使用。</em></p>
+
+    </div>
+
+    <footer class="site-footer">
+        <a href="../../brief-2026-05-04.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
+    </footer>
+</div>
+</body>
+</html>

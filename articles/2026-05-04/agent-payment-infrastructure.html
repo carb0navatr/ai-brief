@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Daily Brief - 2026年05月04日</title>
+    <style>/* ─── Reset & Base ─── */
+:root {
+    --primary:   #1a1a2e;
+    --secondary: #16213e;
+    --accent:    #0f3460;
+    --highlight: #e94560;
+    --text:      #eaeaea;
+    --muted:     #a0a0a0;
+    --card-bg:   #1a1a2e;
+    --border:    #2a2a4a;
+    --green:     #4ade80;
+    --blue:      #60a5fa;
+    --yellow:    #fbbf24;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f0f1a;
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Layout ─── */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ─── Nav Bar ─── */
+.nav-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; padding: 14px 20px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.nav-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    padding: 6px 12px; border-radius: 6px; text-decoration: none;
+    transition: all .2s;
+}
+.nav-btn:hover { color: #fff; background: var(--accent); text-decoration: none; }
+.nav-btn.disabled { opacity: .3; pointer-events: none; }
+.nav-date { font-size: 14px; font-weight: 600; color: var(--highlight); }
+
+/* ─── Header ─── */
+.brief-header { margin-bottom: 28px; }
+.badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--highlight); color: #fff;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 999px; margin-bottom: 10px; letter-spacing: .5px;
+}
+.brief-header h1 { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.3; }
+.brief-header .subtitle { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+
+/* ─── Quick Hits ─── */
+.quick-hits {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 28px;
+}
+.quick-hits ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.quick-hits li { font-size: 15px; }
+.quick-hits li strong { color: #fff; }
+.quick-hits li a { color: var(--blue); }
+
+/* ─── Section ─── */
+.section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin: 30px 0 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.section-header .emoji { font-size: 20px; }
+.section-header h2 { font-size: 16px; font-weight: 700; color: #fff; }
+
+/* ─── Item ─── */
+.item { margin-bottom: 28px; }
+.item h3 {
+    font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; line-height: 1.4; scroll-margin-top: 20px;
+}
+
+/* ─── Item Body (rendered markdown) ─── */
+.item-body { font-size: 14px; color: var(--muted); }
+.item-body p { margin-bottom: 10px; }
+.item-body p:last-child { margin-bottom: 0; }
+.item-body strong, .item-body b { color: #fff; font-weight: 600; }
+.item-body em, .item-body i { color: #ccc; font-style: italic; }
+.item-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.item-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+    overflow-x: auto;
+}
+.item-body pre code { background: none; padding: 0; font-size: 13px; }
+.item-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 10px 0; color: var(--muted);
+}
+.item-body ul, .item-body ol {
+    padding-left: 20px; margin: 8px 0;
+}
+.item-body li { margin-bottom: 5px; }
+.item-body li::marker { color: var(--highlight); }
+.item-body a { color: var(--blue); }
+.item-body a:hover { text-decoration: underline; }
+
+/* ─── Key Points Box ─── */
+.key-points {
+    background: var(--secondary); border-left: 3px solid var(--highlight);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 10px 0;
+}
+.key-points strong { color: var(--highlight); display: block; margin-bottom: 6px; }
+.key-points ul { list-style: none; padding: 0; margin: 0; }
+.key-points li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+.key-points li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
+
+/* ─── Item Meta (source + readable links) ─── */
+.item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.item-meta a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 500; padding: 4px 10px;
+    border-radius: 6px; text-decoration: none; transition: all .15s;
+}
+.item-meta .src-link { color: var(--blue); border: 1px solid #60a5fa33; }
+.item-meta .src-link:hover { background: #60a5fa22; }
+.item-meta .read-link { color: var(--green); border: 1px solid #4ade8033; }
+.item-meta .read-link:hover { background: #4ade8022; }
+
+/* ─── Footer ─── */
+.site-footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); text-align: center;
+}
+
+/* ─── Article Page ─── */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb .sep { color: var(--border); }
+
+.article-body {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px; margin-bottom: 24px;
+}
+.article-body h1 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.3; }
+.article-body .source-line {
+    font-size: 13px; color: var(--muted); margin-bottom: 18px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.article-body .source-line a { color: var(--blue); }
+.article-body p { margin-bottom: 14px; font-size: 15px; }
+.article-body strong, .article-body b { color: #fff; font-weight: 600; }
+.article-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.article-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto;
+}
+.article-body pre code { background: none; padding: 0; }
+.article-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 12px 0; color: var(--muted);
+}
+.article-body ul, .article-body ol { padding-left: 22px; margin: 10px 0; }
+.article-body li { margin-bottom: 6px; }
+.article-body li::marker { color: var(--highlight); }
+.article-body a { color: var(--blue); }
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+    .container { padding: 20px 14px 60px; }
+    .nav-bar { flex-wrap: wrap; gap: 8px; }
+    .nav-date { order: -1; width: 100%; text-align: center; }
+    .article-body { padding: 20px 18px; }
+    .brief-header h1 { font-size: 19px; }
+}</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumb">
+        <a href="../../brief-2026-05-04.html">AI Agent Daily Brief - 2026年05月04日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
+
+    <div class="article-body">
+        <h1>Agent 商业支付基础设施快速成型：MoonPay、Kite、Experian 三路并进</h1>
+        <div class="source-line">📰 <a href="https://www.digitaltransactions.net/eye-on-agentic-commerce-experians-tool-for-verifying-consumer-agent-link-kites-wallet-service-for-ai-agents/" target="_blank" rel="noopener">Digital Transactions</a> &nbsp;|&nbsp; 📅 2026年5月2日</div>
+        <h2>概述</h2>
+<p>2026年5月初，AI Agent 的商业与支付基础设施迎来密集发布期。<strong>Experian</strong>（消费者与 Agent 身份验证）、<strong>Kite AI</strong>（Agent 身份与支付工具包）和 <strong>MoonPay</strong>（加密支付卡）相继推出新产品，共同构建 Agent 经济的基础设施层。</p>
+<h2>三家公司的定位</h2>
+<h3>Experian Agent Trust：信任层</h3>
+<p>Experian 是全球领先的信用报告机构，其 <strong>Agent Trust</strong> 服务专注于解决 Agent 商业中的身份和信任问题：</p>
+<ul><li><strong>Know Your Agent（KYA）框架</strong>：确保 Agent 发起的每笔交易背后都有经过验证的消费者身份</li>
+<li><strong>实时信任令牌</strong>：结合身份验证和交易风险评估</li>
+<li><strong>目标</strong>：让&quot;Agentic Commerce&quot;（Agent 商业）能够规模化——&quot;没有信任，Agent 商业无法规模化&quot;</li>
+</ul>
+<h3>Kite Agent Passport：钱包与身份</h3>
+<p>Kite AI 的 <strong>Agent Passport</strong> 为 AI Agent 提供：</p>
+<ul><li><strong>可编程安全钱包</strong>：Agent 可持有资金并代表用户消费</li>
+<li><strong>用户主权控制</strong>：消费限额和授权购买目标由用户设定</li>
+<li><strong>Agent Interface &amp; Experience</strong>：包含 Agent 注册、Harness（连接器）和服务发现功能</li>
+<li><strong>测试集成</strong>：正在与 PayPal 和 Shopify 进行集成测试</li>
+</ul>
+<h3>MoonAgents Card：支付层</h3>
+<p>MoonAgents Card（见<a href="moonpay-moonagents-card.html" target="_blank" rel="noopener">另一篇文章</a>）提供加密货币到法币通道的 Agent 可编程消费卡，是 Agent 支付从链上到线下商户的桥梁。</p>
+<h2>为何重要</h2>
+<p>这三款产品代表了 Agent 经济基础设施的三个关键层次：</p>
+<table>
+<thead>
+<tr>
+  <th>层次</th>
+  <th>产品</th>
+  <th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>信任层</td>
+  <td>Experian Agent Trust</td>
+  <td>验证&quot;谁在控制这个 Agent&quot;</td>
+</tr>
+<tr>
+  <td>身份层</td>
+  <td>Kite Agent Passport</td>
+  <td>Agent 的身份证明和钱包</td>
+</tr>
+<tr>
+  <td>支付层</td>
+  <td>MoonAgents Card</td>
+  <td>Agent 的消费通道</td>
+</tr>
+</tbody>
+</table>
+<p>缺少任何一层，Agent 商业都无法真正规模化。目前这三层的同步发展，标志着 Agent 经济正在从概念走向现实。</p>
+<p>万事达卡和 Visa 对这些产品的支持，进一步证明了主流金融网络对 Agent 经济的积极参与态度。</p>
+
+    </div>
+
+    <footer class="site-footer">
+        <a href="../../brief-2026-05-04.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
+    </footer>
+</div>
+</body>
+</html>
