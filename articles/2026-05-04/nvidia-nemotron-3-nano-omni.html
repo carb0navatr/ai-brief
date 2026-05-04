@@ -202,67 +202,82 @@ a:hover { text-decoration: underline; }
     </div>
 
     <div class="article-body">
-        <h1>TDK Ventures：推理芯片和实体 AI 是下一个投资方向</h1>
-        <div class="source-line">📰 <a href="https://techcrunch.com/2026/05/04/nicolas-sauvage-is-betting-on-the-boring-parts-of-ai/" target="_blank" rel="noopener">TechCrunch</a> &nbsp;|&nbsp; 📅 2026年5月4日</div>
-        <h2>发生了什么</h2>
-<p>TDK Ventures 联合创始人 Nicolas Sauvage 在 StrictlyVC 旧金山活动上分享了他的投资逻辑。TDK 是日本电子巨头 TDK 的企业风险投资部门，管理 5 亿美元资产，已投资包括 Groq（估值 69 亿美元）在内的多个 AI 基础设施项目。</p>
-<p><strong>核心观点</strong>：</p>
-<p><strong>1. 推理芯片是下一个价值高地</strong>
-Sauvage 在 2020 年（远早于生成式 AI 热潮）就投资了 Groq。当时 Groq 专注于推理——每次模型响应查询时的计算重活——而非训练。这种专注现在看来极具前瞻性，因为随着 Agent 系统的普及，推理需求将呈指数增长。</p>
-<p><strong>2. 芯片架构演进</strong>
-Sauvage 观察到 AI 芯片正在整合更多 CPU 功能。这意味着芯片设计逻辑正在从&quot;专业加速器&quot;向&quot;通用处理器+AI 加速&quot;演进。</p>
-<p><strong>3. 实体 AI 的&quot;灵巧性&quot;瓶颈</strong>
-模型能力正在快速提升，实体 AI（Physical AI）看起来不可避免，但还缺少&quot;物理流畅性&quot;。谁能把物理原型迭代速度提升到与代码迭代相同的水平，谁就拥有制造优势。</p>
-<p><strong>4. 中国的&quot;氛围制造&quot;威胁</strong>
-Eclipse 的一份报告显示，中国制造商正在以 AI 辅助方式压缩物理产品的设计-构建-测试周期。这种能力与&quot;氛围编码&quot;（vibe coding）对软件的影响类似，但作用于硬件。西方供应链尚未准备好应对这种速度。</p>
-<h2>为什么重要</h2>
-<p><strong>从软件 Agent 到基础设施</strong>：VC 视角下的 AI Agent 投资正在从&quot;软件 Agent&quot;向&quot;推理基础设施&quot;和&quot;实体 AI&quot;延伸。这意味着 Agent 产业链上游的芯片和物理系统将成为下一波投资热点。</p>
-<p><strong>推理成本的优化需求</strong>：随着 Agent 系统处理越来越多的任务，推理成本将成为企业的主要支出。优化推理效率（速度、成本、能耗）的解决方案将获得市场青睐。</p>
-<p><strong>Physical AI 的投资缺口</strong>：当前 AI 投资高度集中于软件层（模型、应用）。但在机器人、自动化制造等领域，真正的瓶颈是&quot;灵巧性&quot;——机械系统与 AI 决策的整合。这将是一个价值数百亿美元的投资机会。</p>
-<h2>关键投资主题</h2>
+        <h1>NVIDIA Nemotron 3 Nano Omni：融合视觉、音频和语言的开源多模态 Agent 模型</h1>
+        <div class="source-line">📰 <a href="https://blogs.nvidia.com/blog/nemotron-3-nano-omni-multimodal-ai-agents/" target="_blank" rel="noopener">NVIDIA Blog</a> &nbsp;|&nbsp; 📅 2026 年 4 月 28 日</div>
+        <h2>摘要</h2>
+<p>NVIDIA 正式发布 <strong>Nemotron 3 Nano Omni</strong>，一款开源多模态模型，将视觉、音频和语言能力统一在单一系统中。与传统 Agent 需要串联多个单模态模型的方案相比，效率提升高达 <strong>9 倍</strong>，并在文档智能、视频理解和音频理解六大基准测试中排名第一。</p>
+<h2>核心内容</h2>
+<h3>痛点：分离式多模型架构的代价</h3>
+<p>当前 AI Agent 系统通常需要三种独立模型分别处理不同模态：</p>
+<ol><li><strong>视觉模型</strong> → 处理图像和视频帧</li>
+<li><strong>语音/音频模型</strong> → 处理音频输入输出</li>
+<li><strong>语言模型</strong> → 处理文本理解和生成</li>
+</ol>
+<p>每次跨模态数据传递都会：</p>
+<ul><li><strong>损失上下文</strong>：信息在不同模型间传递时不可避免地丢失细节</li>
+<li><strong>增加延迟</strong>：每个模型都有独立的推理时间，叠加后用户等待感显著</li>
+<li><strong>提升成本</strong>：多个模型 = 多倍算力消耗</li>
+<li><strong>增加工程复杂度</strong>：需要维护多个模型版本、API 接口和状态同步</li>
+</ul>
+<h3>Nemotron 3 Nano Omni 的解决思路</h3>
+<p>Nemotron 3 Nano Omni 的核心创新是<strong>单一统一的多模态架构</strong>，同时支持：</p>
+<ul><li>文档理解（PDF、图表、结构化数据）</li>
+<li>视频帧理解与分析</li>
+<li>音频语音理解</li>
+</ul>
+<p>这意味着 Agent 可以在<strong>单次推理循环</strong>中处理来自文本、图像、音频的所有输入，无需跨模型传递数据。</p>
+<h3>技术亮点</h3>
+<ul><li><strong>六项基准测试排名第一</strong>：覆盖文档智能、视频理解、音频理解等核心能力</li>
+<li><strong>部署灵活性</strong>：从 NVIDIA Jetson 嵌入式设备到 DGX Spark/DGX Station 工作站，再到数据中心和云端，同一模型全场景覆盖</li>
+<li><strong>开源</strong>：模型权重和技术文档完全开放，企业可自主部署</li>
+<li><strong>效率提升 9 倍</strong>：相比分离式多模型方案，端到端推理成本和延迟大幅降低</li>
+</ul>
+<h3>已采用企业</h3>
+<p>Aible、Applied Scientific Intelligence (ASI)、Eka Care 等公司已率先集成该模型。Eka Care 正在利用该模型构建印度大规模患者护理的多模态医疗 Agent 系统。</p>
+<h2>对 Agent 开发者的意义</h2>
+<p>对于正在构建生产级 AI Agent 的团队而言，Nemotron 3 Nano Omni 提供了一条<strong>无需拼接多个专有模型</strong>的生产路径：</p>
+<ul><li><strong>工程简化</strong>：一套 API，一套权重，一套推理管道</li>
+<li><strong>成本可控</strong>：单一模型推理成本远低于多模型组合</li>
+<li><strong>延迟降低</strong>：单次推理替代多次跨模型调用</li>
+<li><strong>全栈可控</strong>：开源意味着企业可以完全掌控自己的 Agent 基础设施</li>
+</ul>
+<p>NVIDIA 同时发布了配套的<a href="https://developer.nvidia.com/blog/nvidia-nemotron-3-nano-omni-powers-multimodal-agent-reasoning-in-a-single-efficient-open-model" target="_blank" rel="noopener">技术教程、合集和部署指南</a>，开发者可通过 NVIDIA 开发者社区获取。</p>
+<h2>技术规格一览</h2>
 <table>
 <thead>
 <tr>
-  <th>主题</th>
-  <th>当前热度</th>
-  <th>未来潜力</th>
+  <th>规格</th>
+  <th>说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-  <td>推理芯片</td>
-  <td>高</td>
-  <td>极高</td>
+  <td>模型名称</td>
+  <td>Nemotron 3 Nano Omni</td>
 </tr>
 <tr>
-  <td>实体 AI / 机器人</td>
-  <td>中</td>
-  <td>极高</td>
+  <td>模态支持</td>
+  <td>视觉 + 音频 + 语言</td>
 </tr>
 <tr>
-  <td>Agent 安全</td>
-  <td>高</td>
-  <td>高</td>
+  <td>基准表现</td>
+  <td>六项排名第一</td>
 </tr>
 <tr>
-  <td>Agent 治理平台</td>
-  <td>中</td>
-  <td>高</td>
+  <td>部署环境</td>
+  <td>Jetson → DGX Spark → DGX Station → 数据中心 → 云端</td>
 </tr>
 <tr>
-  <td>AI 原生应用</td>
-  <td>极高</td>
-  <td>高</td>
+  <td>授权方式</td>
+  <td>开源</td>
+</tr>
+<tr>
+  <td>效率提升</td>
+  <td>相比分离式多模型方案提升 9 倍</td>
 </tr>
 </tbody>
 </table>
-<h2>创业者机会</h2>
-<ol><li><strong>推理优化</strong>：更低成本、更高速度的推理解决方案</li>
-<li><strong>Physical AI</strong>：结合 AI 决策和物理操作的系统</li>
-<li><strong>Agent 安全和治理</strong>：快速增长的蓝海市场</li>
-<li><strong>多 Agent 编排</strong>：协调多个 Agent 协作的基础设施</li>
-</ol>
-<p><em>相关阅读</em>：<a href="https://tdk-ventures.com/" target="_blank" rel="noopener">TDK Ventures 官网</a></p>
+<p><em>本文由 AI 整理自 NVIDIA 官方博客。</em></p>
 
     </div>
 
