@@ -202,126 +202,44 @@ a:hover { text-decoration: underline; }
     </div>
 
     <div class="article-body">
-        <h1>Pipelock：开源AI Agent防火墙正式发布</h1>
-        <div class="source-line">📰 <a href="https://www.helpnetsecurity.com/2026/05/04/pipelock-open-source-ai-agent-firewall/" target="_blank" rel="noopener">Help Net Security</a> &nbsp;|&nbsp; 📅 2026-05-04</div>
-        <p>title: &quot;Pipelock：开源AI Agent防火墙正式发布&quot;
-date: 2026-05-04
-source: https://www.helpnetsecurity.com/2026/05/04/pipelock-open-source-ai-agent-firewall/
-type: readable</p>
-<blockquote><p>🤖 阅读版本生成时间：2026-05-04 05:45</p>
-</blockquote>
-<h2>项目背景</h2>
-<p>AI编码Agent以shell访问权限、环境变量中的API密钥和不受限制的互联网连接运行，这创造了一个单点故障——一次被攻克的工具调用就可能导致凭证泄露给攻击者控制的域名。</p>
-<p>Pipelock是由开发者Joshua Waldrep在PipeLab项目下开发的开源安全工具，通过在Agent与网络之间插入执行层来解决这一暴露问题。</p>
+        <h1>Microsoft Agent 365 正式发布：Shadow AI 成为企业安全新战场</h1>
+        <div class="source-line">📰 <a href="https://www.microsoft.com/en-us/security/blog/2026/05/01/microsoft-agent-365-now-generally-available-expands-capabilities-and-integrations/" target="_blank" rel="noopener">Microsoft Security Blog</a> &nbsp;|&nbsp; 📅 2026年5月1日</div>
+        <h2>发生了什么</h2>
+<p>Microsoft 于 5 月 1 日正式发布 <strong>Agent 365</strong> 通用版本，并推出 Shadow AI 发现与管控功能。这标志着企业 AI Agent 治理进入实质性阶段。</p>
+<p><strong>核心问题</strong>：AI Agent 正在快速扩散——它们出现在你预期的位置（Microsoft Copilot、Teams、M365），也出现在你意想不到的地方（本地个人 AI 助手、连接到敏感数据的 SaaS Agent）。问题是这些 Agent 扩散速度极快、跨越应用、端点和云，且往往在负责风险管控的团队视野之外。当一个 Agent 能够调用工具、访问数据并与其他 Agent 交互时，任何&quot;有用&quot;的工作流都可能在几秒内变成数据过度分享、工具滥用或权限过度执行。</p>
+<p><strong>Agent 365 新功能</strong>：</p>
+<p><strong>1. Shadow AI 发现</strong>
+扫描企业环境中的未受管理 AI Agent，包括本地运行在 Windows 设备上的 Agent（从 OpenClaw 开始，未来扩展到 GitHub Copilot CLI 和 Claude Code）。</p>
+<p><strong>2. Intune 策略控制</strong>
+通过 Microsoft Intune 策略持续检测受管设备上的 Agent 使用情况，在 Microsoft 365 管理中心和 Intune 管理中心的新&quot;Shadow AI&quot;页面查看发现结果，并可阻止未受管理的 Agent 运行。</p>
+<p><strong>3. Agent 注册表</strong>
+统一的 Agent 清单，Inventory 数据同步到 Defender 和 Intune，让 IT、端点管理和安全团队获得一致的 Agent 可见性。</p>
+<p><strong>4. 跨平台发现能力</strong>
+同时覆盖云端和本地环境中的 Agent，这是现有云平台治理工具难以做到的。</p>
+<h2>为什么重要</h2>
+<p><strong>Shadow AI 的危险性被低估</strong>：当一个没有经过 IT 审批的 Agent 获得企业数据访问权限时，它可能：</p>
+<ul><li>意外泄露敏感数据到外部服务</li>
+<li>在未经授权的情况下调用昂贵 API，产生意外成本</li>
+<li>与其他未受管 Agent 共享数据，扩大攻击面</li>
+<li>执行超出预期的操作（如修改、删除数据）</li>
+</ul>
+<p><strong>治理的紧迫性</strong>：Gartner 预测 2028 年企业将部署 150,000 个 Agent。如果不从现在开始建立治理框架，届时将面临无法管理的混乱。</p>
+<p><strong>Microsoft 的先发优势</strong>：作为企业协作和设备管理的领导者，Microsoft 在 Agent 发现和治理方面具有天然优势。其 Defender 和 Intune 的深度集成使 Agent 治理成为可能，而这正是其他安全供应商难以匹敌的。</p>
 <h2>技术架构</h2>
-<h3>架构分离原则</h3>
-<p>Pipelock的核心理念是将不同能力分离到不同组件：</p>
-<table>
-<thead>
-<tr>
-  <th>组件</th>
-  <th>持有内容</th>
-  <th>能力</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>Agent进程</td>
-  <td>密钥（API凭证等）</td>
-  <td>无网络访问</td>
-</tr>
-<tr>
-  <td>代理层</td>
-  <td>网络访问权限</td>
-  <td>不持有密钥</td>
-</tr>
-<tr>
-  <td>扫描边界</td>
-  <td>两者之间</td>
-  <td>强制执行安全策略</td>
-</tr>
-</tbody>
-</table>
-<h3>网络隔离机制</h3>
-<p>依赖部署级别的控制：</p>
-<ul><li>网络命名空间（network namespaces）</li>
-<li>iptables规则</li>
-<li>Docker内部网络</li>
-<li>Kubernetes NetworkPolicy</li>
-</ul>
-<h2>扫描管道</h2>
-<p>Pipelock v2.3.0实现了11层扫描管道：</p>
-<ol><li><strong>CRLF注入检测</strong>：防止响应走私攻击</li>
-<li><strong>SSRF保护</strong>：阻止Agent访问内部网络资源</li>
-<li><strong>路径遍历拦截</strong>：防止访问文件系统任意位置</li>
-<li><strong>域名黑名单</strong>：阻止访问已知恶意域名</li>
-<li><strong>DLP数据丢失防护</strong>：检测和阻止敏感数据外泄</li>
-<li><strong>请求大小限制</strong>：防止DoS攻击</li>
-<li><strong>头部安全检查</strong>：验证HTTP头部安全</li>
-<li><strong>方法限制</strong>：仅允许必要的HTTP方法</li>
-<li><strong>Cookie安全</strong>：检测和清理不安全Cookie</li>
-<li><strong>响应内容扫描</strong>：检测恶意响应内容</li>
-<li><strong>日志和告警</strong>：完整操作审计</li>
+<p>Agent 365 的 Shadow AI 发现功能通过以下方式工作：</p>
+<ol><li><strong>端点检测</strong>：Intune 持续监控 Windows 设备上运行的 Agent 进程</li>
+<li><strong>行为分析</strong>：识别 Agent 的数据访问和工具调用模式</li>
+<li><strong>风险评分</strong>：根据 Agent 的权限、数据访问范围和行为异常评估风险</li>
+<li><strong>策略执行</strong>：阻止高风险 Agent 运行或强制实施额外控制</li>
 </ol>
-<h3>DLP层详情</h3>
-<p>覆盖48种凭证模式：</p>
-<ul><li>API密钥</li>
-<li>OAuth令牌</li>
-<li>AWS凭证</li>
-<li>数据库连接字符串</li>
-<li>金融账号</li>
-<li>加密私钥</li>
-</ul>
-<p>支持检测编码形式：</p>
-<ul><li>Base64编码</li>
-<li>Hex编码</li>
-<li>URL编码</li>
-<li>Unicode规避技术</li>
-</ul>
-<h2>支持的协议</h2>
-<ul><li>HTTP正向代理流量</li>
-<li>WebSocket帧</li>
-<li>Model Context Protocol (MCP) 传输</li>
-</ul>
-<h2>响应扫描</h2>
-<p>识别25种注入检测模式：</p>
-<ul><li>零宽字符</li>
-<li>同形异义词（Homoglyphs）</li>
-<li>L33tspeak混淆</li>
-<li>HTML/JS注入</li>
-</ul>
-<h3>失败策略</h3>
-<p>所有失败情况均默认阻止：</p>
-<ul><li>请求超时</li>
-<li>解析错误</li>
-<li>响应体过大</li>
-</ul>
-<h2>合规映射</h2>
-<p>Pipelock提供全面的合规框架映射：</p>
-<ul><li>OWASP MCP Top 10</li>
-<li>OWASP Agentic AI Top 10</li>
-<li>MITRE ATT&amp;CK技术ID</li>
-<li>EU AI Act运行时控制</li>
-<li>SOC 2控制族</li>
-<li>NIST 800-53</li>
-</ul>
-<h3>集成输出</h3>
-<ul><li>SARIF v2.1.0格式</li>
-<li>GitHub Code Scanning集成</li>
-<li>CycloneDX 1.6 Agent物料清单</li>
-</ul>
-<h2>未来路线图</h2>
-<p>开发者Waldrep表示，已实现签名证据接收格式（Signed Evidence Receipt Format），Python参考实现可以独立重新计算规范前像并验证签名，与Go实现产生字节级相同的结果。</p>
-<p>目标是将此格式打造为公共基础设施：</p>
-<ul><li>更多语言SDK</li>
-<li>更广泛的传输覆盖</li>
-<li>外部审计工具集成</li>
-</ul>
-<h2>获取方式</h2>
-<p>Pipelock基于Apache 2.0许可证免费提供：</p>
-<ul><li>GitHub: https://github.com/luckyPipewrench/pipelock</li>
-</ul>
-<p><em>本页面为 AI Daily Brief 自动生成的中文阅读友好版本。原文版权归原作者所有，仅供学习交流使用。</em></p>
+<h2>企业行动建议</h2>
+<ol><li><strong>立即启用 Shadow AI 发现</strong>：了解企业内已有哪些 Agent 在运行</li>
+<li><strong>制定 Agent 接入政策</strong>：明确哪些 Agent 可以接入企业系统</li>
+<li><strong>建立权限最小化原则</strong>：Agent 应仅获得完成任务所需的最小权限</li>
+<li><strong>监控 Agent 行为</strong>：持续追踪 Agent 的数据访问和工具使用</li>
+<li><strong>准备 Agent 治理培训</strong>：让员工了解合规使用 AI Agent 的要求</li>
+</ol>
+<p><em>相关阅读</em>：<a href="https://www.microsoft.com/en-us/security/blog/2026/05/01/microsoft-agent-365-now-generally-available-expands-capabilities-and-integrations/" target="_blank" rel="noopener">Microsoft Agent 365 正式发布公告</a></p>
 
     </div>
 

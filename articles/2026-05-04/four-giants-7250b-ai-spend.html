@@ -202,41 +202,38 @@ a:hover { text-decoration: underline; }
     </div>
 
     <div class="article-body">
-        <h1>AMD GAIA 0.17.5：本地 AI Agent 开发门槛进一步降低</h1>
-        <div class="source-line">📰 <a href="https://www.phoronix.com/news/AMD-GAIA-0.17.5" target="_blank" rel="noopener">Phoronix</a> &nbsp;|&nbsp; 📅 2026年5月2日</div>
-        <h2>概述</h2>
-<p>AMD 于2026年5月2日发布了 <strong>GAIA（Generative AI Is Awesome）0.17.5</strong>，这是其面向 Windows 和 Linux 的开源软件，旨在通过 Lemonade SDK 让用户轻松在 AMD 硬件上构建本地 AI Agent。本次更新将默认模型更换为 Google Gemma 4 E4B，并引入多项新功能。</p>
-<h2>主要更新</h2>
-<h3>默认模型更换：Gemma 4 E4B 替代 Qwen 3.5 35B</h3>
-<p>GAIA 0.17.5 用 <strong>Gemma 4 E4B</strong>（约45亿有效参数，128K 上下文窗口，Apache 2.0 许可）替换了之前的 Qwen 3.5 35B + Qwen 3-VL-4B 双模型组合。</p>
-<p>AMD 团队在发布说明中解释道：</p>
-<blockquote><p>&quot;Gemma 4 E4B 原生多模态（约45亿有效参数，128K 上下文窗口，Apache 2.0 许可），一个模型覆盖了此前需要加载两个模型才能完成的任务。切换后的评测基线在14/15个捆绑场景中优于切换前的 Qwen 基线（13/15）。&quot;</p>
-</blockquote>
-<p><strong>关键优势</strong>：</p>
-<ul><li>单一模型覆盖 LLM 和 VLM 双重角色，减少系统资源占用</li>
-<li>Apache 2.0 许可使企业本地部署更加灵活</li>
-<li>128K 上下文窗口适合复杂的长程 Agent 任务</li>
+        <h1>四大科技巨头 2026 年 AI 资本开支猛增 77%，达 7250 亿美元</h1>
+        <div class="source-line">📰 <a href="https://www.tmtpost.com/7975690.html" target="_blank" rel="noopener">钛媒体 Edge AI Daily</a> &nbsp;|&nbsp; 📅 2026年5月3日</div>
+        <h2>发生了什么</h2>
+<p>谷歌、亚马逊、微软、Meta 四巨头 <strong>2026年AI资本开支</strong>预计达 <strong>7,250 亿美元</strong>，较 2025 年增长 <strong>77%</strong>。第一季度已投入 1,300 亿美元，远超市场预期。</p>
+<h2>三层布局</h2>
+<p>巨头们的投入围绕三个维度展开：</p>
+<h3>硬件层</h3>
+<ul><li>采购 NVIDIA 芯片与自研芯片并行</li>
+<li>NVIDIA 2024年Q2营收 269 亿美元，同比增长 206%</li>
 </ul>
-<h3>新功能：Chat Lite</h3>
-<p>新增轻量级内置 Agent <strong>&quot;Chat Lite&quot;（chat-lite）</strong>，面向资源受限的系统，降低了运行完整 Agent 的硬件门槛。</p>
-<h3>代码语义搜索：CodeAgent</h3>
-<p>增加通过语义而非精确关键词搜索代码的能力，提升 Agent 在编程任务中的效率。</p>
-<h3>UI 改进</h3>
-<p>GAIA 0.17.5 现在将 Agent UI 集成到 PyPI 包中，一行命令即可安装并启动：</p>
-<pre><code class="language-bash">pip install amd-gaia[ui] &amp;&amp; gaia chat --ui
-</code></pre>
-<h2>已知问题</h2>
-<p>测试中仍有一些问题值得关注：</p>
-<ul><li><strong>Radeon 890M GPU 正常工作</strong>，但 <strong>Ryzen AI NPU 仍未被激活</strong>，即使在搭载 AMDXDNA 支持内核的 Ubuntu 26.04 上，NPU 使用率始终为 0%</li>
-<li>部分默认 Agent 在测试中出现错误</li>
+<h3>基础设施层</h3>
+<ul><li>液冷技术应用降低功耗 25%</li>
+<li>微软 Azure 液冷数据中心占比已达 30%</li>
 </ul>
-<h2>为何重要</h2>
-<p>本地 AI Agent 的工具链正在快速成熟。GAIA 0.17.5 的进展表明：</p>
-<ol><li>单模型多模态方案正在成为主流，降低了系统复杂度</li>
-<li>本地 AI Agent 的安装和使用门槛在持续下降</li>
-<li>AMD 正在加大对 NPU（神经网络处理单元）的软件支持，但仍有优化空间</li>
-</ol>
-<p>对于希望在本地硬件上运行 AI Agent 而不依赖云端 API 的开发者来说，GAIA 提供了越来越完整的一站式解决方案。</p>
+<h3>模型层</h3>
+<ul><li>大模型训练算力需求推动算力集群扩张</li>
+<li>全球 AI 大模型 Token 日调用量两年增长超千倍（2024年初 1,000亿 → 2026年3月 140万亿）</li>
+</ul>
+<h2>产业链效应</h2>
+<p>根据麦肯锡报告：</p>
+<ul><li>全球 AI 基础设施市场规模预计达 <strong>1.2 万亿美元</strong></li>
+<li>四大巨头投入占比超 <strong>60%</strong></li>
+<li>直接推动 NVIDIA 等芯片厂商爆炸式增长</li>
+<li>加速 AI 向医疗、金融等行业渗透</li>
+</ul>
+<h2>英伟达 GPU 租赁价格持续攀升</h2>
+<p>英伟达 H100 GPU 租赁价格从 2025年10月的 <strong>1.7美元/小时</strong> 涨至 2026年3月的 <strong>2.35美元/小时</strong>，涨幅近 <strong>40%</strong>。</p>
+<h2>竞争态势</h2>
+<ul><li><strong>Meta + CoreWeave</strong>：达成 210 亿美元 AI 云容量协议</li>
+<li><strong>Anthropic + Google/Broadcom</strong>：将在 2027 年前获得约 3.5 GW 算力容量</li>
+<li>英伟达H100/H200 芯片持续供不应求</li>
+</ul>
 
     </div>
 
