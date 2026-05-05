@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent 每日简报</title>
+    <style>/* ─── Reset & Base ─── */
+:root {
+    --primary:   #1a1a2e;
+    --secondary: #16213e;
+    --accent:    #0f3460;
+    --highlight: #e94560;
+    --text:      #eaeaea;
+    --muted:     #a0a0a0;
+    --card-bg:   #1a1a2e;
+    --border:    #2a2a4a;
+    --green:     #4ade80;
+    --blue:      #60a5fa;
+    --yellow:    #fbbf24;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f0f1a;
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Layout ─── */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ─── Nav Bar ─── */
+.nav-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; padding: 14px 20px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.nav-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    padding: 6px 12px; border-radius: 6px; text-decoration: none;
+    transition: all .2s;
+}
+.nav-btn:hover { color: #fff; background: var(--accent); text-decoration: none; }
+.nav-btn.disabled { opacity: .3; pointer-events: none; }
+.nav-date { font-size: 14px; font-weight: 600; color: var(--highlight); }
+
+/* ─── Header ─── */
+.brief-header { margin-bottom: 28px; }
+.badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--highlight); color: #fff;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 999px; margin-bottom: 10px; letter-spacing: .5px;
+}
+.brief-header h1 { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.3; }
+.brief-header .subtitle { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+
+/* ─── Quick Hits ─── */
+.quick-hits {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 28px;
+}
+.quick-hits ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.quick-hits li { font-size: 15px; }
+.quick-hits li strong { color: #fff; }
+.quick-hits li a { color: var(--blue); }
+
+/* ─── Section ─── */
+.section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin: 30px 0 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.section-header .emoji { font-size: 20px; }
+.section-header h2 { font-size: 16px; font-weight: 700; color: #fff; }
+
+/* ─── Item ─── */
+.item { margin-bottom: 28px; }
+.item h3 {
+    font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; line-height: 1.4; scroll-margin-top: 20px;
+}
+
+/* ─── Item Body (rendered markdown) ─── */
+.item-body { font-size: 14px; color: var(--muted); }
+.item-body p { margin-bottom: 10px; }
+.item-body p:last-child { margin-bottom: 0; }
+.item-body strong, .item-body b { color: #fff; font-weight: 600; }
+.item-body em, .item-body i { color: #ccc; font-style: italic; }
+.item-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.item-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+    overflow-x: auto;
+}
+.item-body pre code { background: none; padding: 0; font-size: 13px; }
+.item-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 10px 0; color: var(--muted);
+}
+.item-body ul, .item-body ol {
+    padding-left: 20px; margin: 8px 0;
+}
+.item-body li { margin-bottom: 5px; }
+.item-body li::marker { color: var(--highlight); }
+.item-body a { color: var(--blue); }
+.item-body a:hover { text-decoration: underline; }
+
+/* ─── Key Points Box ─── */
+.key-points {
+    background: var(--secondary); border-left: 3px solid var(--highlight);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 10px 0;
+}
+.key-points strong { color: var(--highlight); display: block; margin-bottom: 6px; }
+.key-points ul { list-style: none; padding: 0; margin: 0; }
+.key-points li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+.key-points li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
+
+/* ─── Item Meta (source + readable links) ─── */
+.item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.item-meta a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 500; padding: 4px 10px;
+    border-radius: 6px; text-decoration: none; transition: all .15s;
+}
+.item-meta .src-link { color: var(--blue); border: 1px solid #60a5fa33; }
+.item-meta .src-link:hover { background: #60a5fa22; }
+.item-meta .read-link { color: var(--green); border: 1px solid #4ade8033; }
+.item-meta .read-link:hover { background: #4ade8022; }
+
+/* ─── Footer ─── */
+.site-footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); text-align: center;
+}
+
+/* ─── Article Page ─── */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb .sep { color: var(--border); }
+
+.article-body {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px; margin-bottom: 24px;
+}
+.article-body h1 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.3; }
+.article-body .source-line {
+    font-size: 13px; color: var(--muted); margin-bottom: 18px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.article-body .source-line a { color: var(--blue); }
+.article-body p { margin-bottom: 14px; font-size: 15px; }
+.article-body strong, .article-body b { color: #fff; font-weight: 600; }
+.article-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.article-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto;
+}
+.article-body pre code { background: none; padding: 0; }
+.article-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 12px 0; color: var(--muted);
+}
+.article-body ul, .article-body ol { padding-left: 22px; margin: 10px 0; }
+.article-body li { margin-bottom: 6px; }
+.article-body li::marker { color: var(--highlight); }
+.article-body a { color: var(--blue); }
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+    .container { padding: 20px 14px 60px; }
+    .nav-bar { flex-wrap: wrap; gap: 8px; }
+    .nav-date { order: -1; width: 100%; text-align: center; }
+    .article-body { padding: 20px 18px; }
+    .brief-header h1 { font-size: 19px; }
+}</style>
+</head>
+<body>
+<div class="container">
+    <nav class="nav-bar">
+        <a href="brief-2026-05-04.html" class="nav-btn">← 前一天</a>
+        <span class="nav-date">2026年05月05日</span>
+        <span class="nav-btn disabled">后一天 →</span>
+    </nav>
+
+    <header class="brief-header">
+        <span class="badge">📰 AI BRIEF</span>
+        <h1>AI Agent 每日简报</h1>
+        <p class="subtitle">**重要性**：这是 IBM 从"AI 工具供应商"向"AI 运营框架提供商"转型的标志性事件，对企业级 AI 采纳具有方向性意义。</p>
+    </header>
+
+    <div class="section-header" id="本期要点">
+    <span class="emoji">💡</span>
+    <h2>本期要点</h2>
+</div><div class="section-header" id="模型与平台">
+    <span class="emoji">📰</span>
+    <h2>模型与平台</h2>
+</div><div class="item" id="1-IBM-Think-2026AI-Operating-Model-发布企业-AI-落地的新蓝图">
+    <h3>1. IBM Think 2026：AI Operating Model 发布——企业 AI 落地的新蓝图</h3>
+    <div class="item-body"><p><strong>链接</strong>: <a href="https://newsroom.ibm.com/2026-05-05-think-2026-ibm-delivers-the-blueprint-for-the-ai-operating-model-as-the-ai-divide-widens" target="_blank" rel="noopener">原文</a> | <a href="./articles/01-ibm-ai-operating-model.html" target="_blank" rel="noopener">可读版</a></p>
+<p>IBM 在年度 Think 大会上发布&quot;AI Operating Model&quot;，旨在弥合企业 AI 投资与回报之间的鸿沟。核心产品包括：<strong>watsonx Orchestrate</strong>（多智能体编排）、<strong>IBM Concert</strong>（智能运维）、<strong>IBM Sovereign Core</strong>（主权 AI）。IBM 指出，领先企业不是部署更多 AI，而是重新设计业务流程来使用 AI。</p>
+<blockquote><p><strong>重要性</strong>：这是 IBM 从&quot;AI 工具供应商&quot;向&quot;AI 运营框架提供商&quot;转型的标志性事件，对企业级 AI 采纳具有方向性意义。</p>
+</blockquote>
+</div>
+</div><div class="item" id="2-OpenAI-与-AWS-深化合作GPT-55Codex-登陆-Amazon-Bedrock">
+    <h3>2. OpenAI 与 AWS 深化合作：GPT-5.5、Codex 登陆 Amazon Bedrock</h3>
+    <div class="item-body"><p><strong>链接</strong>: <a href="https://aws.amazon.com/blogs/aws/top-announcements-of-the-whats-next-with-aws-2026/" target="_blank" rel="noopener">原文</a> | <a href="./articles/02-aws-openai-partnership.html" target="_blank" rel="noopener">可读版</a></p>
+<p>AWS 在 &quot;What's Next with AWS 2026&quot; 大会上宣布与 OpenAI 的深度合作进入新阶段，GPT-5.5、Codex（编码智能体）和 Bedrock Managed Agents 登陆 AWS 环境（Limited Preview）。企业客户可使用 AWS 凭证直接调用 OpenAI 前沿模型，Codex 使用量可计入 AWS 云承诺。同时发布的还有 <strong>Amazon Quick</strong>——面向工作的 AI 助手桌面应用。</p>
+<blockquote><p><strong>重要性</strong>：OpenAI 产品线深嵌企业云生态，与微软 Azure 形成直接竞争，AWS 企业客户受益明显。</p>
+</blockquote>
+</div>
+</div><div class="item" id="3-Google-发布四月-AI-全回顾Agentic-时代全面到来">
+    <h3>3. Google 发布四月 AI 全回顾：Agentic 时代全面到来</h3>
+    <div class="item-body"><p><strong>链接</strong>: <a href="https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-april-2026/" target="_blank" rel="noopener">原文</a> | <a href="./articles/04-google-april-ai-recap.html" target="_blank" rel="noopener">可读版</a></p>
+<p>Google 发布四月 AI 更新全景：<strong>Gemini Enterprise Agent Platform</strong>（企业智能体平台）、<strong>Gemma 4</strong>（最强开源模型）、<strong>Google Vids</strong>（免费 AI 视频创作）、<strong>Deep Research Max</strong>（增强数据分析）、<strong>Colab Learn Mode</strong>（个性化编程导师）。Google 明确将当前阶段定义为&quot;Agentic Era&quot;，AI 从&quot;回答问题&quot;进化到&quot;替我完成任务&quot;。</p>
+<blockquote><p><strong>重要性</strong>：Google 的免费 AI 工具策略与微软/OpenAI 的商业化路线形成对比，开源 Gemma 4 为开发者社区提供了更强大的本地部署选项。</p>
+</blockquote>
+</div>
+</div><div class="section-header" id="安全与治理">
+    <span class="emoji">🔒</span>
+    <h2>安全与治理</h2>
+</div><div class="item" id="4-CISA-联合多国发布-Agentic-AI-安全红线企业部署不能一放了之">
+    <h3>4. CISA 联合多国发布 Agentic AI 安全红线：企业部署不能"一放了之"</h3>
+    <div class="item-body"><p><strong>链接</strong>: <a href="https://www.csoonline.com/article/4166479/security-agencies-draw-red-lines-around-agentic-ai-deployments.html" target="_blank" rel="noopener">原文</a> | <a href="./articles/03-cisa-agentic-ai-security.html" target="_blank" rel="noopener">可读版</a></p>
+<p>美国 CISA 联合多国机构发布 Agentic AI 安全 advisory，要求企业：强身份认证、最小权限原则、持续监控、人类控制高风险任务。核心信息：<strong>企业不能简单地将智能体丢进生产环境，指望护栏自动生效</strong>。四大风险领域包括提示词注入、数据泄露、工具滥用和权限蠕变。</p>
+<blockquote><p><strong>重要性</strong>：CISA 的介入标志着政府对 AI 智能体安全的监管进入实质阶段，将影响所有企业的 AI 部署合规要求。</p>
+</blockquote>
+</div>
+</div><div class="item" id="5-Shadow-AI-催生-AI-BOM企业供应链安全新范式">
+    <h3>5. Shadow AI 催生 AI-BOM：企业供应链安全新范式</h3>
+    <div class="item-body"><p><strong>链接</strong>: <a href="https://www.theregister.com/2026/05/04/ai_bom_supply_chain/" target="_blank" rel="noopener">原文</a> | <a href="./articles/07-ai-bom-supply-chain.html" target="_blank" rel="noopener">可读版</a></p>
+<p>Palo Alto Networks 等安全厂商推动 <strong>AI-BOM（AI 物料清单）</strong> 作为企业 AI 供应链安全的新标准。传统 SBOM 无法覆盖 AI 组件（模型、数据集、SDK、MCP 服务器、skills、prompts），AI-BOM 的目标是回答：你的 AI 应用用了什么模型、数据从哪里来、skills 是否被篡改。Shadow AI（员工未经批准使用的 AI 工具）加剧了这一挑战。</p>
+<blockquote><p><strong>重要性</strong>：AI-BOM 与 CISA advisory 形成互补——两者都强调<strong>可见性是安全的基础</strong>，将推动企业 AI 治理工具采购和行业标准制定。</p>
+</blockquote>
+</div>
+</div><div class="item" id="6-Anthropic-复盘-Claude-Code-三次质量回退从自己的-evals-没-catch-到学什么">
+    <h3>6. Anthropic 复盘 Claude Code 三次质量回退：从"自己的 evals 没 catch 到"学什么</h3>
+    <div class="item-body"><p><strong>链接</strong>: <a href="https://www.infoworld.com/article/4166247/improving-ai-agents-through-better-evaluations.html" target="_blank" rel="noopener">原文</a> | <a href="./articles/09-claude-code-regressions.html" target="_blank" rel="noopener">可读版</a></p>
+<p>Anthropic 罕见发布公开复盘：Claude Code 在六周内发生三次质量回退，而内部评估均未发现。问题包括：默认推理强度调整 bug、缓存逻辑错误、以及两行 prompt 调整导致的 3% 编码质量下降。关键教训：<strong>评估存在局限性，用户反馈是最真实的信号</strong>，&quot;小改动&quot;也可能带来大风险。</p>
+<blockquote><p><strong>重要性</strong>：连最重视 evals 的 Anthropic 都翻车，说明 AI 智能体质量保证是极其困难的工程问题，对所有 AI 开发者都有警示意义。</p>
+</blockquote>
+</div>
+</div><div class="item" id="7-企业-AI-部署快于治理Okta-发布-AI-Agents-身份管理平台">
+    <h3>7. 企业 AI 部署快于治理：Okta 发布 AI Agents 身份管理平台</h3>
+    <div class="item-body"><p><strong>链接</strong>: <a href="https://asiatechdaily.com/enterprises-are-deploying-ai-faster-than-they-can-govern-why-identity-is-becoming-critical/" target="_blank" rel="noopener">原文</a> | <a href="./articles/13-okta-ai-agents-identity.html" target="_blank" rel="noopener">可读版</a></p>
+<p>身份管理巨头 Okta 发布 <strong>Okta for AI Agents</strong> 平台，解决 AI 智能体的身份认证、权限管理和安全监控问题。78% 的企业已在生产中使用 AI 智能体，但只有 23% 有针对智能体的身份管理策略。Okta 强调：智能体的身份生命周期、动态权限需求和异常行为模式与传统 IAM 系统完全不同的。</p>
+<blockquote><p><strong>重要性</strong>：Okta 的入局标志着 AI 智能体安全从&quot;安全工具&quot;向&quot;基础设施&quot;演进，身份管理将成为企业 AI 治理的必备组件。</p>
+</blockquote>
+</div>
+</div><div class="section-header" id="产品与技术">
+    <span class="emoji">🛠️</span>
+    <h2>产品与技术</h2>
+</div><div class="item" id="8-NVIDIA-Nemotron-3-Nano-Omni统一视觉音频语言的多模态智能体模型">
+    <h3>8. NVIDIA Nemotron 3 Nano Omni：统一视觉、音频、语言的多模态智能体模型</h3>
+    <div class="item-body"><p><strong>链接</strong>: <a href="https://blogs.nvidia.com/blog/nemotron-3-nano-omni-multimodal-ai-agents/" target="_blank" rel="noopener">原文</a> | <a href="./articles/06-nvidia-nemotron-omni.html" target="_blank" rel="noopener">可读版</a></p>
+<p>NVIDIA 发布 <strong>Nemotron 3 Nano Omni</strong>，一款统一理解文本、图像、视频、音频的全模态智能体模型。支持文档分析、多图推理、自动语音识别、长视频理解、agentic 计算机使用。官方称在多个 benchmark 上达到最佳精度，同时效率提升高达 <strong>9 倍</strong>。支持 128K token 上下文窗口，可在消费级 GPU 本地运行。</p>
+<blockquote><p><strong>重要性</strong>：单一模型替代多专用模型，降低部署复杂度和成本，对需要在边缘或本地运行 AI 的企业具有吸引力。</p>
+</blockquote>
+</div>
+</div><div class="item" id="9-Red-Hat-Tank-OS企业级-OpenClaw-智能体安全部署新方案">
+    <h3>9. Red Hat Tank OS：企业级 OpenClaw 智能体安全部署新方案</h3>
+    <div class="item-body"><p><strong>链接</strong>: <a href="https://techcrunch.com/2026/04/28/red-hats-openclaw-maintainer-just-made-enterprise-claw-deployments-a-lot-safer/" target="_blank" rel="noopener">原文</a> | <a href="./articles/08-tank-os-openclaw.html" target="_blank" rel="noopener">可读版</a></p>
+<p>Red Hat 首席工程师 Sally O'Malley（OpenClaw 维护者）发布开源工具 <strong>Tank OS</strong>，将 OpenClaw 智能体封装进容器，让 IT 团队可以像管理容器一样管理 AI 智能体。支持批量更新、fleet management 和审计追踪。Red Hat 的参与意味着 OpenClaw 正从&quot;个人开发工具&quot;向&quot;企业级产品&quot;演进。</p>
+<blockquote><p><strong>重要性</strong>：企业级 Linux 厂商的背书将加速开源智能体在企业中的采纳，但也带来新的安全考量（参考本期安全相关文章）。</p>
+</blockquote>
+</div>
+</div><div class="item" id="10-AI-评估成本危机HAL-跑了-4-万美元学术界还能玩吗">
+    <h3>10. AI 评估成本危机：HAL 跑了 4 万美元，学术界还能玩吗？</h3>
+    <div class="item-body"><p><strong>链接</strong>: <a href="https://huggingface.co/blog/evaleval/eval-costs-bottleneck" target="_blank" rel="noopener">原文</a> | <a href="./articles/05-ai-eval-cost-crisis.html" target="_blank" rel="noopener">可读版</a></p>
+<p>EvalEval Coalition 深度分析指出 AI 评估正在成为新的算力瓶颈：HAL 评估运行花费约 4 万美元；单次 GAIA 推理在前沿模型上花费 2,829 美元；相同任务在不同 scaffolding 配置下成本差异高达 33 倍。智能体 benchmark 天生嘈杂、scaffold 敏感，且只能部分压缩。</p>
+<blockquote><p><strong>重要性</strong>：AI 质量保障成本可能远超模型训练成本。小团队和学术机构难以进行系统性评估，可能造成 AI 智能体质量的&quot;大厂垄断&quot;。</p>
+</blockquote>
+</div>
+</div><div class="section-header" id="投资与商业">
+    <span class="emoji">💰</span>
+    <h2>投资与商业</h2>
+</div><div class="item" id="11-Haun-Ventures-10亿美元基金押注加密-AI-智能体经济">
+    <h3>11. Haun Ventures 10亿美元基金：押注加密 × AI 智能体经济</h3>
+    <div class="item-body"><p><strong>链接</strong>: <a href="https://decrypt.co/366728/haun-ventures-raises-1-billion-fund-intersection-crypto-tech-ai-agents" target="_blank" rel="noopener">原文</a> | <a href="./articles/10-haun-ventures-ai-agents.html" target="_blank" rel="noopener">可读版</a></p>
+<p>由前 DOJ 检察官 Katie Haun 创立的 Haun Ventures 完成 10 亿美元新基金募集，投资重点是加密基础设施与 AI 智能体的交汇领域。核心判断：<strong>AI 智能体将成为全球金融体系的重要参与者，需要专门为机器交易设计的金融&quot;轨道&quot;</strong>（支付系统、信用系统、身份验证）。Haun 特别提到稳定币的重要性，2025年稳定币交易量已接近 Visa + Mastercard 总和。</p>
+<blockquote><p><strong>重要性</strong>：顶级风投正式押注&quot;机器经济&quot;（Machine Economy），AI 智能体的金融化将加速。</p>
+</blockquote>
+</div>
+</div><div class="item" id="12-Yale-CELI-研究Agentic-AI-正在重塑企业但AI-鸿沟正在形成">
+    <h3>12. Yale CELI 研究：Agentic AI 正在重塑企业——但"AI 鸿沟"正在形成</h3>
+    <div class="item-body"><p><strong>链接</strong>: <a href="https://fortune.com/2026/05/02/agentic-ai-governance-framework-banking-healthcare-retail-supply-chain-yale-celi-sonnenfeld/" target="_blank" rel="noopener">原文</a> | <a href="./articles/11-yale-celi-agentic-ai-study.html" target="_blank" rel="noopener">可读版</a></p>
+<p>耶鲁 CELI 发布覆盖 12 个行业的 Agentic AI 采纳研究，核心发现：<strong>AI 鸿沟正在形成</strong>，少数领先企业快速部署，大多数仍在观望。研究揭示 Anthropic Mythos 模型让企业意识到当前治理框架不足以应对&quot;真正强大的 AI&quot;。四大影响维度：劳动力市场、数据基础设施、治理政策、客户体验。</p>
+<blockquote><p><strong>重要性</strong>：这是迄今为止最全面的 Agentic AI 企业采纳研究，为 CEO 们提供了决策参考和紧迫感。</p>
+</blockquote>
+</div>
+</div><div class="section-header" id="研究与应用">
+    <span class="emoji">🔬</span>
+    <h2>研究与应用</h2>
+</div><div class="item" id="13-Google-Research-发布AI-如何变革科学研究">
+    <h3>13. Google Research 发布：AI 如何变革科学研究</h3>
+    <div class="item-body"><p><strong>链接</strong>: <a href="https://research.google.com/blog/catalyzing-scientific-impact-through-global-partnerships-and-open-resources/" target="_blank" rel="noopener">原文</a> | <a href="./articles/12-google-ai-science-research.html" target="_blank" rel="noopener">可读版</a></p>
+<p>Google Research 总结 AI 驱动科学发现的开放资源与全球合作进展，重点介绍 <strong>Empirical Research Assistance（ERA）</strong> 的应用案例：流行病学预测、宇宙学分析（发现新宇宙结构）、碳排放实时监测（超越黑箱建模）、神经回路重建。Google 展望&quot;Agentic Science&quot;时代：科学家可将领域知识编码为 specialized skills，将方法转化为可扩展工具。</p>
+<blockquote><p><strong>重要性</strong>：AI for Science 正在从&quot;AI 帮助写论文&quot;进化到&quot;AI 独立执行实验设计&quot;，降低科学发现的门槛。</p>
+</blockquote>
+</div>
+</div><div class="section-header" id="综合分析">
+    <span class="emoji">📊</span>
+    <h2>综合分析</h2>
+</div><div class="item" id="14-从提示词注入到-AI-BOMAgentic-AI-安全的系统性解读">
+    <h3>14. 从提示词注入到 AI-BOM：Agentic AI 安全的系统性解读</h3>
+    <div class="item-body"><p><strong>链接</strong>: <a href="https://www.theregister.com/2026/05/04/ai_bom_supply_chain/" target="_blank" rel="noopener">原文</a> | <a href="./articles/14-agentic-ai-security-deep-dive.html" target="_blank" rel="noopener">可读版</a></p>
+<p>综合分析 Agentic AI 安全两大核心议题：<strong>AI-BOM</strong>（供应链透明度）和 <strong>CISA 红线</strong>（运行时安全）。提出三阶段实施路径：0-3个月建立可见性、3-6个月建立控制、6-12个月实现自动化。AI 智能体安全不能依赖&quot;事后打补丁&quot;，需要在部署前建立系统性框架。</p>
+<blockquote><p><strong>重要性</strong>：为企业安全团队提供了从零开始构建 Agentic AI 安全体系的完整路线图。</p>
+</blockquote>
+</div>
+</div><div class="item" id="15-三问-AI-智能体经济谁在用怎么赚钱何时爆发">
+    <h3>15. 三问 AI 智能体经济：谁在用？怎么赚钱？何时爆发？</h3>
+    <div class="item-body"><p><strong>链接</strong>: <a href="https://www.theatlantic.com/economy/2026/05/ai-bubble-revenue-anthropic/687022/" target="_blank" rel="noopener">原文</a> | <a href="./articles/15-ai-agent-economy-analysis.html" target="_blank" rel="noopener">可读版</a></p>
+<p>The Atlantic 分析 AI 智能体经济的真实状态：收入正在追上炒作，Claude Code 的成功证明开发者愿意为专业 AI 智能体付费。Michael Parekh 观察到&quot;AI 前向部署工程师&quot;（FDEs）角色的演变——从 AI 公司内部岗位到企业客户驻场，再到企业内部专职岗位。</p>
+<blockquote><p><strong>重要性</strong>：AI 智能体经济正在从&quot;讲故事&quot;走向&quot;算账&quot;阶段，那些能够证明 ROI 的智能体应用正在获得最快增长。</p>
+</blockquote>
+</div>
+</div><div class="section-header" id="本期信源统计">
+    <span class="emoji">📈</span>
+    <h2>本期信源统计</h2>
+</div><div class="section-header" id="关联阅读">
+    <span class="emoji">🔗</span>
+    <h2>关联阅读</h2>
+</div>
+
+    <footer class="site-footer">
+        AI Agent Daily Brief &mdash; 2026年05月05日
+    </footer>
+</div>
+</body>
+</html>
