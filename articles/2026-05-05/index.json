@@ -1,0 +1,12 @@
+{
+  "date": "2026-05-05",
+  "title": "AI Agent Daily Brief - 2026-05-05",
+  "articles": [
+    {"id": "01", "slug": "anthropic-finance-agents", "title": "Anthropic 推出 10 个金融领域 AI Agent"},
+    {"id": "02", "slug": "aws-openai-partnership", "title": "AWS 与 OpenAI 扩大战略合作伙伴关系"},
+    {"id": "03", "slug": "musk-altman-trial", "title": "Musk vs Altman 诉讼审判进入第二周"},
+    {"id": "04", "slug": "openai-gpt-5-5", "title": "OpenAI 发布 GPT-5.5"},
+    {"id": "05", "slug": "google-gemini-platform", "title": "Google 发布 Gemini Enterprise Agent Platform"},
+    {"id": "06", "slug": "nvidia-nemotron", "title": "NVIDIA 发布 Nemotron 3 Nano Omni"}
+  ]
+}
