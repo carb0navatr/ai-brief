@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Daily Brief - 2026年05月03日</title>
+    <style>/* ─── Reset & Base ─── */
+:root {
+    --primary:   #1a1a2e;
+    --secondary: #16213e;
+    --accent:    #0f3460;
+    --highlight: #e94560;
+    --text:      #eaeaea;
+    --muted:     #a0a0a0;
+    --card-bg:   #1a1a2e;
+    --border:    #2a2a4a;
+    --green:     #4ade80;
+    --blue:      #60a5fa;
+    --yellow:    #fbbf24;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f0f1a;
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Layout ─── */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ─── Nav Bar ─── */
+.nav-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; padding: 14px 20px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.nav-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    padding: 6px 12px; border-radius: 6px; text-decoration: none;
+    transition: all .2s;
+}
+.nav-btn:hover { color: #fff; background: var(--accent); text-decoration: none; }
+.nav-btn.disabled { opacity: .3; pointer-events: none; }
+.nav-date { font-size: 14px; font-weight: 600; color: var(--highlight); }
+
+/* ─── Header ─── */
+.brief-header { margin-bottom: 28px; }
+.badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--highlight); color: #fff;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 999px; margin-bottom: 10px; letter-spacing: .5px;
+}
+.brief-header h1 { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.3; }
+.brief-header .subtitle { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+
+/* ─── Quick Hits ─── */
+.quick-hits {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 28px;
+}
+.quick-hits ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.quick-hits li { font-size: 15px; }
+.quick-hits li strong { color: #fff; }
+.quick-hits li a { color: var(--blue); }
+
+/* ─── Section ─── */
+.section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin: 30px 0 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.section-header .emoji { font-size: 20px; }
+.section-header h2 { font-size: 16px; font-weight: 700; color: #fff; }
+
+/* ─── Item ─── */
+.item { margin-bottom: 28px; }
+.item h3 {
+    font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; line-height: 1.4; scroll-margin-top: 20px;
+}
+
+/* ─── Item Body (rendered markdown) ─── */
+.item-body { font-size: 14px; color: var(--muted); }
+.item-body p { margin-bottom: 10px; }
+.item-body p:last-child { margin-bottom: 0; }
+.item-body strong, .item-body b { color: #fff; font-weight: 600; }
+.item-body em, .item-body i { color: #ccc; font-style: italic; }
+.item-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.item-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+    overflow-x: auto;
+}
+.item-body pre code { background: none; padding: 0; font-size: 13px; }
+.item-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 10px 0; color: var(--muted);
+}
+.item-body ul, .item-body ol {
+    padding-left: 20px; margin: 8px 0;
+}
+.item-body li { margin-bottom: 5px; }
+.item-body li::marker { color: var(--highlight); }
+.item-body a { color: var(--blue); }
+.item-body a:hover { text-decoration: underline; }
+
+/* ─── Key Points Box ─── */
+.key-points {
+    background: var(--secondary); border-left: 3px solid var(--highlight);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 10px 0;
+}
+.key-points strong { color: var(--highlight); display: block; margin-bottom: 6px; }
+.key-points ul { list-style: none; padding: 0; margin: 0; }
+.key-points li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+.key-points li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
+
+/* ─── Item Meta (source + readable links) ─── */
+.item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.item-meta a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 500; padding: 4px 10px;
+    border-radius: 6px; text-decoration: none; transition: all .15s;
+}
+.item-meta .src-link { color: var(--blue); border: 1px solid #60a5fa33; }
+.item-meta .src-link:hover { background: #60a5fa22; }
+.item-meta .read-link { color: var(--green); border: 1px solid #4ade8033; }
+.item-meta .read-link:hover { background: #4ade8022; }
+
+/* ─── Footer ─── */
+.site-footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); text-align: center;
+}
+
+/* ─── Article Page ─── */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb .sep { color: var(--border); }
+
+.article-body {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px; margin-bottom: 24px;
+}
+.article-body h1 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.3; }
+.article-body .source-line {
+    font-size: 13px; color: var(--muted); margin-bottom: 18px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.article-body .source-line a { color: var(--blue); }
+.article-body p { margin-bottom: 14px; font-size: 15px; }
+.article-body strong, .article-body b { color: #fff; font-weight: 600; }
+.article-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.article-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto;
+}
+.article-body pre code { background: none; padding: 0; }
+.article-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 12px 0; color: var(--muted);
+}
+.article-body ul, .article-body ol { padding-left: 22px; margin: 10px 0; }
+.article-body li { margin-bottom: 6px; }
+.article-body li::marker { color: var(--highlight); }
+.article-body a { color: var(--blue); }
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+    .container { padding: 20px 14px 60px; }
+    .nav-bar { flex-wrap: wrap; gap: 8px; }
+    .nav-date { order: -1; width: 100%; text-align: center; }
+    .article-body { padding: 20px 18px; }
+    .brief-header h1 { font-size: 19px; }
+}</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumb">
+        <a href="../../brief-2026-05-03.html">AI Agent Daily Brief - 2026年05月03日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
+
+    <div class="article-body">
+        <h1>Google搜索负责人Liz Reid详解AI时代搜索重构：查询变长、界面分化、广告逻辑重写</h1>
+        <div class="source-line">📰 <a href="https://ppc.land/googles-liz-reid-on-who-will-own-search-as-ai-rewires-how-people-query/" target="_blank" rel="noopener">PPC Land</a> &nbsp;|&nbsp; 📅 2026-04-23</div>
+        <p><img src="https://ppc.land/content/images/size/w1200/2026/04/Liz-Reid-Search-AI-World-Search.jpg" alt="配图" /></p>
+<p>PPC Land对Google搜索负责人Liz Reid接受Bloomberg Odd Lots播客访谈进行了长篇梳理。核心信息是：AI并非只是给搜索结果页加一层摘要，而是在重写用户提问方式、流量分配方式和广告商业逻辑。</p>
+<p>Reid在访谈中强调，Google并不是“突然进入AI搜索时代”。她把当前变化放在20年演进里看：从早期拼写纠错、到RankBrain、再到BERT，搜索长期都在把机器学习嵌入核心排序与理解链路。AI Overviews与AI Mode只是把这种变化更显性地呈现给用户。</p>
+<p>最关键的变化发生在“提问行为”。过去用户会把真实需求压缩成关键词，因为他们默认搜索引擎听不懂复杂约束；现在在AI Mode里，用户更愿意直接输入完整问题，包含预算、偏好、场景和限制条件。例如“5人聚餐、含素食者、带孩子、价格不要太高”这类过去不会完整输入的上下文，如今成为常见查询结构。</p>
+<p>这一迁移意味着认知负担从用户转向机器：用户不再负责“把需求翻译成关键词”，而是把“真实需求”直接交给系统。由此带来两个结果：一是查询长度显著增加；二是意图信号密度显著提升。对广告系统而言，这等于更明确地识别用户所处决策阶段。</p>
+<p>Reid还讨论了AI Overview何时触发的问题。她的说法是，并不是“看见问号就触发”，而是依据用户行为信号判断“该摘要是否真的增加价值”。如果用户只想快速导航到图片、社区或某个网站，强行插入摘要反而可能降低体验。反之，对解释型问题，摘要可减少无效点击并提升任务完成效率。</p>
+<p>关于行业最关心的“AI答案会不会吃掉点击”，Reid给出的框架是：低价值回跳点击会减少，但高质量深度点击应当保留。也就是说，用户若只是为了一个简单事实而点进网页再立刻返回，这类访问被摘要替代不一定带来真实损失；真正会阅读几分钟的深度访问，理论上仍会发生。她把这称为“减少错误点击、保留高意图点击”。</p>
+<p>在商业化上，Reid认为AI搜索并不消灭广告需求。原因在于：摘要可以帮助用户理解选项，但不会替用户完成购买决策。用户仍需在商家、价格、服务之间做选择，这正是广告可发挥作用的位置。加上自然语言查询带来更丰富意图信号，广告匹配反而可能更精准。</p>
+<p>PPC Land文章还汇总了大量时间线与第三方观测：AI Overviews与AI Mode广告位正从小规模测试走向更广泛部署，且不同国家与界面的推出节奏并不同步。对营销人员而言，挑战不只是“关键词策略更新”，而是“跨界面策略重构”——同样在Google生态内，传统搜索页、AI Mode、以及其他产品入口可能对应不同用户行为和不同转化路径。</p>
+<p>访谈还触及一个更长期问题：未来是“一个统一入口”还是“多个并存入口”？Reid倾向后者。她认为不同任务天然适配不同交互方式：某些任务用聊天最优，某些任务用列表/网页导航更快。因此搜索框不会立刻消失，而是与聊天界面、应用内入口长期并行。</p>
+<p>文章最后给营销侧的实际启示是：</p>
+<ol><li>仅围绕短关键词构建策略已不足够，需要围绕意图结构与上下文建模。</li>
+<li>需持续监测AI界面中的新广告位置和流量质量变化。</li>
+<li>需区分不同Google表面（surface）的用户行为差异，避免把Google当单一渠道优化。</li>
+<li>内容策略要从“覆盖词”转向“回答复杂问题并保留可验证性”。</li>
+</ol>
+<p>总体而言，这篇访谈并没有给出“AI将完全替代搜索”的简单结论，而是展示了一个更现实的过渡图景：搜索正在被AI重构，但其商业与产品形态会在多界面并行中逐步演化。</p>
+<p><em>本译文由 AI 生成，仅供参考。原文版权归原作者所有。</em></p>
+
+    </div>
+
+    <footer class="site-footer">
+        <a href="../../brief-2026-05-03.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
+    </footer>
+</div>
+</body>
+</html>

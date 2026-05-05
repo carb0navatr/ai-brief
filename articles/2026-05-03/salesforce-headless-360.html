@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Daily Brief - 2026年05月03日</title>
+    <style>/* ─── Reset & Base ─── */
+:root {
+    --primary:   #1a1a2e;
+    --secondary: #16213e;
+    --accent:    #0f3460;
+    --highlight: #e94560;
+    --text:      #eaeaea;
+    --muted:     #a0a0a0;
+    --card-bg:   #1a1a2e;
+    --border:    #2a2a4a;
+    --green:     #4ade80;
+    --blue:      #60a5fa;
+    --yellow:    #fbbf24;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f0f1a;
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Layout ─── */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ─── Nav Bar ─── */
+.nav-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; padding: 14px 20px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.nav-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    padding: 6px 12px; border-radius: 6px; text-decoration: none;
+    transition: all .2s;
+}
+.nav-btn:hover { color: #fff; background: var(--accent); text-decoration: none; }
+.nav-btn.disabled { opacity: .3; pointer-events: none; }
+.nav-date { font-size: 14px; font-weight: 600; color: var(--highlight); }
+
+/* ─── Header ─── */
+.brief-header { margin-bottom: 28px; }
+.badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--highlight); color: #fff;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 999px; margin-bottom: 10px; letter-spacing: .5px;
+}
+.brief-header h1 { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.3; }
+.brief-header .subtitle { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+
+/* ─── Quick Hits ─── */
+.quick-hits {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 28px;
+}
+.quick-hits ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.quick-hits li { font-size: 15px; }
+.quick-hits li strong { color: #fff; }
+.quick-hits li a { color: var(--blue); }
+
+/* ─── Section ─── */
+.section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin: 30px 0 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.section-header .emoji { font-size: 20px; }
+.section-header h2 { font-size: 16px; font-weight: 700; color: #fff; }
+
+/* ─── Item ─── */
+.item { margin-bottom: 28px; }
+.item h3 {
+    font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; line-height: 1.4; scroll-margin-top: 20px;
+}
+
+/* ─── Item Body (rendered markdown) ─── */
+.item-body { font-size: 14px; color: var(--muted); }
+.item-body p { margin-bottom: 10px; }
+.item-body p:last-child { margin-bottom: 0; }
+.item-body strong, .item-body b { color: #fff; font-weight: 600; }
+.item-body em, .item-body i { color: #ccc; font-style: italic; }
+.item-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.item-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+    overflow-x: auto;
+}
+.item-body pre code { background: none; padding: 0; font-size: 13px; }
+.item-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 10px 0; color: var(--muted);
+}
+.item-body ul, .item-body ol {
+    padding-left: 20px; margin: 8px 0;
+}
+.item-body li { margin-bottom: 5px; }
+.item-body li::marker { color: var(--highlight); }
+.item-body a { color: var(--blue); }
+.item-body a:hover { text-decoration: underline; }
+
+/* ─── Key Points Box ─── */
+.key-points {
+    background: var(--secondary); border-left: 3px solid var(--highlight);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 10px 0;
+}
+.key-points strong { color: var(--highlight); display: block; margin-bottom: 6px; }
+.key-points ul { list-style: none; padding: 0; margin: 0; }
+.key-points li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+.key-points li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
+
+/* ─── Item Meta (source + readable links) ─── */
+.item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.item-meta a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 500; padding: 4px 10px;
+    border-radius: 6px; text-decoration: none; transition: all .15s;
+}
+.item-meta .src-link { color: var(--blue); border: 1px solid #60a5fa33; }
+.item-meta .src-link:hover { background: #60a5fa22; }
+.item-meta .read-link { color: var(--green); border: 1px solid #4ade8033; }
+.item-meta .read-link:hover { background: #4ade8022; }
+
+/* ─── Footer ─── */
+.site-footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); text-align: center;
+}
+
+/* ─── Article Page ─── */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb .sep { color: var(--border); }
+
+.article-body {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px; margin-bottom: 24px;
+}
+.article-body h1 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.3; }
+.article-body .source-line {
+    font-size: 13px; color: var(--muted); margin-bottom: 18px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.article-body .source-line a { color: var(--blue); }
+.article-body p { margin-bottom: 14px; font-size: 15px; }
+.article-body strong, .article-body b { color: #fff; font-weight: 600; }
+.article-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.article-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto;
+}
+.article-body pre code { background: none; padding: 0; }
+.article-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 12px 0; color: var(--muted);
+}
+.article-body ul, .article-body ol { padding-left: 22px; margin: 10px 0; }
+.article-body li { margin-bottom: 6px; }
+.article-body li::marker { color: var(--highlight); }
+.article-body a { color: var(--blue); }
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+    .container { padding: 20px 14px 60px; }
+    .nav-bar { flex-wrap: wrap; gap: 8px; }
+    .nav-date { order: -1; width: 100%; text-align: center; }
+    .article-body { padding: 20px 18px; }
+    .brief-header h1 { font-size: 19px; }
+}</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumb">
+        <a href="../../brief-2026-05-03.html">AI Agent Daily Brief - 2026年05月03日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
+
+    <div class="article-body">
+        <h1>Salesforce Headless 360：从"点击操作"到"API优先"的25年最大转变</h1>
+        <div class="source-line">📰 <a href="https://www.salesforce.com/au/news/stories/salesforce-headless-360-announcement/" target="_blank" rel="noopener">Salesforce官方博客</a> &nbsp;|&nbsp; 📅 2026年4月15日</div>
+        <p><img src="https://www.salesforce.com/au/news/wp-content/uploads/sites/19/2026/04/Agentforce-Developer-Experience-TDX-Release.png" alt="配图" /></p>
+<h2>事件概述</h2>
+<p>Salesforce于2026年4月15日正式发布 <strong>Headless 360</strong>，这是该公司25年历史上最重要的一次平台战略重组。核心转变是：将Salesforce的整个平台从&quot;人类操作界面&quot;转变为&quot;AI Agent的基础设施&quot;。这不是一个功能升级，而是一次彻底的架构重新定位。</p>
+<h2>为什么是现在？</h2>
+<p>Salesforce联合创始人Parker Harris的发问揭示了背景：</p>
+<blockquote><p><strong>&quot;为什么你还需要登录Salesforce？&quot;</strong></p>
+</blockquote>
+<p>过去25年，使用Salesforce意味着在浏览器中点击控制台、手动更新案例、手动推进工作流。这是一个&quot;人操作平台&quot;的范式。</p>
+<p>但在Agent时代，AI Agent也在&quot;操作平台&quot;，而它们不使用浏览器。它们调用API，调用MCP工具，运行CLI命令。<strong>如果平台需要人类点击界面才能工作，那它就还没有为Agent时代做好准备。</strong></p>
+<p>这一判断促成了两年前开始的内部转型，现在以Headless 360的形式正式发布。</p>
+<h2>三大核心创新</h2>
+<p>Headless 360交付三个层面的创新：</p>
+<h3>1. 全面API化：100+新工具和技能</h3>
+<p>Salesforce将其整个平台能力重新暴露为API、MCP工具或CLI命令，涵盖：</p>
+<ul><li><strong>数据操作</strong>：读写Salesforce记录、字段</li>
+<li><strong>工作流自动化</strong>：触发Flow、执行审批流程</li>
+<li><strong>服务管理</strong>：创建/更新案例、派发工单</li>
+<li><strong>分析能力</strong>：运行报表、查询数据集</li>
+</ul>
+<p>这意味着：AI Agent可以像人类一样在Salesforce中完成任何操作，只是更快、更准确且24小时不间断。</p>
+<h3>2. Agentforce：Agent级别的编排平台</h3>
+<p>在Headless 360架构之上，Salesforce推出了 <strong>Agentforce</strong>——一个专门用于构建、部署和管理AI Agent的企业级平台。</p>
+<p>关键特点：</p>
+<ul><li><strong>多Agent协调</strong>：支持Sales（销售）、Service（服务）、Marketing（营销）和Commerce（商务）等多个专业Agent协同工作</li>
+<li><strong>系统联动</strong>：Slack作为人机协作层，Agent完成工作，人类通过Slack介入审核和决策</li>
+<li><strong>企业级管控</strong>：权限控制、审计日志、合规保障</li>
+</ul>
+<h3>3. AgentExchange：10000+应用的应用市场</h3>
+<p>Salesforce将AgentExchange marketplace打造为AI Agent的&quot;应用商店&quot;：</p>
+<ul><li><strong>10000</strong> Salesforce应用</li>
+<li><strong>2600+</strong> Slack应用</li>
+<li><strong>1000+</strong> Agentforce Agent、工具和MCP服务器</li>
+</ul>
+<p>生态数据证明了这一市场的即时价值：</p>
+<ul><li><strong>Notion</strong>：平均销售周期从4个月缩短至3周</li>
+<li><strong>Docusign</strong>：Q4 2025年处理200+私人要约，签署时间减少60%</li>
+<li><strong>MeshMesh</strong>：上市6周即获得首个财富500强客户</li>
+</ul>
+<h2>技术架构：从UI层到API层的解耦</h2>
+<p>Headless 360的核心技术变革是<strong>彻底解耦UI层与业务逻辑层</strong>：</p>
+<table>
+<thead>
+<tr>
+  <th>传统模式</th>
+  <th>Headless 360模式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>人类 → 浏览器 → UI → 业务逻辑</td>
+  <td>Agent → API/MCP/CLI → 业务逻辑</td>
+</tr>
+<tr>
+  <td>每次操作需要完整渲染界面</td>
+  <td>直接调用，无需渲染开销</td>
+</tr>
+<tr>
+  <td>速度慢，无法规模化</td>
+  <td>毫秒级响应，支持并发</td>
+</tr>
+</tbody>
+</table>
+<p>这一转变的深远影响在于：Salesforce不再是一个&quot;应用&quot;，而是一个<strong>可编程的企业操作系统</strong>——任何AI Agent都可以通过API接入并操作企业数据。</p>
+<h2>行业意义：企业软件的范式转移</h2>
+<p>Headless 360代表了企业软件行业的一次范式转移：</p>
+<p><strong>从&quot;SaaS应用&quot;到&quot;企业操作系统&quot;</strong></p>
+<p>Salesforce不再是人类使用的工具，而是：</p>
+<ul><li>AI Agent使用的<strong>基础设施</strong></li>
+<li>企业工作流的<strong>编排层</strong></li>
+<li>人类与Agent协作的<strong>中间平台</strong></li>
+</ul>
+<p>这一转变与Anthropic的Claude Code Security、Nature Methods综述中的&quot;人在回路&quot;理念形成有趣的呼应——在Salesforce的新架构中，人类和Agent不是替代关系，而是协作关系：Agent执行，Slack中的人类审核并决策。</p>
+<p><em>本文章由 AI Agent 自动生成并翻译，内容基于Salesforce官方公告及VentureBeat报道。</em></p>
+
+    </div>
+
+    <footer class="site-footer">
+        <a href="../../brief-2026-05-03.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
+    </footer>
+</div>
+</body>
+</html>
