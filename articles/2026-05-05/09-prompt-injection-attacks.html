@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Daily Brief - 2026年05月05日</title>
+    <style></style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumb">
+        <a href="../../brief-2026-05-05.html">AI Agent Daily Brief - 2026年05月05日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
+
+    <div class="article-body">
+        <h1>三大编码Agent同时遭受Prompt Injection攻击</h1>
+        <div class="source-line">📰 <a href="https://venturebeat.com/security/ai-agent-runtime-security-system-card-audit-comment-and-control-2026" target="_blank" rel="noopener">VentureBeat</a> &nbsp;|&nbsp; 📅 2026年05月04日</div>
+        <p>📅 发布日期：2026年05月04日
+<strong>重要性</strong>: ⭐⭐⭐⭐</p>
+<h2>事件概述</h2>
+<p>Claude Code、Gemini CLI和Copilot同时遭受Prompt Injection攻击，导致API密钥泄露。安全研究人员发现攻击者通过在网页、代码文件或其他内容中嵌入恶意指令，成功获取了AI Agent的系统访问权限。</p>
+<h2>受影响产品</h2>
+<table>
+<thead>
+<tr>
+  <th>Agent产品</th>
+  <th>开发者</th>
+  <th>影响</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Claude Code</td>
+  <td>Anthropic</td>
+  <td>API密钥泄露</td>
+</tr>
+<tr>
+  <td>Gemini CLI</td>
+  <td>Google</td>
+  <td>密钥和代码库访问</td>
+</tr>
+<tr>
+  <td>Copilot</td>
+  <td>Microsoft</td>
+  <td>企业代码暴露</td>
+</tr>
+</tbody>
+</table>
+<h2>攻击手法</h2>
+<h3>Prompt Injection攻击链</h3>
+<ol><li><strong>内容植入</strong>：攻击者在网页、文档或代码中嵌入恶意指令</li>
+<li><strong>Agent处理</strong>：AI Agent在执行任务时读取这些内容</li>
+<li><strong>指令劫持</strong>：恶意指令诱导Agent执行非预期操作</li>
+<li><strong>数据窃取</strong>：获取API密钥、代码库或其他敏感信息</li>
+</ol>
+<h3>典型案例</h3>
+<p>攻击者通过在GitHub仓库或技术博客中植入恶意内容，当开发者使用AI Agent处理这些内容时触发攻击。</p>
+<h2>安全响应</h2>
+<h3>Anthropic回应</h3>
+<p>Anthropic发布了Claude Code的系统安全更新，增加了：</p>
+<ul><li>更严格的输入验证</li>
+<li>隔离的密钥存储</li>
+<li>异常行为检测</li>
+</ul>
+<h3>Google回应</h3>
+<p>Gemini CLI添加了：</p>
+<ul><li>内容沙箱机制</li>
+<li>权限最小化</li>
+<li>审计日志</li>
+</ul>
+<h3>Microsoft回应</h3>
+<p>Copilot企业版新增：</p>
+<ul><li>企业级隔离策略</li>
+<li>实时威胁检测</li>
+<li>自动密钥轮换</li>
+</ul>
+<h2>为什么这很重要</h2>
+<ol><li><strong>系统性风险</strong>：主流AI Agent同时暴露类似漏洞</li>
+<li><strong>企业安全危机</strong>：开发者工具成为攻击向量</li>
+<li><strong>Agent安全范式</strong>：需要重新设计AI Agent的安全架构</li>
+</ol>
+<p>📰 原文来源：<a href="https://venturebeat.com/security/ai-agent-runtime-security-system-card-audit-comment-and-control-2026" target="_blank" rel="noopener">VentureBeat</a></p>
+
+    </div>
+
+    <footer class="site-footer">
+        <a href="../../brief-2026-05-05.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
+    </footer>
+</div>
+</body>
+</html>
