@@ -202,63 +202,31 @@ a:hover { text-decoration: underline; }
     </div>
 
     <div class="article-body">
-        <h1>Anthropic 复盘 Claude Code 三次质量回退：从"自己的 evals 没catch到"学什么</h1>
-        <div class="source-line"> &nbsp;|&nbsp; 📅 2026年5月初</div>
-        <p><strong>原文链接</strong>: <a href="https://www.infoworld.com/article/4166247/improving-ai-agents-through-better-evaluations.html" target="_blank" rel="noopener">InfoWorld</a> | <a href="https://letsdatascience.com/news/anthropic-resolves-claude-code-quality-regressions-be6acdae" target="_blank" rel="noopener">Anthropic Postmortem</a></p>
-<p><strong>信源</strong>: InfoWorld（技术媒体）</p>
-<h2>摘要</h2>
-<p>Anthropic 发布了一份罕见的公开复盘报告，坦诚承认 Claude Code 在六周内发生了<strong>三次质量回退</strong>——而其内部评估都未能发现。问题包括：默认推理强度调整引入的 bug、缓存逻辑错误、以及 prompt 措辞调整导致的 3% 编码质量下降。</p>
-<h2>为什么重要</h2>
-<p>Anthropic 被业界公认为&quot;最重视 evals 的 AI 公司&quot;，连他们都在评估上翻车，这说明：<strong>AI 智能体质量保证是极其困难的工程问题</strong>，即使是顶级团队也无法幸免。</p>
-<h3>三次回退详情</h3>
-<table>
-<thead>
-<tr>
-  <th>时间</th>
-  <th>问题</th>
-  <th>原因</th>
-  <th>后果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td>3月4日</td>
-  <td>推理强度调整</td>
-  <td>将默认从&quot;高&quot;改为&quot;中&quot;（evals 显示&quot;略低智能但显著降低延迟&quot;）</td>
-  <td>用户感知到质量下降</td>
-</tr>
-<tr>
-  <td>3月26日</td>
-  <td>缓存 bug</td>
-  <td>空闲一小时后应清除 thinking，但代码错误导致每次对话都清除</td>
-  <td>性能异常</td>
-</tr>
-<tr>
-  <td>4月16日</td>
-  <td>prompt 措辞变更</td>
-  <td>&quot;更简洁&quot;的指示导致 3% 编码质量下降（仅在更大规模 ablation 中发现）</td>
-  <td>长期性能劣化</td>
-</tr>
-</tbody>
-</table>
-<h3>关键教训</h3>
-<p><strong>评估的局限性</strong>：</p>
-<ol><li><strong>标准 benchmark 无法覆盖全部场景</strong>：Claude Code 的标准发布门禁没有包含更大规模的 ablation suite</li>
-<li><strong>用户反馈是最真实的信号</strong>：Anthropic 用户几乎在问题上线后立即报告了问题</li>
-<li><strong>改变越小，风险越隐蔽</strong>：两行看似无害的 prompt 调整导致 3% 质量下降</li>
-</ol>
-<h3>改进建议</h3>
-<p>文章提出了几点工程实践建议：</p>
-<ol><li><strong>建立更诚实的数据闭环</strong>：不仅看内部指标，也系统性地收集用户反馈</li>
-<li><strong>发布门禁中加入 regression test</strong>：如果分数下降，不发布</li>
-<li><strong>先写 eval，再写 prompt</strong>：明确&quot;好&quot;的标准在优化之前</li>
-</ol>
-<h2>行业影响</h2>
-<p>这份复盘对于所有开发 AI 智能体应用的团队都有参考价值。它提醒我们：AI 系统的质量保证需要比传统软件更严格的工程实践，包括：</p>
-<ul><li>更全面的自动化测试</li>
-<li>更快的用户反馈收集机制</li>
-<li>对&quot;小改动&quot;的敬畏之心</li>
-</ul>
+        <h1>Microsoft、Meta和Google宣布追加数十亿美元AI支出，但只有Google说服投资者这笔支出值得回报</h1>
+        <div class="source-line">📰 <a href="https://fortune.com/2026/04/29/microsoft-meta-google-ai-capex-spending-billions/" target="_blank" rel="noopener">Fortune</a></div>
+        <p>Alphabet、Meta Platforms和Microsoft刚刚向投资者宣布，它们将在AI竞争中追加数十亿美元支出。但只有部分投资者看到红色警报。</p>
+<p>Meta股价在盘后下跌超过6%，而Microsoft基本持平。相反，Google母公司Alphabet的股价在盘后交易中上涨近7%。</p>
+<p>投资者一直对大型科技公司的资本支出感到焦虑，最近的估计显示，与AI相关的合计资本支出仅在2026年就将超过6000亿美元。分析师一直在向CEO们寻求更多细节，了解他们预期何时看到投资回报实现，如果高管们没有听到投资者想要的东西，市场就会让公司承受压力。</p>
+<p>在Alphabet，明确的差异化因素来自Google Cloud的增长。首席财务官Anat Ashkenazi表示，公司看到&quot;对AI计算资源的空前内部和外部需求&quot;。</p>
+<p>&quot;我们对AI的投资正在带来强劲增长，Google Cloud创纪录的收入和积压增长以及Google Services的强劲表现就是证明，&quot;Ashkenazi说。&quot;展望未来，这些强劲业绩加强了我们投资的信念，以继续抓住AI机会。因此，我们预计2027年资本支出将比2026年显著增加。&quot;</p>
+<h2>AI资本支出预期被上调</h2>
+<p>Alphabet将其全年2026年资本支出指导提高至1800亿至1900亿美元，高于之前的1750亿至1850亿美元。Alphabet的Google Cloud收入同比增长63%，达到200亿美元，增速翻倍多。Ashkenazi表示，企业云计算部门的积压订单为4620亿美元，与上一季度相比几乎翻倍。她说，Alphabet计划在未来24个月内看到略高于50%的积压订单转化为收入。</p>
+<p>Ashkenazi指出，与对Alphabet的Gemini 3型号的强劲需求相结合的AI解决方案是云增长的最大贡献者之一。CEO Sundar Pichai表示，Gemini Enterprise付费月度活跃用户比上一季度增长了40%，与博世、玛氏和默克等知名品牌的交易也在进行。</p>
+<p>&quot;我们看到了强劲的交易势头，与去年同期相比，1亿至10亿美元规模的交易数量翻倍，并签署了多个超过10亿美元的交易，&quot;Pichai在财报发布后与分析师的电话会议上说。&quot;在第一季度，基于我们GenAI模型构建的产品的收入同比增长了近800%。&quot;</p>
+<p>在同样在周三宣布业绩的Meta Platforms，CEO马克·扎克伯格告诉投资者，该公司计划将资本支出从之前的1150亿至1350亿美元增加到1250亿至1450亿美元。当被分析师问及他正在寻找什么迹象来告诉他Meta在AI重大投资的回报道路上处于健康路径时，他的回应似乎并没有像他所希望的那样安抚投资者。</p>
+<p>&quot;这是一个非常技术性的问题，&quot;扎克伯格回应道。&quot;我们正在关注的是确保我们保持在构建领先模型和领先产品的轨道上。对于我们公司来说，公式一直是构建能够触达数十亿人的体验，然后一旦你达到规模就专注于货币化。&quot;</p>
+<h2>Alphabet的云业务可能正在抢占市场份额</h2>
+<p>S&amp;P Global Visible Alpha Research负责人Melissa Otto表示，组件和内存芯片非常昂贵，鉴于资本支出的增加，公司愿意支付更高的价格。</p>
+<p>然而，Alphabet的云业务业绩是一个&quot;有意义的超出&quot;，因为这表明该业务可能正在从竞争对手那里抢占市场份额。</p>
+<p>&quot;这意味着它们处于强劲的竞争地位，&quot;Otto说。&quot;你有一个新兴业务线在相当竞争的环境中超出预期，我认为它们真的看到了规模以相当引人注目的方式进入它们的业务。&quot;</p>
+<p>Alphabet的云收入第一季度为200亿美元，同比增长63%，而Amazon的AWS报告了376亿美元，28%的增长代表了15个季度以来最强劲的增长。Microsoft Cloud（包括Azure、M365 Commercial cloud和其他服务）报告了545亿美元。</p>
+<p>Microsoft首席财务官Amy Hood表示，Azure和其他云服务增长了40%。Microsoft不披露Azure的具体美元数字；该指标包含在其智能云部门中，该部门报告收入为347亿美元。</p>
+<p>Microsoft同样在周三发布了财报，指导第四季度资本支出将超过400亿美元，Hood表示预计今年总投资1900亿美元。CEO萨提亚·纳德拉将约250亿美元的支出归因于组件价格上涨，与Meta类似。</p>
+<p>大约三分之二的支出用于GPU和CPU，以满足Azure客户需求，并为M365 Copilot等AI工具提供动力。Hood表示，即使进行这些支出，Microsoft预计在2026年之前将保持产能受限。</p>
+<p>&quot;我们预计资本支出将增加到超过400亿美元，因为我们继续上线更多产能。环比增长包括约50亿美元来自组件价格上涨，以及融资租赁的影响，&quot;Hood在她的准备发言中说。</p>
+<p>Hood将AI投资与Microsoft的云业务进行了比较，并表示AI正在走上类似的路径，尽管AI产品和工具的利润率已经比类似阶段的云利润率更好。</p>
+<p>&quot;我们一直在谈论我们的AI业务在这个周期中处于什么位置，甚至与我们看到的云周期相比，现在看起来已经是很久以前了，&quot;Hood说。&quot;以及利润率实际上更好。它们在我们AI业务中保持比我们在云转型中看到的更好。&quot;</p>
+<p><em>本译文由 AI 生成，仅供参考。原文版权归原作者所有。</em></p>
 
     </div>
 

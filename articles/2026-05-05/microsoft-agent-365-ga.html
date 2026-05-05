@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Daily Brief - 2026年05月05日</title>
+    <style>/* ─── Reset & Base ─── */
+:root {
+    --primary:   #1a1a2e;
+    --secondary: #16213e;
+    --accent:    #0f3460;
+    --highlight: #e94560;
+    --text:      #eaeaea;
+    --muted:     #a0a0a0;
+    --card-bg:   #1a1a2e;
+    --border:    #2a2a4a;
+    --green:     #4ade80;
+    --blue:      #60a5fa;
+    --yellow:    #fbbf24;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f0f1a;
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Layout ─── */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ─── Nav Bar ─── */
+.nav-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; padding: 14px 20px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.nav-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    padding: 6px 12px; border-radius: 6px; text-decoration: none;
+    transition: all .2s;
+}
+.nav-btn:hover { color: #fff; background: var(--accent); text-decoration: none; }
+.nav-btn.disabled { opacity: .3; pointer-events: none; }
+.nav-date { font-size: 14px; font-weight: 600; color: var(--highlight); }
+
+/* ─── Header ─── */
+.brief-header { margin-bottom: 28px; }
+.badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--highlight); color: #fff;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 999px; margin-bottom: 10px; letter-spacing: .5px;
+}
+.brief-header h1 { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.3; }
+.brief-header .subtitle { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+
+/* ─── Quick Hits ─── */
+.quick-hits {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 28px;
+}
+.quick-hits ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.quick-hits li { font-size: 15px; }
+.quick-hits li strong { color: #fff; }
+.quick-hits li a { color: var(--blue); }
+
+/* ─── Section ─── */
+.section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin: 30px 0 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.section-header .emoji { font-size: 20px; }
+.section-header h2 { font-size: 16px; font-weight: 700; color: #fff; }
+
+/* ─── Item ─── */
+.item { margin-bottom: 28px; }
+.item h3 {
+    font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; line-height: 1.4; scroll-margin-top: 20px;
+}
+
+/* ─── Item Body (rendered markdown) ─── */
+.item-body { font-size: 14px; color: var(--muted); }
+.item-body p { margin-bottom: 10px; }
+.item-body p:last-child { margin-bottom: 0; }
+.item-body strong, .item-body b { color: #fff; font-weight: 600; }
+.item-body em, .item-body i { color: #ccc; font-style: italic; }
+.item-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.item-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+    overflow-x: auto;
+}
+.item-body pre code { background: none; padding: 0; font-size: 13px; }
+.item-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 10px 0; color: var(--muted);
+}
+.item-body ul, .item-body ol {
+    padding-left: 20px; margin: 8px 0;
+}
+.item-body li { margin-bottom: 5px; }
+.item-body li::marker { color: var(--highlight); }
+.item-body a { color: var(--blue); }
+.item-body a:hover { text-decoration: underline; }
+
+/* ─── Key Points Box ─── */
+.key-points {
+    background: var(--secondary); border-left: 3px solid var(--highlight);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 10px 0;
+}
+.key-points strong { color: var(--highlight); display: block; margin-bottom: 6px; }
+.key-points ul { list-style: none; padding: 0; margin: 0; }
+.key-points li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+.key-points li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
+
+/* ─── Item Meta (source + readable links) ─── */
+.item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.item-meta a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 500; padding: 4px 10px;
+    border-radius: 6px; text-decoration: none; transition: all .15s;
+}
+.item-meta .src-link { color: var(--blue); border: 1px solid #60a5fa33; }
+.item-meta .src-link:hover { background: #60a5fa22; }
+.item-meta .read-link { color: var(--green); border: 1px solid #4ade8033; }
+.item-meta .read-link:hover { background: #4ade8022; }
+
+/* ─── Footer ─── */
+.site-footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); text-align: center;
+}
+
+/* ─── Article Page ─── */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb .sep { color: var(--border); }
+
+.article-body {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px; margin-bottom: 24px;
+}
+.article-body h1 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.3; }
+.article-body .source-line {
+    font-size: 13px; color: var(--muted); margin-bottom: 18px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.article-body .source-line a { color: var(--blue); }
+.article-body p { margin-bottom: 14px; font-size: 15px; }
+.article-body strong, .article-body b { color: #fff; font-weight: 600; }
+.article-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.article-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto;
+}
+.article-body pre code { background: none; padding: 0; }
+.article-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 12px 0; color: var(--muted);
+}
+.article-body ul, .article-body ol { padding-left: 22px; margin: 10px 0; }
+.article-body li { margin-bottom: 6px; }
+.article-body li::marker { color: var(--highlight); }
+.article-body a { color: var(--blue); }
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+    .container { padding: 20px 14px 60px; }
+    .nav-bar { flex-wrap: wrap; gap: 8px; }
+    .nav-date { order: -1; width: 100%; text-align: center; }
+    .article-body { padding: 20px 18px; }
+    .brief-header h1 { font-size: 19px; }
+}</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumb">
+        <a href="../../brief-2026-05-05.html">AI Agent Daily Brief - 2026年05月05日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
+
+    <div class="article-body">
+        <h1>Microsoft Agent 365现已正式发布，扩展代理安全与治理能力</h1>
+        <div class="source-line">📰 <a href="https://www.microsoft.com/en-us/security/blog/2026/05/01/microsoft-agent-365-now-generally-available-expands-capabilities-and-integrations/" target="_blank" rel="noopener">Microsoft Security Blog</a></div>
+        <p>AI代理已经存在于您的环境中。它们出现在您期望的地方（如Microsoft Copilot、Microsoft Teams和Microsoft 365），随着技术发展甚至出现在更多地方（本地自主个人AI助手或连接到您敏感数据的新型SaaS代理）。</p>
+<p>问题不在于代理是否存在，而在于它们 proliferation速度快、跨越应用程序、端点和云端，通常在 accountable for risk的团队的可见性和控制范围之外运行。当代理可以调用工具、访问数据并与其他代理交互时，任何&quot;有用&quot;的工作流都可能在几秒钟内转变为数据过度共享、工具滥用或过度特权操作。随着代理变得越来越容易创建和部署，您的攻击面也随之增长。</p>
+<p>这就是为什么端到端可观测性很重要：您无法管理您看不到的东西，您也无法保护您不理解的东西——尤其是当代理数量是一个移动目标时。</p>
+<p>Microsoft Agent 365帮助您控制代理蔓延，作为您的控制平面，用于<strong>观察、治理和保护代理及其交互</strong>——包括使用Microsoft AI构建的代理和来自我们生态系统合作伙伴的代理——使用您的团队已经运行的管理和安全工作流。</p>
+<p>Agent 365的正式发布从今天开始。</p>
+<p>此外，我们宣布了新的Agent 365功能和集成的预览，以帮助您在适当的控制下扩展代理采用。</p>
+<p><strong>观察、治理和保护独立运行的代理</strong> — Agent 365正在扩展以覆盖使用自己凭据和权限运行的代理。</p>
+<p><strong>发现代理和影子AI</strong>，使用Microsoft Defender和Microsoft Intune的功能来发现本地和云代理。</p>
+<p><strong>代理工作的安全托管环境</strong> — 用于代理的Windows 365。</p>
+<p><strong>广泛的SaaS代理生态系统覆盖</strong>，包括由软件开发公司（SDC）创新的代理。</p>
+<p><strong>来自Microsoft和全球生态系统合作伙伴的支持</strong>：评估、采用和使用。</p>
+<h2>使用单一控制平面管理代理，无论它们如何或在哪里工作</h2>
+<p>随着组织从试点转向采用，AI代理正在被部署在越来越多样化的用例中。一些代表用户使用委托访问权限工作；其他代理使用自己的凭据和权限运行，参与团队工作流或在幕后运行。</p>
+<p>使用Agent 365，您可以观察、治理和保护AI代理，无论它们是代表拥有委托访问权限的用户操作（例如，帮助员工整理收件箱的代理），还是使用自己的访问权限和工作范围的代理（例如，自主分类支持工单的代理）。</p>
+<p><strong>Agent 365支持</strong>：</p>
+<ul><li>代表用户工作的代理（委托访问）— 通常可用</li>
+<li>在幕后运行的代理（自有访问）— 通常可用</li>
+<li>参与团队工作流的代理（自有访问）— 公开预览</li>
+</ul>
+<h2>发现和管理本地和云托管的代理</h2>
+<p>用户正在他们的设备上安装代理（如OpenClaw和Claude Code），并采用由开发者在新的和新兴平台上构建的SaaS代理。许多这些本地和云托管的代理在传统治理之外不受管理地运行，因为它们自主执行任务、修改代码或访问机密信息，创建了新一波的影子AI。</p>
+<p>为了帮助组织应对加速的代理蔓延和不受管理的代理的兴起，我们作为Agent 365、Microsoft Defender和Intune的一部分引入新功能，以便您可以发现影子代理并应用适当的控制，例如阻止不受管理的代理。</p>
+<h3>发现和管理本地代理</h3>
+<p>通过Microsoft Defender和Intune，组织将能够发现和管理在Windows设备上运行的本地AI代理，首先是OpenClaw代理，并很快扩展到其他广泛使用的代理，如GitHub Copilot CLI和Claude Code。在前沿计划中注册的客户提供可以看到组织中是否使用了OpenClaw代理、这些代理在哪些设备上运行，并使用Intune策略阻止OpenClaw在这些设备上运行的常见方法。</p>
+<p>在Microsoft 365管理中心，新的影子AI页面中的OpenClaw；以及在Intune管理中心。客户可以持续检测托管设备并阻止OpenClaw在这些设备上运行的常见方法。</p>
+<p>通过Agent 365注册表，本地代理的清单将在Defender和Intune中可用，这样IT、端点管理和安全团队可以在其环境中获得一致的已发现本地代理视图，并采取适当的行动。</p>
+<p>从2026年6月开始，Microsoft Defender还将为每个代理提供资产上下文映射，包括它们运行的设备、为这些代理配置的MCP服务器、与之关联的身份，以及这些身份可以访问的云资源。这将为安全团队提供评估曝光和潜在爆炸半径所需的上下文。他们可以使用熟悉的端点数据调查代理活动，例如文件访问和网络行为，并使用这些洞察来识别配置错误甚至定义自定义检测。</p>
+<p>超越监控，组织将能够应用基于策略的控制来为代理可以做什么设置护栏——帮助保护代理和组织免受妥协和滥用——初始支持通过Intune为OpenClaw提供。如果托管代理表现出恶意行为模式，例如试图访问或泄露敏感数据，Defender将能够在运行时阻止编码代理，并生成带有丰富事件上下文的警报以支持调查和响应。</p>
+<p>上下文映射功能、基于策略的控制加上运行时阻止和警报将于2026年6月在Agent 365中通过Intune和Defender公开预览提供。</p>
+<h3>跨云和AI构建平台的可见性</h3>
+<p>随着开发者使用Microsoft Foundry、AWS Bedrock和Google Gemini Enterprise Agent Platform（以前的Google Vertex AI）快速构建代理，并在多云和多平台环境中部署云代理，代理蔓延挑战加剧。为了在潜在安全风险或漏洞成为漏洞之前管理它们，安全和IT团队需要了解哪些云代理正在运行、这些代理构建在哪些模型上，以及它们正在访问哪些资源。</p>
+<p>今天，我们很高兴宣布Agent 365注册表同步与AWS Bedrock和Google Cloud连接的公开预览，使IT团队能够自动发现、盘点，并很快执行基本的生命周期治理——例如，启动、停止、删除跨这些平台的代理。</p>
+<p>现在处于公开预览状态，Microsoft 365管理员可以连接并同步Agent 365注册表与Amazon Bedrock和Google Cloud，以获得跨平台可观测性和治理。</p>
+<h2>管理广泛的SaaS代理生态系统</h2>
+<p>Agent 365与Microsoft 365 Copilot和Teams中的预构建代理、使用Microsoft Copilot Studio或Microsoft Foundry为您的组织构建的代理，以及与Microsoft合作的软件开发公司构建的代理一起工作。</p>
+<p>为了兑现作为广泛代理生态系统控制平面的承诺，我们很高兴宣布完全配置为可由Agent 365管理的生态系统合作伙伴代理，包括Genspark、Zensai、Egnyte和Zendesk，以及在代理工厂上构建的代理，包括Kasisto、Kore和n8n。组织可以在Agent 365控制平面中观察、治理和保护这些代理，无需IT或安全团队进行集成工作。</p>
+<p>企业客户关系管理平台Kore.ai首席执行官Raj Koneru表示：&quot;有了与Microsoft Agent 365深度集成的Kore.ai，身份、安全和治理从一开始就内置其中——使企业能够充满信心地从试点转向大规模AI。&quot;</p>
+<p>Agent 365开发者和生态系统合作伙伴在将代理扩展到业务线系统、构建垂直和场景特定集成、将传统自动化现代化为代理工作流、扩展Copilot体验与自定义代理以及帮助客户大规模运营代理生态系统方面发挥着关键作用。这些Agent 365启用的代理然后在Agent 365控制平面中可观察、可治理和可安全，加速您组织的采用。</p>
+<h2>在Windows 365中安全工作</h2>
+<p>虽然Agent 365提供了跨企业观察、治理和保护代理活动的控制平面，但用于代理的Windows 365——现在在公开预览中可用（仅限美国）——提供了一个安全的托管环境，代理可以在其中执行工作。它引入了一种新型云PC，专为代理工作负载而构建，并在Intune中管理，允许代理在策略控制的环境中运行、与应用程序交互，并以与员工相同的身份、安全和管理控制运行。</p>
+<p>现在，使用Agent 365，您还可以在Microsoft 365管理中心观察和保护在用于代理的Windows 365上运行的代理，了解哪些代理连接到云驱动的计算。它们共同使组织能够从代理的可视性和治理发展到在生产环境中自信地运行它们。</p>
+<h2>使用网络控制保护代理免受互联网威胁</h2>
+<p>AI代理可以比人类用户快得多地操作。没有适当的护栏，它们可以连接到危险的web目的地、与未批准的AI服务交互、不安全地处理敏感文件，或通过恶意基于提示的攻击被操纵。当安全团队缺乏对代理流量到互联网、SaaS和AI服务的一致可见性和控制时，这些风险更难管理。</p>
+<p>为了让安全团队在网络层拥有一致的方式来检查代理流量，今天在正式可用时，Agent 365扩展Microsoft Entra网络控制到Microsoft Copilot Studio代理和在用户端点设备上运行的代理，包括OpenClaw等本地代理。这些控制可以帮助识别未批准的AI使用，仅限制到批准web目的地的连接、过滤危险的文件移动，并帮助在导致有害操作之前阻止恶意基于提示的攻击。</p>
+<h2>在保持安全和控制的同时自信地扩展和治理AI代理</h2>
+<p>Agent 365甚至进一步扩展到Microsoft平台之外，以<strong>发现、观察、治理和保护</strong>跨您代理AI生态系统的本地、SaaS和云代理。今天宣布的每一项都建立在2026年3月分享的Agent 365功能以及使用前沿计划的客户的详细反馈、集成平台的开发者和测试Agent 365功能的合作伙伴之上。</p>
+<p>日本NTT DATA Group Corporation全球AI办公室负责人Yuji Shono表示：&quot;使用Agent 365，我们可以充满信心地扩展和治理AI代理，同时保持企业级安全和控制。Agent 365使组织能够超越实验，通过可信的AI采用推动切实的业务价值和创新。通过提供强大且集成的平台，Agent 365使团队能够充满信心地拥抱AI并加速企业转型。&quot;</p>
+<p>随着组织开始大规模采用Agent 365，我们与战略合作伙伴合作创建了有针对性的服务，以帮助客户入门、应对治理挑战并实现平台的全部价值。</p>
+<p>特色Agent 365发布合作伙伴，包括Accenture、Bechtle、Capgemini、Insight、KPMG、Protiviti和Slalom，与Microsoft工程团队合作开发了用于规划、采用和管理您的代理控制平面实施的服务。</p>
+<p>今天提供的合作伙伴服务包括：</p>
+<ul><li><strong>库存和所有权</strong>：存在哪些代理，谁拥有它们，它们在哪里运行。</li>
+<li><strong>最小权限</strong>：调整权限大小并在不减慢交付速度的情况下实施访问护栏。</li>
+<li><strong>合规性和数据保护</strong>：防止过度共享并产生可审计的证据。</li>
+<li><strong>威胁和多平台环境</strong>：了解攻击路径并跨供应商和云进行治理。</li>
+<li><strong>持续运营</strong>：生命周期管理、监控和持续治理卫生。</li>
+</ul>
+<p>这些有价值的服务通常被定义为<strong>研讨会和评估</strong>（诊断和路线图）、<strong>治理和赋能</strong>（建立控制平面和护栏）、<strong>托管服务</strong>（运行和持续改进）、<strong>咨询和就绪</strong>（运营模式和采用就绪）以及<strong>安全和集成</strong>（强化态势和集成第三方代理）。</p>
+<h2>如何开始使用Agent 365</h2>
+<p>Agent 365现已在Microsoft 365 E7或独立版本可用，价格为每位用户每月15美元。每个Agent 365许可证涵盖管理或赞助代理的个人，或使用代理代表其工作的个人，确保所有代理活动在整个组织中以可预测的方式一致地治理，以实现可扩展增长。</p>
+<p>除了您的Microsoft 365团队和合作伙伴的专业知识外，支持您的体验的Agent 365资源包括：</p>
+<ul><li>Agent 365博客</li>
+<li>采用中心和新手入门指南</li>
+<li>适用于Agent 365的AI技能导航器</li>
+<li>Microsoft Learn上的技术文档</li>
+</ul>
+<p>此外，在5月12日（星期二），一组Agent 365专家将主持现场&quot;向Microsoft提问&quot;活动，回答您关于Agent 365的问题——我们希望您能加入讨论。</p>
+<p><em>本译文由 AI 生成，仅供参考。原文版权归原作者所有。</em></p>
+
+    </div>
+
+    <footer class="site-footer">
+        <a href="../../brief-2026-05-05.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
+    </footer>
+</div>
+</body>
+</html>

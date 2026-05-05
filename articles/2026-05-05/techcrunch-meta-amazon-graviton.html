@@ -202,34 +202,18 @@ a:hover { text-decoration: underline; }
     </div>
 
     <div class="article-body">
-        <h1>Red Hat Tank OS：企业级 OpenClaw 智能体安全部署新方案</h1>
-        <div class="source-line"> &nbsp;|&nbsp; 📅 2026年4月28日</div>
-        <p><strong>原文链接</strong>: <a href="https://techcrunch.com/2026/04/28/red-hats-openclaw-maintainer-just-made-enterprise-claw-deployments-a-lot-safer/" target="_blank" rel="noopener">TechCrunch</a> | <a href="https://github.com/LobsterTrap/tank-os" target="_blank" rel="noopener">GitHub - Tank OS</a></p>
-<p><strong>信源</strong>: TechCrunch（行业媒体）</p>
-<h2>摘要</h2>
-<p>Red Hat 首席软件工程师 Sally O'Malley（OpenClaw 维护者）发布开源工具 <strong>Tank OS</strong>，让企业和开发者能更安全、更便捷地在生产环境中部署和管理 OpenClaw 智能体。Tank OS 将 OpenClaw 封装进容器，让 IT 团队可以用管理容器的标准方式管理 AI 智能体。</p>
-<h2>为什么重要</h2>
-<p>OpenClaw 是当前最流行的开源 AI 智能体项目之一，允许用户在本地计算机上安装 AI 智能体执行各种任务。但随着 OpenClaw 的普及，<strong>安全风险也在增加</strong>：</p>
-<ul><li>智能体可能执行意外操作（如发送大量邮件、下载敏感文件）</li>
-<li>Skills marketplace 出现恶意技能窃取凭据</li>
-<li>缺乏企业级的管理和审计工具</li>
-</ul>
-<h3>Tank OS 的解决方案</h3>
-<p>Tank OS 的核心价值：</p>
-<ol><li><strong>容器化封装</strong>：将 OpenClaw 运行在隔离的容器中，防止对主机系统的未授权访问</li>
-<li><strong>标准化管理</strong>：IT 团队可以用现有的容器管理工具（如 Kubernetes、Docker）管理 AI 智能体</li>
-<li><strong>批量更新</strong>：fleet management，让管理数百个智能体成为可能</li>
-<li><strong>审计追踪</strong>：记录智能体的所有操作行为</li>
-</ol>
-<h3>适用场景</h3>
-<ul><li><strong>企业 IT 部门</strong>：需要在公司电脑上管理员工 AI 智能体</li>
-<li><strong>MSP（托管服务提供商）</strong>：为多个客户管理 AI 智能体</li>
-<li><strong>开发者</strong>：想要安全实验 OpenClaw 而不影响主机系统</li>
-</ul>
-<h2>行业影响</h2>
-<p>Red Hat 的参与意义重大——作为企业级 Linux 和容器技术的事实标准制定者，Red Hat 的背书意味着 OpenClaw 正从&quot;个人开发工具&quot;向&quot;企业级产品&quot;演进。这与 OpenAI 收购创始人 Peter Steinberger 的决定形成有趣呼应——开源社区和企业市场正在两条线上推动 AI 智能体的成熟。</p>
-<h2>与 NanoClaw 的竞争</h2>
-<p>Docker 也在与 NanoClaw 合作提供类似容器化方案，但 Tank OS 的优势在于与 Red Hat 生态系统的深度集成——对于已使用 Red Hat Enterprise Linux、OpenShift 的企业，Tank OS 是更自然的选择。</p>
+        <h1>在AI芯片的又一个疯狂转折中，Meta签署使用数百万个Amazon AI CPU的协议</h1>
+        <div class="source-line">📰 <a href="https://techcrunch.com/2026/04/24/in-another-wild-turn-for-ai-chips-meta-signs-deal-for-millions-of-amazon-ai-cpus/" target="_blank" rel="noopener">TechCrunch</a></div>
+        <p>Amazon刚刚感谢其自家芯片再次从Meta获得了一笔重大交易。Meta已签署使用数百万个AWS Graviton芯片来为其不断增长的AI需求提供动力的协议，Amazon上周五宣布。</p>
+<p>请注意，AWS Graviton是一种基于ARM的CPU（处理通用计算任务的中央处理单元），而不是GPU（图形处理单元）。</p>
+<p>虽然GPU仍然是训练大型模型的首选芯片，但一旦这些模型被训练，在其上构建的AI代理正在导致所需芯片类型的转变。代理创建计算密集型工作负载，如实时推理、编写代码、搜索以及通过多步骤任务管理代理所涉及的协调。AWS表示，其最新版本的Graviton专门设计用于处理AI相关计算需求。</p>
+<p>这笔交易使Meta更多的现金回流到AWS，而不是Google Cloud等竞争对手。去年8月，Meta与Google Cloud签署了为期六年、价值超过100亿美元的协议，不过在此之前，Meta主要是AWS客户，也使用Microsoft Azure。</p>
+<p>我们不禁注意到，AWS在Google Cloud Next会议结束时的同时宣布了这笔交易，就像是对其云竞争对手的一个虚拟微笑。当然，Google也制造自己的定制AI芯片，并在展会上宣布了这些芯片的新版本。</p>
+<p>确实，Amazon也制造自己的AI GPU：Trainium，尽管它的名字用于训练和推理——这是模型训练后、它正在积极处理提示的阶段。</p>
+<p>但Anthropic已经在这个月初宣布的一项协议中抢先一步，获得了未来多年的许多这些芯片。Claude制造商同意在10年内花费1000亿美元在AWS上运行其工作负载——特别关注Trainium——而Amazon同意再投资50亿美元（使其总投资达到130亿美元）作为回报。</p>
+<p>最终，这笔交易使Amazon能够展示一个巨大的AI客户作为其自家CPU的证明点。这些芯片与Nvidia的新Vera CPU竞争，后者也是基于ARM的，专为处理AI代理工作负载而设计。当然，区别在于Nvidia将其芯片和AI系统销售给企业和云提供商（包括AWS）。AWS只通过其云服务销售对其芯片的访问。</p>
+<p>本月早些时候，Amazon CEO Andy Jassy在其年度股东信中瞄准了Nvidia和Intel，表示企业希望AI有更好的性价比，他打算在此基础上赢得交易。这也意味着Amazon内部芯片制造团队交付的压力前所未有，我们在上个月对其实验室的独家参观中访问了该团队。</p>
+<p><em>本译文由 AI 生成，仅供参考。原文版权归原作者所有。</em></p>
 
     </div>
 

@@ -202,37 +202,21 @@ a:hover { text-decoration: underline; }
     </div>
 
     <div class="article-body">
-        <h1>AI 评估成本危机：HAL 跑了 4 万美元，学术界还能玩吗？</h1>
-        <div class="source-line"> &nbsp;|&nbsp; 📅 2026年4月29日</div>
-        <p><strong>原文链接</strong>: <a href="https://huggingface.co/blog/evaleval/eval-costs-bottleneck" target="_blank" rel="noopener">Hugging Face Blog</a></p>
-<p><strong>信源</strong>: Hugging Face Blog（行业媒体/研究）</p>
-<h2>摘要</h2>
-<p>一篇来自 EvalEval Coalition 的深度分析指出：<strong>AI 评估（Eval）正在成为新的算力瓶颈</strong>。Holistic Agent Leaderboard（HAL）最近运行 21,730 次智能体 rollout 花费约 4 万美元；单次 GAIA 推理在前沿模型上花费 2,829 美元；Exgentic 的 2.2 万美元实验发现同一任务在不同 scaffolding 配置下成本差异高达 33 倍。</p>
-<h2>为什么重要</h2>
-<p>过去业界常说&quot; Scaling Law 是 AI 的瓶颈&quot;，现在的问题是：<strong>谁来为评估买单？</strong> 这个问题直接关系到 AI 智能体的质量保障和迭代速度。</p>
-<h3>关键数据点</h3>
-<ol><li><strong>HAL (Holistic Agent Leaderboard)</strong>：9 个模型 × 9 个 benchmark × 21,730 次 rollout = <strong>~$40,000</strong></li>
-<li><strong>GAIA 单次运行</strong>：在前沿模型上 = <strong>$2,829</strong>（不含缓存）</li>
-<li><strong>Exgentic 实验</strong>：相同任务成本差异 <strong>33 倍</strong>（scaffolding 选择是关键驱动因素）</li>
-<li><strong>UK-AISI 研究</strong>：AI 任务需要扩展到<strong>百万级</strong>推理步骤才能准确评估</li>
-<li><strong>The Well benchmark</strong>：评估一个新架构需要 <strong>960 H100-hours</strong>，完整四基线对比需要 <strong>3,840 H100-hours</strong></li>
-</ol>
-<h3>评估的不可压缩性</h3>
-<p>传统 LLM 评估可以通过 compression technique 降低成本，但<strong>智能体 benchmark 天生嘈杂、scaffold 敏感，且只能部分压缩</strong>。Training-in-the-loop 的评估更是&quot;构造即昂贵&quot;，而为了结果的可靠性所做的重复运行进一步放大了成本。</p>
-<h2>对行业的冲击</h2>
-<p><strong>小团队和学术机构的困境</strong>：当单次评估运行就要花费数千美元时，只有资金充足的大厂才能进行系统性的 AI 智能体评估。这可能造成：</p>
-<ul><li>AI 智能体质量的&quot;大厂垄断&quot;</li>
-<li>学术界无法独立验证模型声称的能力</li>
-<li>第三方独立评估机构难以生存</li>
-</ul>
-<h3>解决方案探索</h3>
-<p>文章提到了一些探索方向：</p>
-<ul><li>更高效的 sampling 方法</li>
-<li>共享评估基础设施</li>
-<li>更小但更可靠的 benchmark 设计</li>
-</ul>
-<h2>行业影响</h2>
-<p>这篇分析对于 AI 投资人和 CTO 们有重要启示：<strong>AI 智能体的质量保障成本可能远超模型训练成本</strong>。企业在评估 AI 供应商时，不应只看模型性能数字，还要考虑其背后的评估体系是否健全。</p>
+        <h1>五角大楼与OpenAI、Google、Microsoft、Nvidia等签署AI协议，将Anthropic排除在外</h1>
+        <div class="source-line">📰 <a href="https://www.ghacks.net/2026/05/04/pentagon-signs-ai-deals-with-openai-google-microsoft-nvidia-and-others-cutting-out-anthropic/" target="_blank" rel="noopener">gHacks</a></div>
+        <p>五角大楼已与OpenAI、Google、Microsoft、Amazon、Oracle、Nvidia、SpaceX和Reflection AI确定了人工智能协议。这些协议将AI的使用扩展到国防部的机密环境，支持分析、物流和大规模数据处理等活动。国防部以供应链风险担忧为由，在合同纠纷后将Anthropic排除在协议之外。</p>
+<p>据《华尔街日报》报道，负责研究和工程的国防部副部长Emil Michael将这项举措描述为为军事人员提供AI工具以保持优势并实现决策优势。</p>
+<h2>每个AI合作伙伴为五角大楼带来什么</h2>
+<p>Microsoft、Amazon和Oracle同时提供AI模型和在现有安全框架内运行它们所需的云基础设施。这种方法有助于避免从头开始创建新的机密计算环境。</p>
+<p>Nvidia的协议专注于其Nemotron开源模型，该模型旨在支持能够完成多步骤任务的自主代理。开源模型允许国防部检查和修改特定用例的内部架构。Nvidia CEO黄仁勋表示，在国家安全环境中，模型架构的透明度可以增强安全性，而不是削弱安全性。</p>
+<p>参与这项工作的还有Reflection AI，这是一家由Nvidia支持的初创公司，由前Google DeepMind研究人员创立。该公司尚未公开发布模型，但参与了一个政府支持的项目，为韩国市场开发定制模型。据报道，它还在寻求约250亿美元估值融资。</p>
+<h2>为什么Anthropic被排除在五角大楼的AI协议之外</h2>
+<p>Anthropic的Claude模型是五角大楼机密环境中少数可用的AI系统之一，主要通过Palantir的Maven平台。在合同纠纷后，国防部将Anthropic标记为供应链风险，并切断了对其系统的访问。</p>
+<p>在国会听证会上，国防部长Pete Hegseth称Anthropic CEO Dario Amodei为&quot;意识形态疯子&quot;。Anthropic正在法庭上对供应链风险标签提出异议。此前，Claude模型曾在军事行动中使用，包括在伊朗冲突中和针对委内瑞拉领导人尼古拉斯·马杜罗的努力中。</p>
+<h2>五角大楼和AI公司设置了哪些限制</h2>
+<p>参与协议的几家公司表示，他们的技术不会用于大规模监控或自主武器系统。国防部重申此类用途是非法的，并要求参与的 companies相信其监督机制。</p>
+<p>但是，没有公开概述这些限制的独立执行机制。</p>
+<p><em>本译文由 AI 生成，仅供参考。原文版权归原作者所有。</em></p>
 
     </div>
 
