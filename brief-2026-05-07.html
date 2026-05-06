@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Daily Brief - 2026-05-07</title>
+    <style>/* ─── Reset & Base ─── */
+:root {
+    --primary:   #1a1a2e;
+    --secondary: #16213e;
+    --accent:    #0f3460;
+    --highlight: #e94560;
+    --text:      #eaeaea;
+    --muted:     #a0a0a0;
+    --card-bg:   #1a1a2e;
+    --border:    #2a2a4a;
+    --green:     #4ade80;
+    --blue:      #60a5fa;
+    --yellow:    #fbbf24;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f0f1a;
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Layout ─── */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ─── Nav Bar ─── */
+.nav-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; padding: 14px 20px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.nav-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    padding: 6px 12px; border-radius: 6px; text-decoration: none;
+    transition: all .2s;
+}
+.nav-btn:hover { color: #fff; background: var(--accent); text-decoration: none; }
+.nav-btn.disabled { opacity: .3; pointer-events: none; }
+.nav-date { font-size: 14px; font-weight: 600; color: var(--highlight); }
+
+/* ─── Header ─── */
+.brief-header { margin-bottom: 28px; }
+.badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--highlight); color: #fff;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 999px; margin-bottom: 10px; letter-spacing: .5px;
+}
+.brief-header h1 { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.3; }
+.brief-header .subtitle { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+
+/* ─── Quick Hits ─── */
+.quick-hits {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 28px;
+}
+.quick-hits ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.quick-hits li { font-size: 15px; }
+.quick-hits li strong { color: #fff; }
+.quick-hits li a { color: var(--blue); }
+
+/* ─── Section ─── */
+.section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin: 30px 0 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.section-header .emoji { font-size: 20px; }
+.section-header h2 { font-size: 16px; font-weight: 700; color: #fff; }
+
+/* ─── Item ─── */
+.item { margin-bottom: 28px; }
+.item h3 {
+    font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; line-height: 1.4; scroll-margin-top: 20px;
+}
+
+/* ─── Item Body (rendered markdown) ─── */
+.item-body { font-size: 14px; color: var(--muted); }
+.item-body p { margin-bottom: 10px; }
+.item-body p:last-child { margin-bottom: 0; }
+.item-body strong, .item-body b { color: #fff; font-weight: 600; }
+.item-body em, .item-body i { color: #ccc; font-style: italic; }
+.item-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.item-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+    overflow-x: auto;
+}
+.item-body pre code { background: none; padding: 0; font-size: 13px; }
+.item-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 10px 0; color: var(--muted);
+}
+.item-body ul, .item-body ol {
+    padding-left: 20px; margin: 8px 0;
+}
+.item-body li { margin-bottom: 5px; }
+.item-body li::marker { color: var(--highlight); }
+.item-body a { color: var(--blue); }
+.item-body a:hover { text-decoration: underline; }
+
+/* ─── Key Points Box ─── */
+.key-points {
+    background: var(--secondary); border-left: 3px solid var(--highlight);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 10px 0;
+}
+.key-points strong { color: var(--highlight); display: block; margin-bottom: 6px; }
+.key-points ul { list-style: none; padding: 0; margin: 0; }
+.key-points li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+.key-points li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
+
+/* ─── Item Meta (source + readable links) ─── */
+.item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.item-meta a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 500; padding: 4px 10px;
+    border-radius: 6px; text-decoration: none; transition: all .15s;
+}
+.item-meta .src-link { color: var(--blue); border: 1px solid #60a5fa33; }
+.item-meta .src-link:hover { background: #60a5fa22; }
+.item-meta .read-link { color: var(--green); border: 1px solid #4ade8033; }
+.item-meta .read-link:hover { background: #4ade8022; }
+
+/* ─── Footer ─── */
+.site-footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); text-align: center;
+}
+
+/* ─── Article Page ─── */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb .sep { color: var(--border); }
+
+.article-body {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px; margin-bottom: 24px;
+}
+.article-body h1 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.3; }
+.article-body .source-line {
+    font-size: 13px; color: var(--muted); margin-bottom: 18px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.article-body .source-line a { color: var(--blue); }
+.article-body p { margin-bottom: 14px; font-size: 15px; }
+.article-body strong, .article-body b { color: #fff; font-weight: 600; }
+.article-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.article-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto;
+}
+.article-body pre code { background: none; padding: 0; }
+.article-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 12px 0; color: var(--muted);
+}
+.article-body ul, .article-body ol { padding-left: 22px; margin: 10px 0; }
+.article-body li { margin-bottom: 6px; }
+.article-body li::marker { color: var(--highlight); }
+.article-body a { color: var(--blue); }
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+    .container { padding: 20px 14px 60px; }
+    .nav-bar { flex-wrap: wrap; gap: 8px; }
+    .nav-date { order: -1; width: 100%; text-align: center; }
+    .article-body { padding: 20px 18px; }
+    .brief-header h1 { font-size: 19px; }
+}</style>
+</head>
+<body>
+<div class="container">
+    <nav class="nav-bar">
+        <a href="brief-2026-05-06.html" class="nav-btn">← 前一天</a>
+        <span class="nav-date">2026年05月07日</span>
+        <span class="nav-btn disabled">后一天 →</span>
+    </nav>
+
+    <header class="brief-header">
+        <h1>AI Agent Daily Brief - 2026-05-07</h1>
+        <p class="subtitle"></p>
+    </header>
+
+    <div class="section-header" id="今日要闻">
+    
+    <h2>今日要闻</h2>
+</div><div class="item" id="Anthropic金融代理暴露FDE成为企业AI新限制因素">
+    <h3>Anthropic金融代理暴露FDE成为企业AI新限制因素</h3>
+    <div class="item-body"><p>FIS宣布其用于检测金融犯罪的新型AI代理时，突出了Anthropic派驻的先锋部署工程师（FDE）团队。Gartner预测，到2028年，70%的企业将因高供应商成本被迫放弃FDE主导的代理AI解决方案。分析师指出FDE模式存在利益冲突——AI供应商既被雇用来修复复杂性，同时又可能制造了这种复杂性。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>FDE将反洗钱调查时间从数小时压缩至数分钟</p></li><li><p>蒙特利尔银行和联合银行成为首批部署客户</p></li><li><p>仅32%领导者报告了持续的企业级AI成果</p></li><li><p>专家警告：FDE是依赖性的代价，而非真正的转型</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-07/01-anthropic-fde-costs.html" class="read-link">📖 阅读全文</a><a href="https://www.cio.com/article/4167981/anthropics-financial-agents-expose-forward-deployed-engineers-as-new-ai-limiting-factor.html" target="_blank" rel="noopener" class="src-link">📰 原文链接</a></div></div>
+</div><div class="item" id="Anthropic与SpaceX合作Claude使用限制翻倍30万-GPU算力">
+    <h3>Anthropic与SpaceX合作：Claude使用限制翻倍，30万+ GPU算力</h3>
+    <div class="item-body"><p>Anthropic宣布与SpaceX建立重大合作伙伴关系，获得Colossus 1数据中心全部算力——超过300兆瓦、22万NVIDIA GPU。即时生效的Claude Code五小时速率限额翻倍，同时取消高峰时段限制缩减，并大幅提升Claude Opus模型的API速率限额。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>算力合作还包括：亚马逊50亿瓦特、谷歌/博通50亿瓦特（2027年）、微软/NVIDIA 300亿美元Azure合作</p></li><li><p>Anthropic承诺覆盖数据中心导致的消费者电价上涨</p></li><li><p>国际扩张将进入亚洲和欧洲市场</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-07/02-anthropic-claude-limits.html" class="read-link">📖 阅读全文</a><a href="https://www.anthropic.com/news/higher-limits-spacex" target="_blank" rel="noopener" class="src-link">📰 原文链接</a></div></div>
+</div><div class="item" id="ServiceNow与Accenture联合推出FDE计划300预建AI代理技能">
+    <h3>ServiceNow与Accenture联合推出FDE计划，300+预建AI代理技能</h3>
+    <div class="item-body"><p>ServiceNow和Accenture联合推出FDE计划，将代理AI扩展到企业。合作提供超过300个预构建AI代理技能和代理工作流，通过ServiceNow AI Control Tower提供统一治理。两个团队的FDE专家在客户环境中协同工作，从概念到生产交付AI解决方案。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>能源公司威胁控制时间减少97%</p></li><li><p>金融机构消除96%休眠非人类身份</p></li><li><p>航空航天制造商控制认证时间减少75%</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-07/03-servicenow-accenture-fde.html" class="read-link">📖 阅读全文</a><a href="https://newsroom.accenture.com/news/2026/servicenow-and-accenture-launch-forward-deployed-engineering-program-to-scale-agentic-ai-across-the-enterprise" target="_blank" rel="noopener" class="src-link">📰 原文链接</a></div></div>
+</div><div class="item" id="IBM-Think-2026Enterprise-Advantage扩展多代理互操作性">
+    <h3>IBM Think 2026：Enterprise Advantage扩展多代理互操作性</h3>
+    <div class="item-body"><p>IBM在Think 2026大会上发布Enterprise Advantage更新，帮助组织在多个AI堆栈中受控扩展AI。Pearson和Providence加速AI转型，AWS和SAP合作提升多代理互操作性。IBM Consulting Advantage平台更新支持跨混合环境交付咨询服务。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>企业可在自己的混合AI平台上构建和运营</p></li><li><p>支持受监管行业的数据驻留合规要求</p></li><li><p>跨多个AI模型栈统一管理</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-07/04-ibm-think-2026.html" class="read-link">📖 阅读全文</a><a href="https://newsroom.ibm.com/2026-05-06-ibm-consulting-expands-ai-capabilities-to-accelerate-enterprise-transformation" target="_blank" rel="noopener" class="src-link">📰 原文链接</a></div></div>
+</div><div class="item" id="The-Hacker-News50企业身份活动对IAM保持不可见">
+    <h3>The Hacker News：50%企业身份活动对IAM保持不可见</h3>
+    <div class="item-body"><p>Gartner确认AI代理部署速度超过企业治理能力——50%的企业身份活动发生在集中式IAM可见性之外。传统IAM工具在登录事件处停止，无法观察身份验证后应用程序内部发生的事情。AI代理以机器速度持续运行，机会性地获取权限。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>约一半企业身份活动已在IAM可见性之外</p></li><li><p>AI代理跨多个应用程序运行并生成机器速度活动</p></li><li><p>静态凭证是攻击者的高价值目标</p></li><li><p>Gartner首份《守护代理市场指南》发布</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-07/05-hackernews-ai-security.html" class="read-link">📖 阅读全文</a><a href="https://thehackernews.com/2026/05/your-ai-agents-are-already-inside.html" target="_blank" rel="noopener" class="src-link">📰 原文链接</a></div></div>
+</div><div class="item" id="Google正在开发Remy-AI代理全天候个人助手定位">
+    <h3>Google正在开发Remy AI代理：全天候个人助手定位</h3>
+    <div class="item-body"><p>Google正在为Gemini开发名为&quot;Remy&quot;的AI个人代理，可以代表用户执行操作并全天候运行。Remy深度集成到Google生态系统中，可监控重要事项、主动处理复杂任务并学习用户偏好。员工正在内部测试，Google I/O大会将于本月晚些时候举行。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>内部描述：&quot;Remy是你全天候的个人代理，由Gemini驱动&quot;</p></li><li><p>类似OpenClaw的功能，后者已成为病毒式热潮</p></li><li><p>OpenAI已雇佣OpenClaw创建者</p></li><li><p>I/O大会预计将展示下一代AI产品</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-07/06-google-remy-agent.html" class="read-link">📖 阅读全文</a><a href="https://www.businessinsider.com/google-ai-agent-openclaw-remy-gemini-assistant-2026-5" target="_blank" rel="noopener" class="src-link">📰 原文链接</a></div></div>
+</div><div class="item" id="ServiceNow扩展AI-Control-Tower整合VezaArmis收购">
+    <h3>ServiceNow扩展AI Control Tower：整合Veza、Armis收购</h3>
+    <div class="item-body"><p>ServiceNow在Knowledge 2026大会宣布三项重大扩展：AI Control Tower扩展到微软Agent 365、与NVIDIA合作推出Project Arc桌面代理、整合Veza访问图谱和Armis资产情报推出Autonomous Security &amp; Risk。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>整合Veza Access Graph和Armis资产情报</p></li><li><p>统一映射每个身份、权限和连接资产</p></li><li><p>威胁响应以机器速度发生</p></li><li><p>与微软、NVIDIA建立合作伙伴关系</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-07/07-servicenow-ai-governance.html" class="read-link">📖 阅读全文</a><a href="https://www.cxtoday.com/security-privacy-compliance/servicenow-ai-agent-governance-knowledge-2026/" target="_blank" rel="noopener" class="src-link">📰 原文链接</a></div></div>
+</div><div class="item" id="Okta推出AI代理安全产品90企业缺乏AI代理政策控制">
+    <h3>Okta推出AI代理安全产品：90%企业缺乏AI代理政策控制</h3>
+    <div class="item-body"><p>Okta识别出AI代理部署中的重大安全缺口，扩展身份治理能力应对90%企业缺乏AI代理策略控制的问题。Okta推出AI代理生命周期管理，包括发现、访问控制、审计合规和威胁检测功能。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>90%企业缺乏正式的AI代理策略控制</p></li><li><p>身份治理未跟上自主AI部署步伐</p></li><li><p>AI代理在多个系统中以广泛权限运行</p></li><li><p>行业趋势：将AI代理作为身份系统一等公民</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-07/08-okta-ai-security.html" class="read-link">📖 阅读全文</a><a href="https://simplywall.st/stocks/us/software/nasdaq-okta/okta/news/okta-targets-ai-agent-security-gaps-as-identity-governance-e" target="_blank" rel="noopener" class="src-link">📰 原文链接</a></div></div>
+</div><div class="item" id="SAP投资116亿美元收购Prior-Labs封锁未授权AI代理">
+    <h3>SAP投资11.6亿美元收购Prior Labs：封锁未授权AI代理</h3>
+    <div class="item-body"><p>SAP宣布收购德国AI初创公司Prior Labs，投资10亿欧元（约11.6亿美元）建立专注于结构化数据的前沿AI实验室。Prior Labs开源模型已被下载超过300万次。同时，SAP封锁未经授权的AI代理通过API访问其产品。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>创始人18个月前创立Prior Labs</p></li><li><p>专注表格基础模型（TFMs）</p></li><li><p>仅允许SAP官方Joule Agents和NVIDIA NemoClaw</p></li><li><p>与Salesforce开放策略形成对比</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-07/09-sap-prior-labs.html" class="read-link">📖 阅读全文</a><a href="https://techcrunch.com/2026/05/sap-bets-1-16b-on-18-month-old-german-ai-lab-and-says-yes-to-nemoclaw/" target="_blank" rel="noopener" class="src-link">📰 原文链接</a></div></div>
+</div><div class="item" id="中国首次AI安全审查Manus-20亿美元收购案被阻止">
+    <h3>中国首次AI安全审查：Manus 20亿美元收购案被阻止</h3>
+    <div class="item-body"><p>中国NDRC阻止美国科技公司收购中国创始人创立的AI代理初创公司Manus（约20亿美元估值）。这是中国首次使用外国投资安全审查机制撤销跨境AI交易。Manus已完成离岸重组但仍被认定在中国管辖范围内。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>离岸重组不再能隔离中国来源技术的监管管辖</p></li><li><p>中美两国采用&quot;实质重于形式&quot;方法</p></li><li><p>重组重新分配而非消除监管风险</p></li><li><p>跨境AI投资面临双边永久性监管风险</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-07/10-china-manus-review.html" class="read-link">📖 阅读全文</a><a href="https://www.morganlewis.com/pubs/2026/05/the-manus-decision-chinas-first-ai-security-review-block-and-implications-for-cross-border-ai-investment" target="_blank" rel="noopener" class="src-link">📰 原文链接</a></div></div>
+</div><div class="item" id="Sierra融资95亿美元估值超150亿美元">
+    <h3>Sierra融资9.5亿美元：估值超150亿美元</h3>
+    <div class="item-body"><p>Bret Taylor创立的AI初创公司Sierra完成9.5亿美元融资，估值超过150亿美元。由Tiger Global和GV领投，公司拥有超过10亿美元资金，目标是成为企业AI客服体验的全球标准。收入从1亿美元ARR增长到1.5亿美元ARR。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>财富50强中超过40%是其客户</p></li><li><p>平台代理处理数十亿次交互</p></li><li><p>Taylor同时担任OpenAI主席</p></li><li><p>推出&quot;代理编排&quot;功能自主处理复杂任务</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-07/11-sierra-funding.html" class="read-link">📖 阅读全文</a><a href="https://techcrunch.com/2026/04/23/sierra-raises-950m-as-the-race-to-own-enterprise-ai-gets-serious/" target="_blank" rel="noopener" class="src-link">📰 原文链接</a></div></div>
+</div><div class="item" id="eGain推出AI-Agent-IVA对话式客服代理">
+    <h3>eGain推出AI Agent IVA：对话式客服代理</h3>
+    <div class="item-body"><p>eGain推出AI Agent IVA，通过自然对话而非脚本菜单解决客户咨询。基于eGain治理知识库，IVA提供准确、实时的知识驱动响应，支持语音自动化和人工代理转接，全天候全球覆盖。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>语音转文本和文本转语音支持</p></li><li><p>供应商无关CRM和联络中心集成</p></li><li><p>2025年季度收入2298万美元，净利润234万美元</p></li><li><p>替代传统决策树菜单式IVR系统</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-07/12-egain-ai-iva.html" class="read-link">📖 阅读全文</a><a href="https://www.stocktitan.net/news/EGAN/e-gain-launches-ai-agent-iva-to-deliver-accurate-conversational-0dftpvu15fx2.html" target="_blank" rel="noopener" class="src-link">📰 原文链接</a></div></div>
+</div>
+
+    <footer class="site-footer">
+        AI Agent Daily Brief &mdash; 2026年05月07日
+    </footer>
+</div>
+</body>
+</html>
