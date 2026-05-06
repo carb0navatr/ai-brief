@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Daily Brief - 2026年05月06日</title>
+    <style>/* ─── Reset & Base ─── */
+:root {
+    --primary:   #1a1a2e;
+    --secondary: #16213e;
+    --accent:    #0f3460;
+    --highlight: #e94560;
+    --text:      #eaeaea;
+    --muted:     #a0a0a0;
+    --card-bg:   #1a1a2e;
+    --border:    #2a2a4a;
+    --green:     #4ade80;
+    --blue:      #60a5fa;
+    --yellow:    #fbbf24;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f0f1a;
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Layout ─── */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ─── Nav Bar ─── */
+.nav-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; padding: 14px 20px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.nav-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    padding: 6px 12px; border-radius: 6px; text-decoration: none;
+    transition: all .2s;
+}
+.nav-btn:hover { color: #fff; background: var(--accent); text-decoration: none; }
+.nav-btn.disabled { opacity: .3; pointer-events: none; }
+.nav-date { font-size: 14px; font-weight: 600; color: var(--highlight); }
+
+/* ─── Header ─── */
+.brief-header { margin-bottom: 28px; }
+.badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--highlight); color: #fff;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 999px; margin-bottom: 10px; letter-spacing: .5px;
+}
+.brief-header h1 { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.3; }
+.brief-header .subtitle { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+
+/* ─── Quick Hits ─── */
+.quick-hits {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 28px;
+}
+.quick-hits ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.quick-hits li { font-size: 15px; }
+.quick-hits li strong { color: #fff; }
+.quick-hits li a { color: var(--blue); }
+
+/* ─── Section ─── */
+.section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin: 30px 0 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.section-header .emoji { font-size: 20px; }
+.section-header h2 { font-size: 16px; font-weight: 700; color: #fff; }
+
+/* ─── Item ─── */
+.item { margin-bottom: 28px; }
+.item h3 {
+    font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; line-height: 1.4; scroll-margin-top: 20px;
+}
+
+/* ─── Item Body (rendered markdown) ─── */
+.item-body { font-size: 14px; color: var(--muted); }
+.item-body p { margin-bottom: 10px; }
+.item-body p:last-child { margin-bottom: 0; }
+.item-body strong, .item-body b { color: #fff; font-weight: 600; }
+.item-body em, .item-body i { color: #ccc; font-style: italic; }
+.item-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.item-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+    overflow-x: auto;
+}
+.item-body pre code { background: none; padding: 0; font-size: 13px; }
+.item-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 10px 0; color: var(--muted);
+}
+.item-body ul, .item-body ol {
+    padding-left: 20px; margin: 8px 0;
+}
+.item-body li { margin-bottom: 5px; }
+.item-body li::marker { color: var(--highlight); }
+.item-body a { color: var(--blue); }
+.item-body a:hover { text-decoration: underline; }
+
+/* ─── Key Points Box ─── */
+.key-points {
+    background: var(--secondary); border-left: 3px solid var(--highlight);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 10px 0;
+}
+.key-points strong { color: var(--highlight); display: block; margin-bottom: 6px; }
+.key-points ul { list-style: none; padding: 0; margin: 0; }
+.key-points li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+.key-points li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
+
+/* ─── Item Meta (source + readable links) ─── */
+.item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.item-meta a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 500; padding: 4px 10px;
+    border-radius: 6px; text-decoration: none; transition: all .15s;
+}
+.item-meta .src-link { color: var(--blue); border: 1px solid #60a5fa33; }
+.item-meta .src-link:hover { background: #60a5fa22; }
+.item-meta .read-link { color: var(--green); border: 1px solid #4ade8033; }
+.item-meta .read-link:hover { background: #4ade8022; }
+
+/* ─── Footer ─── */
+.site-footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); text-align: center;
+}
+
+/* ─── Article Page ─── */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb .sep { color: var(--border); }
+
+.article-body {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px; margin-bottom: 24px;
+}
+.article-body h1 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.3; }
+.article-body .source-line {
+    font-size: 13px; color: var(--muted); margin-bottom: 18px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.article-body .source-line a { color: var(--blue); }
+.article-body p { margin-bottom: 14px; font-size: 15px; }
+.article-body strong, .article-body b { color: #fff; font-weight: 600; }
+.article-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.article-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto;
+}
+.article-body pre code { background: none; padding: 0; }
+.article-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 12px 0; color: var(--muted);
+}
+.article-body ul, .article-body ol { padding-left: 22px; margin: 10px 0; }
+.article-body li { margin-bottom: 6px; }
+.article-body li::marker { color: var(--highlight); }
+.article-body a { color: var(--blue); }
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+    .container { padding: 20px 14px 60px; }
+    .nav-bar { flex-wrap: wrap; gap: 8px; }
+    .nav-date { order: -1; width: 100%; text-align: center; }
+    .article-body { padding: 20px 18px; }
+    .brief-header h1 { font-size: 19px; }
+}</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumb">
+        <a href="../../brief-2026-05-06.html">AI Agent Daily Brief - 2026年05月06日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
+
+    <div class="article-body">
+        <h1>IBM Think 2026：Agentic AI 与主权云战略全面亮相</h1>
+        
+        <h2>原文要点</h2>
+<ul><li>IBM Think 2026 在波士顿举办，CEO Arvind Krishna 发表主题演讲，强调&quot;AI 运营模型&quot;（AI operating model）概念——整合数据、Agent、自动化和混合云</li>
+<li>IBM Bob agentic 开发者产品正式发布，Watsonx Orchestrate 进入私人预览，Concert 运营平台进入公开预览，Sovereign Core 软件平台正式发布</li>
+<li>Krishna 宣布 IBM 内部已通过 AI 和混合云实现 45 亿美元的年化生产力提升，超过 80,000 名 IBM 开发者使用 IBM Bob，平均生产力提升 45%</li>
+<li>演讲强调：大多数企业只在&quot;AI 边缘&quot;运行 AI，深度嵌入业务核心才是真正差异</li>
+<li>混合云和量子计算被定位为 AI 的基础架构：两者不是两个话题，而是一个话题</li>
+<li>IBM 预计量子计算的主流应用&quot;比大多数人想象的更近&quot;</li>
+</ul>
+<h2>深度解读</h2>
+<p>IBM Think 2026 的核心信息是&quot;连接而非碎片&quot;——不是孤立的 AI 项目，而是将 AI、数据、自动化、混合云编织成企业运营的基础设施。这与行业普遍的&quot;AI 即产品&quot;叙事形成对比：IBM 认为 AI 的价值不在于单独的 AI 工具，而在于 AI 与企业现有系统和数据源的深度整合。</p>
+<p>45 亿美元的年化生产力提升是一个令人印象深刻的内部验证数字。IBM 既是 AI 供应商又是 AI 用户——它用自身的大规模部署证明了自己的产品价值。对于犹豫是否采用 AI 的企业客户来说，&quot;IBM 内部已经这样做并且成功了&quot;是最有力的背书。</p>
+<p>IBM Bob 的 45% 平均生产力提升（80,000+ 开发者使用）意味着 IBM 的 agentic 开发者工具已经进入黄金期。开发者生产力工具是一个竞争激烈的市场，GitHub Copilot 等产品已经占据主导。IBM Bob 能够在这个市场中获得高使用率和显著的价值提升，说明它在特定场景（如大型机集成、企业级 Java 开发）中有差异化优势。</p>
+<p>主权云（ Sovereign Core）是一个独特的市场定位。在数据主权意识日益增强的背景下，企业（尤其是受监管行业的客户）需要确保数据存储和处理符合本地法规。IBM 的 Sovereign Core 提供了这种保证，这对于金融、医疗、政府等行业的客户来说是关键价值。</p>
+<p>Krishna 关于量子计算与 AI 收敛的论述值得关注。虽然量子计算目前仍处于早期阶段，但 IBM 在量子硬件和软件方面的积累意味着它有能力在这一领域保持领先。如果量子计算真的接近主流，它可能为 AI 带来范式级的能力提升——从&quot;快速计算&quot;到&quot;突破计算限制&quot;。IBM 的提前布局是一种长期押注。</p>
+<p><strong>来源</strong>：<a href="https://www.crn.com/news/ai/2026/ibm-think-2026-showcases-agentic-ai-sovereign-cloud-strategy" target="_blank" rel="noopener">全文</a> | <a href="https://www.crn.com/news/ai/2026/ibm-think-2026-showcases-agentic-ai-sovereign-cloud-strategy" target="_blank" rel="noopener">原文</a></p>
+
+    </div>
+
+    <footer class="site-footer">
+        <a href="../../brief-2026-05-06.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
+    </footer>
+</div>
+</body>
+</html>

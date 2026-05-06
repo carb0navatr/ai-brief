@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Daily Brief - 2026年05月05日</title>
+    <style>/* ─── Reset & Base ─── */
+:root {
+    --primary:   #1a1a2e;
+    --secondary: #16213e;
+    --accent:    #0f3460;
+    --highlight: #e94560;
+    --text:      #eaeaea;
+    --muted:     #a0a0a0;
+    --card-bg:   #1a1a2e;
+    --border:    #2a2a4a;
+    --green:     #4ade80;
+    --blue:      #60a5fa;
+    --yellow:    #fbbf24;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f0f1a;
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Layout ─── */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ─── Nav Bar ─── */
+.nav-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; padding: 14px 20px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.nav-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    padding: 6px 12px; border-radius: 6px; text-decoration: none;
+    transition: all .2s;
+}
+.nav-btn:hover { color: #fff; background: var(--accent); text-decoration: none; }
+.nav-btn.disabled { opacity: .3; pointer-events: none; }
+.nav-date { font-size: 14px; font-weight: 600; color: var(--highlight); }
+
+/* ─── Header ─── */
+.brief-header { margin-bottom: 28px; }
+.badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--highlight); color: #fff;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 999px; margin-bottom: 10px; letter-spacing: .5px;
+}
+.brief-header h1 { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.3; }
+.brief-header .subtitle { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+
+/* ─── Quick Hits ─── */
+.quick-hits {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 28px;
+}
+.quick-hits ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.quick-hits li { font-size: 15px; }
+.quick-hits li strong { color: #fff; }
+.quick-hits li a { color: var(--blue); }
+
+/* ─── Section ─── */
+.section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin: 30px 0 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.section-header .emoji { font-size: 20px; }
+.section-header h2 { font-size: 16px; font-weight: 700; color: #fff; }
+
+/* ─── Item ─── */
+.item { margin-bottom: 28px; }
+.item h3 {
+    font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; line-height: 1.4; scroll-margin-top: 20px;
+}
+
+/* ─── Item Body (rendered markdown) ─── */
+.item-body { font-size: 14px; color: var(--muted); }
+.item-body p { margin-bottom: 10px; }
+.item-body p:last-child { margin-bottom: 0; }
+.item-body strong, .item-body b { color: #fff; font-weight: 600; }
+.item-body em, .item-body i { color: #ccc; font-style: italic; }
+.item-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.item-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+    overflow-x: auto;
+}
+.item-body pre code { background: none; padding: 0; font-size: 13px; }
+.item-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 10px 0; color: var(--muted);
+}
+.item-body ul, .item-body ol {
+    padding-left: 20px; margin: 8px 0;
+}
+.item-body li { margin-bottom: 5px; }
+.item-body li::marker { color: var(--highlight); }
+.item-body a { color: var(--blue); }
+.item-body a:hover { text-decoration: underline; }
+
+/* ─── Key Points Box ─── */
+.key-points {
+    background: var(--secondary); border-left: 3px solid var(--highlight);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 10px 0;
+}
+.key-points strong { color: var(--highlight); display: block; margin-bottom: 6px; }
+.key-points ul { list-style: none; padding: 0; margin: 0; }
+.key-points li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+.key-points li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
+
+/* ─── Item Meta (source + readable links) ─── */
+.item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.item-meta a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 500; padding: 4px 10px;
+    border-radius: 6px; text-decoration: none; transition: all .15s;
+}
+.item-meta .src-link { color: var(--blue); border: 1px solid #60a5fa33; }
+.item-meta .src-link:hover { background: #60a5fa22; }
+.item-meta .read-link { color: var(--green); border: 1px solid #4ade8033; }
+.item-meta .read-link:hover { background: #4ade8022; }
+
+/* ─── Footer ─── */
+.site-footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); text-align: center;
+}
+
+/* ─── Article Page ─── */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb .sep { color: var(--border); }
+
+.article-body {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px; margin-bottom: 24px;
+}
+.article-body h1 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.3; }
+.article-body .source-line {
+    font-size: 13px; color: var(--muted); margin-bottom: 18px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.article-body .source-line a { color: var(--blue); }
+.article-body p { margin-bottom: 14px; font-size: 15px; }
+.article-body strong, .article-body b { color: #fff; font-weight: 600; }
+.article-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.article-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto;
+}
+.article-body pre code { background: none; padding: 0; }
+.article-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 12px 0; color: var(--muted);
+}
+.article-body ul, .article-body ol { padding-left: 22px; margin: 10px 0; }
+.article-body li { margin-bottom: 6px; }
+.article-body li::marker { color: var(--highlight); }
+.article-body a { color: var(--blue); }
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+    .container { padding: 20px 14px 60px; }
+    .nav-bar { flex-wrap: wrap; gap: 8px; }
+    .nav-date { order: -1; width: 100%; text-align: center; }
+    .article-body { padding: 20px 18px; }
+    .brief-header h1 { font-size: 19px; }
+}</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumb">
+        <a href="../../brief-2026-05-05.html">AI Agent Daily Brief - 2026年05月05日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
+
+    <div class="article-body">
+        <h1>Microsoft、Meta和Google宣布追加数十亿美元AI支出，但只有Google说服投资者这笔支出值得回报</h1>
+        <div class="source-line">📰 <a href="https://fortune.com/2026/04/29/microsoft-meta-google-ai-capex-spending-billions/" target="_blank" rel="noopener">Fortune</a></div>
+        <p>Alphabet、Meta Platforms和Microsoft刚刚向投资者宣布，它们将在AI竞争中追加数十亿美元支出。但只有部分投资者看到红色警报。</p>
+<p>Meta股价在盘后下跌超过6%，而Microsoft基本持平。相反，Google母公司Alphabet的股价在盘后交易中上涨近7%。</p>
+<p>投资者一直对大型科技公司的资本支出感到焦虑，最近的估计显示，与AI相关的合计资本支出仅在2026年就将超过6000亿美元。分析师一直在向CEO们寻求更多细节，了解他们预期何时看到投资回报实现，如果高管们没有听到投资者想要的东西，市场就会让公司承受压力。</p>
+<p>在Alphabet，明确的差异化因素来自Google Cloud的增长。首席财务官Anat Ashkenazi表示，公司看到&quot;对AI计算资源的空前内部和外部需求&quot;。</p>
+<p>&quot;我们对AI的投资正在带来强劲增长，Google Cloud创纪录的收入和积压增长以及Google Services的强劲表现就是证明，&quot;Ashkenazi说。&quot;展望未来，这些强劲业绩加强了我们投资的信念，以继续抓住AI机会。因此，我们预计2027年资本支出将比2026年显著增加。&quot;</p>
+<h2>AI资本支出预期被上调</h2>
+<p>Alphabet将其全年2026年资本支出指导提高至1800亿至1900亿美元，高于之前的1750亿至1850亿美元。Alphabet的Google Cloud收入同比增长63%，达到200亿美元，增速翻倍多。Ashkenazi表示，企业云计算部门的积压订单为4620亿美元，与上一季度相比几乎翻倍。她说，Alphabet计划在未来24个月内看到略高于50%的积压订单转化为收入。</p>
+<p>Ashkenazi指出，与对Alphabet的Gemini 3型号的强劲需求相结合的AI解决方案是云增长的最大贡献者之一。CEO Sundar Pichai表示，Gemini Enterprise付费月度活跃用户比上一季度增长了40%，与博世、玛氏和默克等知名品牌的交易也在进行。</p>
+<p>&quot;我们看到了强劲的交易势头，与去年同期相比，1亿至10亿美元规模的交易数量翻倍，并签署了多个超过10亿美元的交易，&quot;Pichai在财报发布后与分析师的电话会议上说。&quot;在第一季度，基于我们GenAI模型构建的产品的收入同比增长了近800%。&quot;</p>
+<p>在同样在周三宣布业绩的Meta Platforms，CEO马克·扎克伯格告诉投资者，该公司计划将资本支出从之前的1150亿至1350亿美元增加到1250亿至1450亿美元。当被分析师问及他正在寻找什么迹象来告诉他Meta在AI重大投资的回报道路上处于健康路径时，他的回应似乎并没有像他所希望的那样安抚投资者。</p>
+<p>&quot;这是一个非常技术性的问题，&quot;扎克伯格回应道。&quot;我们正在关注的是确保我们保持在构建领先模型和领先产品的轨道上。对于我们公司来说，公式一直是构建能够触达数十亿人的体验，然后一旦你达到规模就专注于货币化。&quot;</p>
+<h2>Alphabet的云业务可能正在抢占市场份额</h2>
+<p>S&amp;P Global Visible Alpha Research负责人Melissa Otto表示，组件和内存芯片非常昂贵，鉴于资本支出的增加，公司愿意支付更高的价格。</p>
+<p>然而，Alphabet的云业务业绩是一个&quot;有意义的超出&quot;，因为这表明该业务可能正在从竞争对手那里抢占市场份额。</p>
+<p>&quot;这意味着它们处于强劲的竞争地位，&quot;Otto说。&quot;你有一个新兴业务线在相当竞争的环境中超出预期，我认为它们真的看到了规模以相当引人注目的方式进入它们的业务。&quot;</p>
+<p>Alphabet的云收入第一季度为200亿美元，同比增长63%，而Amazon的AWS报告了376亿美元，28%的增长代表了15个季度以来最强劲的增长。Microsoft Cloud（包括Azure、M365 Commercial cloud和其他服务）报告了545亿美元。</p>
+<p>Microsoft首席财务官Amy Hood表示，Azure和其他云服务增长了40%。Microsoft不披露Azure的具体美元数字；该指标包含在其智能云部门中，该部门报告收入为347亿美元。</p>
+<p>Microsoft同样在周三发布了财报，指导第四季度资本支出将超过400亿美元，Hood表示预计今年总投资1900亿美元。CEO萨提亚·纳德拉将约250亿美元的支出归因于组件价格上涨，与Meta类似。</p>
+<p>大约三分之二的支出用于GPU和CPU，以满足Azure客户需求，并为M365 Copilot等AI工具提供动力。Hood表示，即使进行这些支出，Microsoft预计在2026年之前将保持产能受限。</p>
+<p>&quot;我们预计资本支出将增加到超过400亿美元，因为我们继续上线更多产能。环比增长包括约50亿美元来自组件价格上涨，以及融资租赁的影响，&quot;Hood在她的准备发言中说。</p>
+<p>Hood将AI投资与Microsoft的云业务进行了比较，并表示AI正在走上类似的路径，尽管AI产品和工具的利润率已经比类似阶段的云利润率更好。</p>
+<p>&quot;我们一直在谈论我们的AI业务在这个周期中处于什么位置，甚至与我们看到的云周期相比，现在看起来已经是很久以前了，&quot;Hood说。&quot;以及利润率实际上更好。它们在我们AI业务中保持比我们在云转型中看到的更好。&quot;</p>
+<p><em>本译文由 AI 生成，仅供参考。原文版权归原作者所有。</em></p>
+
+    </div>
+
+    <footer class="site-footer">
+        <a href="../../brief-2026-05-05.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
+    </footer>
+</div>
+</body>
+</html>
