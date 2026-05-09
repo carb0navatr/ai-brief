@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent 每日简报 — 2026年05月09日</title>
+    <style>/* ─── Reset & Base ─── */
+:root {
+    --primary:   #1a1a2e;
+    --secondary: #16213e;
+    --accent:    #0f3460;
+    --highlight: #e94560;
+    --text:      #eaeaea;
+    --muted:     #a0a0a0;
+    --card-bg:   #1a1a2e;
+    --border:    #2a2a4a;
+    --green:     #4ade80;
+    --blue:      #60a5fa;
+    --yellow:    #fbbf24;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f0f1a;
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Layout ─── */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ─── Nav Bar ─── */
+.nav-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; padding: 14px 20px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.nav-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    padding: 6px 12px; border-radius: 6px; text-decoration: none;
+    transition: all .2s;
+}
+.nav-btn:hover { color: #fff; background: var(--accent); text-decoration: none; }
+.nav-btn.disabled { opacity: .3; pointer-events: none; }
+.nav-date { font-size: 14px; font-weight: 600; color: var(--highlight); }
+
+/* ─── Header ─── */
+.brief-header { margin-bottom: 28px; }
+.badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--highlight); color: #fff;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 999px; margin-bottom: 10px; letter-spacing: .5px;
+}
+.brief-header h1 { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.3; }
+.brief-header .subtitle { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+
+/* ─── Quick Hits ─── */
+.quick-hits {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 28px;
+}
+.quick-hits ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.quick-hits li { font-size: 15px; }
+.quick-hits li strong { color: #fff; }
+.quick-hits li a { color: var(--blue); }
+
+/* ─── Section ─── */
+.section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin: 30px 0 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.section-header .emoji { font-size: 20px; }
+.section-header h2 { font-size: 16px; font-weight: 700; color: #fff; }
+
+/* ─── Item ─── */
+.item { margin-bottom: 28px; }
+.item h3 {
+    font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; line-height: 1.4; scroll-margin-top: 20px;
+}
+
+/* ─── Item Body (rendered markdown) ─── */
+.item-body { font-size: 14px; color: var(--muted); }
+.item-body p { margin-bottom: 10px; }
+.item-body p:last-child { margin-bottom: 0; }
+.item-body strong, .item-body b { color: #fff; font-weight: 600; }
+.item-body em, .item-body i { color: #ccc; font-style: italic; }
+.item-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.item-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+    overflow-x: auto;
+}
+.item-body pre code { background: none; padding: 0; font-size: 13px; }
+.item-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 10px 0; color: var(--muted);
+}
+.item-body ul, .item-body ol {
+    padding-left: 20px; margin: 8px 0;
+}
+.item-body li { margin-bottom: 5px; }
+.item-body li::marker { color: var(--highlight); }
+.item-body a { color: var(--blue); }
+.item-body a:hover { text-decoration: underline; }
+
+/* ─── Key Points Box ─── */
+.key-points {
+    background: var(--secondary); border-left: 3px solid var(--highlight);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 10px 0;
+}
+.key-points strong { color: var(--highlight); display: block; margin-bottom: 6px; }
+.key-points ul { list-style: none; padding: 0; margin: 0; }
+.key-points li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+.key-points li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
+
+/* ─── Item Meta (source + readable links) ─── */
+.item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.item-meta a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 500; padding: 4px 10px;
+    border-radius: 6px; text-decoration: none; transition: all .15s;
+}
+.item-meta .src-link { color: var(--blue); border: 1px solid #60a5fa33; }
+.item-meta .src-link:hover { background: #60a5fa22; }
+.item-meta .read-link { color: var(--green); border: 1px solid #4ade8033; }
+.item-meta .read-link:hover { background: #4ade8022; }
+
+/* ─── Footer ─── */
+.site-footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); text-align: center;
+}
+
+/* ─── Article Page ─── */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb .sep { color: var(--border); }
+
+.article-body {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px; margin-bottom: 24px;
+}
+.article-body h1 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.3; }
+.article-body .source-line {
+    font-size: 13px; color: var(--muted); margin-bottom: 18px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.article-body .source-line a { color: var(--blue); }
+.article-body p { margin-bottom: 14px; font-size: 15px; }
+.article-body strong, .article-body b { color: #fff; font-weight: 600; }
+.article-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.article-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto;
+}
+.article-body pre code { background: none; padding: 0; }
+.article-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 12px 0; color: var(--muted);
+}
+.article-body ul, .article-body ol { padding-left: 22px; margin: 10px 0; }
+.article-body li { margin-bottom: 6px; }
+.article-body li::marker { color: var(--highlight); }
+.article-body a { color: var(--blue); }
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+    .container { padding: 20px 14px 60px; }
+    .nav-bar { flex-wrap: wrap; gap: 8px; }
+    .nav-date { order: -1; width: 100%; text-align: center; }
+    .article-body { padding: 20px 18px; }
+    .brief-header h1 { font-size: 19px; }
+}</style>
+</head>
+<body>
+<div class="container">
+    <nav class="nav-bar">
+        <a href="brief-2026-05-08.html" class="nav-btn">← 前一天</a>
+        <span class="nav-date">2026年05月09日</span>
+        <span class="nav-btn disabled">后一天 →</span>
+    </nav>
+
+    <header class="brief-header">
+        <h1>AI Agent 每日简报 — 2026年05月09日</h1>
+        <p class="subtitle">AI Agent 行业每日资讯摘要，涵盖产品发布、行业动态、技术进展与深度分析。</p>
+    </header>
+
+    <div class="section-header" id="今日热点">
+    <span class="emoji">🔥</span>
+    <h2>今日热点</h2>
+</div><div class="section-header" id="AI-影响与行业">
+    <span class="emoji">💡</span>
+    <h2>AI 影响与行业</h2>
+</div><div class="item" id="Cloudflare-因-AI-裁员-1100-人营收却创历史新高">
+    <h3>Cloudflare 因 AI 裁员 1100 人，营收却创历史新高</h3>
+    <div class="item-body"><p><strong>为什么重要</strong>：Cloudflare 成为最新一家将营收增长与大规模裁员同时归因于 AI 的科技公司。这一模式正在成为行业常态——AI 提升了少数高绩效员工的产出，同时减少了对支持人员的需求。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Cloudflare 宣布裁员约 20%，相当于 1100 人，这是该公司 16 年历史上首次大规模裁员</p></li><li><p>但同时，Cloudflare 实现了有史以来最高单季度营收 6.398 亿美元，同比增长 34%</p></li><li><p>CEO Matthew Prince 在财报电话会议上表示：&quot;我们从来没有像这样做过&quot;，并指出 AI 使员工生产力大幅提升</p></li><li><p>裁员后员工人数约 5500 人，但公司预计 2027 年员工数将超过 2026 年任何时期</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-09/cloudflare-ai-layoffs-revenue-record.html" class="read-link">📖 全文</a><a href="https://techcrunch.com/2026/05/08/cloudflare-says-ai-made-1100-jobs-obsolete-even-as-revenue-hit-a-record-high/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="美国电网因-AI-面临巨大压力各方不满">
+    <h3>美国电网因 AI 面临巨大压力，各方不满</h3>
+    <div class="item-body"><p><strong>为什么重要</strong>：PJM 互联电网区域覆盖美国最大数据中心集群（北弗吉尼亚），其运营压力直接影响 AI 行业扩张速度。AI 数据中心的电力需求正在与居民、工业用电形成直接竞争。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>PJM 发布白皮书警告，该地区&quot;只有几年，而不是几十年&quot;的时间来进行根本性变革</p></li><li><p>PJM CEO David Mills 在报告前言中写道：&quot;当前情况不可持续&quot;</p></li><li><p>AI 数据中心集中的北弗吉尼亚地区面临最严峻挑战，公用事业公司 AEP 正在考虑退出 PJM</p></li><li><p>电力需求激增源于 AI 训练和推理的耗电特性，而价格下跌趋势与基础设施老化形成冲突</p></li><li><p>政客威胁实施价格上限，公用事业公司对未来参与持观望态度</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-09/us-power-grid-ai-strain.html" class="read-link">📖 全文</a><a href="https://techcrunch.com/2026/05/08/the-biggest-u-s-power-grid-is-under-strain-from-ai-and-no-one-is-happy/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="Intel-的复兴故事比表面更疯狂">
+    <h3>Intel 的复兴故事比表面更疯狂</h3>
+    <div class="item-body"><p><strong>为什么重要</strong>：Intel 股价在过去一年飙升 490%，华尔街的赌注远超公司实际转型进度。CEO Lip-Bu Tan 通过政府关系和 Elon Musk 合作获得了喘息空间，但核心业务挑战依然严峻。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Intel 股价过去一年上涨 490%，成为华尔街最意外的赢家</p></li><li><p>CEO Lip-Bu Tan 通过向政府求爱而非重组来拯救公司——锁定美国政府（现为第三大股东）的 sweetheart deal</p></li><li><p>与 Elon Musk 的工厂合作、与 Apple 和 Tesla 的初步制造协议增强了市场信心</p></li><li><p>芯片良率仍落后于行业领导者台积电，内部员工反映 Tan 缺乏具体计划</p></li><li><p>投资者押注长远前景，但执行能否跟上仍是数十亿美元的问题</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-09/intel-comeback-wild-story.html" class="read-link">📖 全文</a><a href="https://techcrunch.com/2026/05/08/intels-comeback-story-is-even-wilder-than-it-seems/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="AI-数据中心的电力争夺战">
+    <h3>AI 数据中心的电力争夺战</h3>
+    <div class="item-body"><p><strong>为什么重要</strong>：AI 数据中心耗电量大增，正与居民和工业用电形成直接竞争。北弗吉尼亚作为全球最大数据中心集群，其电网压力已触及临界点，各方利益冲突正在激化。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>数据中心集中的北弗吉尼亚地区电力需求激增，公用事业公司 AEP 正在考虑退出 PJM 电网</p></li><li><p>PJM 白皮书警告&quot;只有几年&quot;时间来根本性改革，否则电网稳定性面临风险</p></li><li><p>AI 训练和推理的持续耗电特性与居民用电高峰叠加，造成供需紧张</p></li><li><p>政客威胁实施价格上限，可能进一步扰乱电力市场</p></li><li><p>电网运营商与科技公司之间的利益博弈正在成为 AI 扩张的新瓶颈</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-09/battle-ai-data-centers.html" class="read-link">📖 全文</a><a href="https://www.theverge.com/2026/05/08/the-battle-over-ai-data-centers" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="section-header" id="AI-编程与开发">
+    <span class="emoji">💻</span>
+    <h2>AI 编程与开发</h2>
+</div><div class="item" id="Airbnb-工程团队-60-新代码由-AI-编写">
+    <h3>Airbnb 工程团队 60% 新代码由 AI 编写</h3>
+    <div class="item-body"><p><strong>为什么重要</strong>：Airbnb 加入 Google、Microsoft、Spotify 行列，披露其工程师产出的代码中 AI 占比高达 60%。这标志着 AI 编程助手已从实验性工具成为主流生产手段。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Airbnb CEO Brian Chesky 在 Q1 2026 财报电话会议上表示，60% 的工程师代码由 AI 编写</p></li><li><p>客户支持 AI 机器人现在处理 40% 的问题无需人工介入，高于年初的约 33%</p></li><li><p>AI 工具使团队杠杆效应大幅提升——原本需要 20 名工程师的工作，现在 1 名工程师可借助 AI Agent 完成</p></li><li><p>Chesky 同时指出当前聊天机器人 UI 在旅行和电商场景的局限性：文字过多、无法直接操作、对比困难、多人协作缺失</p></li><li><p>公司 Q1 净利润增长 3.9% 达到 1.6 亿美元，营收增长 18% 达到 27 亿美元</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-09/airbnb-ai-coding-60-percent.html" class="read-link">📖 全文</a><a href="https://techcrunch.com/2026/05/08/airbnb-says-ai-now-writes-60-of-its-new-code/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="AI-正在重塑软件开发团队">
+    <h3>AI 正在重塑软件开发团队</h3>
+    <div class="item-body"><p><strong>为什么重要</strong>：AI 编程助手从代码补全工具演变为全面的开发伙伴，正在重新定义软件工程的团队结构和技能要求。开发团队规模在缩小，但产出效率在提升。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>AI 工具正在减少软件团队所需人数，同时提升个人产出</p></li><li><p>开发流程中 AI 参与度从代码补全扩展到架构设计、测试生成、代码审查</p></li><li><p>新团队结构：更少的工程师 + 更多的 AI Agent 协作</p></li><li><p>技能要求转变：传统编程技能重要性下降，AI 工具使用和调试能力更重要</p></li><li><p>技术债务问题：快速产出带来的代码质量和维护挑战逐渐显现</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-09/ai-reshaping-software-teams.html" class="read-link">📖 全文</a><a href="https://www.theverge.com/2026/05/08/how-ai-is-reshaping-software-development-teams" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="AI-编程工具对比Copilot-vs-Claude-Code">
+    <h3>AI 编程工具对比：Copilot vs Claude Code</h3>
+    <div class="item-body"><p><strong>为什么重要</strong>：GitHub Copilot 和 Claude Code 代表了 AI 编程助手的两种不同路线——前者专注于 IDE 内代码补全，后者更侧重端到端任务执行。了解两者差异有助于开发者选择合适的工具。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>GitHub Copilot：深度集成 VS Code 等 IDE，擅长实时代码补全和片段生成</p></li><li><p>Claude Code：更全面的任务执行能力，可浏览文件、搜索代码库、执行多步骤任务</p></li><li><p>Copilot 适合快速补全和小型重构，Claude Code 适合复杂功能和端到端开发</p></li><li><p>价格：Copilot 个人版 $10/月，企业版 $19/人/月；Claude Code $100/月</p></li><li><p>实际测试显示两者在不同场景各有优势，专业开发者通常两者结合使用</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-09/ai-coding-tools-comparison.html" class="read-link">📖 全文</a><a href="https://www.wired.com/story/ai-coding-tools-copilot-vs-claude-code" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="AI-写作助手正在改变内容创作">
+    <h3>AI 写作助手正在改变内容创作</h3>
+    <div class="item-body"><p><strong>为什么重要</strong>：从营销文案到新闻报道，AI 写作工具正在渗透内容创作的各个环节。创作者正在适应与 AI 协作的新工作流程，同时面临质量和原创性的质疑。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>AI 写作助手已成为许多内容团队的标准工具，用于草稿生成、编辑优化、多版本创作</p></li><li><p>效率提升：AI 可在数分钟内生成初稿，人类专注于策略和创意方向</p></li><li><p>质量争议：AI 生成内容的深度、独特性和情感共鸣仍不如人类写作</p></li><li><p>法律和 SEO 问题：搜索引擎对 AI 内容的态度、版权归属、抄袭检测</p></li><li><p>行业分化：部分创作者完全拥抱 AI，其他人对&quot;AI 污染&quot;内容表示担忧</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-09/ai-writing-assistants-content.html" class="read-link">📖 全文</a><a href="https://www.theverge.com/2026/05/08/how-ai-writing-assistants-changing-content-creation" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="section-header" id="AI-应用与娱乐">
+    <span class="emoji">🎮</span>
+    <h2>AI 应用与娱乐</h2>
+</div><div class="item" id="PlayStation-将-AI-视为制作游戏的强大工具">
+    <h3>PlayStation 将 AI 视为制作游戏的"强大工具"</h3>
+    <div class="item-body"><p><strong>为什么重要</strong>：游戏产业是最早采用 AI 的领域之一，PlayStation 工作室（如 Naughty Dog 和 Santa Monica Studio）已广泛采用 AI 驱动的动画工具，AI 正在加速游戏内容创作。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Naughty Dog 和 Santa Monica Studio 等第一方工作室已采用 AI 驱动的动画制作工具</p></li><li><p>AI 在游戏开发中的应用包括：角色动画、场景生成、NPC 行为、测试自动化</p></li><li><p>成本降低和速度提升使独立游戏开发者也能使用以前只有 3A 工作室才有的工具</p></li><li><p>创意控制 vs 效率提升的张力：AI 生成内容的一致性和风格控制仍是挑战</p></li><li><p>行业担忧：AI 是否会削弱游戏开发的创意本质</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-09/playstation-ai-game-dev.html" class="read-link">📖 全文</a><a href="https://www.theverge.com/2026/05/08/playstation-ai-game-development" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="section-header" id="AI-行业观察">
+    <span class="emoji">🏥</span>
+    <h2>AI 行业观察</h2>
+</div><div class="item" id="美国医疗系统的瓶颈传真机">
+    <h3>美国医疗系统的瓶颈：传真机</h3>
+    <div class="item-body"><p><strong>为什么重要</strong>：尽管 AI 在其他领域快速发展，美国医疗系统仍被老旧技术拖慢。传真机成为 AI 医疗自动化的最大障碍，因为几乎所有医疗数据交换仍依赖传真完成。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>医疗行业的数据交换仍主要通过传真机完成，而非数字化 API</p></li><li><p>AI 工具（如自动化预约、诊断辅助）需要结构化数据输入，但 fax-first 环境使数据提取困难</p></li><li><p>HIPAA 合规要求和数据孤岛使医疗系统升级缓慢</p></li><li><p>部分公司正在开发&quot;AI 友好的&quot;医疗数据整合方案，但采用率仍然很低</p></li><li><p>医疗自动化的真正瓶颈不是 AI 能力，而是数据基础设施</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-09/fax-machine-us-healthcare-bottleneck.html" class="read-link">📖 全文</a><a href="https://techcrunch.com/2026/05/08/the-fax-machine-is-the-bottleneck-in-us-healthcare/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="section-header" id="企业动态">
+    <span class="emoji">📰</span>
+    <h2>企业动态</h2>
+</div><div class="item" id="OpenAI-董事会风波Helen-Toner-证词揭示内部混乱">
+    <h3>OpenAI 董事会风波：Helen Toner 证词揭示内部混乱</h3>
+    <div class="item-body"><p><strong>为什么重要</strong>：在 Musk 诉 Altman 案中，前 OpenAI 董事 Helen Toner 的证词首次详细披露了 2024 年 Altman 被解雇的内部决策过程，揭示了董事会治理和信息披露方面的问题。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Toner 指出解雇 Altman 的核心原因是他&quot;不坦诚&quot;和&quot;不坦诚对待董事会&quot;</p></li><li><p>董事会讨论过与 Anthropic 合并，甚至考虑让 Dario Amodei 担任 CEO</p></li><li><p>董事会决策时未咨询 Microsoft 或其他投资者</p></li><li><p>前 CTO Mira Murati 和前董事 Ilya Sutskever 也对 Altman 的行为表示担忧</p></li><li><p>Altman 和 Brockman 未被允许陈述己方立场，也未调取人力资源档案</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-09/openai-board-controversy-toner.html" class="read-link">📖 全文</a><a href="https://www.theverge.com/2026/05/08/openai-board-controversy-helen-toner-deposition" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="section-header" id="企业动态">
+    <span class="emoji">📰</span>
+    <h2>企业动态</h2>
+</div><div class="item" id="OpenAI-董事会风波Helen-Toner-证词揭示内部混乱">
+    <h3>OpenAI 董事会风波：Helen Toner 证词揭示内部混乱</h3>
+    <div class="item-body"><p><strong>为什么重要</strong>：在 Musk 诉 Altman 案中，前 OpenAI 董事 Helen Toner 的证词首次详细披露了 2024 年 Altman 被解雇的内部决策过程，揭示了董事会治理和信息披露方面的问题。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Toner 指出解雇 Altman 的核心原因是他&quot;不坦诚&quot;和&quot;不坦诚对待董事会&quot;</p></li><li><p>董事会讨论过与 Anthropic 合并，甚至考虑让 Dario Amodei 担任 CEO</p></li><li><p>董事会决策时未咨询 Microsoft 或其他投资者</p></li><li><p>前 CTO Mira Murati 和前董事 Ilya Sutskever 也对 Altman 的行为表示担忧</p></li><li><p>Altman 和 Brockman 未被允许陈述己方立场，也未调取人力资源档案</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-09/openai-board-controversy-toner.html" class="read-link">📖 全文</a><a href="https://www.theverge.com/2026/05/08/openai-board-controversy-helen-toner-deposition" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div>
+
+    <footer class="site-footer">
+        AI Agent Daily Brief &mdash; 2026年05月09日
+    </footer>
+</div>
+</body>
+</html>
