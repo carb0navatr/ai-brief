@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent 每日简报 · 2026年5月10日</title>
+    <style>/* ─── Reset & Base ─── */
+:root {
+    --primary:   #1a1a2e;
+    --secondary: #16213e;
+    --accent:    #0f3460;
+    --highlight: #e94560;
+    --text:      #eaeaea;
+    --muted:     #a0a0a0;
+    --card-bg:   #1a1a2e;
+    --border:    #2a2a4a;
+    --green:     #4ade80;
+    --blue:      #60a5fa;
+    --yellow:    #fbbf24;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f0f1a;
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Layout ─── */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ─── Nav Bar ─── */
+.nav-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; padding: 14px 20px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.nav-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    padding: 6px 12px; border-radius: 6px; text-decoration: none;
+    transition: all .2s;
+}
+.nav-btn:hover { color: #fff; background: var(--accent); text-decoration: none; }
+.nav-btn.disabled { opacity: .3; pointer-events: none; }
+.nav-date { font-size: 14px; font-weight: 600; color: var(--highlight); }
+
+/* ─── Header ─── */
+.brief-header { margin-bottom: 28px; }
+.badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--highlight); color: #fff;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 999px; margin-bottom: 10px; letter-spacing: .5px;
+}
+.brief-header h1 { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.3; }
+.brief-header .subtitle { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+
+/* ─── Quick Hits ─── */
+.quick-hits {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 28px;
+}
+.quick-hits ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.quick-hits li { font-size: 15px; }
+.quick-hits li strong { color: #fff; }
+.quick-hits li a { color: var(--blue); }
+
+/* ─── Section ─── */
+.section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin: 30px 0 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.section-header .emoji { font-size: 20px; }
+.section-header h2 { font-size: 16px; font-weight: 700; color: #fff; }
+
+/* ─── Item ─── */
+.item { margin-bottom: 28px; }
+.item h3 {
+    font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; line-height: 1.4; scroll-margin-top: 20px;
+}
+
+/* ─── Item Body (rendered markdown) ─── */
+.item-body { font-size: 14px; color: var(--muted); }
+.item-body p { margin-bottom: 10px; }
+.item-body p:last-child { margin-bottom: 0; }
+.item-body strong, .item-body b { color: #fff; font-weight: 600; }
+.item-body em, .item-body i { color: #ccc; font-style: italic; }
+.item-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.item-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+    overflow-x: auto;
+}
+.item-body pre code { background: none; padding: 0; font-size: 13px; }
+.item-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 10px 0; color: var(--muted);
+}
+.item-body ul, .item-body ol {
+    padding-left: 20px; margin: 8px 0;
+}
+.item-body li { margin-bottom: 5px; }
+.item-body li::marker { color: var(--highlight); }
+.item-body a { color: var(--blue); }
+.item-body a:hover { text-decoration: underline; }
+
+/* ─── Key Points Box ─── */
+.key-points {
+    background: var(--secondary); border-left: 3px solid var(--highlight);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 10px 0;
+}
+.key-points strong { color: var(--highlight); display: block; margin-bottom: 6px; }
+.key-points ul { list-style: none; padding: 0; margin: 0; }
+.key-points li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+.key-points li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
+
+/* ─── Item Meta (source + readable links) ─── */
+.item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.item-meta a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 500; padding: 4px 10px;
+    border-radius: 6px; text-decoration: none; transition: all .15s;
+}
+.item-meta .src-link { color: var(--blue); border: 1px solid #60a5fa33; }
+.item-meta .src-link:hover { background: #60a5fa22; }
+.item-meta .read-link { color: var(--green); border: 1px solid #4ade8033; }
+.item-meta .read-link:hover { background: #4ade8022; }
+
+/* ─── Footer ─── */
+.site-footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); text-align: center;
+}
+
+/* ─── Article Page ─── */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb .sep { color: var(--border); }
+
+.article-body {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px; margin-bottom: 24px;
+}
+.article-body h1 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.3; }
+.article-body .source-line {
+    font-size: 13px; color: var(--muted); margin-bottom: 18px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.article-body .source-line a { color: var(--blue); }
+.article-body p { margin-bottom: 14px; font-size: 15px; }
+.article-body strong, .article-body b { color: #fff; font-weight: 600; }
+.article-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.article-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto;
+}
+.article-body pre code { background: none; padding: 0; }
+.article-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 12px 0; color: var(--muted);
+}
+.article-body ul, .article-body ol { padding-left: 22px; margin: 10px 0; }
+.article-body li { margin-bottom: 6px; }
+.article-body li::marker { color: var(--highlight); }
+.article-body a { color: var(--blue); }
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+    .container { padding: 20px 14px 60px; }
+    .nav-bar { flex-wrap: wrap; gap: 8px; }
+    .nav-date { order: -1; width: 100%; text-align: center; }
+    .article-body { padding: 20px 18px; }
+    .brief-header h1 { font-size: 19px; }
+}</style>
+</head>
+<body>
+<div class="container">
+    <nav class="nav-bar">
+        <a href="brief-2026-05-09.html" class="nav-btn">← 前一天</a>
+        <span class="nav-date">2026年05月10日</span>
+        <span class="nav-btn disabled">后一天 →</span>
+    </nav>
+
+    <header class="brief-header">
+        <h1>AI Agent 每日简报 · 2026年5月10日</h1>
+        <p class="subtitle">本简报由 AI 筛选并生成，涵盖 AI Agent 行业的关键进展与深度分析。</p>
+    </header>
+
+    <div class="section-header" id="目录">
+    
+    <h2>目录</h2>
+</div><div class="section-header" id="1-Voice-AI-in-India">
+    
+    <h2>1. Voice AI in India</h2>
+</div><div class="item" id="为什么重要">
+    <h3>为什么重要</h3>
+    <div class="item-body"><p>印度用户已广泛使用语音笔记、语音搜索和多语言消息应用，但将该习惯转化为可持续的AI业务面临语言复杂性和混语使用的巨大挑战。Wispr Flow正在测试这个市场，其进展将揭示语音AI在新兴市场的规模化路径。</p>
+</div>
+</div><div class="item" id="关键要点">
+    <h3>关键要点</h3>
+    <div class="item-body"><ul><li><p>Wispr Flow是总部位于旧金山的语音输入软件公司，印度已成为其增长最快的市场</p>
+</li>
+<li><p>公司首先支持&quot;印地式英语&quot;（Hinglish），这是印度本地人常用的印地语和英语混合语言</p>
+</li>
+<li><p>印度下载量占全球总下载量的14%，仅次于美国，但收入贡献仅约2%</p>
+</li>
+<li><p>印度用户使用习惯与美国差异显著：印度桌面端与移动端使用比例约为50:50，而美国为80:20</p>
+</li>
+<li><p>牛津大学Counterpoint Research副总裁Neil Shah称&quot;印度是语音AI的终极压力测试&quot;</p>
+</li>
+</ul>
+</div>
+</div><div class="section-header" id="2-Cricut-Joy-2-体验">
+    
+    <h2>2. Cricut Joy 2 体验</h2>
+</div><div class="item" id="为什么重要">
+    <h3>为什么重要</h3>
+    <div class="item-body"><p>在心理健康和自我护理日益受到关注的当下，便携式创作工具正在开辟新的消费电子品类。Cricut Joy 2以99美元的入门价格，让非专业用户也能轻松制作贴纸、贺卡和书签，找回创作的乐趣。</p>
+</div>
+</div><div class="item" id="关键要点">
+    <h3>关键要点</h3>
+    <div class="item-body"><ul><li><p>Cricut Joy 2售价99美元，配备应用程序模板，支持切割、绘画和书写功能</p>
+</li>
+<li><p>完整捆绑包（Joy 2 + Ultimate Plus Bundle）售价229美元，包含智能乙烯基材料、熨烫贴纸和精细刀片等配件</p>
+</li>
+<li><p>对于更复杂项目，Cricut Explore 5（199美元）和Cricut Maker 4（349美元）提供更强切割能力</p>
+</li>
+<li><p>Cricut Maker 4可处理织物或皮革等厚材料，支持雕刻、压纹和打孔功能</p>
+</li>
+<li><p>记者评测后表示，Joy 2是一款有趣且价格亲民的小工具，容易推荐给入门用户</p>
+</li>
+</ul>
+</div>
+</div><div class="section-header" id="3-Chrome-本地-AI-隐私争议">
+    
+    <h2>3. Chrome 本地 AI 隐私争议</h2>
+</div><div class="item" id="为什么重要">
+    <h3>为什么重要</h3>
+    <div class="item-body"><p>Chrome 148版本中关于本地AI的隐私设置标签变更引发用户对数据安全的担忧。这一争议反映了在AI功能普及过程中，用户对隐私的敏感度日益提高，科技巨头在功能部署与透明度之间面临平衡挑战。</p>
+</div>
+</div><div class="item" id="关键要点">
+    <h3>关键要点</h3>
+    <div class="item-body"><ul><li><p>Chrome浏览器附带约4GB的本地AI模型，用户投诉未明确告知该模型的存在</p>
+</li>
+<li><p>v148版本移除了&quot;本地AI数据不会发送到Google服务器&quot;的说明，引发隐私担忧</p>
+</li>
+<li><p>Google回应称此更改是为了更清晰地说明Chrome AI API的工作方式，实际数据处理方式未变</p>
+</li>
+<li><p>当网站使用Chrome本地AI API进行摘要或写作编辑时，该网站会看到输入和输出内容</p>
+</li>
+<li><p>在AI功能普及的当下，用户需更加警惕网站隐私政策，了解AI生成内容的处理方式</p>
+</li>
+</ul>
+</div>
+</div><div class="section-header" id="4-AI-预测心脏病发作">
+    
+    <h2>4. AI 预测心脏病发作</h2>
+</div><div class="item" id="为什么重要">
+    <h3>为什么重要</h3>
+    <div class="item-body"><p>心脏病是全球主要死因之一，而大多数患者在扫描未显示动脉狭窄的情况下仍会突发心脏病。牛津大学开发的CaRi-Heart® AI工具能够从常规CT扫描中识别冠状动脉周围的炎症，为提前十年预警心脏病发作风险提供了可能。</p>
+</div>
+</div><div class="item" id="关键要点">
+    <h3>关键要点</h3>
+    <div class="item-body"><ul><li><p>BHF教授Charalambos Antoniades在牛津大学开发了CaRi-Heart® AI工具</p>
+</li>
+<li><p>该工具可通过常规CT扫描预测患者未来10年内心脏病发作、心力衰竭或心脏死亡的风险</p>
+</li>
+<li><p>研究发现，即使CT扫描显示动脉无明显狭窄，仍有三分之二的患者未来可能发生心脏病</p>
+</li>
+<li><p>冠状动脉周围脂肪的炎症是未来心脏病发作的关键预警信号</p>
+</li>
+<li><p>通过早期风险评分，医生可以提前进行预防性治疗，可能拯救数千人的生命</p>
+</li>
+</ul>
+</div>
+</div><div class="section-header" id="5-Apple-Vision-Pro-2-即将发布">
+    
+    <h2>5. Apple Vision Pro 2 即将发布</h2>
+</div><div class="item" id="为什么重要">
+    <h3>为什么重要</h3>
+    <div class="item-body"><p>苹果 Vision Pro 2 的发布将是空间计算领域的重大里程碑。随着头显设备从早期采用者群体向更广泛消费者市场渗透，其硬件升级和定价策略将决定苹果在AR/VR市场的长期竞争力。</p>
+</div>
+</div><div class="item" id="关键要点">
+    <h3>关键要点</h3>
+    <div class="item-body"><ul><li><p>苹果表示 Vision Pro 2 将于2026年5月发布，比最初的春季发布传闻更具体</p>
+</li>
+<li><p>预计将搭载M5芯片，相比初代显著提升性能</p>
+</li>
+<li><p>电池续航预计将有明显改善，解决初代产品的主要痛点</p>
+</li>
+<li><p>苹果的策略是先推出高端Pro版本，后续再推出更轻便、更实惠的AR/VR头显</p>
+</li>
+<li><p>多位分析师指出发布时间存在不确定性，部分报道称Vision Pro 2可能不会在2026年面市</p>
+</li>
+</ul>
+</div>
+</div><div class="section-header" id="6-OpenAI-Operator-全面上线">
+    
+    <h2>6. OpenAI Operator 全面上线</h2>
+</div><div class="item" id="为什么重要">
+    <h3>为什么重要</h3>
+    <div class="item-body"><p>OpenAI Operator的全面发布标志着AI助手从对话交互向任务执行的重大转变。该工具能让AI直接操控用户的图形界面，代表了AI agent（AI代理）从概念走向大规模应用的关键一步。</p>
+</div>
+</div><div class="item" id="关键要点">
+    <h3>关键要点</h3>
+    <div class="item-body"><ul><li><p>Operator由OpenAI的新型计算机使用代理（CUA）模型驱动</p>
+</li>
+<li><p>CUA结合了GPT-4o的视觉能力与强化学习的高级推理能力</p>
+</li>
+<li><p>代理能够与图形用户界面（GUI）交互，包括按钮、菜单和文本字段</p>
+</li>
+<li><p>用户可以委托AI执行网页浏览、填表、预订等日常计算机操作任务</p>
+</li>
+<li><p>这是继GPT-6和Operator OS发布之后，OpenAI在2026年2月推出的重磅AI产品组合之一</p>
+</li>
+</ul>
+</div>
+</div><div class="section-header" id="7-Trustpilot-牵手-AI-公司">
+    
+    <h2>7. Trustpilot 牵手 AI 公司</h2>
+</div><div class="item" id="为什么重要">
+    <h3>为什么重要</h3>
+    <div class="item-body"><p>随着AI驱动的购物方式兴起，传统搜索引擎面临挑战，而像Trustpilot这样的点评平台正在寻找新的价值定位。其与AI公司的合作模式表明，用户评价数据正在成为AI时代的重要资产。</p>
+</div>
+</div><div class="item" id="关键要点">
+    <h3>关键要点</h3>
+    <div class="item-body"><ul><li><p>Trustpilot正在与大型电商公司建立合作伙伴关系，将评价数据用于AI驱动的购物场景</p>
+</li>
+<li><p>首席执行官Adrian Blair表示，AI代理需要大量商家信息来代表消费者做出决策</p>
+</li>
+<li><p>过去一年，通过AI搜索的点击量增长了1490%，主要得益于Google将AI搜索设为默认选项</p>
+</li>
+<li><p>Trustpilot在2026年1月ChatGPT中被引用次数位列全球第五</p>
+</li>
+<li><p>公司预计到2030年营业利润率达到30%，部分得益于LLM对其内容的使用</p>
+</li>
+</ul>
+</div>
+</div><div class="section-header" id="8-纽约市配送无人机">
+    
+    <h2>8. 纽约市配送无人机</h2>
+</div><div class="item" id="为什么重要">
+    <h3>为什么重要</h3>
+    <div class="item-body"><p>纽约市拥有美国最繁忙的空域之一，城市配送无人机的实验性飞行正在测试未来物流的可能性。尽管商业模式尚不明朗，监管框架仍在完善，但技术已经在实际环境中运行。</p>
+</div>
+</div><div class="item" id="关键要点">
+    <h3>关键要点</h3>
+    <div class="item-body"><ul><li><p>城市配送无人机的商业可行性尚不确定，但已进入纽约市上空飞行测试阶段</p>
+</li>
+<li><p>2023年5月，纽约市上空进行了近9000次直升机飞行，无人机项目面临空域协调挑战</p>
+</li>
+<li><p>该无人机试点项目启动日期曾被推迟，部分原因是另一种实验性航空技术——电动垂直起降（eVTOL）飞行器的发展</p>
+</li>
+<li><p>AI驱动的无人机在城市环境中的应用涉及复杂的空域管理和安全协调问题</p>
+</li>
+<li><p>这是探索未来城市最后一公里配送方案的前沿实验</p>
+</li>
+</ul>
+</div>
+</div><div class="section-header" id="9-Big-Tech-Q1-财报分析">
+    
+    <h2>9. Big Tech Q1 财报分析</h2>
+</div><div class="item" id="为什么重要">
+    <h3>为什么重要</h3>
+    <div class="item-body"><p>2026年第一季度，科技巨头们继续将巨额资金投入AI基础设施，四大公司（苹果、亚马逊、Meta、谷歌）的AI相关资本支出已超过曼哈顿计划的三倍。这篇文章深入分析了Big Tech的AI投资策略与市场反应的分歧，为理解当前科技投资热潮提供了重要视角。</p>
+</div>
+</div><div class="item" id="关键要点">
+    <h3>关键要点</h3>
+    <div class="item-body"><ul><li><p>谷歌和Meta在同一周发布财报后，市场反应截然不同：谷歌业绩亮眼，Meta表现更佳但股价下跌</p>
+</li>
+<li><p>微软和苹果在Q1后的表现各有特点，反映出投资者对不同AI策略的看法</p>
+</li>
+<li><p>亚马逊的基础设施投资历史表明，早期大规模投入可能带来长期竞争优势</p>
+</li>
+<li><p>AI资本支出的狂潮仍在持续，第一季度支出达到历史新高</p>
+</li>
+<li><p>Ben Thompson在Stratechery上详细分析了各公司的财报和市场反应</p>
+</li>
+</ul>
+</div>
+</div><div class="section-header" id="10-Joanna-Stern-谈与-AI-共处">
+    
+    <h2>10. Joanna Stern 谈与 AI 共处</h2>
+</div><div class="item" id="为什么重要">
+    <h3>为什么重要</h3>
+    <div class="item-body"><p>作为WSJ著名科技记者，Joanna Stern的新书从普通人的视角探讨了AI对日常生活的真实影响。这场对话揭示了AI时代个人媒体的新可能性，以及科技记者如何理解和记录这场技术变革。</p>
+</div>
+</div><div class="item" id="关键要点">
+    <h3>关键要点</h3>
+    <div class="item-body"><ul><li><p>Joanna Stern出版了关于&quot;与AI共处&quot;的新书，从个人视角记录AI对生活的影响</p>
+</li>
+<li><p>她同时创办了自己的媒体公司，探索科技报道的新模式</p>
+</li>
+<li><p>采访探讨了AI如何在日常场景中融入个人生活，而非仅仅是商业或技术话题</p>
+</li>
+<li><p>Ben Thompson的Stratechery采访深入讨论了AI时代的媒体生态变化</p>
+</li>
+<li><p>这反映了科技记者群体对AI影响的前沿思考和个人实践</p>
+</li>
+</ul>
+</div>
+</div>
+
+    <footer class="site-footer">
+        AI Agent Daily Brief &mdash; 2026年05月10日
+    </footer>
+</div>
+</body>
+</html>
