@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Daily Brief - 2026年05月14日</title>
+    <style>/* ─── Reset & Base ─── */
+:root {
+    --primary:   #1a1a2e;
+    --secondary: #16213e;
+    --accent:    #0f3460;
+    --highlight: #e94560;
+    --text:      #eaeaea;
+    --muted:     #a0a0a0;
+    --card-bg:   #1a1a2e;
+    --border:    #2a2a4a;
+    --green:     #4ade80;
+    --blue:      #60a5fa;
+    --yellow:    #fbbf24;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f0f1a;
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Layout ─── */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ─── Nav Bar ─── */
+.nav-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; padding: 14px 20px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.nav-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    padding: 6px 12px; border-radius: 6px; text-decoration: none;
+    transition: all .2s;
+}
+.nav-btn:hover { color: #fff; background: var(--accent); text-decoration: none; }
+.nav-btn.disabled { opacity: .3; pointer-events: none; }
+.nav-date { font-size: 14px; font-weight: 600; color: var(--highlight); }
+
+/* ─── Header ─── */
+.brief-header { margin-bottom: 28px; }
+.badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--highlight); color: #fff;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 999px; margin-bottom: 10px; letter-spacing: .5px;
+}
+.brief-header h1 { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.3; }
+.brief-header .subtitle { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+
+/* ─── Quick Hits ─── */
+.quick-hits {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 28px;
+}
+.quick-hits ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.quick-hits li { font-size: 15px; }
+.quick-hits li strong { color: #fff; }
+.quick-hits li a { color: var(--blue); }
+
+/* ─── Section ─── */
+.section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin: 30px 0 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.section-header .emoji { font-size: 20px; }
+.section-header h2 { font-size: 16px; font-weight: 700; color: #fff; }
+
+/* ─── Item ─── */
+.item { margin-bottom: 28px; }
+.item h3 {
+    font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; line-height: 1.4; scroll-margin-top: 20px;
+}
+
+/* ─── Item Body (rendered markdown) ─── */
+.item-body { font-size: 14px; color: var(--muted); }
+.item-body p { margin-bottom: 10px; }
+.item-body p:last-child { margin-bottom: 0; }
+.item-body strong, .item-body b { color: #fff; font-weight: 600; }
+.item-body em, .item-body i { color: #ccc; font-style: italic; }
+.item-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.item-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+    overflow-x: auto;
+}
+.item-body pre code { background: none; padding: 0; font-size: 13px; }
+.item-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 10px 0; color: var(--muted);
+}
+.item-body ul, .item-body ol {
+    padding-left: 20px; margin: 8px 0;
+}
+.item-body li { margin-bottom: 5px; }
+.item-body li::marker { color: var(--highlight); }
+.item-body a { color: var(--blue); }
+.item-body a:hover { text-decoration: underline; }
+
+/* ─── Key Points Box ─── */
+.key-points {
+    background: var(--secondary); border-left: 3px solid var(--highlight);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 10px 0;
+}
+.key-points strong { color: var(--highlight); display: block; margin-bottom: 6px; }
+.key-points ul { list-style: none; padding: 0; margin: 0; }
+.key-points li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+.key-points li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
+
+/* ─── Item Meta (source + readable links) ─── */
+.item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.item-meta a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 500; padding: 4px 10px;
+    border-radius: 6px; text-decoration: none; transition: all .15s;
+}
+.item-meta .src-link { color: var(--blue); border: 1px solid #60a5fa33; }
+.item-meta .src-link:hover { background: #60a5fa22; }
+.item-meta .read-link { color: var(--green); border: 1px solid #4ade8033; }
+.item-meta .read-link:hover { background: #4ade8022; }
+
+/* ─── Footer ─── */
+.site-footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); text-align: center;
+}
+
+/* ─── Article Page ─── */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb .sep { color: var(--border); }
+
+.article-body {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px; margin-bottom: 24px;
+}
+.article-body h1 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.3; }
+.article-body .source-line {
+    font-size: 13px; color: var(--muted); margin-bottom: 18px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.article-body .source-line a { color: var(--blue); }
+.article-body p { margin-bottom: 14px; font-size: 15px; }
+.article-body strong, .article-body b { color: #fff; font-weight: 600; }
+.article-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.article-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto;
+}
+.article-body pre code { background: none; padding: 0; }
+.article-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 12px 0; color: var(--muted);
+}
+.article-body ul, .article-body ol { padding-left: 22px; margin: 10px 0; }
+.article-body li { margin-bottom: 6px; }
+.article-body li::marker { color: var(--highlight); }
+.article-body a { color: var(--blue); }
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+    .container { padding: 20px 14px 60px; }
+    .nav-bar { flex-wrap: wrap; gap: 8px; }
+    .nav-date { order: -1; width: 100%; text-align: center; }
+    .article-body { padding: 20px 18px; }
+    .brief-header h1 { font-size: 19px; }
+}</style>
+</head>
+<body>
+<div class="container">
+    <div class="breadcrumb">
+        <a href="../../brief-2026-05-14.html">AI Agent Daily Brief - 2026年05月14日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
+
+    <div class="article-body">
+        <h1>Google AI Impact Summit 2026：宣布 150 亿美元印度 AI 基础设施投资与多项全球公益计划</h1>
+        
+        <h2>原文要点</h2>
+<p>2026 年 5月，Google 在印度举办的 AI Impact Summit 上宣布了一系列深化全球 AI 普惠的合作与投资计划。</p>
+<p><strong>基础设施投资</strong>：</p>
+<ul><li>此前已宣布 <strong>150 亿美元</strong>在印度建立 AI 基础设施（AI Hub）</li>
+<li>新增 <strong>&quot;America-India Connect&quot;</strong> 倡议：建设新的战略光纤线路，连接美国、印度和南半球多个节点，增强数字连接的可靠性与韧性</li>
+<li>已在太平洋、非洲等地区铺设海底光缆，持续扩展全球基础设施覆盖</li>
+</ul>
+<p><strong>政府与科学领域投入</strong>：</p>
+<ul><li><strong>3000 万美元</strong> Google.org AI for Government Innovation Impact Challenge：支持用 AI 改造公共服务的合作项目</li>
+<li><strong>3000 万美元</strong> Google.org AI for Science Impact Challenge：支持全球科研人员利用 AI 推动科学突破</li>
+<li>Google DeepMind 与印度政府机构建立新合作伙伴关系，通过前沿 AI for Science 模型和创新中心赋能科学研究和教育——这是 DeepMind &quot;国家 AI 合作伙伴计划&quot;的一部分</li>
+<li>与印度政府首席科学顾问办公室合作建立 <strong>Google 气候技术中心</strong>，推动 AI 驱动的气候解决方案研究与规模化应用</li>
+</ul>
+<p><strong>技能赋能与规模化</strong>：</p>
+<ul><li><strong>AI 职业证书项目</strong>（AI Professional Certificate）：与多国政府、教育机构和雇主合作，帮助全球人员学习职场 AI 技能；在印度与 Wadhwani AI 合作，面向学生和职业早期人群提供奖学金</li>
+<li><strong>与 Karmayogi Bharat 合作</strong>：为印度 20 万公务员提供 AI 培训，iGOT Karmayogi 平台支持 800+ 地区的公务员学习，Google Cloud 提供安全有韧性的基础设施</li>
+</ul>
+<p><strong>产品与安全更新</strong>：</p>
+<ul><li>实时语音到语音翻译模型覆盖 <strong>70+ 语言</strong>，包括 10 种印度语言（如印地语、孟加拉语、泰米尔语、泰卢固语）</li>
+<li>Gemini 应用中的 SynthID 验证功能自 2025 年 11 月发布以来已被使用 <strong>超过 2000 万次</strong>，帮助用户识别 AI 生成的图像、视频和音频内容</li>
+<li>Circle to Search 和 Lens 新增诈骗信息识别功能</li>
+</ul>
+<h2>为何重要</h2>
+<p><strong>1. AI 基础设施投资进入主权时代</strong></p>
+<p>150 亿美元不仅是 Google 有史以来在单一国家最大的 AI 基础设施投资，更代表了一种新的 AI 地缘布局——通过 AI Hub 实现数据本地化、培养本地 AI 人才、建立监管信任。这与印度作为全球人口第一大国和快速增长的数字市场密切相关，也为其他发展中国家提供了 AI 基础设施合作的参考范式。</p>
+<p><strong>2. AI 公益投入从&quot;技能培训&quot;升级到&quot;系统性变革&quot;</strong></p>
+<p>从 3000 万的政府创新挑战基金到与 Karmayogi Bharat 的深度平台合作，Google 的 AI 公益战略正在从单一技能培训扩展到系统性政府能力建设。20 万公务员的 AI 素养提升，若能真正改变印度公共服务的运作方式，将产生远超技能培训本身的涟漪效应。</p>
+<p><strong>3. AI for Science 的国家合作模式正在形成</strong></p>
+<p>DeepMind 与印度政府机构的国家级合作（而非传统的研究资助模式），标志着前沿 AI 能力正在以&quot;国家合作伙伴关系&quot;的形式向全球扩展。这种模式让前沿 AI 模型直接服务于各国国家重点科研方向，是 AI 普惠化的重要路径。</p>
+<p><strong>来源</strong>：<a href="https://blog.google/innovation-and-ai/technology/ai/ai-impact-summit-2026-india/" target="_blank" rel="noopener">全文</a> | <a href="https://blog.google/innovation-and-ai/technology/ai/ai-impact-summit-2026-india/" target="_blank" rel="noopener">原文</a></p>
+
+    </div>
+
+    <footer class="site-footer">
+        <a href="../../brief-2026-05-14.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
+    </footer>
+</div>
+</body>
+</html>
