@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent 每日简报 · 2026年5月17日</title>
+    <title>AI Agent Daily Brief - 2026年05月18日</title>
     <style>/* ─── Reset & Base ─── */
 :root {
     --primary:   #1a1a2e;
@@ -195,51 +195,43 @@ a:hover { text-decoration: underline; }
 </head>
 <body>
 <div class="container">
-    <nav class="nav-bar">
-        <a href="brief-2026-05-14.html" class="nav-btn">← 前一天</a>
-        <span class="nav-date">2026年05月17日</span>
-        <a href="brief-2026-05-18.html" class="nav-btn">后一天 →</a>
-    </nav>
+    <div class="breadcrumb">
+        <a href="../../brief-2026-05-18.html">AI Agent Daily Brief - 2026年05月18日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
 
-    <header class="brief-header">
-        <h1>AI Agent 每日简报 · 2026年5月17日</h1>
-        <p class="subtitle">本期简报精选 10 条 AI Agent 行业动态，覆盖 OpenAI、Apple 合作纠纷、NVIDIA/AMD 芯片竞争、Notion Agent 平台升级等重要事件。</p>
-    </header>
+    <div class="article-body">
+        <h1>amazon-bedrock-advanced-prompt-optimization</h1>
+        
+        <p>title: &quot;Amazon Bedrock introduces new advanced prompt optimization and migration tool&quot;
+source: &quot;AWS Blog&quot;
+url: &quot;https://aws.amazon.com/blogs/aws/amazon-bedrock-introduces-new-advanced-prompt-optimization-and-migration-tool/&quot;
+published: &quot;2026-05-14&quot;
+category: &quot;AI Products&quot;</p>
+<h2>为什么重要</h2>
+<p>企业在迁移到大语言模型或优化现有提示词时，往往依赖人工反复调试，既耗时又难以规模化。Amazon Bedrock 推出的 Advanced Prompt Optimization 实现了提示词优化的自动化闭环——支持同时对比最多 5 个模型的优化效果，以评估指标驱动反馈迭代，大幅降低模型迁移和性能调优的门槛。</p>
+<h2>关键要点</h2>
+<ul><li><strong>自动化提示词优化流程</strong>：输入提示模板、示例用户数据、标准答案和评估指标，系统自动在多个模型上迭代优化，输出原始提示和优化后提示的对比</li>
+<li><strong>多模型并行对比</strong>：支持同时评估最多 5 个推理模型，方便企业进行跨模型迁移或性能基准对比</li>
+<li><strong>三种评估方式灵活选择</strong>：<ul><li>Lambda 函数：提供自定义 Python 评分逻辑（准确率、F1、结构化 JSON 匹配等）</li>
+<li>LLM-as-a-Judge：基于结构化评分标准和量表的评判模型（默认 Claude Sonnet 4.6）</li>
+<li>Steering Criteria：自然语言描述的优化方向，适合开放性任务</li>
+</ul>
+</li>
+<li><strong>多模态支持</strong>：支持 PNG、JPG、PDF 作为提示模板输入变量，覆盖文档分析和图像理解场景</li>
+<li><strong>输出完整评估报告</strong>：包含评分、成本估算和延迟预估，帮助企业做数据化决策</li>
+<li><strong>现已上线</strong>：在美东、美西、亚太（东京、首尔、孟买、新加坡、悉尼）、加拿大、欧洲（法兰克福、爱尔兰、伦敦、苏黎世）及圣保罗 region 可用</li>
+</ul>
+<h2>原文链接</h2>
+<p><a href="https://aws.amazon.com/blogs/aws/amazon-bedrock-introduces-new-advanced-prompt-optimization-and-migration-tool/" target="_blank" rel="noopener">Amazon Bedrock introduces new advanced prompt optimization and migration tool</a></p>
 
-    <div class="section-header" id="1-OpenAI-高管团队重组深耕-AI-Agent-战场">
-    
-    <h2>1. OpenAI 高管团队重组，深耕 AI Agent 战场</h2>
-</div><div class="section-header" id="2-ChatGPT-寻求银行账户访问权限引发安全担忧">
-    
-    <h2>2. ChatGPT 寻求银行账户访问权限引发安全担忧</h2>
-</div><div class="section-header" id="3-OpenAI-与苹果合作纠纷一场糟糕的整合">
-    
-    <h2>3. OpenAI 与苹果合作纠纷：一场"糟糕"的整合</h2>
-</div><div class="section-header" id="4-AI-推理芯片竞争升级NVIDIA-vs-AMD">
-    
-    <h2>4. AI 推理芯片竞争升级：NVIDIA vs AMD</h2>
-</div><div class="section-header" id="5-Intercom-推出管理-AI-Agent-的-AI-Agent">
-    
-    <h2>5. Intercom 推出"管理 AI Agent 的 AI Agent"</h2>
-</div><div class="section-header" id="6-Agentic-AI-协调层谁在控制控制平面">
-    
-    <h2>6. Agentic AI 协调层：谁在控制"控制平面"？</h2>
-</div><div class="section-header" id="7-无性恋群体与-AI-伴侣数字亲密的新形态">
-    
-    <h2>7. 无性恋群体与 AI 伴侣：数字亲密的新形态</h2>
-</div><div class="section-header" id="8-Musk-诉-Altman-案第三周信誉之战">
-    
-    <h2>8. Musk 诉 Altman 案第三周：信誉之战</h2>
-</div><div class="section-header" id="9-金融服务业-Agentic-AI高风险与数据质量挑战">
-    
-    <h2>9. 金融服务业 Agentic AI：高风险与数据质量挑战</h2>
-</div><div class="section-header" id="10-Notion-发布开发者平台转型-AI-Agent-协调中心">
-    
-    <h2>10. Notion 发布开发者平台，转型 AI Agent 协调中心</h2>
-</div>
+    </div>
 
     <footer class="site-footer">
-        AI Agent Daily Brief &mdash; 2026年05月17日
+        <a href="../../brief-2026-05-18.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
     </footer>
 </div>
 </body>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent 每日简报 · 2026年5月17日</title>
+    <title>AI Agent Daily Brief - 2026年05月18日</title>
     <style>/* ─── Reset & Base ─── */
 :root {
     --primary:   #1a1a2e;
@@ -195,51 +195,39 @@ a:hover { text-decoration: underline; }
 </head>
 <body>
 <div class="container">
-    <nav class="nav-bar">
-        <a href="brief-2026-05-14.html" class="nav-btn">← 前一天</a>
-        <span class="nav-date">2026年05月17日</span>
-        <a href="brief-2026-05-18.html" class="nav-btn">后一天 →</a>
-    </nav>
+    <div class="breadcrumb">
+        <a href="../../brief-2026-05-18.html">AI Agent Daily Brief - 2026年05月18日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
 
-    <header class="brief-header">
-        <h1>AI Agent 每日简报 · 2026年5月17日</h1>
-        <p class="subtitle">本期简报精选 10 条 AI Agent 行业动态，覆盖 OpenAI、Apple 合作纠纷、NVIDIA/AMD 芯片竞争、Notion Agent 平台升级等重要事件。</p>
-    </header>
+    <div class="article-body">
+        <h1>the-inference-shift</h1>
+        
+        <p>title: &quot;The Inference Shift&quot;
+source: &quot;Stratechery&quot;
+url: &quot;https://stratechery.com/2026/the-inference-shift/&quot;
+published: &quot;2026-05-18&quot;
+category: &quot;Opinion&quot;</p>
+<h2>为什么重要</h2>
+<p>Ben Thompson 在这篇文章中提出了一个具有颠覆性的观点：当前关于 AI 算力的讨论默认假设「延迟优先」，但随着 AI 代理（Agent）真正落地，「代理推理」（Agentic Inference）将与「回答推理」（Answer Inference）有根本不同的架构需求。这将深刻影响 GPU 厂商的战略优势、中国的竞争地位，甚至太空数据中心的可行性。</p>
+<h2>关键要点</h2>
+<ul><li><strong>两种推理的本质差异</strong>：回答推理（人类在循环中）需要低延迟，速度至上；代理推理（无人类参与）需要大容量记忆层次结构，延迟相对次要</li>
+<li><strong>GPU 在代理推理中的困境</strong>：GPU 在 prefill（高算力需求）和 decode（高带宽内存需求）之间交替运行，导致两种资源交替闲置；代理推理需要的是记忆层次优化，而非极致算力</li>
+<li><strong>Cerebras 的机会与局限</strong>：WSE-3 拥有 21 PB/s 带宽（是 H100 的 6000 倍），极度适合高速回答推理；但受限于 44GB 片上 SRAM，大 KV 缓存场景下不具优势</li>
+<li><strong>代理推理将「解绑」GPU</strong>：未来架构将以高容量、低成本内存为主，「够用」的算力配合快速 CPU 处理工具调用，可能优于当前 GPU 方案</li>
+<li><strong>对 Nvidia 的潜在冲击</strong>：如果延迟不再是首要约束，Nvidia 在 HBM 和网络方面的高溢价策略吸引力下降；Nvidia 已意识到这一趋势并推出 Dynamo 框架</li>
+<li><strong>中国和太空的新机遇</strong>：中国拥有完整的「够用」芯片+DRAM+硬盘组合，非常适合代理推理；太空数据中心的低速芯片反而在散热、抗辐射、可靠性上具有优势</li>
+</ul>
+<h2>原文链接</h2>
+<p><a href="https://stratechery.com/2026/the-inference-shift/" target="_blank" rel="noopener">The Inference Shift</a></p>
 
-    <div class="section-header" id="1-OpenAI-高管团队重组深耕-AI-Agent-战场">
-    
-    <h2>1. OpenAI 高管团队重组，深耕 AI Agent 战场</h2>
-</div><div class="section-header" id="2-ChatGPT-寻求银行账户访问权限引发安全担忧">
-    
-    <h2>2. ChatGPT 寻求银行账户访问权限引发安全担忧</h2>
-</div><div class="section-header" id="3-OpenAI-与苹果合作纠纷一场糟糕的整合">
-    
-    <h2>3. OpenAI 与苹果合作纠纷：一场"糟糕"的整合</h2>
-</div><div class="section-header" id="4-AI-推理芯片竞争升级NVIDIA-vs-AMD">
-    
-    <h2>4. AI 推理芯片竞争升级：NVIDIA vs AMD</h2>
-</div><div class="section-header" id="5-Intercom-推出管理-AI-Agent-的-AI-Agent">
-    
-    <h2>5. Intercom 推出"管理 AI Agent 的 AI Agent"</h2>
-</div><div class="section-header" id="6-Agentic-AI-协调层谁在控制控制平面">
-    
-    <h2>6. Agentic AI 协调层：谁在控制"控制平面"？</h2>
-</div><div class="section-header" id="7-无性恋群体与-AI-伴侣数字亲密的新形态">
-    
-    <h2>7. 无性恋群体与 AI 伴侣：数字亲密的新形态</h2>
-</div><div class="section-header" id="8-Musk-诉-Altman-案第三周信誉之战">
-    
-    <h2>8. Musk 诉 Altman 案第三周：信誉之战</h2>
-</div><div class="section-header" id="9-金融服务业-Agentic-AI高风险与数据质量挑战">
-    
-    <h2>9. 金融服务业 Agentic AI：高风险与数据质量挑战</h2>
-</div><div class="section-header" id="10-Notion-发布开发者平台转型-AI-Agent-协调中心">
-    
-    <h2>10. Notion 发布开发者平台，转型 AI Agent 协调中心</h2>
-</div>
+    </div>
 
     <footer class="site-footer">
-        AI Agent Daily Brief &mdash; 2026年05月17日
+        <a href="../../brief-2026-05-18.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
     </footer>
 </div>
 </body>
