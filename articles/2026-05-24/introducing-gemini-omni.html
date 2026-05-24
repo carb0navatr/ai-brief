@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent 每日简报 · 2026-05-22</title>
+    <title>AI Agent Daily Brief - 2026年05月24日</title>
     <style>/* ─── Reset & Base ─── */
 :root {
     --primary:   #1a1a2e;
@@ -195,60 +195,46 @@ a:hover { text-decoration: underline; }
 </head>
 <body>
 <div class="container">
-    <nav class="nav-bar">
-        <a href="brief-2026-05-18.html" class="nav-btn">← 前一天</a>
-        <span class="nav-date">2026年05月22日</span>
-        <a href="brief-2026-05-24.html" class="nav-btn">后一天 →</a>
-    </nav>
+    <div class="breadcrumb">
+        <a href="../../brief-2026-05-24.html">AI Agent Daily Brief - 2026年05月24日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
 
-    <header class="brief-header">
-        <h1>AI Agent 每日简报 · 2026-05-22</h1>
-        <p class="subtitle">本简报聚焦 AI Agent（智能体）领域的最新动态、产品发布、研究成果与行业合作，涵盖安全自动化、医疗合规、企业集成与推理芯片等核心议题。今日共选编 11 条内容。</p>
-    </header>
+    <div class="article-body">
+        <h1>Google 推出 Gemini Omni：任意输入生成视频的多模态模型</h1>
+        
+        <h2>原文要点</h2>
+<ul><li>Google DeepMind 发布 Gemini Omni 系列首个模型 Gemini Omni Flash，定位为&quot;任意输入生成任意内容&quot;的多模态生成模型，首批落地场景为视频生成</li>
+<li>Gemini Omni 接受图像、音频、视频和文本的任意组合作为输入，基于 Gemini 的真实世界知识生成高质量视频</li>
+<li>核心能力包括：自然语言对话式视频编辑、多轮精细控制、跨输入模态的融合创作、物理直觉理解（重力、流体动力学等）</li>
+<li>用户可以通过自然语言指令逐步编辑视频，每条指令在前一条基础上叠加，人物一致性和场景连贯性由模型自动维护</li>
+<li>模型利用 Gemini 的世界知识将语言、图像和意义连接，实现超越模式匹配的理解和创作</li>
+<li>Gemini Omni Flash 已上线 Gemini App、Google Flow 和 YouTube Shorts，后续将扩展至图像和音频输出模态</li>
+<li>Google 此前已推出 Nano Banana 实现图像生成和编辑，Gemini Omni 标志着多模态生成能力的重大升级</li>
+</ul>
+<h2>深度解读</h2>
+<h3>为什么重要</h3>
+<p>Gemini Omni 的发布代表着 AI 生成领域的一个重要转折：从单模态特定工具（如专门的图像生成器、专门的视频生成器）转向统一的&quot;任意模态到任意模态&quot;（any-to-any）生成范式。这是 DeepMind 多模态原生架构思路的集中体现——从底层设计上，Gemini 就被构建为能够同时理解和生成多种模态的统一模型，而非事后拼接多个专用模型。</p>
+<p>对于 AI 智能体生态而言，Gemini Omni 提供了丰富的应用想象空间：智能体可以接收视频输入，理解其内容，然后生成新的视频作为行动输出。这意味着 AI 智能体的输入输出循环可以从纯文本扩展到多媒体，完成更复杂的多模态工作流。此外，&quot;对话式视频编辑&quot;意味着内容创作的控制粒度达到了自然语言级别，降低了专业视频制作的门槛。</p>
+<h3>关键要点</h3>
+<ol><li><strong>多模态原生统一架构</strong>：Gemini Omni 基于原生多模态设计，从底层打通文本、图像、音频和视频的理解与生成能力，而非事后组合多个专用模型</li>
+<li><strong>对话式创作革新工作流</strong>：自然语言指令逐步编辑视频的能力，使视频创作的控制粒度前所未有地精细，降低了专业级内容创作的门槛</li>
+<li><strong>物理直觉支撑真实感生成</strong>：模型内置对重力、流体动力学等物理规律的理解，生成的视频在视觉真实感上显著优于纯数据驱动的生成模型</li>
+<li><strong>知识与创造力的融合</strong>：Gemini Omni 将 Gemini 的世界知识直接融入内容生成，能够创作具有历史、科学和文化背景知识的可视化内容，远超简单模式匹配</li>
+<li><strong>多输入源融合创造</strong>：模型可将图像、视频、音频等多种输入同时作为参考，生成融合多种源素材的统一输出，支持高度定制化的创作需求</li>
+</ol>
+<h2>来源</h2>
+<ul><li>全文链接：<a href="https://www.deepmind.com/blog/introducing-gemini-omni" target="_blank" rel="noopener">Introducing Gemini Omni</a></li>
+<li>原文链接：https://www.deepmind.com/blog/introducing-gemini-omni</li>
+</ul>
 
-    <div class="section-header" id="目录">
-    
-    <h2>目录</h2>
-</div><div class="section-header" id="1-AWS-推出前沿智能体安全测试与云运维的自动化革命">
-    
-    <h2>1. AWS 推出前沿智能体：安全测试与云运维的自动化革命</h2>
-</div><div class="section-header" id="2-Amazon-Nova-Act-获得-HIPAA-合规认证医疗-AI-智能体进入受监管领域">
-    
-    <h2>2. Amazon Nova Act 获得 HIPAA 合规认证：医疗 AI 智能体进入受监管领域</h2>
-</div><div class="section-header" id="3-研究揭示大语言模型预训练中的数据时序性影响">
-    
-    <h2>3. 研究揭示：大语言模型预训练中的数据时序性影响</h2>
-</div><div class="section-header" id="4-ChronoMedKG首个时序生物医学知识图谱及临床推理基准">
-    
-    <h2>4. ChronoMedKG：首个时序生物医学知识图谱及临床推理基准</h2>
-</div><div class="section-header" id="5-MetaDesigner自校正语言模型系统实现智能超表面设计">
-    
-    <h2>5. MetaDesigner：自校正语言模型系统实现智能超表面设计</h2>
-</div><div class="section-header" id="6-Anthropic-洽谈租赁微软-Azure-AI-芯片服务器">
-    
-    <h2>6. Anthropic 洽谈租赁微软 Azure AI 芯片服务器</h2>
-</div><div class="section-header" id="7-Google-IO-2026迎接智能体-Gemini-时代">
-    
-    <h2>7. Google I/O 2026：迎接智能体 Gemini 时代</h2>
-</div><div class="section-header" id="8-Microsoft-与-SAP-深化合作A2A-智能体集成开启企业-AI-新范式">
-    
-    <h2>8. Microsoft 与 SAP 深化合作：A2A 智能体集成开启企业 AI 新范式</h2>
-</div><div class="section-header" id="9-推理范式转移从答案推理到智能体推理">
-    
-    <h2>9. 推理范式转移：从"答案推理"到"智能体推理"</h2>
-</div><div class="section-header" id="10-Datasette-Agent面向-Datasette-的新型可扩展-AI-助手">
-    
-    <h2>10. Datasette Agent：面向 Datasette 的新型可扩展 AI 助手</h2>
-</div><div class="section-header" id="11-SpaceX-与-Anthropic-签署每月-125-亿美元云服务协议">
-    
-    <h2>11. SpaceX 与 Anthropic 签署每月 12.5 亿美元云服务协议</h2>
-</div><div class="section-header" id="11-SpaceX-与-Anthropic-签署每月-125-亿美元云服务协议">
-    
-    <h2>11. SpaceX 与 Anthropic 签署每月 12.5 亿美元云服务协议</h2>
-</div>
+    </div>
 
     <footer class="site-footer">
-        AI Agent Daily Brief &mdash; 2026年05月22日
+        <a href="../../brief-2026-05-24.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
     </footer>
 </div>
 </body>

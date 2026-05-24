@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent 每日简报 · 2026-05-22</title>
+    <title>AI Agent Daily Brief - 2026年05月24日</title>
     <style>/* ─── Reset & Base ─── */
 :root {
     --primary:   #1a1a2e;
@@ -195,60 +195,46 @@ a:hover { text-decoration: underline; }
 </head>
 <body>
 <div class="container">
-    <nav class="nav-bar">
-        <a href="brief-2026-05-18.html" class="nav-btn">← 前一天</a>
-        <span class="nav-date">2026年05月22日</span>
-        <a href="brief-2026-05-24.html" class="nav-btn">后一天 →</a>
-    </nav>
+    <div class="breadcrumb">
+        <a href="../../brief-2026-05-24.html">AI Agent Daily Brief - 2026年05月24日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
 
-    <header class="brief-header">
-        <h1>AI Agent 每日简报 · 2026-05-22</h1>
-        <p class="subtitle">本简报聚焦 AI Agent（智能体）领域的最新动态、产品发布、研究成果与行业合作，涵盖安全自动化、医疗合规、企业集成与推理芯片等核心议题。今日共选编 11 条内容。</p>
-    </header>
+    <div class="article-body">
+        <h1>AWS 发布前沿智能体：安全测试和云运维的 autonomous AI 系统</h1>
+        
+        <h2>原文要点</h2>
+<ul><li>AWS 发布两款前沿智能体（Frontier Agents）：AWS Security Agent（按需渗透测试）和 AWS DevOps Agent（自主云运维），双双正式上市</li>
+<li>前沿智能体的三个核心特征：独立工作达成目标、大规模并发任务扩展、持续运行数小时至数天无需人工持续监督</li>
+<li><strong>AWS Security Agent</strong>：将渗透测试从周期性瓶颈转变为按需能力，将测试时间从数周压缩至数小时，发现传统扫描工具无法发现的攻击链；Bamboo Health 和 HENNGE K.K. 在预览期间使用后报告发现此前未被任何工具检出的漏洞</li>
+<li><strong>AWS DevOps Agent</strong>：自主进行事件调查、根因分析和修复建议，支持跨 AWS、Azure、混合云和本地环境运行；与 CloudWatch、Datadog、Dynatrace、New Relic、Splunk、Grafana 等可观测性工具深度集成</li>
+<li><strong>DevOps Agent 预览数据</strong>：平均 MTTR（平均修复时间）降低 75%，调查速度提升 80%，根因准确率达 94%，支持 3-5 倍更快的事件解决</li>
+<li>西弗吉尼亚大学（WGU）在生产环境中部署 DevOps Agent，一次服务中断事件的端到端解决时间从约 2 小时缩短至 28 分钟（MTTR 改善 77%）</li>
+<li>AWS Security Agent 和 DevOps Agent 被定位为&quot;前沿智能体&quot;（Frontier Agents），代表 AWS 在 re:Invent 大会上宣布的新一类 AI 能力</li>
+</ul>
+<h2>深度解读</h2>
+<h3>为什么重要</h3>
+<p>AWS 发布的两款前沿智能体代表了 AI 智能体从&quot;辅助工具&quot;向&quot;自主执行者&quot;转变的实质性跨越。Security Agent 将安全测试从依赖稀缺的安全专家周期性执行，转变为可按需、持续、自动化运行的能力——这直接改变了安全测试的经济学。DevOps Agent 则将运维团队从被动救火模式中解放出来，使其能够专注于更高价值的系统性改进。</p>
+<p>从技术架构角度看，这两款智能体的设计体现了&quot;智能体即团队成员&quot;的理念——它们不是响应单个提示的工具，而是能够理解上下文、跨多个系统协调行动、持续工作至达成目标的自主实体。这种能力将深刻改变企业安全和运维的组织方式，使得更少的专业人员能够管理更大规模的 IT 基础设施。</p>
+<h3>关键要点</h3>
+<ol><li><strong>从辅助工具到自主执行者的质变</strong>：前沿智能体能够独立完成从目标设定到执行完成的全流程，而非响应单次提示后结束，这是 AI 智能体成熟度的关键里程碑</li>
+<li><strong>安全测试的范式转变</strong>：AWS Security Agent 将渗透测试从高成本、定期、人力密集型工作转变为可扩展、持续、按需运行的自动化能力，解决了安全行业人才短缺的核心矛盾</li>
+<li><strong>运维效率的数量级提升</strong>：DevOps Agent 实现的 MTTR 降低 75%、调查速度提升 80% 等指标，意味着 AI 智能体正在成为运维团队的 force multiplier</li>
+<li><strong>跨环境统一运维</strong>：DevOps Agent 支持 AWS、Azure、混合云和本地环境，为多云时代的统一运维提供了智能化解决方案</li>
+<li><strong>真实生产环境的验证</strong>：WGU 从约 2 小时缩短至 28 分钟的实际案例，有力地证明了前沿智能体在生产环境中的实际价值，而非仅是实验室指标</li>
+</ol>
+<h2>来源</h2>
+<ul><li>全文链接：<a href="https://aws.amazon.com/blogs/machine-learning/aws-launches-frontier-agents-for-security-testing-and-cloud-operations/" target="_blank" rel="noopener">AWS launches frontier agents for security testing and cloud operations</a></li>
+<li>原文链接：https://aws.amazon.com/blogs/machine-learning/aws-launches-frontier-agents-for-security-testing-and-cloud-operations/</li>
+</ul>
 
-    <div class="section-header" id="目录">
-    
-    <h2>目录</h2>
-</div><div class="section-header" id="1-AWS-推出前沿智能体安全测试与云运维的自动化革命">
-    
-    <h2>1. AWS 推出前沿智能体：安全测试与云运维的自动化革命</h2>
-</div><div class="section-header" id="2-Amazon-Nova-Act-获得-HIPAA-合规认证医疗-AI-智能体进入受监管领域">
-    
-    <h2>2. Amazon Nova Act 获得 HIPAA 合规认证：医疗 AI 智能体进入受监管领域</h2>
-</div><div class="section-header" id="3-研究揭示大语言模型预训练中的数据时序性影响">
-    
-    <h2>3. 研究揭示：大语言模型预训练中的数据时序性影响</h2>
-</div><div class="section-header" id="4-ChronoMedKG首个时序生物医学知识图谱及临床推理基准">
-    
-    <h2>4. ChronoMedKG：首个时序生物医学知识图谱及临床推理基准</h2>
-</div><div class="section-header" id="5-MetaDesigner自校正语言模型系统实现智能超表面设计">
-    
-    <h2>5. MetaDesigner：自校正语言模型系统实现智能超表面设计</h2>
-</div><div class="section-header" id="6-Anthropic-洽谈租赁微软-Azure-AI-芯片服务器">
-    
-    <h2>6. Anthropic 洽谈租赁微软 Azure AI 芯片服务器</h2>
-</div><div class="section-header" id="7-Google-IO-2026迎接智能体-Gemini-时代">
-    
-    <h2>7. Google I/O 2026：迎接智能体 Gemini 时代</h2>
-</div><div class="section-header" id="8-Microsoft-与-SAP-深化合作A2A-智能体集成开启企业-AI-新范式">
-    
-    <h2>8. Microsoft 与 SAP 深化合作：A2A 智能体集成开启企业 AI 新范式</h2>
-</div><div class="section-header" id="9-推理范式转移从答案推理到智能体推理">
-    
-    <h2>9. 推理范式转移：从"答案推理"到"智能体推理"</h2>
-</div><div class="section-header" id="10-Datasette-Agent面向-Datasette-的新型可扩展-AI-助手">
-    
-    <h2>10. Datasette Agent：面向 Datasette 的新型可扩展 AI 助手</h2>
-</div><div class="section-header" id="11-SpaceX-与-Anthropic-签署每月-125-亿美元云服务协议">
-    
-    <h2>11. SpaceX 与 Anthropic 签署每月 12.5 亿美元云服务协议</h2>
-</div><div class="section-header" id="11-SpaceX-与-Anthropic-签署每月-125-亿美元云服务协议">
-    
-    <h2>11. SpaceX 与 Anthropic 签署每月 12.5 亿美元云服务协议</h2>
-</div>
+    </div>
 
     <footer class="site-footer">
-        AI Agent Daily Brief &mdash; 2026年05月22日
+        <a href="../../brief-2026-05-24.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
     </footer>
 </div>
 </body>

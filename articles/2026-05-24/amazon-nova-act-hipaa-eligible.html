@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent 每日简报 · 2026-05-22</title>
+    <title>AI Agent Daily Brief - 2026年05月24日</title>
     <style>/* ─── Reset & Base ─── */
 :root {
     --primary:   #1a1a2e;
@@ -195,60 +195,46 @@ a:hover { text-decoration: underline; }
 </head>
 <body>
 <div class="container">
-    <nav class="nav-bar">
-        <a href="brief-2026-05-18.html" class="nav-btn">← 前一天</a>
-        <span class="nav-date">2026年05月22日</span>
-        <a href="brief-2026-05-24.html" class="nav-btn">后一天 →</a>
-    </nav>
+    <div class="breadcrumb">
+        <a href="../../brief-2026-05-24.html">AI Agent Daily Brief - 2026年05月24日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
 
-    <header class="brief-header">
-        <h1>AI Agent 每日简报 · 2026-05-22</h1>
-        <p class="subtitle">本简报聚焦 AI Agent（智能体）领域的最新动态、产品发布、研究成果与行业合作，涵盖安全自动化、医疗合规、企业集成与推理芯片等核心议题。今日共选编 11 条内容。</p>
-    </header>
+    <div class="article-body">
+        <h1>Amazon Nova Act 获得 HIPAA 合规认证：AI 智能体正式进入医疗保健领域</h1>
+        
+        <h2>原文要点</h2>
+<ul><li>Amazon Nova Act 已获得 HIPAA（健康保险便携性和责任法案）合规认证资质，可用于涉及受保护健康信息（ePHI）的自动化工作流</li>
+<li>Nova Act 是 AWS 的浏览器自动化 AI 智能体服务，可完成重复性的 UI 工作流，在适当时候升级给人工监督</li>
+<li>在医疗保健和生命科学（HCLS）场景中，Nova Act 现可应用于：预约调度、保险验证、理赔状态查询和申诉提交、转诊管理和合规报告数据收集</li>
+<li>HIPAA 合规认证基于 AWS 共享责任模型：AWS 负责底层基础设施安全，用户负责配置合规控制</li>
+<li>启用 Nova Act 处理 ePHI 的步骤包括：签署 AWS BAA（商业伙伴协议）、配置 IAM 访问策略、使用 AWS KMS 加密、启用 CloudTrail 日志记录</li>
+<li>Nova Act 目前仅在美国东部（北弗吉尼亚）AWS 区域可用，支持与 Strands Agents 框架和 Amazon Bedrock AgentCore 集成</li>
+<li>此次更新填补了 AI 智能体在高合规性医疗场景中的空白——此前大多数 AI 自动化工具因监管限制无法进入涉及 ePHI 的工作流</li>
+</ul>
+<h2>深度解读</h2>
+<h3>为什么重要</h3>
+<p>HIPAA 合规认证是 AI 智能体进入医疗保健行业的关键准入门槛。医疗保健领域充满了重复性的、手工的、基于浏览器的流程（理赔处理、转诊协调、保险验证等），这些流程正是 AI 智能体自动化的理想场景。但由于涉及受保护健康信息（ePHI），监管要求使得大多数 AI 工具无法在这些场景中部署。</p>
+<p>Nova Act 获得 HIPAA 资质，意味着 AWS 为 AI 智能体进入高合规行业提供了制度性路径。这不仅是 AWS 的产品里程碑，也是整个 AI 智能体行业的重要信号——AI 智能体正在从技术可行走向监管合规，从实验性用例走向生产级部署。</p>
+<h3>关键要点</h3>
+<ol><li><strong>打破医疗 AI 自动化的合规壁垒</strong>：HIPAA 认证使得 AI 智能体可以在涉及 ePHI 的工作流中合法部署，医疗行政自动化的市场规模由此显著扩大</li>
+<li><strong>AWS 共享责任模型的关键理解</strong>：获得 HIPAA 资质意味着 AWS 提供了合规的基础设施框架，但用户（企业）仍需负责合规配置的落地实施</li>
+<li><strong>医疗场景的精准落地</strong>：预约调度、保险验证、理赔申诉、转诊管理等高重复性医疗行政任务，是 Nova Act 的核心价值场景</li>
+<li><strong>区域限制与集成生态</strong>：目前仅限美国东部区域使用，但支持与 Strands Agents、Bedrock AgentCore 等框架集成，意味着企业可以构建完整的医疗 AI 自动化工作流</li>
+<li><strong>AWS 在医疗 AI 领域的差异化定位</strong>：通过 HIPAA 资质认证，AWS 在 AI 智能体市场占据了一个被竞争对手忽视的高合规细分领域</li>
+</ol>
+<h2>来源</h2>
+<ul><li>全文链接：<a href="https://aws.amazon.com/blogs/machine-learning/amazon-nova-act-is-now-hipaa-eligible/" target="_blank" rel="noopener">Amazon Nova Act is now HIPAA eligible</a></li>
+<li>原文链接：https://aws.amazon.com/blogs/machine-learning/amazon-nova-act-is-now-hipaa-eligible/</li>
+</ul>
 
-    <div class="section-header" id="目录">
-    
-    <h2>目录</h2>
-</div><div class="section-header" id="1-AWS-推出前沿智能体安全测试与云运维的自动化革命">
-    
-    <h2>1. AWS 推出前沿智能体：安全测试与云运维的自动化革命</h2>
-</div><div class="section-header" id="2-Amazon-Nova-Act-获得-HIPAA-合规认证医疗-AI-智能体进入受监管领域">
-    
-    <h2>2. Amazon Nova Act 获得 HIPAA 合规认证：医疗 AI 智能体进入受监管领域</h2>
-</div><div class="section-header" id="3-研究揭示大语言模型预训练中的数据时序性影响">
-    
-    <h2>3. 研究揭示：大语言模型预训练中的数据时序性影响</h2>
-</div><div class="section-header" id="4-ChronoMedKG首个时序生物医学知识图谱及临床推理基准">
-    
-    <h2>4. ChronoMedKG：首个时序生物医学知识图谱及临床推理基准</h2>
-</div><div class="section-header" id="5-MetaDesigner自校正语言模型系统实现智能超表面设计">
-    
-    <h2>5. MetaDesigner：自校正语言模型系统实现智能超表面设计</h2>
-</div><div class="section-header" id="6-Anthropic-洽谈租赁微软-Azure-AI-芯片服务器">
-    
-    <h2>6. Anthropic 洽谈租赁微软 Azure AI 芯片服务器</h2>
-</div><div class="section-header" id="7-Google-IO-2026迎接智能体-Gemini-时代">
-    
-    <h2>7. Google I/O 2026：迎接智能体 Gemini 时代</h2>
-</div><div class="section-header" id="8-Microsoft-与-SAP-深化合作A2A-智能体集成开启企业-AI-新范式">
-    
-    <h2>8. Microsoft 与 SAP 深化合作：A2A 智能体集成开启企业 AI 新范式</h2>
-</div><div class="section-header" id="9-推理范式转移从答案推理到智能体推理">
-    
-    <h2>9. 推理范式转移：从"答案推理"到"智能体推理"</h2>
-</div><div class="section-header" id="10-Datasette-Agent面向-Datasette-的新型可扩展-AI-助手">
-    
-    <h2>10. Datasette Agent：面向 Datasette 的新型可扩展 AI 助手</h2>
-</div><div class="section-header" id="11-SpaceX-与-Anthropic-签署每月-125-亿美元云服务协议">
-    
-    <h2>11. SpaceX 与 Anthropic 签署每月 12.5 亿美元云服务协议</h2>
-</div><div class="section-header" id="11-SpaceX-与-Anthropic-签署每月-125-亿美元云服务协议">
-    
-    <h2>11. SpaceX 与 Anthropic 签署每月 12.5 亿美元云服务协议</h2>
-</div>
+    </div>
 
     <footer class="site-footer">
-        AI Agent Daily Brief &mdash; 2026年05月22日
+        <a href="../../brief-2026-05-24.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
     </footer>
 </div>
 </body>

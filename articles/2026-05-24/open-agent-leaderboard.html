@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent 每日简报 · 2026-05-22</title>
+    <title>AI Agent Daily Brief - 2026年05月24日</title>
     <style>/* ─── Reset & Base ─── */
 :root {
     --primary:   #1a1a2e;
@@ -195,60 +195,46 @@ a:hover { text-decoration: underline; }
 </head>
 <body>
 <div class="container">
-    <nav class="nav-bar">
-        <a href="brief-2026-05-18.html" class="nav-btn">← 前一天</a>
-        <span class="nav-date">2026年05月22日</span>
-        <a href="brief-2026-05-24.html" class="nav-btn">后一天 →</a>
-    </nav>
+    <div class="breadcrumb">
+        <a href="../../brief-2026-05-24.html">AI Agent Daily Brief - 2026年05月24日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
 
-    <header class="brief-header">
-        <h1>AI Agent 每日简报 · 2026-05-22</h1>
-        <p class="subtitle">本简报聚焦 AI Agent（智能体）领域的最新动态、产品发布、研究成果与行业合作，涵盖安全自动化、医疗合规、企业集成与推理芯片等核心议题。今日共选编 11 条内容。</p>
-    </header>
+    <div class="article-body">
+        <h1>IBM 发布开放智能体排行榜：评估完整的智能体系统而非单一模型</h1>
+        
+        <h2>原文要点</h2>
+<ul><li>IBM Research 发布&quot;开放智能体排行榜&quot;（Open Agent Leaderboard），这是首个对完整 AI 智能体系统进行评测的开放基准</li>
+<li>与传统模型评测不同，该排行榜评估的是&quot;智能体系统整体&quot;——包括模型、工具链、规划模块、记忆机制和错误恢复能力，而非仅测试底层模型</li>
+<li>排行榜使用六个真实评测基准：SWE-Bench Verified（代码修复）、BrowseComp+（网络研究）、AppWorld（跨应用任务）、tau2-Bench（客服与技术支持）</li>
+<li>评估维度同时包含质量（成功率）和成本（单任务费用），便于对比智能体系统的性价比</li>
+<li>早期结果显示：相同的底层模型，不同的智能体实现，可以产生差异显著的结果——智能体层面的设计选择对性能影响巨大</li>
+<li>同一模型下的最低成本配置与最高性能配置之间，成本差距达数倍，揭示了智能体经济性的重要性</li>
+<li>IBM 还配套发布了 Exgentic 框架，用于运行和复现评测</li>
+</ul>
+<h2>深度解读</h2>
+<h3>为什么重要</h3>
+<p>当前 AI 评测体系存在一个根本性盲点：过度聚焦于模型在特定任务上的得分，却忽视了&quot;智能体&quot;作为完整系统在实际部署中的表现差异。在真实世界中，选择一个 AI 智能体不只是选一个模型——你同时选择了工具集、规划策略、记忆结构和容错机制。这些组件的不同组合会导致同一模型在不同智能体实现下产生截然不同的结果和成本。</p>
+<p>IBM 的这份排行榜揭示了一个关键事实：在智能体领域，&quot;模型即一切&quot;的叙事是误导性的。智能体设计本身（agentic scaffolding）正在成为决定 AI 系统实用价值的关键变量。这意味着 AI 的竞争正在从模型参数层的军备竞赛，扩展到智能体架构和工程层面的竞争。</p>
+<h3>关键要点</h3>
+<ol><li><strong>评测对象从模型升级到系统</strong>：排行榜将整个智能体系统作为评估单元，涵盖工具调用、任务规划、状态记忆和容错机制，全面反映实际部署效果</li>
+<li><strong>成本与质量必须同时考量</strong>：智能体系统的高昂运行成本可能抵消其性能优势——排行榜同时报告成功率和单任务成本，为实际部署决策提供依据</li>
+<li><strong>同模型不同智能体，结果差异显著</strong>：排行榜显示，顶级配置均使用相同模型，但因智能体实现不同，在质量和成本上出现显著分化，证明了&quot;智能体工程&quot;作为独立学科的价值</li>
+<li><strong>开放评测促进行业透明度</strong>：Exgentic 框架和完整方法论文档开放给社区，有望推动智能体评测标准化，填补行业空白</li>
+<li><strong>评测覆盖真实工作场景</strong>：六个基准涵盖代码修复、网络研究、跨应用操作、客服等实际场景，确保评估结果与生产环境高度相关</li>
+</ol>
+<h2>来源</h2>
+<ul><li>全文链接：<a href="https://huggingface.co/blog/ibm-research/open-agent-leaderboard" target="_blank" rel="noopener">The Open Agent Leaderboard</a></li>
+<li>原文链接：https://huggingface.co/blog/ibm-research/open-agent-leaderboard</li>
+</ul>
 
-    <div class="section-header" id="目录">
-    
-    <h2>目录</h2>
-</div><div class="section-header" id="1-AWS-推出前沿智能体安全测试与云运维的自动化革命">
-    
-    <h2>1. AWS 推出前沿智能体：安全测试与云运维的自动化革命</h2>
-</div><div class="section-header" id="2-Amazon-Nova-Act-获得-HIPAA-合规认证医疗-AI-智能体进入受监管领域">
-    
-    <h2>2. Amazon Nova Act 获得 HIPAA 合规认证：医疗 AI 智能体进入受监管领域</h2>
-</div><div class="section-header" id="3-研究揭示大语言模型预训练中的数据时序性影响">
-    
-    <h2>3. 研究揭示：大语言模型预训练中的数据时序性影响</h2>
-</div><div class="section-header" id="4-ChronoMedKG首个时序生物医学知识图谱及临床推理基准">
-    
-    <h2>4. ChronoMedKG：首个时序生物医学知识图谱及临床推理基准</h2>
-</div><div class="section-header" id="5-MetaDesigner自校正语言模型系统实现智能超表面设计">
-    
-    <h2>5. MetaDesigner：自校正语言模型系统实现智能超表面设计</h2>
-</div><div class="section-header" id="6-Anthropic-洽谈租赁微软-Azure-AI-芯片服务器">
-    
-    <h2>6. Anthropic 洽谈租赁微软 Azure AI 芯片服务器</h2>
-</div><div class="section-header" id="7-Google-IO-2026迎接智能体-Gemini-时代">
-    
-    <h2>7. Google I/O 2026：迎接智能体 Gemini 时代</h2>
-</div><div class="section-header" id="8-Microsoft-与-SAP-深化合作A2A-智能体集成开启企业-AI-新范式">
-    
-    <h2>8. Microsoft 与 SAP 深化合作：A2A 智能体集成开启企业 AI 新范式</h2>
-</div><div class="section-header" id="9-推理范式转移从答案推理到智能体推理">
-    
-    <h2>9. 推理范式转移：从"答案推理"到"智能体推理"</h2>
-</div><div class="section-header" id="10-Datasette-Agent面向-Datasette-的新型可扩展-AI-助手">
-    
-    <h2>10. Datasette Agent：面向 Datasette 的新型可扩展 AI 助手</h2>
-</div><div class="section-header" id="11-SpaceX-与-Anthropic-签署每月-125-亿美元云服务协议">
-    
-    <h2>11. SpaceX 与 Anthropic 签署每月 12.5 亿美元云服务协议</h2>
-</div><div class="section-header" id="11-SpaceX-与-Anthropic-签署每月-125-亿美元云服务协议">
-    
-    <h2>11. SpaceX 与 Anthropic 签署每月 12.5 亿美元云服务协议</h2>
-</div>
+    </div>
 
     <footer class="site-footer">
-        AI Agent Daily Brief &mdash; 2026年05月22日
+        <a href="../../brief-2026-05-24.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
     </footer>
 </div>
 </body>
