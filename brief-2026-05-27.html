@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent 每日简报 | 2026-05-27</title>
+    <style>/* ─── Reset & Base ─── */
+:root {
+    --primary:   #1a1a2e;
+    --secondary: #16213e;
+    --accent:    #0f3460;
+    --highlight: #e94560;
+    --text:      #eaeaea;
+    --muted:     #a0a0a0;
+    --card-bg:   #1a1a2e;
+    --border:    #2a2a4a;
+    --green:     #4ade80;
+    --blue:      #60a5fa;
+    --yellow:    #fbbf24;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f0f1a;
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Layout ─── */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ─── Nav Bar ─── */
+.nav-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; padding: 14px 20px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.nav-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    padding: 6px 12px; border-radius: 6px; text-decoration: none;
+    transition: all .2s;
+}
+.nav-btn:hover { color: #fff; background: var(--accent); text-decoration: none; }
+.nav-btn.disabled { opacity: .3; pointer-events: none; }
+.nav-date { font-size: 14px; font-weight: 600; color: var(--highlight); }
+
+/* ─── Header ─── */
+.brief-header { margin-bottom: 28px; }
+.badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--highlight); color: #fff;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 999px; margin-bottom: 10px; letter-spacing: .5px;
+}
+.brief-header h1 { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.3; }
+.brief-header .subtitle { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+
+/* ─── Quick Hits ─── */
+.quick-hits {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 28px;
+}
+.quick-hits ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.quick-hits li { font-size: 15px; }
+.quick-hits li strong { color: #fff; }
+.quick-hits li a { color: var(--blue); }
+
+/* ─── Section ─── */
+.section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin: 30px 0 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.section-header .emoji { font-size: 20px; }
+.section-header h2 { font-size: 16px; font-weight: 700; color: #fff; }
+
+/* ─── Item ─── */
+.item { margin-bottom: 28px; }
+.item h3 {
+    font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; line-height: 1.4; scroll-margin-top: 20px;
+}
+
+/* ─── Item Body (rendered markdown) ─── */
+.item-body { font-size: 14px; color: var(--muted); }
+.item-body p { margin-bottom: 10px; }
+.item-body p:last-child { margin-bottom: 0; }
+.item-body strong, .item-body b { color: #fff; font-weight: 600; }
+.item-body em, .item-body i { color: #ccc; font-style: italic; }
+.item-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.item-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+    overflow-x: auto;
+}
+.item-body pre code { background: none; padding: 0; font-size: 13px; }
+.item-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 10px 0; color: var(--muted);
+}
+.item-body ul, .item-body ol {
+    padding-left: 20px; margin: 8px 0;
+}
+.item-body li { margin-bottom: 5px; }
+.item-body li::marker { color: var(--highlight); }
+.item-body a { color: var(--blue); }
+.item-body a:hover { text-decoration: underline; }
+
+/* ─── Key Points Box ─── */
+.key-points {
+    background: var(--secondary); border-left: 3px solid var(--highlight);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 10px 0;
+}
+.key-points strong { color: var(--highlight); display: block; margin-bottom: 6px; }
+.key-points ul { list-style: none; padding: 0; margin: 0; }
+.key-points li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+.key-points li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
+
+/* ─── Item Meta (source + readable links) ─── */
+.item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.item-meta a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 500; padding: 4px 10px;
+    border-radius: 6px; text-decoration: none; transition: all .15s;
+}
+.item-meta .src-link { color: var(--blue); border: 1px solid #60a5fa33; }
+.item-meta .src-link:hover { background: #60a5fa22; }
+.item-meta .read-link { color: var(--green); border: 1px solid #4ade8033; }
+.item-meta .read-link:hover { background: #4ade8022; }
+
+/* ─── Footer ─── */
+.site-footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); text-align: center;
+}
+
+/* ─── Article Page ─── */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb .sep { color: var(--border); }
+
+.article-body {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px; margin-bottom: 24px;
+}
+.article-body h1 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.3; }
+.article-body .source-line {
+    font-size: 13px; color: var(--muted); margin-bottom: 18px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.article-body .source-line a { color: var(--blue); }
+.article-body p { margin-bottom: 14px; font-size: 15px; }
+.article-body strong, .article-body b { color: #fff; font-weight: 600; }
+.article-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.article-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto;
+}
+.article-body pre code { background: none; padding: 0; }
+.article-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 12px 0; color: var(--muted);
+}
+.article-body ul, .article-body ol { padding-left: 22px; margin: 10px 0; }
+.article-body li { margin-bottom: 6px; }
+.article-body li::marker { color: var(--highlight); }
+.article-body a { color: var(--blue); }
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+    .container { padding: 20px 14px 60px; }
+    .nav-bar { flex-wrap: wrap; gap: 8px; }
+    .nav-date { order: -1; width: 100%; text-align: center; }
+    .article-body { padding: 20px 18px; }
+    .brief-header h1 { font-size: 19px; }
+}</style>
+</head>
+<body>
+<div class="container">
+    <nav class="nav-bar">
+        <a href="brief-2026-05-26.html" class="nav-btn">← 前一天</a>
+        <span class="nav-date">2026年05月27日</span>
+        <span class="nav-btn disabled">后一天 →</span>
+    </nav>
+
+    <header class="brief-header">
+        <h1>AI Agent 每日简报 | 2026-05-27</h1>
+        <p class="subtitle">本简报覆盖 2026 年 5 月 25–27 日 AI Agent 领域重要进展，共 7 篇文章。</p>
+    </header>
+
+    <div class="section-header" id="目录">
+    
+    <h2>目录</h2>
+</div><div class="section-header" id="1-SocialReasoning-BenchAI-Agent-能否站在用户立场行事">
+    
+    <h2>1. SocialReasoning-Bench：AI Agent 能否站在用户立场行事？</h2>
+</div><div class="item" id="为什么重要">
+    <h3>为什么重要</h3>
+    <div class="item-body"><p>当 AI Agent 越来越多地代表用户执行日历协调、购物谈判等真实任务时，单纯的&quot;任务完成&quot;已不够——Agent 是否真正维护用户利益，成为衡量其可信度的关键指标。SocialReasoning-Bench 是首个系统性评估这一能力的大型 benchmark，直接影响 AI Agent 的产品化可信度标准。</p>
+</div>
+</div><div class="item" id="关键要点">
+    <h3>关键要点</h3>
+    <div class="item-body"><ol><li><p><strong>测试场景</strong>：基准评估 AI Agent 在两类真实场景中的表现——日历协调（多参与者时间协商）和市场谈判（买卖双方价格博弈），均需平衡自身用户利益与其他方诉求。</p>
+</li>
+<li><p><strong>双重评分维度</strong>：每项任务同时考察结果最优性（Outcome Optimality，用户实际获得的价值）和尽职调查（Due Diligence，Agent 是否遵循了合理的决策流程，如收集信息、主动还价）。</p>
+</li>
+<li><p><strong>前沿模型普遍&quot;留有余地&quot;</strong>：当前最强模型通常能完成任务，但在日历协调中接受非最优会议时间，在谈判中接受较差交易价格，未能充分为用户争取利益——这是行为策略问题，而非能力不足。</p>
+</li>
+<li><p><strong>即使明确提示&quot;为用户利益行动&quot;，表现仍未达标</strong>：研究人员通过 prompt 要求 Agent 优先考虑用户利益，但性能仍远低于可信赖委托人所应达到的水平，说明这不是简单提示能解决的。</p>
+</li>
+<li><p><strong>过程质量帮助区分&quot;运气&quot;与&quot;能力&quot;</strong>：结合结果分和过程分可发现，部分 Agent 靠&quot;幸运&quot;拿到好结果（低 Due Diligence），部分则有诚意但能力不足（高 Due Diligence 但低 Outcome），两类问题需要不同的改进路径。</p>
+</li>
+</ol>
+</div>
+</div><div class="item" id="来源">
+    <h3>来源</h3>
+    <div class="item-body"><p><a href="https://www.microsoft.com/en-us/research/blog/socialreasoning-bench-measuring-whether-ai-agents-act-in-users-best-interests/" target="_blank" rel="noopener">全文</a> | <a href="https://www.microsoft.com/en-us/research/blog/socialreasoning-bench-measuring-whether-ai-agents-act-in-users-best-interests/" target="_blank" rel="noopener">原文</a></p>
+</div>
+</div><div class="section-header" id="2-VegaAI-时代用零知识证明保护数字身份">
+    
+    <h2>2. Vega：AI 时代用零知识证明保护数字身份</h2>
+</div><div class="item" id="为什么重要">
+    <h3>为什么重要</h3>
+    <div class="item-body"><p>AI Agent 越来越多地代表用户与第三方服务交互，用户需要一种方式证明&quot;我是我&quot;、&quot;我是成年人&quot;、&quot;我有执业资质&quot;，而不必暴露身份证件本身。Vega 来自微软研究院，解决了这一核心隐私难题，其零知识证明生成速度已达到实用级别（&lt;100ms），为 AI 时代的身份验证基础设施提供了新范式。</p>
+</div>
+</div><div class="item" id="关键要点">
+    <h3>关键要点</h3>
+    <div class="item-body"><ol><li><p><strong>隐私优先的身份证明</strong>：用户可凭政府签发的身份证件（驾照、护照等）生成零知识证明，仅透露&quot;我年满 18 岁&quot;或&quot;我是持证医师&quot;，无需暴露证件本身或任何其他信息。</p>
+</li>
+<li><p><strong>速度达到实用级别</strong>：在普通消费设备上，零知识证明生成时间低于 100 毫秒，且无需&quot;可信初始化&quot;（trusted setup），降低了部署门槛。折叠复用（Fold-and-reuse）机制使同一证明的第二次展示跳过大部分计算。</p>
+</li>
+<li><p><strong>兼容真实凭证格式</strong>：针对移动驾照（mDL）和欧盟数字身份钱包（EUDI Wallet）等真实政府数字凭证标准设计，而非实验室理想化模型。</p>
+</li>
+<li><p><strong>设备绑定防滥用</strong>：零知识证明必须与持有设备的签名绑定，防止泄露凭证被他人或未授权 AI Agent 冒用。设备私钥存储于手机安全元件（secure element），无法被软件提取。</p>
+</li>
+<li><p><strong>开源即将发布</strong>：Vega 采用 Rust 实现，相关证明系统已以开源项目 <a href="https://github.com/microsoft/spartan2" target="_blank" rel="noopener">spartan2</a> 形式发布，完整论文也将发布。这对 AI Agent 开发者的身份集成有直接参考价值。</p>
+</li>
+</ol>
+</div>
+</div><div class="item" id="来源">
+    <h3>来源</h3>
+    <div class="item-body"><p><a href="https://www.microsoft.com/en-us/research/blog/vega-zero-knowledge-proofs-for-digital-identity-in-the-age-of-ai/" target="_blank" rel="noopener">全文</a> | <a href="https://www.microsoft.com/en-us/research/publication/vega-low-latency-zero-knowledge-proofs-over-existing-credentials/" target="_blank" rel="noopener">原文</a></p>
+</div>
+</div><div class="section-header" id="3-Altman-与-Amodei-收回AI-导致失业预言正好赶上万亿估值-IPO">
+    
+    <h2>3. Altman 与 Amodei 收回"AI 导致失业"预言：正好赶上万亿估值 IPO</h2>
+</div><div class="item" id="为什么重要">
+    <h3>为什么重要</h3>
+    <div class="item-body"><p>AI 行业头部公司 CEO 公开修正此前&quot;AI 将消灭大量白领工作&quot;的激进预测，这一转向的时机恰逢 OpenAI 和 Anthropic 筹备 IPO，估值均达万亿级别。对 AI Agent 行业而言，这意味着市场叙事正在从&quot;替代焦虑&quot;转向&quot;效率放大&quot;，影响着投资预期、产品定位和监管讨论。</p>
+</div>
+</div><div class="item" id="关键要点">
+    <h3>关键要点</h3>
+    <div class="item-body"><ol><li><p><strong>Altman：从&quot;担忧失业&quot;到&quot;很高兴自己错了&quot;</strong>：在澳大利亚联邦银行 CEO Matt Comyn 的访谈中，Altman 表示：&quot;我很高兴自己在这件事上错了。我原本以为入门级白领工作会受到更大冲击，但实际上并未如预期那样发生。&quot;仅一年前他还警告整个工作类别可能消失。</p>
+</li>
+<li><p><strong>Amodei：从&quot;50% 工作受威胁&quot;到&quot;自动化是生产力倍增器&quot;</strong>：Anthropic CEO 将自动化重新定义为&quot;如果你自动化了 90% 的工作，那么每个人都在做剩余的 10%&quot;，并补充说这 10% 仍可扩展回 100%，带来十倍生产力提升。</p>
+</li>
+<li><p><strong>IPO 时间窗口的叙事调整</strong>：两家公司均在筹备万亿估值 IPO，此时公开修正失业预测，有助于在投资者和公众层面建立更稳健的增长叙事。</p>
+</li>
+<li><p><strong>实证数据支撑修正</strong>：耶鲁预算实验室（Yale Budget Lab）研究发现，迄今为止 AI 暴露度最高的工作类别并未出现明显就业下滑；另有研究指出程序员、作家等&quot;AI 暴露工人&quot;的就业危机在 ChatGPT 推出之前就已开始，削弱了&quot;AI 直接导致失业&quot;的叙事。</p>
+</li>
+<li><p><strong>行业影响</strong>：这种叙事转变可能影响政策制定者对 AI 监管的紧迫感，以及企业采购 AI Agent 工具时的内部阻力评估。</p>
+</li>
+</ol>
+</div>
+</div><div class="item" id="来源">
+    <h3>来源</h3>
+    <div class="item-body"><p><a href="https://the-decoder.com/sam-altman-and-dario-amodei-walk-back-their-ai-job-apocalypse-predictions/" target="_blank" rel="noopener">全文</a> | <a href="https://techcrunch.com/2026/05/24/everyone-is-navigating-ai-security-in-real-time-even-google/" target="_blank" rel="noopener">原文</a></p>
+</div>
+</div><div class="section-header" id="4-Google-Cloud-COOAI-安全必须进入董事会而非停留在机房">
+    
+    <h2>4. Google Cloud COO：AI 安全必须进入董事会，而非停留在机房</h2>
+</div><div class="item" id="为什么重要">
+    <h3>为什么重要</h3>
+    <div class="item-body"><p>AI 安全正在从&quot;技术问题&quot;升级为&quot;治理问题&quot;。Google Cloud COO Francis deSouza 的表态代表了大厂对 AI 安全定位的根本性转变：当攻击时间窗口从 8 小时压缩到 22 秒、企业 AI 资产扩展到模型、数据管道、Agent 和 Prompt，安全的责任主体已无法继续外包给 IT 部门。这对 AI Agent 的企业采纳和安全合规框架有直接影响。</p>
+</div>
+</div><div class="item" id="关键要点">
+    <h3>关键要点</h3>
+    <div class="item-body"><ol><li><p><strong>平台安全从第一天抓起</strong>：deSouza 明确表示&quot;没有 AI 战略就没有数据战略和安全战略，三者必须并行&quot;，并强调&quot;安全不能事后添加，也不能指望员工自行搞定&quot;。这是对&quot;先上线再打补丁&quot;模式的直接否定。</p>
+</li>
+<li><p><strong>影子 AI 的风险</strong>：员工绕过公司审批使用消费者级 AI 工具，形成组织内的安全盲区。deSouza 警告 AI Agent 可能挖掘出被遗忘的数据源（如深埋的旧 SharePoint 服务器），扩大攻击面。</p>
+</li>
+<li><p><strong>攻击时间窗口从 8 小时压缩至 22 秒</strong>：企业遭受初始入侵到攻击者完成横向移动的时间大幅缩短，要求安全响应速度同步提升。</p>
+</li>
+<li><p><strong>Agent 级防御</strong>：&quot;不再需要人工主导防御，甚至不需要人在回路中，而是人类监督完全自主的 Agent 防御&quot;，这是 deSouza 提出的安全架构演进方向。</p>
+</li>
+<li><p><strong>多云现实</strong>：即使企业认为自己只用了一家云服务商， SaaS 应用和业务合作伙伴几乎必然会引入多云环境，安全策略必须跨云统一。</p>
+</li>
+<li><p><strong>Google 自身也存在短板</strong>：安全公司 Aikido 发现 Google API Key 的撤销传播存在约 23 分钟的窗口期，期间攻击者仍可使用被盗密钥；新版凭证格式（AQ 前缀）已可在约 1 分钟内撤销，说明问题并非技术不可解，而是优先级问题。</p>
+</li>
+</ol>
+</div>
+</div><div class="item" id="来源">
+    <h3>来源</h3>
+    <div class="item-body"><p><a href="https://the-decoder.com/google-cloud-coo-says-ai-security-belongs-in-the-boardroom-not-just-the-server-room/" target="_blank" rel="noopener">全文</a> | <a href="https://techcrunch.com/2026/05/24/everyone-is-navigating-ai-security-in-real-time-even-google/" target="_blank" rel="noopener">原文</a></p>
+</div>
+</div><div class="section-header" id="5-TechCrunch所有人在实时应对-AI-安全问题连-Google-也不例外">
+    
+    <h2>5. TechCrunch：所有人在实时应对 AI 安全问题——连 Google 也不例外</h2>
+</div><div class="item" id="为什么重要">
+    <h3>为什么重要</h3>
+    <div class="item-body"><p>这是 The Decoder 同一事件的 TechCrunch 原始报道，提供了更多技术细节和 Google 内部的安全漏洞发现。与 COO 的公开表态形成有趣对比：企业一把手在台上呼吁重视安全，台下 Google 自家的 API Key 撤销机制就存在长达 23 分钟的漏洞窗口。这对 AI Agent 安全架构的信任建立有现实警示意义。</p>
+</div>
+</div><div class="item" id="关键要点">
+    <h3>关键要点</h3>
+    <div class="item-body"><ol><li><p><strong>AI 安全目前是&quot;摸着石头过河&quot;</strong>：即使 Google 这样的顶级玩家，其安全策略仍在演进中，Francis deSouza 在 TechCrunch 专访中坦承：&quot;会有一个过渡期，然后我们会进入一个更好的地方&quot;——这暗示当前并非终态。</p>
+</li>
+<li><p><strong>攻击面全面扩展</strong>：除了传统网络边界，现在企业的安全资产还包含：模型、数据管道、Agent、Prompt——deSouza 将这四类列为新增的必须保护对象。</p>
+</li>
+<li><p><strong>Google API Key 撤销漏洞</strong>：安全公司 Aikido 研究发现，即使开发者发现密钥被盗并立即删除，攻击者仍可继续使用约 23 分钟，因为 Google 的撤销机制在基础设施中逐步传播。某分钟内成功率超过 90%，足够攻击者窃取文件并提取对话缓存数据。</p>
+</li>
+<li><p><strong>新版凭证表现更好</strong>：Google 自家的新版服务账户 API 凭证和 Gemini 的 AQ 前缀新密钥格式，撤销时间分别约 5 秒和 1 分钟，说明技术可行，只是现行 API Key 格式优先级不足。</p>
+</li>
+<li><p><strong>企业安全建议</strong>：deSouza 建议企业采用&quot;平台方法&quot;，在 AI 旅程开始时就要求安全、治理和可审计性，而非单独采购工具后叠加。</p>
+</li>
+</ol>
+</div>
+</div><div class="item" id="来源">
+    <h3>来源</h3>
+    <div class="item-body"><p><a href="https://techcrunch.com/2026/05/24/everyone-is-navigating-ai-security-in-real-time-even-google/" target="_blank" rel="noopener">全文</a> | <a href="https://techcrunch.com/2026/05/24/everyone-is-navigating-ai-security-in-real-time-even-google/" target="_blank" rel="noopener">原文</a></p>
+</div>
+</div><div class="section-header" id="6-Nemotron-Labs-DiffusionNVIDIA-扩散模型实现光速文本生成">
+    
+    <h2>6. Nemotron-Labs Diffusion：NVIDIA 扩散模型实现光速文本生成</h2>
+</div><div class="item" id="为什么重要">
+    <h3>为什么重要</h3>
+    <div class="item-body"><p>NVIDIA 发布的 Nemotron-Labs Diffusion 语言模型系列，将扩散模型（Diffusion Model）首次以可用方式引入纯文本代。与传统自回归（AR）模型不同，扩散模型通过逐步去噪生成文本，支持自推测（Self-Speculation）加速，在 B200 GPU 上达到约 865 tokens/秒——比同硬件的自回归基线快约 4 倍。这为 AI Agent 的推理速度优化提供了一条全新的工程路径。</p>
+</div>
+</div><div class="item" id="关键要点">
+    <h3>关键要点</h3>
+    <div class="item-body"><ol><li><p><strong>三种生成模式合一</strong>：该模型系列支持三种生成模式——纯自回归（与传统模型兼容）、Diffusion 模式（快速批量生成）和自推测模式（同一模型即作草稿又作验证器）。</p>
+</li>
+<li><p><strong>Diffusion 模式（FastDiffuser）</strong>：模型每次迭代填充一个 32 token 块，通过置信度阈值决定哪些 token&quot;足够好&quot;可以提交。适合需要批量输出的场景。</p>
+</li>
+<li><p><strong>自推测模式（LinearSpec）——速度表现最优</strong>：同一模型双向草稿生成，然后因果验证，前缀匹配部分直接提交。在 B200 上达到约 865 tokens/秒，比自回归基线快约 4 倍，且在 temperature=0 时输出与 AR 完全一致（无损）。</p>
+</li>
+<li><p><strong>工程可行性</strong>：模型已开源，可通过 SGLang 部署，提供了完整的训练配方和技术报告。对需要低延迟推理的 Agent 应用（如实时对话、工具调用）有直接价值。</p>
+</li>
+<li><p><strong>开放模型+熟悉接口</strong>：开发者无需修改应用程序，即可将扩散解码加速集成到现有 pipeline，降低了实验门槛。</p>
+</li>
+</ol>
+</div>
+</div><div class="item" id="来源">
+    <h3>来源</h3>
+    <div class="item-body"><p><a href="https://huggingface.co/blog/nvidia/nemotron-labs-diffusion" target="_blank" rel="noopener">全文</a> | <a href="https://huggingface.co/blog/nvidia/nemotron-labs-diffusion" target="_blank" rel="noopener">原文</a></p>
+</div>
+</div><div class="section-header" id="7-WIREDAI-可能让你变得多余专业人士需要知道什么">
+    
+    <h2>7. WIRED：AI 可能让你变得多余——专业人士需要知道什么</h2>
+</div><div class="item" id="为什么重要">
+    <h3>为什么重要</h3>
+    <div class="item-body"><p>这是一篇来自 WIRED 的综合报道，分析 AI 对专业工作的影响。WIRED 同期发表了多篇相关报道，内容涵盖 AI 对劳动力市场的结构性影响、数据隐私风险以及企业应对策略。这是当前关于&quot;AI 替代 vs AI 增强&quot;叙事的重要媒体声音，对理解行业舆论走向有参考价值。</p>
+</div>
+</div><div class="item" id="关键要点">
+    <h3>关键要点</h3>
+    <div class="item-body"><ol><li><p><strong>AI 对专业工作的冲击叙事仍在持续</strong>：WIRED 的报道矩阵显示，从&quot;做饭和洗衣&quot;到&quot;白领工作&quot;，该媒体持续关注 AI 替代人类劳动的边界问题，立场以调查性报道为主，非技术乐观主义。</p>
+</li>
+<li><p><strong>数据隐私是核心议题</strong>：同期报道探讨了 household tasks 被转为训练数据的风险（&quot;做饭、洗衣、整理房间——所有家务都可以转化为数据来训练未来的人形机器人&quot;），以及个人数据在 AI 系统中的暴露问题。</p>
+</li>
+<li><p><strong>企业 AI 部署的内部阻力</strong>：部分企业员工被要求举报在特朗普第二任期前发生的违规行为，反映了职场监控与 AI 合规的交叉议题。</p>
+</li>
+<li><p><strong>监管真空中的企业自我管理</strong>：报道提及企业自发建立的合规机制，但缺乏外部监督，这与 Google Cloud COO 等高管的公开表态形成对话。</p>
+</li>
+<li><p><strong>媒体立场</strong>：WIRED 在 AI 叙事上保持调查性而非宣传性立场，关注 AI 的社会代价，而非单纯技术进展——这与 phase-B 中 WIRED 被选入 selected 的质量评估方向一致。</p>
+</li>
+</ol>
+</div>
+</div><div class="item" id="来源">
+    <h3>来源</h3>
+    <div class="item-body"><p><a href="https://www.wired.com/" target="_blank" rel="noopener">全文</a> | <a href="https://www.wired.com/" target="_blank" rel="noopener">原文</a></p>
+<blockquote><p>本简报由 AI Agent 自动生成 | 发布日期：2026-05-27</p>
+</blockquote>
+<blockquote><p>📅 简报主页：https://carb0navatr.github.io/ai-brief/</p>
+</blockquote>
+</div>
+</div>
+
+    <footer class="site-footer">
+        AI Agent Daily Brief &mdash; 2026年05月27日
+    </footer>
+</div>
+</body>
+</html>
