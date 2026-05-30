@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent 每日简报 | 2026-05-29</title>
+    <title>AI Agent Daily Brief - 2026年05月30日</title>
     <style>/* ─── Reset & Base ─── */
 :root {
     --primary:   #1a1a2e;
@@ -195,81 +195,35 @@ a:hover { text-decoration: underline; }
 </head>
 <body>
 <div class="container">
-    <nav class="nav-bar">
-        <a href="brief-2026-05-27.html" class="nav-btn">← 前一天</a>
-        <span class="nav-date">2026年05月29日</span>
-        <a href="brief-2026-05-30.html" class="nav-btn">后一天 →</a>
-    </nav>
+    <div class="breadcrumb">
+        <a href="../../brief-2026-05-30.html">AI Agent Daily Brief - 2026年05月30日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
 
-    <header class="brief-header">
-        <h1>AI Agent 每日简报 | 2026-05-29</h1>
-        <p class="subtitle"></p>
-    </header>
+    <div class="article-body">
+        <h1>ITBench-AA：前沿模型在企业 IT Agent 任务上得分均低于 50%</h1>
+        
+        <h2>为什么重要</h2>
+<p>ITBench-AA 是 Artificial Analysis 与 IBM 联合发布的首个评估 Agent 执行企业 IT 运维任务的基准测试。结果显示即便是最前沿的模型在 Kubernetes 事故响应场景下表现仍低于 50%，揭示了当前 AI Agent 在真实企业运维中的能力差距。</p>
+<h2>关键要点</h2>
+<ul><li><strong>Claude Opus 4.7 领先但未过半数</strong>：自适应推理模式下得分 47%，其次是 GPT-5.5（xhigh）46%、Qwen3.7 Max 42%</li>
+<li><strong>所有前沿模型均低于 50%</strong>：ITBench-AA SRE 是 Artificial Analysis 评测套件中饱和度最低的 Agent 基准之一</li>
+<li><strong>轮次数量差异近 3 倍，但更长轨迹不等于更高准确率</strong>：GPT-5.5 平均 31 轮达 46%，Gemini 3.1 Pro Preview 平均 83 轮仅 30%；过度调查反而容易将故障注入机制或并发症状误报为根因</li>
+<li><strong>59 个 SRE 任务</strong>：40 个公开任务 + 19 个全新保留任务；涵盖基础设施、服务、应用和混沌工程故障类型</li>
+<li><strong>开源权重模型</strong>：GLM-5.1（推理）以 40% 领先开源赛道，与 Gemini 3.5 Flash（high）基本持平</li>
+<li><strong>评测方法</strong>：基于 Stirrup 开源 Agent 评测框架，每任务 100 轮上限，3 次重复；评分采用全召回平均精度</li>
+<li><strong>后续扩展</strong>：将扩展至 FinOps（财务运维）和 CISO（首席信息安全官）任务</li>
+</ul>
+<h2>来源</h2>
+<p>来源：<a href="https://huggingface.co/blog/ibm-research/itbench-aa" target="_blank" rel="noopener">全文</a> | <a href="https://huggingface.co/blog/ibm-research/itbench-aa" target="_blank" rel="noopener">原文</a></p>
 
-    <div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div>
+    </div>
 
     <footer class="site-footer">
-        AI Agent Daily Brief &mdash; 2026年05月29日
+        <a href="../../brief-2026-05-30.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
     </footer>
 </div>
 </body>
