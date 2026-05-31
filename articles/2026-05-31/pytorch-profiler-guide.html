@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent 每日简报 | 2026-05-30</title>
+    <title>AI Agent Daily Brief - 2026年05月31日</title>
     <style>/* ─── Reset & Base ─── */
 :root {
     --primary:   #1a1a2e;
@@ -195,87 +195,43 @@ a:hover { text-decoration: underline; }
 </head>
 <body>
 <div class="container">
-    <nav class="nav-bar">
-        <a href="brief-2026-05-29.html" class="nav-btn">← 前一天</a>
-        <span class="nav-date">2026年05月30日</span>
-        <a href="brief-2026-05-31.html" class="nav-btn">后一天 →</a>
-    </nav>
+    <div class="breadcrumb">
+        <a href="../../brief-2026-05-31.html">AI Agent Daily Brief - 2026年05月31日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
 
-    <header class="brief-header">
-        <h1>AI Agent 每日简报 | 2026-05-30</h1>
-        <p class="subtitle"></p>
-    </header>
+    <div class="article-body">
+        <h1>PyTorch Profiler 入门指南（第一部分）：从零读懂性能分析</h1>
+        
+        <p><strong>来源</strong>：<a href="https://huggingface.co/blog/torch-profiler" target="_blank" rel="noopener">全文</a> | <a href="https://huggingface.co/blog/torch-profiler" target="_blank" rel="noopener">原文</a></p>
+<h2>原文要点</h2>
+<p>Hugging Face 官方博客发布系列教程第一篇，系统讲解 PyTorch <code>torch.profiler</code> 的使用方法，帮助开发者从零掌握性能分析技能，降低这一关键工具的使用门槛。</p>
+<p>文章从最简单的矩阵乘法加偏置操作入手，演示如何设置 profiler、解读 profiler table（统计摘要）和 profiler trace（时序执行视图）。核心概念包括：</p>
+<ul><li><strong>Profiler Table</strong>：回答&quot;什么操作最耗时&quot;，帮助定位热点（hotspot）</li>
+<li><strong>Profiler Trace</strong>：回答&quot;何时以及为何发生&quot;，展示 CPU 和 GPU 上的执行时序</li>
+<li><strong>Self CPU/CUDA vs Total</strong>：前者仅计算事件自身时间，后者包含所有子事件</li>
+<li><strong>Overhead-bound vs Compute-bound</strong>：小矩阵运算 GPU耗时极低（&lt;1%），大部分时间花在调度上；大矩阵运算转向计算密集型</li>
+</ul>
+<p>文章还深入分析了 PyTorch 的调度链：<code>record_function</code> → <code>aten::matmul</code> → <code>aten::mm</code> → CUDA kernel，解释了为什么 matmul 前有 <code>cudaOccupancyMaxActiveBlocksPerMultiprocessor</code> 调用（cuBLAS 动态选择最优 kernel），而简单加法则无需此查询。</p>
+<p>最后展示了 <code>torch.compile</code> 的优化效果，以及使用 Perfetto UI 可视化 trace 的方法。</p>
+<h2>为什么重要</h2>
+<p>&quot;无法分析就无法优化&quot;——这是深度学习性能调优的铁律。PyTorch profiler 功能强大，但长期缺乏面向初学者的系统教程，导致大量开发者绕过这一关键工具。本系列填补了这一空白。</p>
+<p>对于 LLM 推理优化、训练加速等实际场景，理解 profiler 输出是找到瓶颈的第一步。系列后续将扩展到 <code>nn.Linear</code>、MLP，最终覆盖 LLM（transformers）的完整性能分析路径。</p>
+<h2>关键要点</h2>
+<ol><li><strong>Profiler Table 和 Trace 互补</strong>：Table定位热点，Trace 还原时序，两者结合才能完整诊断性能问题</li>
+<li><strong>小矩阵运算的陷阱</strong>：GPU 时间占比极低（&lt;1%），属于 overhead-bound；需增大矩阵规模才能进入 compute-bound 状态</li>
+<li><strong>cuBLAS 动态调度</strong>：矩阵乘法需要 occupancy 查询以选择最优 kernel，这是 PyTorch 性能调优的关键知识</li>
+<li><strong>调度链理解</strong>：从 Python <code>record_function</code> 到 CUDA kernel 的完整调用链是诊断 Trace 的基础</li>
+<li><strong>torch.compile 优化</strong>：编译后可显著减少 CPU-GPU 同步开销，Profiler 可直观验证优化效果</li>
+</ol>
 
-    <div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div>
+    </div>
 
     <footer class="site-footer">
-        AI Agent Daily Brief &mdash; 2026年05月30日
+        <a href="../../brief-2026-05-31.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
     </footer>
 </div>
 </body>

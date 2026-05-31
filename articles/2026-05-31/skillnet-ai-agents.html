@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent 每日简报 | 2026-05-30</title>
+    <title>AI Agent Daily Brief - 2026年05月31日</title>
     <style>/* ─── Reset & Base ─── */
 :root {
     --primary:   #1a1a2e;
@@ -195,87 +195,42 @@ a:hover { text-decoration: underline; }
 </head>
 <body>
 <div class="container">
-    <nav class="nav-bar">
-        <a href="brief-2026-05-29.html" class="nav-btn">← 前一天</a>
-        <span class="nav-date">2026年05月30日</span>
-        <a href="brief-2026-05-31.html" class="nav-btn">后一天 →</a>
-    </nav>
+    <div class="breadcrumb">
+        <a href="../../brief-2026-05-31.html">AI Agent Daily Brief - 2026年05月31日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
 
-    <header class="brief-header">
-        <h1>AI Agent 每日简报 | 2026-05-30</h1>
-        <p class="subtitle"></p>
-    </header>
+    <div class="article-body">
+        <h1>SkillNet：用技能增强型 AI 智能体实现搜索、评估、图分析与任务规划</h1>
+        
+        <p><strong>来源</strong>：<a href="https://www.marktechpost.com/2026/05/30/build-skill-augmented-ai-agents-with-skillnet-for-search-evaluation-graph-analysis-and-task-planning/" target="_blank" rel="noopener">全文</a> | <a href="https://www.marktechpost.com/2026/05/30/build-skill-augmented-ai-agents-with-skillnet-for-search-evaluation-graph-analysis-and-task-planning/" target="_blank" rel="noopener">原文</a></p>
+<h2>原文要点</h2>
+<p>MarkTechPost 报道了一个构建技能增强型（Skill-Augmented）AI 智能体的实用框架 SkillNet，提供从技能发现、安装、检查、评估到组织的完整流程。</p>
+<p>SkillNet 的核心设计理念是：智能体不应只依赖内置能力，而应能从外部库动态加载和调用可复用技能模块。框架涵盖以下关键能力：</p>
+<ul><li><strong>技能发现与安装</strong>：从 Hugging Face、GitHub 等来源发现可用技能并动态安装</li>
+<li><strong>技能检查与评估</strong>：验证技能的行为是否符合预期，提供标准化评估接口</li>
+<li><strong>多任务支持</strong>：涵盖搜索、评估、图分析、任务规划等多种能力维度</li>
+<li><strong>轨迹分析与 SFT 数据集生成</strong>：分析智能体执行轨迹，提取成功样本用于监督微调（SFT）</li>
+</ul>
+<p>文章提供了完整的代码实现路径，展示如何构建一个能够根据任务需求动态选择和组装技能的 AI 智能体系统。</p>
+<h2>为什么重要</h2>
+<p>当前 AI智能体的能力边界受限于模型内置知识，而 SkillNet 代表的技能增强范式提供了一种可扩展的解决方案：智能体通过动态加载外部技能模块来扩展能力，无需重新训练模型。</p>
+<p>这对实际部署具有重要意义：企业可以根据业务需求定制技能库，智能体按需调用，无需等待模型更新。轨迹分析和 SFT 数据集生成功能更进一步——让开发者能从真实执行中提取高质量训练数据，形成&quot;边用边学&quot;的闭环。</p>
+<h2>关键要点</h2>
+<ol><li><strong>动态技能加载</strong>：智能体从外部库按需加载技能模块，突破模型内置能力上限</li>
+<li><strong>技能评估接口</strong>：提供标准化方法验证技能行为，确保可靠性</li>
+<li><strong>多能力维度</strong>：搜索、评估、图分析、任务规划等任务类型均可通过技能组合实现</li>
+<li><strong>轨迹到训练的闭环</strong>：分析执行轨迹并导出 SFT 数据集，实现&quot;边用边学&quot;</li>
+<li><strong>可扩展架构</strong>：企业可按需构建领域特定技能库，形成定制化智能体平台</li>
+</ol>
 
-    <div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div>
+    </div>
 
     <footer class="site-footer">
-        AI Agent Daily Brief &mdash; 2026年05月30日
+        <a href="../../brief-2026-05-31.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
     </footer>
 </div>
 </body>

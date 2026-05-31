@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent 每日简报</title>
+    <style>/* ─── Reset & Base ─── */
+:root {
+    --primary:   #1a1a2e;
+    --secondary: #16213e;
+    --accent:    #0f3460;
+    --highlight: #e94560;
+    --text:      #eaeaea;
+    --muted:     #a0a0a0;
+    --card-bg:   #1a1a2e;
+    --border:    #2a2a4a;
+    --green:     #4ade80;
+    --blue:      #60a5fa;
+    --yellow:    #fbbf24;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f0f1a;
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Layout ─── */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ─── Nav Bar ─── */
+.nav-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; padding: 14px 20px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.nav-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    padding: 6px 12px; border-radius: 6px; text-decoration: none;
+    transition: all .2s;
+}
+.nav-btn:hover { color: #fff; background: var(--accent); text-decoration: none; }
+.nav-btn.disabled { opacity: .3; pointer-events: none; }
+.nav-date { font-size: 14px; font-weight: 600; color: var(--highlight); }
+
+/* ─── Header ─── */
+.brief-header { margin-bottom: 28px; }
+.badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--highlight); color: #fff;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 999px; margin-bottom: 10px; letter-spacing: .5px;
+}
+.brief-header h1 { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.3; }
+.brief-header .subtitle { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+
+/* ─── Quick Hits ─── */
+.quick-hits {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 28px;
+}
+.quick-hits ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.quick-hits li { font-size: 15px; }
+.quick-hits li strong { color: #fff; }
+.quick-hits li a { color: var(--blue); }
+
+/* ─── Section ─── */
+.section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin: 30px 0 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.section-header .emoji { font-size: 20px; }
+.section-header h2 { font-size: 16px; font-weight: 700; color: #fff; }
+
+/* ─── Item ─── */
+.item { margin-bottom: 28px; }
+.item h3 {
+    font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; line-height: 1.4; scroll-margin-top: 20px;
+}
+
+/* ─── Item Body (rendered markdown) ─── */
+.item-body { font-size: 14px; color: var(--muted); }
+.item-body p { margin-bottom: 10px; }
+.item-body p:last-child { margin-bottom: 0; }
+.item-body strong, .item-body b { color: #fff; font-weight: 600; }
+.item-body em, .item-body i { color: #ccc; font-style: italic; }
+.item-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.item-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+    overflow-x: auto;
+}
+.item-body pre code { background: none; padding: 0; font-size: 13px; }
+.item-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 10px 0; color: var(--muted);
+}
+.item-body ul, .item-body ol {
+    padding-left: 20px; margin: 8px 0;
+}
+.item-body li { margin-bottom: 5px; }
+.item-body li::marker { color: var(--highlight); }
+.item-body a { color: var(--blue); }
+.item-body a:hover { text-decoration: underline; }
+
+/* ─── Key Points Box ─── */
+.key-points {
+    background: var(--secondary); border-left: 3px solid var(--highlight);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 10px 0;
+}
+.key-points strong { color: var(--highlight); display: block; margin-bottom: 6px; }
+.key-points ul { list-style: none; padding: 0; margin: 0; }
+.key-points li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+.key-points li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
+
+/* ─── Item Meta (source + readable links) ─── */
+.item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.item-meta a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 500; padding: 4px 10px;
+    border-radius: 6px; text-decoration: none; transition: all .15s;
+}
+.item-meta .src-link { color: var(--blue); border: 1px solid #60a5fa33; }
+.item-meta .src-link:hover { background: #60a5fa22; }
+.item-meta .read-link { color: var(--green); border: 1px solid #4ade8033; }
+.item-meta .read-link:hover { background: #4ade8022; }
+
+/* ─── Footer ─── */
+.site-footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); text-align: center;
+}
+
+/* ─── Article Page ─── */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb .sep { color: var(--border); }
+
+.article-body {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px; margin-bottom: 24px;
+}
+.article-body h1 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.3; }
+.article-body .source-line {
+    font-size: 13px; color: var(--muted); margin-bottom: 18px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.article-body .source-line a { color: var(--blue); }
+.article-body p { margin-bottom: 14px; font-size: 15px; }
+.article-body strong, .article-body b { color: #fff; font-weight: 600; }
+.article-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.article-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto;
+}
+.article-body pre code { background: none; padding: 0; }
+.article-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 12px 0; color: var(--muted);
+}
+.article-body ul, .article-body ol { padding-left: 22px; margin: 10px 0; }
+.article-body li { margin-bottom: 6px; }
+.article-body li::marker { color: var(--highlight); }
+.article-body a { color: var(--blue); }
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+    .container { padding: 20px 14px 60px; }
+    .nav-bar { flex-wrap: wrap; gap: 8px; }
+    .nav-date { order: -1; width: 100%; text-align: center; }
+    .article-body { padding: 20px 18px; }
+    .brief-header h1 { font-size: 19px; }
+}</style>
+</head>
+<body>
+<div class="container">
+    <nav class="nav-bar">
+        <a href="brief-2026-05-30.html" class="nav-btn">← 前一天</a>
+        <span class="nav-date">2026年05月31日</span>
+        <span class="nav-btn disabled">后一天 →</span>
+    </nav>
+
+    <header class="brief-header">
+        <h1>AI Agent 每日简报</h1>
+        <p class="subtitle">2026年05月31日 ·今日共6 篇文章</p>
+    </header>
+
+    <div class="section-header" id="产品发布">
+    <span class="emoji">🔬</span>
+    <h2>产品发布</h2>
+</div><div class="item" id="OpenAI-Codex-获得-Windows-系统级控制能力">
+    <h3>OpenAI Codex 获得 Windows 系统级控制能力</h3>
+    <div class="item-body"><p>OpenAI 的 AI 编程助手 Codex 正式新增了对 Windows 计算机的远程控制能力。通过这一更新，Codex 不仅能生成代码，还能在用户的 Windows 系统上直接执行操作任务——这意味着 AI 可以像人类用户一样操作桌面、点击按钮、填写表单、读取屏幕内容。</p>
+<p>这一功能建立在 OpenAI 此前推出的 Computer Use 代理能力之上，Codex 则将其定向面向 Windows 环境进行了适配，支持通过自然语言指令驱动复杂的桌面自动化工作流。</p>
+<p><strong>为什么重要</strong>：这是 AI 编程助手从&quot;辅助写代码&quot;到&quot;代替执行任务&quot;的关键一步。传统 IDE 插件只能处理文件内操作，而 Codex 的 Windows 控制能力打破了沙盒限制，让 AI 可以直接与真实操作系统交互。对于开发者而言，这意味着工作流的端到端自动化成为可能——从需求理解、代码生成到部署验证，AI 可以在真实环境中验证结果，而不必依赖模拟器或测试脚本。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Codex 获得 Windows 系统级控制能力，可操作桌面 UI、执行自动化脚本</p></li><li><p>自然语言驱动任务：用户用日常语言描述目标，Codex 自动在 Windows 上分解并执行步骤</p></li><li><p>打破沙盒限制：AI 不再只作用于代码文件，而是能够读取屏幕状态、与真实应用程序交互</p></li><li><p>面向开发者工作流：从代码生成到结果验证的闭环，是 AI 编程助手能力的重大扩展</p></li><li><p>跨平台 Agent 战略的延续：OpenAI 正在构建一套可适配多操作系统的 AI 执行层</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-31/openai-codex-windows-control.html" class="read-link">📖 全文</a><a href="https://www.theverge.com/2026/5/29/26044973/openai-codex-windows-computer-use" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="微软-Copilot-超级应用整合编程聊天与-Agent-工作流的统一入口">
+    <h3>微软 Copilot 超级应用：整合编程、聊天与 Agent 工作流的统一入口</h3>
+    <div class="item-body"><p>据 Fortune 独家报道，微软正在打造一款整合其全线 Copilot 产品的&quot;超级应用&quot;，目标是将 GitHub Copilot（编程辅助）、Copilot Chat（对话助手）、Copilot Cowork（协作工具）以及一个内部代号为&quot;Autopilot&quot;的新 Agent 工作流功能，统一入口体验。</p>
+<p>这一项目由微软新任 Copilot 负责人 Jacob Andreou 主导，其核心使命是将 Copilot 的消费者版与企业版整合为统一产品。内部口号为&quot;Delivering one Copilot&quot;。预计将在本周的 Microsoft Build 开发者大会上有所暗示，正式发布时间定在夏末。</p>
+<p><strong>为什么重要</strong>：微软 Copilot 产品线长期存在分散问题——不同产品各自为政，用户体验碎片化。这款超级应用标志着微软 AI 战略从&quot;功能点状嵌入&quot;转向&quot;平台级整合&quot;，是 Nadella 领导下的一次重大产品架构调整。如果超级应用成功，它将成为微软 AI能力的统一入口，直接对标 OpenAI 的 Agent 生态。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>超级应用整合四大 Copilot 模块：GitHub Copilot、Copilot Chat、Cowork 和代号 Autopilot 的 Agent 工作流</p></li><li><p>Jacob Andreou 主导整合战略，核心目标是将消费者版与企业版 Copilot 融合为统一产品</p></li><li><p>内部口号&quot;Delivering one Copilot&quot;，反映了微软对产品碎片化问题的明确认知</p></li><li><p>竞争压力驱动整合：GitHub Copilot 面临 Cursor 和 Claude Code 竞争，消费者 Copilot 落后于 OpenAI/Google</p></li><li><p>预计夏末发布，Build 大会将有所暗示——这是微软 AI 战略转向平台级整合的关键信号</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-31/microsoft-copilot-super-app.html" class="read-link">📖 全文</a><a href="https://fortune.com/2026/05/29/microsoft-working-on-super-app/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="section-header" id="研究论文">
+    <span class="emoji">📋</span>
+    <h2>研究论文</h2>
+</div><div class="item" id="OpenAI-发布可信赖第三方评估联合-playbook">
+    <h3>OpenAI 发布可信赖第三方评估联合 playbook</h3>
+    <div class="item-body"><p>OpenAI 发布了一篇重要研究文章，系统总结了其在第三方评估（Third Party Evaluations）方面的经验与建议，目标是帮助整个行业建立更规范、更可信赖的前沿模型评估标准。</p>
+<p>文章核心观点是：当前前沿模型已超越简单的问答模式，具备工具使用、多步骤信息追踪、在复杂工作流中执行任务的能力。这意味着模型表现不仅取决于模型本身，还取决于其运行环境（&quot;harness&quot;）——包括工具接入方式、信息追踪机制、错误恢复策略等。</p>
+<p>OpenAI 提出的&quot;评估要素清单&quot;（Evaluation Card）要求每项评估必须明确记录：评估主张、被测系统配置、预算、诱发方法和有效性检查（防范 reward hacking、评估感知、数据污染、sandbagging 等行为）。</p>
+<p><strong>为什么重要</strong>：AI 安全领域长期面临&quot;评估可信度&quot;问题：同一个模型在不同 harness 下可能表现差异巨大，安全声明若无 harness 和有效性检查支撑，往往高估或低估了真实能力。这篇 playbook 是目前行业最系统的评估方法论总结，对监管机构、政策制定者以及 AI 安全研究社区都具有重要参考价值。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>前沿模型评估范式转变：从问答式评估转向考虑 harness、工作流和 Agent 能力的系统性评估</p></li><li><p>harness 决定性能：同一个模型在不同工具接入、信息追踪和错误恢复配置下表现可能差异巨大</p></li><li><p>评估要素清单（Evaluation Card）标准化：要求每项评估记录主张、内容、系统配置、预算、诱发方法和有效性检查</p></li><li><p>防范评估操纵：明确要求检查 reward hacking、评估感知、数据污染、sandbagging 等破坏评估有效性的行为</p></li><li><p>推动行业标准：OpenAI 呼吁整个行业采纳这一框架，对监管机构和安全研究社区具有重要指导意义</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-31/openai-third-party-evaluations.html" class="read-link">📖 全文</a><a href="https://openai.com/index/trustworthy-third-party-evaluations-foundations/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="个人-AI-智能体加速落地从企业顶层驱动转向个人自下而上采用">
+    <h3>个人 AI 智能体加速落地：从企业顶层驱动转向个人自下而上采用</h3>
+    <div class="item-body"><p>SiliconANGLE 发布深度分析文章，指出 AI 采用浪潮正在呈现类似个人电脑时代的特征——但有一个关键区别：智能体不仅能创建文档和电子表格，还能真正执行操作，调用工具、访问数据、触发应用程序。</p>
+<p>文章核心论断：AI 采用正在从&quot;CEO 和董事会推动的企业顶层注入&quot;转向&quot;个人用户自下而上下载工具、接入工作流&quot;的模式。与 PC 时代类似，power user 群体率先行动，通过个人代理工具提升生产力。Snowflake 和 Databricks 等数据平台正加速向上延伸，使企业本身变得&quot;可编程&quot;。</p>
+<p><strong>为什么重要</strong>：当 AI 采用从企业 IT 采购转向个人自发使用，智能体工具的市场教育成本将大幅降低，创新节奏由用户需求驱动而非企业决策周期。数据平台的&quot;智能体化&quot;意味着智能体不只替代个人任务，还将成为企业架构的核心组件。这与 PC 时代的类比值得重视：如果个人 AI 智能体遵循类似路径，行业增长逻辑将从企业 AI 投资转向个人 AI 消费市场。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>采用模式转变：AI 正在从企业顶层驱动转向个人自下而上采纳，power user 群体率先行动</p></li><li><p>智能体不只是创建工具，还能执行操作：可调用应用程序、访问数据、触发工作流</p></li><li><p>数据平台向智能体层延伸：Snowflake、Databricks 等平台正在成为企业 AI 智能体的基础设施层</p></li><li><p>企业可编程化：数据平台成熟度决定智能体能力上限，顶层平台将决定未来十年企业 AI 格局</p></li><li><p>九级成熟度模型：从描述性分析（Level 1-2）到完全自主规划（Level 9），数据基础决定分析天花板</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-31/personal-ai-agents-siliconangle.html" class="read-link">📖 全文</a><a href="https://siliconangle.com/2026/05/30/personal-agents" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="PyTorch-Profiler-入门指南从零读懂深度学习性能分析">
+    <h3>PyTorch Profiler 入门指南：从零读懂深度学习性能分析</h3>
+    <div class="item-body"><p>Hugging Face 官方博客发布系列教程第一篇，系统讲解 PyTorch <code>torch.profiler</code> 的使用方法，帮助开发者从零掌握性能分析技能，降低这一关键工具的使用门槛。</p>
+<p>文章从最简单的矩阵乘法加偏置操作入手，演示如何设置 profiler、解读 profiler table（统计摘要）和 profiler trace（时序执行视图）。核心概念包括：Profiler Table 定位热点、Profiler Trace 还原时序、Self vs Total 时间区别、overhead-bound vs compute-bound 的判断。</p>
+<p><strong>为什么重要</strong>：&quot;无法分析就无法优化&quot;——这是深度学习性能调优的铁律。PyTorch profiler 功能强大，但长期缺乏面向初学者的系统教程，导致大量开发者绕过这一关键工具。本系列填补了这一空白。对于 LLM 推理优化、训练加速等实际场景，理解 profiler 输出是找到瓶颈的第一步。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Profiler Table 和 Trace 互补：Table 定位热点，Trace 还原时序，两者结合才能完整诊断性能问题</p></li><li><p>小矩阵运算的陷阱：GPU 时间占比极低（&lt;1%），属于 overhead-bound；需增大矩阵规模才能进入 compute-bound 状态</p></li><li><p>cuBLAS 动态调度：矩阵乘法需要 occupancy 查询以选择最优 kernel，这是 PyTorch 性能调优的关键知识</p></li><li><p>调度链理解：从 Python <code>record_function</code> 到 CUDA kernel 的完整调用链是诊断 Trace 的基础</p></li><li><p>torch.compile 优化：编译后可显著减少 CPU-GPU 同步开销，Profiler 可直观验证优化效果</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-31/pytorch-profiler-guide.html" class="read-link">📖 全文</a><a href="https://huggingface.co/blog/torch-profiler" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="SkillNet用技能增强型-AI-智能体实现搜索评估图分析与任务规划">
+    <h3>SkillNet：用技能增强型 AI 智能体实现搜索、评估、图分析与任务规划</h3>
+    <div class="item-body"><p>MarkTechPost 报道了一个构建技能增强型（Skill-Augmented）AI 智能体的实用框架 SkillNet，提供从技能发现、安装、检查、评估到组织的完整流程。</p>
+<p>SkillNet 的核心设计理念是：智能体不应只依赖内置能力，而应能从外部库动态加载和调用可复用技能模块。框架涵盖技能发现与安装、技能检查与评估、多任务支持（搜索、评估、图分析、任务规划）以及轨迹分析与 SFT 数据集生成。</p>
+<p><strong>为什么重要</strong>：当前 AI 智能体的能力边界受限于模型内置知识，而 SkillNet 代表的技能增强范式提供了一种可扩展的解决方案：智能体通过动态加载外部技能模块来扩展能力，无需重新训练模型。企业可以根据业务需求定制技能库，智能体按需调用，无需等待模型更新。轨迹分析和 SFT 数据集生成功能更进一步——让开发者能从真实执行中提取高质量训练数据，形成&quot;边用边学&quot;的闭环。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>动态技能加载：智能体从外部库按需加载技能模块，突破模型内置能力上限</p></li><li><p>技能评估接口：提供标准化方法验证技能行为，确保可靠性</p></li><li><p>多能力维度：搜索、评估、图分析、任务规划等任务类型均可通过技能组合实现</p></li><li><p>轨迹到训练的闭环：分析执行轨迹并导出 SFT 数据集，实现&quot;边用边学&quot;</p></li><li><p>可扩展架构：企业可按需构建领域特定技能库，形成定制化智能体平台</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-31/skillnet-ai-agents.html" class="read-link">📖 全文</a><a href="https://www.marktechpost.com/2026/05/30/build-skill-augmented-ai-agents-with-skillnet-for-search-evaluation-graph-analysis-and-task-planning/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="section-header" id="研究论文">
+    <span class="emoji">📋</span>
+    <h2>研究论文</h2>
+</div><div class="item" id="OpenAI-发布可信赖第三方评估联合-playbook">
+    <h3>OpenAI 发布可信赖第三方评估联合 playbook</h3>
+    <div class="item-body"><p>OpenAI 发布了一篇重要研究文章，系统总结了其在第三方评估（Third Party Evaluations）方面的经验与建议，目标是帮助整个行业建立更规范、更可信赖的前沿模型评估标准。</p>
+<p>文章核心观点是：当前前沿模型已超越简单的问答模式，具备工具使用、多步骤信息追踪、在复杂工作流中执行任务的能力。这意味着模型表现不仅取决于模型本身，还取决于其运行环境（&quot;harness&quot;）——包括工具接入方式、信息追踪机制、错误恢复策略等。</p>
+<p>OpenAI 提出的&quot;评估要素清单&quot;（Evaluation Card）要求每项评估必须明确记录：评估主张、被测系统配置、预算、诱发方法和有效性检查（防范 reward hacking、评估感知、数据污染、sandbagging 等行为）。</p>
+<p><strong>为什么重要</strong>：AI 安全领域长期面临&quot;评估可信度&quot;问题：同一个模型在不同 harness 下可能表现差异巨大，安全声明若无 harness 和有效性检查支撑，往往高估或低估了真实能力。这篇 playbook 是目前行业最系统的评估方法论总结，对监管机构、政策制定者以及 AI 安全研究社区都具有重要参考价值。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>前沿模型评估范式转变：从问答式评估转向考虑 harness、工作流和 Agent 能力的系统性评估</p></li><li><p>harness 决定性能：同一个模型在不同工具接入、信息追踪和错误恢复配置下表现可能差异巨大</p></li><li><p>评估要素清单（Evaluation Card）标准化：要求每项评估记录主张、内容、系统配置、预算、诱发方法和有效性检查</p></li><li><p>防范评估操纵：明确要求检查 reward hacking、评估感知、数据污染、sandbagging 等破坏评估有效性的行为</p></li><li><p>推动行业标准：OpenAI 呼吁整个行业采纳这一框架，对监管机构和安全研究社区具有重要指导意义</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-31/openai-third-party-evaluations.html" class="read-link">📖 全文</a><a href="https://openai.com/index/trustworthy-third-party-evaluations-foundations/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="个人-AI-智能体加速落地从企业顶层驱动转向个人自下而上采用">
+    <h3>个人 AI 智能体加速落地：从企业顶层驱动转向个人自下而上采用</h3>
+    <div class="item-body"><p>SiliconANGLE 发布深度分析文章，指出 AI 采用浪潮正在呈现类似个人电脑时代的特征——但有一个关键区别：智能体不仅能创建文档和电子表格，还能真正执行操作，调用工具、访问数据、触发应用程序。</p>
+<p>文章核心论断：AI 采用正在从&quot;CEO 和董事会推动的企业顶层注入&quot;转向&quot;个人用户自下而上下载工具、接入工作流&quot;的模式。与 PC 时代类似，power user 群体率先行动，通过个人代理工具提升生产力。Snowflake 和 Databricks 等数据平台正加速向上延伸，使企业本身变得&quot;可编程&quot;。</p>
+<p><strong>为什么重要</strong>：当 AI 采用从企业 IT 采购转向个人自发使用，智能体工具的市场教育成本将大幅降低，创新节奏由用户需求驱动而非企业决策周期。数据平台的&quot;智能体化&quot;意味着智能体不只替代个人任务，还将成为企业架构的核心组件。这与 PC 时代的类比值得重视：如果个人 AI 智能体遵循类似路径，行业增长逻辑将从企业 AI 投资转向个人 AI 消费市场。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>采用模式转变：AI 正在从企业顶层驱动转向个人自下而上采纳，power user 群体率先行动</p></li><li><p>智能体不只是创建工具，还能执行操作：可调用应用程序、访问数据、触发工作流</p></li><li><p>数据平台向智能体层延伸：Snowflake、Databricks 等平台正在成为企业 AI 智能体的基础设施层</p></li><li><p>企业可编程化：数据平台成熟度决定智能体能力上限，顶层平台将决定未来十年企业 AI 格局</p></li><li><p>九级成熟度模型：从描述性分析（Level 1-2）到完全自主规划（Level 9），数据基础决定分析天花板</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-31/personal-ai-agents-siliconangle.html" class="read-link">📖 全文</a><a href="https://siliconangle.com/2026/05/30/personal-agents" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="PyTorch-Profiler-入门指南从零读懂深度学习性能分析">
+    <h3>PyTorch Profiler 入门指南：从零读懂深度学习性能分析</h3>
+    <div class="item-body"><p>Hugging Face 官方博客发布系列教程第一篇，系统讲解 PyTorch <code>torch.profiler</code> 的使用方法，帮助开发者从零掌握性能分析技能，降低这一关键工具的使用门槛。</p>
+<p>文章从最简单的矩阵乘法加偏置操作入手，演示如何设置 profiler、解读 profiler table（统计摘要）和 profiler trace（时序执行视图）。核心概念包括：Profiler Table 定位热点、Profiler Trace 还原时序、Self vs Total 时间区别、overhead-bound vs compute-bound 的判断。</p>
+<p><strong>为什么重要</strong>：&quot;无法分析就无法优化&quot;——这是深度学习性能调优的铁律。PyTorch profiler 功能强大，但长期缺乏面向初学者的系统教程，导致大量开发者绕过这一关键工具。本系列填补了这一空白。对于 LLM 推理优化、训练加速等实际场景，理解 profiler 输出是找到瓶颈的第一步。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Profiler Table 和 Trace 互补：Table 定位热点，Trace 还原时序，两者结合才能完整诊断性能问题</p></li><li><p>小矩阵运算的陷阱：GPU 时间占比极低（&lt;1%），属于 overhead-bound；需增大矩阵规模才能进入 compute-bound 状态</p></li><li><p>cuBLAS 动态调度：矩阵乘法需要 occupancy 查询以选择最优 kernel，这是 PyTorch 性能调优的关键知识</p></li><li><p>调度链理解：从 Python <code>record_function</code> 到 CUDA kernel 的完整调用链是诊断 Trace 的基础</p></li><li><p>torch.compile 优化：编译后可显著减少 CPU-GPU 同步开销，Profiler 可直观验证优化效果</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-31/pytorch-profiler-guide.html" class="read-link">📖 全文</a><a href="https://huggingface.co/blog/torch-profiler" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="SkillNet用技能增强型-AI-智能体实现搜索评估图分析与任务规划">
+    <h3>SkillNet：用技能增强型 AI 智能体实现搜索、评估、图分析与任务规划</h3>
+    <div class="item-body"><p>MarkTechPost 报道了一个构建技能增强型（Skill-Augmented）AI 智能体的实用框架 SkillNet，提供从技能发现、安装、检查、评估到组织的完整流程。</p>
+<p>SkillNet 的核心设计理念是：智能体不应只依赖内置能力，而应能从外部库动态加载和调用可复用技能模块。框架涵盖技能发现与安装、技能检查与评估、多任务支持（搜索、评估、图分析、任务规划）以及轨迹分析与 SFT 数据集生成。</p>
+<p><strong>为什么重要</strong>：当前 AI 智能体的能力边界受限于模型内置知识，而 SkillNet 代表的技能增强范式提供了一种可扩展的解决方案：智能体通过动态加载外部技能模块来扩展能力，无需重新训练模型。企业可以根据业务需求定制技能库，智能体按需调用，无需等待模型更新。轨迹分析和 SFT 数据集生成功能更进一步——让开发者能从真实执行中提取高质量训练数据，形成&quot;边用边学&quot;的闭环。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>动态技能加载：智能体从外部库按需加载技能模块，突破模型内置能力上限</p></li><li><p>技能评估接口：提供标准化方法验证技能行为，确保可靠性</p></li><li><p>多能力维度：搜索、评估、图分析、任务规划等任务类型均可通过技能组合实现</p></li><li><p>轨迹到训练的闭环：分析执行轨迹并导出 SFT 数据集，实现&quot;边用边学&quot;</p></li><li><p>可扩展架构：企业可按需构建领域特定技能库，形成定制化智能体平台</p></li></ul></div><div class="item-meta"><a href="articles/2026-05-31/skillnet-ai-agents.html" class="read-link">📖 全文</a><a href="https://www.marktechpost.com/2026/05/30/build-skill-augmented-ai-agents-with-skillnet-for-search-evaluation-graph-analysis-and-task-planning/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div>
+
+    <footer class="site-footer">
+        AI Agent Daily Brief &mdash; 2026年05月31日
+    </footer>
+</div>
+</body>
+</html>
