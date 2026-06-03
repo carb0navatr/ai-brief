@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent 每日简报 | 2026-06-02</title>
+    <title>AI Agent Daily Brief - 2026年06月03日</title>
     <style>/* ─── Reset & Base ─── */
 :root {
     --primary:   #1a1a2e;
@@ -195,84 +195,47 @@ a:hover { text-decoration: underline; }
 </head>
 <body>
 <div class="container">
-    <nav class="nav-bar">
-        <a href="brief-2026-06-01.html" class="nav-btn">← 前一天</a>
-        <span class="nav-date">2026年06月02日</span>
-        <a href="brief-2026-06-03.html" class="nav-btn">后一天 →</a>
-    </nav>
+    <div class="breadcrumb">
+        <a href="../../brief-2026-06-03.html">AI Agent Daily Brief - 2026年06月03日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
 
-    <header class="brief-header">
-        <h1>AI Agent 每日简报 | 2026-06-02</h1>
-        <p class="subtitle"></p>
-    </header>
+    <div class="article-body">
+        <h1>NVIDIA Computex 2026 企业 AI 代理公告：消费硬件背后被忽视的企业级机会</h1>
+        
+        <h2>原文要点</h2>
+<p>Beam AI 对 NVIDIA Computex 2026 发布的六项 AI 代理产品进行了企业视角的深度解读，认为大多数媒体聚焦于 RTX Spark 笔记本电脑芯片，而<strong>三项企业级公告</strong>对实际部署 AI 代理的团队影响更大：</p>
+<p><strong>1. Vera CPU</strong> — 专为 Agentic AI 和强化学习工作负载设计的数据中心处理器，相比传统 x86 服务器 CPU 声称效率提升 2 倍、性能快 50%。早期客户包括 OpenAI、Anthropic 和 SpaceX。</p>
+<p><strong>2. Nemotron 3 Ultra</strong> — NVIDIA 新款开源权重模型：5000 亿参数（MoE 架构，每个 token 约 500 亿参数活跃），输出速度超过每秒 300 个 token（比同类前沿模型快 5 倍），运行成本降低约 30%。专门针对多步推理、长时任务规划和自纠正等代理核心能力进行调优。提供开源权重和训练配方，支持企业基于自有数据微调。</p>
+<p><strong>3. NeMoClaw</strong> — 编排框架，提供 AI 代理规划、推理、执行和委托的蓝图模板。相当于替代企业从零编写 ReAct 循环和工具调用链路的方案。内置常见企业模式模板：任务分解、多代理委托、带错误恢复的工具调用。</p>
+<p><strong>4. OpenShell</strong> — 安全和治理层，提供沙箱运行时，企业可定义代理的权限边界和需要人工审批的操作。通过与微软的合作将进入 Windows，但企业服务器部署意义更大。</p>
+<h2>为什么重要</h2>
+<p>这篇分析的价值在于它将 NVIDIA 的公告从&quot;科技新闻&quot;翻译成了&quot;企业部署者的决策参考&quot;。几个关键判断：</p>
+<ol><li><p><strong>Nemotron 3 Ultra 是开源 LLM 竞争格局的重要变量</strong>。5000 亿参数 + 每秒 300 token + 比前沿模型快 5 倍 + 成本降低 30%——这个组合如果实际表现与宣传相符，将对 Mistral、Llama 和 Qwen 系列构成直接竞争压力。企业用户获得了在自有基础设施上运行高性能开源代理模型的选择。</p>
+</li>
+<li><p><strong>NeMoClaw 解决了企业代理落地的&quot;最后一公里&quot;问题</strong>。大多数企业构建 AI 代理时最耗时的不是模型选择，而是编排逻辑设计——如何处理代理的规划、工具调用、错误恢复和结果验证。NeMoClaw 作为&quot;蓝图画廊&quot;的价值是降低企业工程成本的标准化起点。</p>
+</li>
+<li><p><strong>OpenShell 是企业代理安全领域的&quot;缺失环节&quot;</strong>。构建一个能干的代理很容易，构建一个满足合规团队要求的企业级安全代理非常困难。OpenShell 的存在意味着 NVIDIA 不仅在提供模型，还在提供企业采纳所需的安全治理框架——这是比 RTX Spark 更重要的长期平台战略。</p>
+</li>
+<li><p><strong>Vera CPU 面向的是&quot;代理工厂&quot;场景</strong>。OpenAI、Anthropic 和 SpaceX 已成为 Vera 的早期用户，说明这款芯片的目标场景是运行数以千计并发代理会话的数据中心——这与个人 PC 上的 RTX Spark 完全不在同一个市场层级。</p>
+</li>
+</ol>
+<h2>关键要点</h2>
+<ul><li>Nemotron 3 Ultra（5000 亿参数开源模型）将推理速度提升 5 倍、成本降低 30%，为企业在自有基础设施上运行高性能代理模型提供了新选择</li>
+<li>NeMoClaw 编排框架通过预制蓝图降低企业构建 AI 代理的工程复杂度</li>
+<li>OpenShell 作为企业级安全运行时填补了代理安全治理的行业空白</li>
+<li>Vera CPU 面向&quot;代理工厂&quot;数据中心场景，OpenAI、Anthropic、SpaceX 为早期客户</li>
+<li>Computex 2026 的企业级 AI 代理机会被消费级 RTX Spark 报道所掩盖</li>
+</ul>
+<p><strong>[Beam AI]</strong>: <a href="https://beam.ai/agentic-insights/nvidia-computex-2026-ai-agent-announcements-enterprise" target="_blank" rel="noopener">Beam AI 原文</a> | <a href="https://beam.ai/agentic-insights/nvidia-computex-2026-ai-agent-announcements-enterprise" target="_blank" rel="noopener">原文链接</a></p>
 
-    <div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div>
+    </div>
 
     <footer class="site-footer">
-        AI Agent Daily Brief &mdash; 2026年06月02日
+        <a href="../../brief-2026-06-03.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
     </footer>
 </div>
 </body>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent 每日简报 | 2026-06-02</title>
+    <title>AI Agent Daily Brief - 2026年06月03日</title>
     <style>/* ─── Reset & Base ─── */
 :root {
     --primary:   #1a1a2e;
@@ -195,84 +195,50 @@ a:hover { text-decoration: underline; }
 </head>
 <body>
 <div class="container">
-    <nav class="nav-bar">
-        <a href="brief-2026-06-01.html" class="nav-btn">← 前一天</a>
-        <span class="nav-date">2026年06月02日</span>
-        <a href="brief-2026-06-03.html" class="nav-btn">后一天 →</a>
-    </nav>
+    <div class="breadcrumb">
+        <a href="../../brief-2026-06-03.html">AI Agent Daily Brief - 2026年06月03日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
 
-    <header class="brief-header">
-        <h1>AI Agent 每日简报 | 2026-06-02</h1>
-        <p class="subtitle"></p>
-    </header>
+    <div class="article-body">
+        <h1>NVIDIA GTC Taipei 直击 COMPUTEX：构建持久型 AI 代理的安全开发体验</h1>
+        
+        <h2>原文要点</h2>
+<p>NVIDIA GTC Taipei 在 COMPUTEX 期间（2026 年 6 月 1–4 日）举行，黄仁勋主持多场主题演讲，发布了一系列面向 AI 代理和物理 AI 的重要更新：</p>
+<ul><li><strong>Build-a-Claw 体验来到台北</strong>：开发者可以在现场配置 AI 代理（Claw，即&quot;持久型代理&quot;）的人格、技能和运行计划，并使用 NVIDIA NeMoClaw 蓝图和 OpenShell 运行时安全部署。Claw 区别于传统单轮问答式 AI，它能持续追求目标、适应障碍、在后台持续执行。</li>
+<li><strong>Isaac GR00T 人形机器人平台重大更新</strong>：最新版 GR00T 1.7 预训练于 2 万小时人类自我中心视频数据，基于 Cosmos Reason 2 作为骨干网络，支持更复杂的多臂精细操作（如从一叠卡片中取出一张插入卡槽）。GR00T 下载量已达 27.4 万次，GR00T X Embodiment Sim 数据集在 Hugging Face 上的下载量突破 1000 万次。</li>
+<li><strong>Isaac Lab 3.0 开发者预览版</strong>：集成牛顿物理引擎，支持多 GPU 扩展，用于训练更真实的物理 AI 策略。</li>
+<li><strong>安全代理工作空间与机密计算</strong>：NVIDIA 发布了两套企业参考架构（Secure Agent Workspaces 和 Confidential Computing），面向 AI 工厂级别的企业 AI 代理安全部署。</li>
+<li><strong>Spectrum-X Ethernet Photonics 进入量产</strong>：相比传统光模块，能效提升 5 倍，AI 运行时间延长 5 倍，部署时间缩短 1.3 倍。</li>
+</ul>
+<h2>为什么重要</h2>
+<p>GTC Taipei 传递的核心信息是：<strong>AI 代理正在从&quot;问答工具&quot;进化为&quot;持久型工作者&quot;（Claw）</strong>，而实现这一转变需要完整的安全和开发框架。</p>
+<p>几个值得关注的深层含义：</p>
+<ol><li><p><strong>&quot;Claw&quot;概念的提出重新定义了 AI 代理的形态</strong>。传统 AI 助手完成单一任务后消失；Claw 则是一个持续运行的&quot;数字员工&quot;——它在后台工作、适应障碍、主动汇报状态。这对企业管理方式提出了全新的治理要求。</p>
+</li>
+<li><p><strong>物理 AI（Physical AI）正在快速进入企业视野</strong>。NVIDIA 不仅在软件层推动 AI 代理，还通过 Isaac GR00T 将 AI 能力延伸至人形机器人领域。GR00T 1.7 的多臂精细操作能力意味着工厂自动化场景正在接近实用临界点。</p>
+</li>
+<li><p><strong>安全从来不是事后考虑的</strong>——NeMoClaw + OpenShell 的组合提供了从开发到运行的完整安全路径：NeMoClaw 负责代理编排蓝图的标准化，OpenShell 提供沙箱隔离和运行时策略控制，两者结合是当前企业级代理安全领域最完整的开源方案。</p>
+</li>
+<li><p><strong>主权 AI（Sovereign AI）已成规模</strong>。NVIDIA 宣布与 FPT（越南）和 WideLabs（萨尔瓦多）合作推出 Nemotron-Personas 数据集，主权 AI 正在从概念走向区域化落地。</p>
+</li>
+</ol>
+<h2>关键要点</h2>
+<ul><li>NVIDIA 推出&quot;Claw&quot;（持久型 AI 代理）概念，代表超越单轮问答的持续性 AI 工作能力</li>
+<li>Isaac GR00T 1.7 将人形机器人训练周期大幅压缩，GR00T 系列下载量已超 27 万次</li>
+<li>Secure Agent Workspaces 参考架构为企业部署持久型 AI 代理提供了标准化安全路径</li>
+<li>Spectrum-X Photonics 进入量产，为百万 GPU 级 AI 工厂提供网络基础设施支撑</li>
+<li>Build-a-Claw 体验已在台北落地，标志着 AI 代理开发者生态正从北美扩展至亚太</li>
+</ul>
+<p><strong>[NVIDIA 官方博客]</strong>: <a href="https://blogs.nvidia.com/blog/nvidia-gtc-taipei-computex-2026-news/" target="_blank" rel="noopener">NVIDIA 原文</a> | <a href="https://blogs.nvidia.com/blog/nvidia-gtc-taipei-computex-2026-news/" target="_blank" rel="noopener">原文链接</a></p>
 
-    <div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div>
+    </div>
 
     <footer class="site-footer">
-        AI Agent Daily Brief &mdash; 2026年06月02日
+        <a href="../../brief-2026-06-03.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
     </footer>
 </div>
 </body>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent 每日简报 | 2026-06-02</title>
+    <title>AI Agent Daily Brief - 2026年06月03日</title>
     <style>/* ─── Reset & Base ─── */
 :root {
     --primary:   #1a1a2e;
@@ -195,84 +195,50 @@ a:hover { text-decoration: underline; }
 </head>
 <body>
 <div class="container">
-    <nav class="nav-bar">
-        <a href="brief-2026-06-01.html" class="nav-btn">← 前一天</a>
-        <span class="nav-date">2026年06月02日</span>
-        <a href="brief-2026-06-03.html" class="nav-btn">后一天 →</a>
-    </nav>
+    <div class="breadcrumb">
+        <a href="../../brief-2026-06-03.html">AI Agent Daily Brief - 2026年06月03日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
 
-    <header class="brief-header">
-        <h1>AI Agent 每日简报 | 2026-06-02</h1>
-        <p class="subtitle"></p>
-    </header>
+    <div class="article-body">
+        <h1>Microsoft Build 2026：Windows 正在成为 AI 代理的操作系统</h1>
+        
+        <h2>原文要点</h2>
+<p>Microsoft Build 2026 的 Windows 开发者发布集中体现了微软的平台战略转向：<strong>将 Windows 打造成 AI 代理的原生操作系统</strong>，而非仅仅是 AI 工具的承载平台：</p>
+<ul><li><strong>Windows Development Skills 正式发布（GA）</strong>：让 AI 代理能够利用结构化知识完成原生 Windows 应用完整开发生命周期（脚手架→设计→构建→运行→测试→打包→发布），支持 WinUI 3 和 WinApp 命令行工具。</li>
+<li><strong>Intelligent Terminal 0.1（实验性）</strong>：开源的 Windows Terminal 分支，内置代理集成，包括代理状态栏、代理面板、自动化错误检测，支持 Agent Client Protocol 兼容代理。</li>
+<li><strong>Microsoft Execution Containers（MXC，早期预览）</strong>：政策驱动的 AI 代理沙箱执行层，支持进程隔离（面向编码代理场景）和会话隔离（面向长时运行工作负载），GitHub Copilot CLI 已采用 MXC 进程隔离。</li>
+<li><strong>Windows 365 for Agents</strong>：将 Cloud PC 作为 AI 代理的执行层，适用于无可靠 API 的桌面/Web 应用交互、UI 级操作和人工审批工作流。</li>
+<li><strong>Aion 1.0 Plan 模型</strong>：140 亿参数推理和工具调用模型，支持本地运行完整代理工作流，将作为 Windows 选配功能随机器预装。</li>
+<li><strong>Project Solara</strong>：面向多代理时代的芯片到云平台，展示未来代理优先体验。</li>
+</ul>
+<h2>为什么重要</h2>
+<p>这是微软在 AI 时代最清晰的一次平台战略表态，其意义远超单个产品发布：</p>
+<ol><li><p><strong>从&quot;AI in Windows&quot;到&quot;AI as Windows&quot;</strong>：微软过去几年将 Copilot 嵌入 Windows 是一种&quot;加法&quot;策略；而 Build 2026 的主题是让 AI 代理成为 Windows 的核心功能单元——Agentic 工作流、代理执行层、本地模型推理都是&quot;操作系统层面&quot;的构建，而非应用层面的附加。</p>
+</li>
+<li><p><strong>MXC 的战略意义可能被低估</strong>。AI 代理安全治理是整个行业最大的痛点之一——微软选择通过 Windows 操作系统级别来强制执行沙箱策略，这是苹果的 App Sandbox 在移动端开创的模式在 AI 时代的复刻。如果 MXC 能建立行业标准，微软将在企业 AI 代理安全领域占据类似其在企业操作系统市场的地位。</p>
+</li>
+<li><p><strong>Aion 1.0 的本地化推理战略</strong>。将 140 亿参数模型直接预装在 Windows 设备上，是微软对&quot;AI 时代设备差异化&quot;的核心押注——不是卖更多的 GPU，而是让设备本身成为 AI 代理的天然运行载体。</p>
+</li>
+<li><p><strong>Project Solara 的出现</strong>意味着微软已经不再将 AI 代理视为单一软件功能，而是开始思考&quot;代理优先&quot;的芯片到云完整平台。这是一个更长期的战略布局，与 NVIDIA 的 RTX Spark 战略形成了有趣的竞争关系。</p>
+</li>
+</ol>
+<h2>关键要点</h2>
+<ul><li>Windows 正在从 AI 工具的承载平台升级为 AI 代理的原生执行环境</li>
+<li>MXC（Microsoft Execution Containers）通过 OS 级别沙箱解决 AI 代理安全治理问题，GitHub Copilot CLI 已采用</li>
+<li>Windows 365 for Agents 将 Cloud PC 定义为 AI 代理的正式执行环境</li>
+<li>Aion 1.0 Plan（140 亿参数本地模型）使设备本身成为 AI 代理的运行载体</li>
+<li>Build 2026 的核心叙事是&quot;平台就绪&quot;，而非&quot;模型更强&quot;——微软在争夺 Agentic AI 时代的基础设施定义权</li>
+</ul>
+<p><strong>[Visual Studio Magazine]</strong>: <a href="https://visualstudiomagazine.com/articles/2026/06/02/at-build-2026-microsoft-sets-up-windows-as-an-os-for-ai-agents.aspx" target="_blank" rel="noopener">原文链接</a> | <a href="https://visualstudiomagazine.com/articles/2026/06/02/at-build-2026-microsoft-sets-up-windows-as-an-os-for-ai-agents.aspx" target="_blank" rel="noopener">原文链接</a></p>
 
-    <div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div>
+    </div>
 
     <footer class="site-footer">
-        AI Agent Daily Brief &mdash; 2026年06月02日
+        <a href="../../brief-2026-06-03.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
     </footer>
 </div>
 </body>

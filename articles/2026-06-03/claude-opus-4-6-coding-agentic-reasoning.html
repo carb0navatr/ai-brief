@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent 每日简报 | 2026-06-02</title>
+    <title>AI Agent Daily Brief - 2026年06月03日</title>
     <style>/* ─── Reset & Base ─── */
 :root {
     --primary:   #1a1a2e;
@@ -195,84 +195,58 @@ a:hover { text-decoration: underline; }
 </head>
 <body>
 <div class="container">
-    <nav class="nav-bar">
-        <a href="brief-2026-06-01.html" class="nav-btn">← 前一天</a>
-        <span class="nav-date">2026年06月02日</span>
-        <a href="brief-2026-06-03.html" class="nav-btn">后一天 →</a>
-    </nav>
+    <div class="breadcrumb">
+        <a href="../../brief-2026-06-03.html">AI Agent Daily Brief - 2026年06月03日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
 
-    <header class="brief-header">
-        <h1>AI Agent 每日简报 | 2026-06-02</h1>
-        <p class="subtitle"></p>
-    </header>
+    <div class="article-body">
+        <h1>Claude Opus 4.6：Anthropic 发布顶级编码与代理推理模型，百万 token 上下文开启内测</h1>
+        
+        <h2>原文要点</h2>
+<p>Anthropic 发布了 Claude Opus 4.6，这是该公司 Opus 级别的最强模型，主打<strong>编码能力和长时代理任务</strong>的显著提升：</p>
+<ul><li><strong>编码与代理能力全面升级</strong>：更精心的规划、更长的代理任务持续性、更大代码库中的可靠运行、更强的代码审查和调试能力，能主动发现自身错误。</li>
+<li><strong>100 万 token 上下文窗口（内测）</strong>：Opus 系列首次支持百万级上下文，为超长文档分析、跨大型代码库工作提供了技术基础。</li>
+<li><strong>业界领先的性能指标</strong>：<ul><li>Terminal-Bench 2.0（代理编码评测）：所有模型中最高分</li>
+<li>Humanity's Last Exam（复杂多学科推理测试）：领先所有前沿模型</li>
+<li>GDPval-AA（经济价值知识工作评测）：比 GPT-5.2 高约 144 分，比 Opus 4.5 高 190 分</li>
+<li>BrowseComp（困难信息定位评测）：超越所有其他模型</li>
+</ul>
+</li>
+<li><strong>安全表现达到行业最优</strong>：整体安全表现等于或优于行业其他前沿模型，在安全评估中表现出低比例的不对齐行为。</li>
+<li><strong>Claude Code 新增代理团队（Agent Teams）</strong>：支持多个 Claude 实例协作完成任务。</li>
+<li><strong>API 新能力</strong>：Compaction（上下文压缩，让长任务不受 token 限制）、Adaptive Thinking（模型根据上下文线索动态调整推理投入）、Effort 控制（开发者可控制智能、速度和成本之间的平衡）。</li>
+<li><strong>日常工作效率工具扩展</strong>：Claude in Excel 重大升级，Claude in PowerPoint 进入研究预览阶段。</li>
+</ul>
+<h2>为什么重要</h2>
+<p>Claude Opus 4.6 的发布是 Anthropic 在 2026 年企业 AI 竞争中的一次重要布局，其战略含义远超性能数字本身：</p>
+<ol><li><p><strong>编码代理的格局正在被重新定义</strong>。Terminal-Bench 2.0 的最高分和 GDPval-AA 对 GPT-5.2 领先 144 分，意味着 Claude 在需要<strong>深度推理+长时执行</strong>的编码场景中取得了实质性优势。这对于 Cursor、Windsurf 等以 Claude 作为默认模型的 AI 编程工具提供商有直接影响。</p>
+</li>
+<li><p><strong>百万 token 上下文是关键能力，但落地节奏需观察</strong>。100 万 token 对于法律文档分析、大型代码库审查、跨文件重构等场景意义重大。但目前处于内测阶段，实际可用性和定价策略尚未明确。</p>
+</li>
+<li><p><strong>Agent Teams 功能值得关注</strong>：这意味着 Claude 不再是单一代理的工作环境，而是开始支持多代理协作——与 Salesforce Agentforce、Microsoft Copilot 等平台的多代理战略形成了直接竞争。</p>
+</li>
+<li><p><strong>Adaptive Thinking 和 Effort 控制是面向企业定价优化的产品设计</strong>：Anthropic 正在让客户自己决定&quot;花多少钱买到多少智能&quot;，这是对用量计费趋势的主动回应，而非被动跟随。</p>
+</li>
+<li><p><strong>Claude in Excel 和 PowerPoint 的扩展</strong>表明 Anthropic 正在从&quot;API 供应商&quot;向&quot;企业应用层&quot;渗透——通过深度集成微软办公套件进入数亿用户的日常工作流。</p>
+</li>
+</ol>
+<h2>关键要点</h2>
+<ul><li>Claude Opus 4.6 在编码代理评测和长任务执行上取得业界领先成绩，GDPval-AA 比 GPT-5.2 高约 144 分</li>
+<li>100 万 token 上下文窗口进入内测，为超长任务提供技术基础</li>
+<li>Claude Code 新增 Agent Teams 功能，支持多代理协作架构</li>
+<li>Compaction、Adaptive Thinking、Effort 控制等新能力赋予开发者更细粒度的智能/成本控制</li>
+<li>Anthropic 正通过 Excel 和 PowerPoint 集成向企业应用层深度渗透</li>
+</ul>
+<p><strong>[Anthropic]</strong>: <a href="https://www.anthropic.com/news/claude-opus-4-6" target="_blank" rel="noopener">Anthropic 原文</a> | <a href="https://www.anthropic.com/news/claude-opus-4-6" target="_blank" rel="noopener">原文链接</a></p>
 
-    <div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div>
+    </div>
 
     <footer class="site-footer">
-        AI Agent Daily Brief &mdash; 2026年06月02日
+        <a href="../../brief-2026-06-03.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
     </footer>
 </div>
 </body>
