@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026-06-04 AI Agent 简报</title>
+    <style>/* ─── Reset & Base ─── */
+:root {
+    --primary:   #1a1a2e;
+    --secondary: #16213e;
+    --accent:    #0f3460;
+    --highlight: #e94560;
+    --text:      #eaeaea;
+    --muted:     #a0a0a0;
+    --card-bg:   #1a1a2e;
+    --border:    #2a2a4a;
+    --green:     #4ade80;
+    --blue:      #60a5fa;
+    --yellow:    #fbbf24;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f0f1a;
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Layout ─── */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ─── Nav Bar ─── */
+.nav-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; padding: 14px 20px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.nav-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    padding: 6px 12px; border-radius: 6px; text-decoration: none;
+    transition: all .2s;
+}
+.nav-btn:hover { color: #fff; background: var(--accent); text-decoration: none; }
+.nav-btn.disabled { opacity: .3; pointer-events: none; }
+.nav-date { font-size: 14px; font-weight: 600; color: var(--highlight); }
+
+/* ─── Header ─── */
+.brief-header { margin-bottom: 28px; }
+.badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--highlight); color: #fff;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 999px; margin-bottom: 10px; letter-spacing: .5px;
+}
+.brief-header h1 { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.3; }
+.brief-header .subtitle { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+
+/* ─── Quick Hits ─── */
+.quick-hits {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 28px;
+}
+.quick-hits ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.quick-hits li { font-size: 15px; }
+.quick-hits li strong { color: #fff; }
+.quick-hits li a { color: var(--blue); }
+
+/* ─── Section ─── */
+.section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin: 30px 0 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.section-header .emoji { font-size: 20px; }
+.section-header h2 { font-size: 16px; font-weight: 700; color: #fff; }
+
+/* ─── Item ─── */
+.item { margin-bottom: 28px; }
+.item h3 {
+    font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; line-height: 1.4; scroll-margin-top: 20px;
+}
+
+/* ─── Item Body (rendered markdown) ─── */
+.item-body { font-size: 14px; color: var(--muted); }
+.item-body p { margin-bottom: 10px; }
+.item-body p:last-child { margin-bottom: 0; }
+.item-body strong, .item-body b { color: #fff; font-weight: 600; }
+.item-body em, .item-body i { color: #ccc; font-style: italic; }
+.item-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.item-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+    overflow-x: auto;
+}
+.item-body pre code { background: none; padding: 0; font-size: 13px; }
+.item-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 10px 0; color: var(--muted);
+}
+.item-body ul, .item-body ol {
+    padding-left: 20px; margin: 8px 0;
+}
+.item-body li { margin-bottom: 5px; }
+.item-body li::marker { color: var(--highlight); }
+.item-body a { color: var(--blue); }
+.item-body a:hover { text-decoration: underline; }
+
+/* ─── Key Points Box ─── */
+.key-points {
+    background: var(--secondary); border-left: 3px solid var(--highlight);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 10px 0;
+}
+.key-points strong { color: var(--highlight); display: block; margin-bottom: 6px; }
+.key-points ul { list-style: none; padding: 0; margin: 0; }
+.key-points li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+.key-points li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
+
+/* ─── Item Meta (source + readable links) ─── */
+.item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.item-meta a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 500; padding: 4px 10px;
+    border-radius: 6px; text-decoration: none; transition: all .15s;
+}
+.item-meta .src-link { color: var(--blue); border: 1px solid #60a5fa33; }
+.item-meta .src-link:hover { background: #60a5fa22; }
+.item-meta .read-link { color: var(--green); border: 1px solid #4ade8033; }
+.item-meta .read-link:hover { background: #4ade8022; }
+
+/* ─── Footer ─── */
+.site-footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); text-align: center;
+}
+
+/* ─── Article Page ─── */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb .sep { color: var(--border); }
+
+.article-body {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px; margin-bottom: 24px;
+}
+.article-body h1 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.3; }
+.article-body .source-line {
+    font-size: 13px; color: var(--muted); margin-bottom: 18px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.article-body .source-line a { color: var(--blue); }
+.article-body p { margin-bottom: 14px; font-size: 15px; }
+.article-body strong, .article-body b { color: #fff; font-weight: 600; }
+.article-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.article-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto;
+}
+.article-body pre code { background: none; padding: 0; }
+.article-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 12px 0; color: var(--muted);
+}
+.article-body ul, .article-body ol { padding-left: 22px; margin: 10px 0; }
+.article-body li { margin-bottom: 6px; }
+.article-body li::marker { color: var(--highlight); }
+.article-body a { color: var(--blue); }
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+    .container { padding: 20px 14px 60px; }
+    .nav-bar { flex-wrap: wrap; gap: 8px; }
+    .nav-date { order: -1; width: 100%; text-align: center; }
+    .article-body { padding: 20px 18px; }
+    .brief-header h1 { font-size: 19px; }
+}</style>
+</head>
+<body>
+<div class="container">
+    <nav class="nav-bar">
+        <a href="brief-2026-06-03.html" class="nav-btn">← 前一天</a>
+        <span class="nav-date">2026年06月04日</span>
+        <span class="nav-btn disabled">后一天 →</span>
+    </nav>
+
+    <header class="brief-header">
+        <h1>2026-06-04 AI Agent 简报</h1>
+        <p class="subtitle"></p>
+    </header>
+
+    <div class="section-header" id="今日要点">
+    
+    <h2>今日要点</h2>
+</div><div class="item" id="基础设施">
+    <h3>基础设施</h3>
+    <div class="item-body"><p><strong>NVIDIA 与微软合作：统一技术栈加速 Agentic AI 落地</strong></p>
+<p>本篇文章报道了 NVIDIA 与微软在 AI 基础设施层面的深度合作，面向 Agentic AI（智能体 AI）工作负载打造统一技术栈。随着企业从单轮对话式 AI 转向多步骤、长时间运行的智能体应用，基础设施层的整合成为决定落地效率的关键因素。此次合作意味着开发者可以在微软生态内直接调用 NVIDIA 的 GPU 加速能力，降低了企业在私有化部署 Agentic AI 的门槛。</p>
+<ul><li><p><strong>合作范围</strong>：NVIDIA 与微软联合推出面向 Agentic AI 的统一技术栈，覆盖开发、部署与推理全链路。</p>
+</li>
+<li><p><strong>技术整合</strong>：整合 NVIDIA NIM 微服务、Microsoft Azure AI 服务与 Windows 本地设备支持，便于企业构建和运行长时运行的 AI 代理（Claw）。</p>
+</li>
+<li><p><strong>目标场景</strong>：重点支持需要长时间持续运行、自动调用工具、完成复杂多步骤任务的 AI 应用。</p>
+</li>
+<li><p><strong>开发者体验</strong>：提供从本地开发设备到云端的一键部署路径，简化 AI 智能体的开发和运维流程。</p>
+</li>
+<li><p><strong>生态系统</strong>：已在 NVIDIA 与微软各自的开发生态中同步推进，包括 Build-a-Claw 开发者体验。</p>
+</li>
+</ul>
+<div class="item-meta"><a href="https://blogs.nvidia.com/blog/microsoft-build-windows-local-devices/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://blogs.nvidia.com/blog/microsoft-build-windows-local-devices/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="产品发布">
+    <h3>产品发布</h3>
+    <div class="item-body"><p><strong>NVIDIA GTC Taipei 现场速报：COMPUTEX 2026 重磅发布</strong></p>
+<p>COMPUTEX 2026 期间，NVIDIA 在台北举办的 GTC 大会成为 AI 基础设施与智能体 AI 领域的风向标。大会期间发布了多款重磅产品，包括全新 Nemotron 3 Ultra 开源模型、Isaac GR00T 人形机器人开发平台更新，以及 Build-a-Claw 开发者体验在亚太地区的落地。这些发布揭示了 NVIDIA 在 Agentic AI 和物理 AI 领域的最新布局方向。</p>
+<ul><li><p><strong>Nemotron 3 Ultra 正式发布</strong>：5500 亿参数专家混合模型（MoE），专为长时间运行 AI 代理设计，推理速度提升最高 5 倍，复杂 Agentic 任务成本降低 30%。早期采用者包括 Perplexity、Palantir、ServiceNow 等企业。</p>
+</li>
+<li><p><strong>Nemotron 联盟扩大</strong>：H Company、NAVER Cloud、Nous Research、Prime Intellect 加入该联盟，将共同推进下一代开源前沿模型 Nemotron 4 的开发。</p>
+</li>
+<li><p><strong>Build-a-Claw 登陆台北</strong>：NVIDIA 将安全的长时间运行代理开发体验带入亚太开发者社区，集成 NemoClaw 蓝图和 OpenShell 安全运行时。</p>
+</li>
+<li><p><strong>Isaac GR00T 重大更新</strong>：新版 GR00T 1.7 模型基于 20000 小时人类自我中心数据训练，支持更复杂的人形机器人双臂与精细操作任务；GR00T 模型下载量已超 27.4 万次。</p>
+</li>
+<li><p><strong>新 Speech 和 Safety 模型</strong>：推出支持 40 种语言实时流式语音识别的 Nemotron 3.5 ASR 模型，以及支持 23 种安全类别分类的 Nemotron 3.5 Content Safety 多模态模型。</p>
+</li>
+</ul>
+<p><strong>Holo3.1 发布：快速本地推理的计算机控制代理</strong></p>
+<p>H Company 发布 Holo3.1，在此前业界领先的 Holo3 基础上，进一步提升了对 Web、桌面、移动等多端 GUI 环境的鲁棒性，并首次支持量化权重（FP8、Q4 GGUF、NVFP4），实现在消费级硬件上的完全本地化 AI 代理运行。这标志着计算机使用代理从云端部署向端侧落地的关键一步，对于注重数据隐私和降低推理成本的企业用户意义重大。</p>
+<ul><li><p><strong>移动端性能大幅提升</strong>：在 AndroidWorld 基准上，35B-A3B 模型从 67% 提升至 79.3%，4B 和 9B 小模型从 58% 提升至 72%。</p>
+</li>
+<li><p><strong>跨框架原生支持</strong>：除原有结构化 JSON 输出外，新增对 Function Calling 协议的原生日志支持，Holo3.1 在 OSWorld 和企业级电商、协作工作流等内部基准上提升超过 25%。</p>
+</li>
+<li><p><strong>四款规模可选</strong>：Holo3.1-0.8B（超轻量本地代理）、Holo3.1-4B（成本效益部署）、Holo3.1-9B（性能延迟平衡）、Holo3.1-35B-A3B（最高性能）。</p>
+</li>
+<li><p><strong>本地高速推理</strong>：在 DGX Spark 上，NVFP4 W4A16 配置实现比 BF16 高 1.74 倍的 token 吞吐；结合代理框架优化，端到端平均步进时间从 6.8 秒缩短至 3.3 秒。</p>
+</li>
+<li><p><strong>完全私有化</strong>：代理完全在本地 Windows 或 Mac 机器运行，模型可在同设备或同网络 DGX Spark 上执行，所有数据不离开用户网络。</p>
+</li>
+</ul>
+<p><strong>OpenAI Codex 新增 Sites 和企业插件：从代码助手升级为工作编排平台</strong></p>
+<p>OpenAI 发布 Codex 重大更新，新增 Sites（创建托管内部 Web 应用）、Annotations（精确编辑文档局部内容）和角色专属插件三大能力。Codex 周活跃用户已突破 500 万，其中非开发者用户占比约 20% 且增速是开发者的 3 倍以上。这一更新标志着 Codex 从代码助手向企业级工作编排平台的战略升级——任何部门都可以连接工具、生成界面、编辑文件并自动化多步骤业务流程，而无需编写代码。</p>
+<ul><li><p><strong>Sites 功能预览</strong>：Codex 可将电子表格、文档、幻灯片等材料转化为托管的交互式仪表板、情景规划器、项目看板等内部 Web 应用，面向 Business 和 Enterprise 客户开放预览。</p>
+</li>
+<li><p><strong>Annotations 精准编辑</strong>：用户可标记文档、电子表格、幻灯片或网站的特定区域，仅更新选定内容而不破坏其余格式，解决了 AI 重写时格式损坏的痛点。</p>
+</li>
+<li><p><strong>插件生态初具规模</strong>：6 款角色专属插件共集成 62 个流行应用和 110 项技能，覆盖数据分析、创意制作、销售、产品设计、公募投资和投资银行等领域；后续将推出企业财务、私募股权、营销策略、战略咨询和法律等插件。</p>
+</li>
+<li><p><strong>非技术用户增长迅猛</strong>：非开发者用户（分析师、营销人员、运营人员、设计师、研究员等）占 20% 且增速超 3x；超过 60% 的 Codex 用户现在同时运行多个任务。</p>
+</li>
+<li><p><strong>合作生态扩展</strong>：OpenAI 正与 Vercel、Wix、Base44、Replit、Lovable、Figma、Webflow 和 Emergent 等平台合作共建 Sites 生态。</p>
+</li>
+</ul>
+<div class="item-meta"><a href="https://huggingface.co/blog/Hcompany/holo31" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://huggingface.co/blog/Hcompany/holo31" target="_blank" rel="noopener" class="src-link">📰 原文</a><a href="https://theaitrack.com/openai-codex-sites-enterprise-plugins/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://theaitrack.com/openai-codex-sites-enterprise-plugins/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="模型动态">
+    <h3>模型动态</h3>
+    <div class="item-body"><p><strong>Google Gemma 4：逼近美国开源权重模型前沿</strong></p>
+<p>Google 发布了 Gemma 4 系列四款开源权重模型，包含从 5.1B 到 31B 不同参数规模的版本，在智能水平评测中实现了对前代 Gemma 3 的巨大跨越。旗舰款 Gemma 4 31B 评测得分为 39 分，仅比当前开源权重标杆 Qwen3.5 27B 低 3 分，但输出 token 效率却高出约 2.5 倍。这一进展表明开源模型在企业级 AI 部署中的竞争力正在快速逼近专有模型，同时为本地化和边缘部署提供了更多选择。</p>
+<ul><li><p><strong>评测性能大幅跃升</strong>：Gemma 4 31B 得分为 39，比 Gemma 3 27B Instruct（10 分）高出 29 分；Gemma 4 E4B（19 分）比前代高出 13 分。</p>
+</li>
+<li><p><strong>Token 效率领先</strong>：Gemma 4 31B 仅用 3900 万输出 token 完成评测，比 Qwen3.5 27B（9800 万）和 GLM-4.7（1.67 亿）少用大量 token。</p>
+</li>
+<li><p><strong>多模态全面支持</strong>：全系列均支持文本、图像、视频输入，其中 E2B 和 E4B 还支持原生音频输入；上下文窗口最高扩展至 256K token。</p>
+</li>
+<li><p><strong>Apache 2.0 开源许可</strong>：相较于 Gemma 3 的使用条款，Gemma 4 采用更宽松的 Apache 2.0 许可证，降低了商业应用门槛。</p>
+</li>
+<li><p><strong>本地化部署优势</strong>：E2B 版本（2.3B 激活参数）经 4-bit 量化后权重小于 3GB，适合移动端和边缘设备上的计算机使用代理任务。</p>
+</li>
+</ul>
+<p><strong>GPT-Rosalind 新增能力：面向生命科学研究的企业级 AI 助手</strong></p>
+<p>OpenAI 发布 GPT-Rosalind 更新，这是一款专为生命科学领域大规模企业研究打造的专业模型，在 GPT-5.5 的智能基础上融合了更强的药物化学与基因组学领域能力，并新增了湿实验工作流程支持。GPT-Rosalind 在 MedChemBench（药物化学）、GeneBench（基因组学）和 LabWorkBench（湿实验协议）等专业基准上均实现对 GPT-5.5 的超越，同时保持更高的 token 利用效率，为生物医药研发中的 AI 落地提供了更专业的工具选择。</p>
+<ul><li><p><strong>专业基准领先</strong>：MedChemBench 上以 27.5% 对 25.1% 超越 GPT-5.5，token 消耗减少 7.2%；GeneBench 上准确率 21.6% 对 20.4%，token 消耗减少 31%；LabWorkBench 上 63.2% 对 55.8%，token 消耗减少 5.3%。</p>
+</li>
+<li><p><strong>插件生态扩展</strong>：推出生命科学研究（Life Sciences Research）和 NGS 分析（Life Sciences NGS Analysis）两大插件，可在 Codex 中实现可溯源证据检索、生物学解读和生物信息学执行的无缝衔接。</p>
+</li>
+<li><p><strong>交互式文件查看器</strong>：新增序列、比对和结构文件的原生交互查看器，支持科学家在 AI 推理过程中直接检查突变位点、RAS 家族保守性分析、抑制剂结合口袋结构等原始证据。</p>
+</li>
+<li><p><strong>ctDNA 液体活检工作流演示</strong>：展示从肿瘤 ctDNA 突变分析到 KRAS G12C 靶点追踪、抑制剂和耐药性上下文整合的完整研究流程。</p>
+</li>
+<li><p><strong>scRNA-seq QC 全流程</strong>：将 10x 风格单细胞 RNA 测序数据转化为 QC 过滤、细胞注释、UMAP 可视化等可检查的工件，支持在 Codex 内直接审查和修正。</p>
+</li>
+</ul>
+<p><strong>AA-WER Streaming：流式语音转文字模型新基准发布</strong></p>
+<p>Artificial Analysis 发布 AA-WER Streaming，这是首个专门衡量流式语音转文字（STT）模型在准确率和延迟上双重表现的基准，专注于语音代理等实时场景。与离线批处理模型不同，流式模型需要在语音结束后快速输出转录结果，同时保持低词错误率（WER），两者共同决定了对话体验的自然度。基准覆盖约 8 小时音频，测试了 Cartesia、ElevenLabs、Deepgram、NVIDIA 等主流流式 STT 模型，揭示了不同模型在帕累托最优曲线上的差异。</p>
+<ul><li><p><strong>最终转录准确率领先</strong>：Cartesia Ink-2（语义端点）以 3.59% WER、0.21s 延迟领先；ElevenLabs Scribe v2 Realtime（3.64%，0.14s）和 Cartesia Ink-2（外部端点，3.66%，0.09s）紧随其后。</p>
+</li>
+<li><p><strong>最快转录速度</strong>：Deepgram Flux 在最终转录（0.020s）和首次部分转录（0.019s）均为最快，但 WER 较高（7.36%），适合低延迟但容错率高的场景。</p>
+</li>
+<li><p><strong>延迟-准确率帕累托曲线</strong>：首次部分转录与最终转录 WER 差距平均仅约 0.7 个百分点，大多数模型在首次部分结果时已接近最终准确率。</p>
+</li>
+<li><p><strong>数据集差异明显</strong>：不同数据集上无单一模型全面领先——AA-AgentTalk 上 ElevenLabs Scribe v2 Realtime 最优，VoxPopuli 上 AssemblyAI U3 Realtime Pro 和 Google Chirp 3 Streaming 分列第一，Earnings22 上 Cartesia Ink-2 最优。</p>
+</li>
+<li><p><strong>定价范围</strong>：流式 STT 定价从每千分钟 $2（Soniox）到 $17 不等，Cartesia Ink-2（$4，3.7% WER）和 ElevenLabs Scribe v2 Realtime（$6.50，3.6% WER）在价格-准确率权衡上领先。</p>
+</li>
+</ul>
+<div class="item-meta"><a href="https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://openai.com/index/introducing-new-capabilities-to-gpt-rosalind/" target="_blank" rel="noopener" class="src-link">📰 原文</a><a href="https://www.artificialanalysis.ai/articles/new-streaming-speech-to-text-benchmark-aa-wer-streaming" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://www.artificialanalysis.ai/articles/new-streaming-speech-to-text-benchmark-aa-wer-streaming" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="研究进展">
+    <h3>研究进展</h3>
+    <div class="item-body"><p><strong>EVA-Bench Data 2.0：企业语音代理评估基准全面升级</strong></p>
+<p>语音代理在实际企业场景中的失败往往具有高度的领域特殊性——一个在航班改签中表现完美的系统，可能在 HR 系统处理复杂政策时完全失效。ServiceNow 发布 EVA-Bench Data 2.0，将评估覆盖从单一企业领域扩展至航空客服、企业 IT 服务管理和医疗 HR 三个领域，场景数量从前代的约 50 个增至 213 个，工具数量达 121 个，增幅约 4 倍。所有场景均经过 OpenAI GPT-5.4、Google Gemini 3.1 Pro 和 Anthropic Claude Opus 4.6 三大前沿模型的可解决性（solvability）验证，确保基准既具挑战性又公平可靠。</p>
+<ul><li><p><strong>三大领域覆盖</strong>：航空客服管理（CSM，50 个场景）、企业 IT 服务管理（ITSM，80 个场景）、医疗 HR 服务交付（HRSD，83 个场景），共 213 个评估场景。</p>
+</li>
+<li><p><strong>数据生成质量保障</strong>：使用 SyGra 图结构合成数据管线生成场景，用户目标、初始数据库和预期最终状态三重组件联合生成以避免不一致，并经过多轮结构检查、LLM 一致性验证和执行轨迹验证。</p>
+</li>
+<li><p><strong>场景类型丰富</strong>：涵盖单意图对话、多意图对话（单次会话最多 4 个意图）、对抗性对话（用户尝试绕过流程或越权访问），以及目标无法满足的边缘场景。</p>
+</li>
+<li><p><strong>认证流程</strong>：每个领域均包含认证流程，根据任务类型灵活配置 OTP 提升等安全机制，而非一刀切。</p>
+</li>
+<li><p><strong>多语言扩展预告</strong>：正在推进将评估扩展至英语以外的语言，包括对话语言、地点名称、人名、邮件、电话号码的本地化适配。</p>
+</li>
+</ul>
+<div class="item-meta"><a href="https://huggingface.co/blog/ServiceNow-AI/eva-bench-data" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://huggingface.co/blog/ServiceNow-AI/eva-bench-data" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="产业动态">
+    <h3>产业动态</h3>
+    <div class="item-body"><p><strong>Sam Altman 预言：继聊天机器人和代理之后，&quot;主动式 AI&quot;将成下一阶段</strong></p>
+<p>在 OpenAI 举办的企业活动上，CEO Sam Altman 提出了 AI 产品发展的三阶段论：聊天模型（如 ChatGPT）为首个主流产品，AI 代理（如 Codex）为第二阶段，而下一阶段将是&quot;主动式 AI&quot;——在后台持续运行、主动为用户工作的智能系统。Altman 同时指出当前行业面临的成本危机和使用激活难题，揭示了 AI 从工具向基础设施演进的深层挑战。</p>
+<ul><li><p><strong>三阶段演进路径</strong>：聊天模型 → AI 代理 → 主动式 AI（持续在后台运行，主动连接企业全部上下文并主动工作）。</p>
+</li>
+<li><p><strong>成本危机浮现</strong>：AI 成本已从年初的不受关注升至&quot;巨大问题&quot;，Altman 引用 Uber 案例——其全年 AI 预算在第一季度即耗尽。OpenAI 计划通过提升模型效率来帮助用户&quot;用更少花费获取更多价值&quot;。</p>
+</li>
+<li><p><strong>使用激活困境</strong>：大多数用户不知道如何充分利用 AI，Altman 认为&quot;激活能量过高&quot;——即便 demo 再出色，实际使用率仍然偏低。主动式 AI 正是对此的回应：让 AI 主动工作，用户无需理解 AI 能做什么。</p>
+</li>
+<li><p><strong>超级应用愿景</strong>：OpenAI 正推进整合 Codex 与 ChatGPT 等工具的超级应用，让 AI 持续运行并连接企业全部上下文，&quot;不需要用户理解它能做什么就变得有用&quot;。</p>
+</li>
+<li><p><strong>企业改造需求</strong>：实现主动式 AI 需要企业重新设计安全协议、重新分配计算资源，AI 全天候运行并获取全公司上下文对数据保护的要求远高于单次问答场景。</p>
+</li>
+</ul>
+<p><strong>Anthropic 递交 IPO 申请：9650 亿美元估值的上市之路</strong></p>
+<p>2026 年 6 月 1 日，Anthropic 向美国证券交易委员会（SEC）秘密提交了首次公开募股（IPO）的 Form S-1 注册声明草案，迈出了成为上市公司的正式第一步。此前 Anthropic 在 H 轮融资中估值达到 9650 亿美元，较 2025 年 3 月的 615 亿和 2026 年 2 月的 3800 亿美元大幅攀升，年化收入运行率已超 470 亿美元。此举将使公开市场投资者首次直接审视前沿 AI 公司的真实财务状况，包括收入质量、利润路径、算力支出和法律风险。</p>
+<ul><li><p><strong>IPO 正式推进</strong>：2026 年 6 月 1 日向 SEC 秘密提交 Form S-1 草案，公司表示 IPO 将取决于 SEC 审查、市场条件等因素，目前尚未披露发行股数、价格或目标估值。</p>
+</li>
+<li><p><strong>估值飞速增长</strong>：从 2025 年 3 月的 615 亿、2026 年 2 月的 3800 亿，攀升至 2026 年 5 月的 9650 亿美元，H 轮融资由 Altimeter Capital、Dragoneer、Greenoaks 和红杉资本领投。</p>
+</li>
+<li><p><strong>财务数据亮眼</strong>：Claude Code 年化收入运行率已超 25 亿美元；年化收入运行率从 2025 年底的约 90 亿增至 2026 年 5 月的超 470 亿；超过 1000 家企业客户年消费超 100 万美元。</p>
+</li>
+<li><p><strong>基础设施布局</strong>：与亚马逊签署最多 5GW 新增容量协议，与 Google/Broadcom 签署 5GW TPU 容量协议，与 SpaceX 签署 GPU 容量协议；Micron、Samsung、SK Hynix 构成内存和芯片供应链。</p>
+</li>
+<li><p><strong>法律风险与挑战</strong>：面临 1.5 亿美元版权和解（作家和出版商案）；音乐出版商就歌词和乐谱单独提出版权索赔；正在挑战特朗普政府限制其军事相关工作的&quot;供应链风险&quot;认定；2026 年 Q1 游说支出从上年同期 36 万美元增至 160 万美元。</p>
+</li>
+</ul>
+<div class="item-meta"><a href="https://theaitrack.com/anthropic-ipo-filing-965-billion-valuation/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://theaitrack.com/anthropic-ipo-filing-965-billion-valuation/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div>
+
+    <footer class="site-footer">
+        AI Agent Daily Brief &mdash; 2026年06月04日
+    </footer>
+</div>
+</body>
+</html>
