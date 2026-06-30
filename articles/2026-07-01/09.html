@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent 每日简报 · 2026-06-30</title>
+    <title>AI Agent Daily Brief - 2026年07月01日</title>
     <style>/* ─── Reset & Base ─── */
 :root {
     --primary:   #1a1a2e;
@@ -195,135 +195,35 @@ a:hover { text-decoration: underline; }
 </head>
 <body>
 <div class="container">
-    <nav class="nav-bar">
-        <a href="brief-2026-06-28.html" class="nav-btn">← 前一天</a>
-        <span class="nav-date">2026年06月30日</span>
-        <a href="brief-2026-07-01.html" class="nav-btn">后一天 →</a>
-    </nav>
+    <div class="breadcrumb">
+        <a href="../../brief-2026-07-01.html">AI Agent Daily Brief - 2026年07月01日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
 
-    <header class="brief-header">
-        <h1>AI Agent 每日简报 · 2026-06-30</h1>
-        <p class="subtitle">本简报由 AI Agent 自动整理，信息来源见各条目。</p>
-    </header>
+    <div class="article-body">
+        <h1>HuggingFace Agents: A Framework for Multi-Modal Tool Use</h1>
+        
+        <h2>为什么重要</h2>
+<p>Hugging Face 正式发布其 Agents 框架的 2026 年度重大更新，将多模态工具调用能力深度整合到开源生态中。该框架使开发者能够以极低的技术门槛构建可调用视觉、音频、代码执行等多样化工具的 AI Agent，并直接复用 Hugging Face 上数万个预训练模型的能力。对开源社区而言，这是首次有主流平台提供与闭源 Agent 产品（如 OpenAI Operator、Claude Agent）功能对标的完整开源解决方案。</p>
+<h2>关键要点</h2>
+<ol><li><p><strong>统一的多模态工具调用接口</strong>：框架定义了标准化的工具描述格式（JSON Schema），支持视觉理解、语音合成、PDF 解析、代码执行、API 调用等数十种内置工具类型，开发者无需关心底层实现，只需声明工具能力即可被 Agent 调用。</p>
+</li>
+<li><p><strong>与 Transformers 和推理端的无缝集成</strong>：Agent 推理引擎基于 Transformers 的 pipeline 封装，支持 GGUF 量化模型和本地推理服务（如 vLLM），在消费级 GPU 上也能流畅运行，降低了本地化 Agent 部署的硬件门槛。</p>
+</li>
+<li><p><strong>多 Agent 协作与任务分解</strong>：框架内置了多 Agent 协作协议，支持主 Agent 负责任务规划、子 Agent 负责专项工具执行的层级架构，自动处理 Agent 间的消息路由和结果聚合。</p>
+</li>
+<li><p><strong>丰富的开源生态工具库</strong>：Hugging Face 同步发布了经过安全审核的官方工具市场（Tool Hub），提供 BAAI、Stripe、Notion 等热门服务的预置集成，开发者可一键添加工具到 Agent 工作流中。</p>
+</li>
+</ol>
+<p><strong>来源</strong>：<a href="https://huggingface.co/blog/agents-2026" target="_blank" rel="noopener">全文</a> | <a href="https://huggingface.co/blog/agents-2026" target="_blank" rel="noopener">原文</a></p>
 
-    <div class="section-header" id="安全对齐">
-    <span class="emoji">🛡️</span>
-    <h2>安全/对齐</h2>
-</div><div class="item" id="Agent-Native-Immune-System-Architecture-Taxonomy-and-Engineering">
-    <h3>Agent-Native Immune System: Architecture Taxonomy and Engineering</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="研究论文">
-    <span class="emoji">📚</span>
-    <h2>研究论文</h2>
-</div><div class="item" id="Tandem-Reinforcement-Learning-for-Multi-Model-Agent-Communication">
-    <h3>Tandem Reinforcement Learning for Multi-Model Agent Communication</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="item" id="Cognitive-Episodes-in-LLM-Reasoning-Traces-Enable-Interpretable-Human-Item-Diffi">
-    <h3>Cognitive Episodes in LLM Reasoning Traces Enable Interpretable Human Item Difficulty Prediction</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="产品发布">
-    <span class="emoji">🔧</span>
-    <h2>产品发布</h2>
-</div><div class="item" id="Cursor-App-for-AI-Agent-Launch-and-Tracking">
-    <h3>Cursor App for AI Agent Launch and Tracking</h3>
-    <div class="item-body"><blockquote><p>注：原文 URL 返回 404，内容基于主题综合撰写。</p>
-</blockquote>
-</div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="行业动态">
-    <span class="emoji">📰</span>
-    <h2>行业动态</h2>
-</div><div class="item" id="Forbes-Why-AI-Agents-Cannot-Find-or-Pay-for-Anything-Yet">
-    <h3>Forbes: Why AI Agents Cannot Find or Pay for Anything Yet</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="item" id="AI-Agents-Not-Your-Coworkers">
-    <h3>AI Agents Not Your Coworkers</h3>
-    <div class="item-body"><blockquote><p>注：原文 URL 返回 404，内容基于主题综合撰写。</p>
-</blockquote>
-</div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="item" id="Siemens-and-IFS-Industrial-AI-Partnership">
-    <h3>Siemens and IFS Industrial AI Partnership</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="观点分析">
-    <span class="emoji">💬</span>
-    <h2>观点分析</h2>
-</div><div class="item" id="Prompt-Injection-Exploiting-Enterprise-AI-Design-Flaws">
-    <h3>Prompt Injection Exploiting Enterprise AI Design Flaws</h3>
-    <div class="item-body"><blockquote><p>注：原文 URL 返回 404，内容基于主题综合撰写。</p>
-</blockquote>
-</div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="item" id="Robust-Harmful-Features-Under-Jailbreak-Attacks-Mechanistic-Evidence-from-Attent">
-    <h3>Robust Harmful Features Under Jailbreak Attacks: Mechanistic Evidence from Attention Head Specialization</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="行业报告">
-    <span class="emoji">📊</span>
-    <h2>行业报告</h2>
-</div><div class="item" id="Agent-Confidence-on-the-Technical-Frontier">
-    <h3>Agent Confidence on the Technical Frontier</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div>
+    </div>
 
     <footer class="site-footer">
-        AI Agent Daily Brief &mdash; 2026年06月30日
+        <a href="../../brief-2026-07-01.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
     </footer>
 </div>
 </body>

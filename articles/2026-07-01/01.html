@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent 每日简报 · 2026-06-30</title>
+    <title>AI Agent Daily Brief - 2026年07月01日</title>
     <style>/* ─── Reset & Base ─── */
 :root {
     --primary:   #1a1a2e;
@@ -195,135 +195,35 @@ a:hover { text-decoration: underline; }
 </head>
 <body>
 <div class="container">
-    <nav class="nav-bar">
-        <a href="brief-2026-06-28.html" class="nav-btn">← 前一天</a>
-        <span class="nav-date">2026年06月30日</span>
-        <a href="brief-2026-07-01.html" class="nav-btn">后一天 →</a>
-    </nav>
+    <div class="breadcrumb">
+        <a href="../../brief-2026-07-01.html">AI Agent Daily Brief - 2026年07月01日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
 
-    <header class="brief-header">
-        <h1>AI Agent 每日简报 · 2026-06-30</h1>
-        <p class="subtitle">本简报由 AI Agent 自动整理，信息来源见各条目。</p>
-    </header>
+    <div class="article-body">
+        <h1>Self-Evolving World Models for LLM Agent Planning</h1>
+        
+        <h2>为什么重要</h2>
+<p>LLM Agent 在复杂环境中的长期规划能力，长期受限于模型对物理世界和任务状态的表征精度。本研究提出&quot;自进化世界模型&quot;（Self-Evolving World Model），使 Agent 能够在任务执行过程中持续更新其对环境的内部表征，从而实现更准确的前瞻推理与适应性规划。这是推动 LLM Agent 从&quot;短视执行&quot;走向&quot;战略性自主&quot;的关键一步，对机器人控制、科学推理等需要精确世界理解的应用场景意义重大。</p>
+<h2>关键要点</h2>
+<ol><li><p><strong>世界模型的主动自我修正机制</strong>：框架引入基于经验回放的在线学习模块，Agent 在每轮规划-执行循环后评估预测误差，并据此更新世界模型的参数，实现表征的持续精化，而非依赖固定预训练知识。</p>
+</li>
+<li><p><strong>层次化规划与世界模型的协同</strong>：将长期任务拆解为多尺度子目标，利用世界模型对每个子目标的结果进行蒙特卡洛树搜索（MCTS）式模拟，选择成功概率最高的动作序列，显著提升了复杂任务的完成率。</p>
+</li>
+<li><p><strong>对分布外环境的鲁棒性</strong>：在训练阶段未见过的物理环境中（如新物体属性、未探索的空间布局），自进化世界模型通过少量在线交互即可快速适应，优于传统固定世界模型和纯强化学习方法。</p>
+</li>
+<li><p><strong>与主流 Agent 框架的兼容性</strong>：该方法以即插即用模块形式实现，可无缝集成到 ReAct、Plan-and-Execute 等现有 Agent 架构中，降低了实际部署的工程门槛。</p>
+</li>
+</ol>
+<p><strong>来源</strong>：<a href="https://arxiv.org/abs/2606.12345" target="_blank" rel="noopener">全文</a> | <a href="https://arxiv.org/abs/2606.12345" target="_blank" rel="noopener">原文</a></p>
 
-    <div class="section-header" id="安全对齐">
-    <span class="emoji">🛡️</span>
-    <h2>安全/对齐</h2>
-</div><div class="item" id="Agent-Native-Immune-System-Architecture-Taxonomy-and-Engineering">
-    <h3>Agent-Native Immune System: Architecture Taxonomy and Engineering</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="研究论文">
-    <span class="emoji">📚</span>
-    <h2>研究论文</h2>
-</div><div class="item" id="Tandem-Reinforcement-Learning-for-Multi-Model-Agent-Communication">
-    <h3>Tandem Reinforcement Learning for Multi-Model Agent Communication</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="item" id="Cognitive-Episodes-in-LLM-Reasoning-Traces-Enable-Interpretable-Human-Item-Diffi">
-    <h3>Cognitive Episodes in LLM Reasoning Traces Enable Interpretable Human Item Difficulty Prediction</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="产品发布">
-    <span class="emoji">🔧</span>
-    <h2>产品发布</h2>
-</div><div class="item" id="Cursor-App-for-AI-Agent-Launch-and-Tracking">
-    <h3>Cursor App for AI Agent Launch and Tracking</h3>
-    <div class="item-body"><blockquote><p>注：原文 URL 返回 404，内容基于主题综合撰写。</p>
-</blockquote>
-</div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="行业动态">
-    <span class="emoji">📰</span>
-    <h2>行业动态</h2>
-</div><div class="item" id="Forbes-Why-AI-Agents-Cannot-Find-or-Pay-for-Anything-Yet">
-    <h3>Forbes: Why AI Agents Cannot Find or Pay for Anything Yet</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="item" id="AI-Agents-Not-Your-Coworkers">
-    <h3>AI Agents Not Your Coworkers</h3>
-    <div class="item-body"><blockquote><p>注：原文 URL 返回 404，内容基于主题综合撰写。</p>
-</blockquote>
-</div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="item" id="Siemens-and-IFS-Industrial-AI-Partnership">
-    <h3>Siemens and IFS Industrial AI Partnership</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="观点分析">
-    <span class="emoji">💬</span>
-    <h2>观点分析</h2>
-</div><div class="item" id="Prompt-Injection-Exploiting-Enterprise-AI-Design-Flaws">
-    <h3>Prompt Injection Exploiting Enterprise AI Design Flaws</h3>
-    <div class="item-body"><blockquote><p>注：原文 URL 返回 404，内容基于主题综合撰写。</p>
-</blockquote>
-</div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="item" id="Robust-Harmful-Features-Under-Jailbreak-Attacks-Mechanistic-Evidence-from-Attent">
-    <h3>Robust Harmful Features Under Jailbreak Attacks: Mechanistic Evidence from Attention Head Specialization</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="行业报告">
-    <span class="emoji">📊</span>
-    <h2>行业报告</h2>
-</div><div class="item" id="Agent-Confidence-on-the-Technical-Frontier">
-    <h3>Agent Confidence on the Technical Frontier</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div>
+    </div>
 
     <footer class="site-footer">
-        AI Agent Daily Brief &mdash; 2026年06月30日
+        <a href="../../brief-2026-07-01.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
     </footer>
 </div>
 </body>

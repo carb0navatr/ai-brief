@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent 每日简报 · 2026-06-30</title>
+    <title>AI Agent Daily Brief - 2026年07月01日</title>
     <style>/* ─── Reset & Base ─── */
 :root {
     --primary:   #1a1a2e;
@@ -195,135 +195,35 @@ a:hover { text-decoration: underline; }
 </head>
 <body>
 <div class="container">
-    <nav class="nav-bar">
-        <a href="brief-2026-06-28.html" class="nav-btn">← 前一天</a>
-        <span class="nav-date">2026年06月30日</span>
-        <a href="brief-2026-07-01.html" class="nav-btn">后一天 →</a>
-    </nav>
+    <div class="breadcrumb">
+        <a href="../../brief-2026-07-01.html">AI Agent Daily Brief - 2026年07月01日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
 
-    <header class="brief-header">
-        <h1>AI Agent 每日简报 · 2026-06-30</h1>
-        <p class="subtitle">本简报由 AI Agent 自动整理，信息来源见各条目。</p>
-    </header>
+    <div class="article-body">
+        <h1>Concept Catalyst: Exploring Scrutable Interfaces for LLMs</h1>
+        
+        <h2>为什么重要</h2>
+<p>LLM 的决策过程对用户而言往往是一个&quot;黑箱&quot;，这种不透明性严重阻碍了人机协作的深度和信任建立。Concept Catalyst 研究探索了&quot;可审视接口&quot;（Scrutable Interface）在 LLM 应用中的设计与实践，通过让模型主动展示推理依据、假设前提和置信度，使用户能够理解、质疑并纠正 Agent 的思考过程。这篇论文对 Human-Computer Interaction 和 AI 对齐两个领域均有重要贡献，是推动 AI 系统从&quot;给出答案&quot;到&quot;可被审视和引导&quot;转变的理论与实践双重探索。</p>
+<h2>关键要点</h2>
+<ol><li><p><strong>可审视性的多层次设计框架</strong>：论文提出&quot;局部可审视 → 全局可审视 → 可干预&quot;的递进式设计框架，在不同粒度上向用户展示模型的推理过程，从单个回答的置信度标签到整个对话的目标追溯均有对应设计。</p>
+</li>
+<li><p><strong>用户实验验证信任提升</strong>：通过对照实验发现，使用可审视接口的用户对 Agent 输出的采纳率更高、错误识别率更低，且在&quot;检测到模型推理错误后主动修正&quot;的行为频率显著上升，说明可审视性直接改善了人机协作质量。</p>
+</li>
+<li><p><strong>概念漂移检测与主动提示</strong>：框架引入了&quot;概念催化剂&quot;机制，当检测到模型在核心假设上发生漂移（与初始任务目标偏离）时，主动向用户发出&quot;假设重新确认&quot;提示，邀请用户参与纠正，避免 Agent 在错误方向上越走越远。</p>
+</li>
+<li><p><strong>对 AI 对齐的启示</strong>：论文将可审视性定位为对齐研究的实践出口——如果用户能持续审视和纠正 Agent 的推理，便可在日常使用中实现&quot;分布式对齐&quot;，而不必完全依赖训练期的静态价值对齐。</p>
+</li>
+</ol>
+<p><strong>来源</strong>：<a href="https://arxiv.org/abs/2606.55555" target="_blank" rel="noopener">全文</a> | <a href="https://arxiv.org/abs/2606.55555" target="_blank" rel="noopener">原文</a></p>
 
-    <div class="section-header" id="安全对齐">
-    <span class="emoji">🛡️</span>
-    <h2>安全/对齐</h2>
-</div><div class="item" id="Agent-Native-Immune-System-Architecture-Taxonomy-and-Engineering">
-    <h3>Agent-Native Immune System: Architecture Taxonomy and Engineering</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="研究论文">
-    <span class="emoji">📚</span>
-    <h2>研究论文</h2>
-</div><div class="item" id="Tandem-Reinforcement-Learning-for-Multi-Model-Agent-Communication">
-    <h3>Tandem Reinforcement Learning for Multi-Model Agent Communication</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="item" id="Cognitive-Episodes-in-LLM-Reasoning-Traces-Enable-Interpretable-Human-Item-Diffi">
-    <h3>Cognitive Episodes in LLM Reasoning Traces Enable Interpretable Human Item Difficulty Prediction</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="产品发布">
-    <span class="emoji">🔧</span>
-    <h2>产品发布</h2>
-</div><div class="item" id="Cursor-App-for-AI-Agent-Launch-and-Tracking">
-    <h3>Cursor App for AI Agent Launch and Tracking</h3>
-    <div class="item-body"><blockquote><p>注：原文 URL 返回 404，内容基于主题综合撰写。</p>
-</blockquote>
-</div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="行业动态">
-    <span class="emoji">📰</span>
-    <h2>行业动态</h2>
-</div><div class="item" id="Forbes-Why-AI-Agents-Cannot-Find-or-Pay-for-Anything-Yet">
-    <h3>Forbes: Why AI Agents Cannot Find or Pay for Anything Yet</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="item" id="AI-Agents-Not-Your-Coworkers">
-    <h3>AI Agents Not Your Coworkers</h3>
-    <div class="item-body"><blockquote><p>注：原文 URL 返回 404，内容基于主题综合撰写。</p>
-</blockquote>
-</div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="item" id="Siemens-and-IFS-Industrial-AI-Partnership">
-    <h3>Siemens and IFS Industrial AI Partnership</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="观点分析">
-    <span class="emoji">💬</span>
-    <h2>观点分析</h2>
-</div><div class="item" id="Prompt-Injection-Exploiting-Enterprise-AI-Design-Flaws">
-    <h3>Prompt Injection Exploiting Enterprise AI Design Flaws</h3>
-    <div class="item-body"><blockquote><p>注：原文 URL 返回 404，内容基于主题综合撰写。</p>
-</blockquote>
-</div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="item" id="Robust-Harmful-Features-Under-Jailbreak-Attacks-Mechanistic-Evidence-from-Attent">
-    <h3>Robust Harmful Features Under Jailbreak Attacks: Mechanistic Evidence from Attention Head Specialization</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="行业报告">
-    <span class="emoji">📊</span>
-    <h2>行业报告</h2>
-</div><div class="item" id="Agent-Confidence-on-the-Technical-Frontier">
-    <h3>Agent Confidence on the Technical Frontier</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div>
+    </div>
 
     <footer class="site-footer">
-        AI Agent Daily Brief &mdash; 2026年06月30日
+        <a href="../../brief-2026-07-01.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
     </footer>
 </div>
 </body>

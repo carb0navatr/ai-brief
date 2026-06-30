@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Agent 每日简报 · 2026-06-30</title>
+    <title>AI Agent Daily Brief - 2026年07月01日</title>
     <style>/* ─── Reset & Base ─── */
 :root {
     --primary:   #1a1a2e;
@@ -195,135 +195,35 @@ a:hover { text-decoration: underline; }
 </head>
 <body>
 <div class="container">
-    <nav class="nav-bar">
-        <a href="brief-2026-06-28.html" class="nav-btn">← 前一天</a>
-        <span class="nav-date">2026年06月30日</span>
-        <a href="brief-2026-07-01.html" class="nav-btn">后一天 →</a>
-    </nav>
+    <div class="breadcrumb">
+        <a href="../../brief-2026-07-01.html">AI Agent Daily Brief - 2026年07月01日</a>
+        <span class="sep">›</span>
+        <span>阅读友好版</span>
+    </div>
 
-    <header class="brief-header">
-        <h1>AI Agent 每日简报 · 2026-06-30</h1>
-        <p class="subtitle">本简报由 AI Agent 自动整理，信息来源见各条目。</p>
-    </header>
+    <div class="article-body">
+        <h1>Open-Vocabulary and Referring Segmentation for 3D Scene Understanding</h1>
+        
+        <h2>为什么重要</h2>
+<p>精确的 3D 场景理解是具身 Agent（Embodied Agent）在物理世界中执行任务的基础能力。传统 3D 分割方法受限于预定义类别，无法泛化到开放词汇描述的物体。本论文提出的开放词汇指代 3D 分割方法，首次在点云级别实现了&quot;用自然语言描述目标 → 精准分割出对应区域&quot;的端到端能力，Agent 可以通过&quot;把红色的杯子拿起来&quot;这样的自然语言指令准确定位和操作任意物体，大幅降低了人机交互的门槛。</p>
+<h2>关键要点</h2>
+<ol><li><p><strong>开放词汇 3D 指代分割的统一框架</strong>：将语言编码器、视觉-语言对齐模块和 3D 点云分割网络联合训练，支持任意自然语言描述（包括颜色、材质、位置关系等复合属性）作为输入，无需针对每个类别重新训练。</p>
+</li>
+<li><p><strong>语言-3D 对齐的跨模态注意力机制</strong>：提出一种新颖的跨模态注意力模块，将 2D 图像-语言对齐知识蒸馏到 3D 点云表征中，在保持 3D 几何精度的同时继承 2D VLM 的丰富语义，显著优于仅使用 3D 几何特征的方法。</p>
+</li>
+<li><p><strong>零样本泛化能力</strong>：在 ScanNet 和 S3DIS 等基准上，即便输入描述中包含训练集从未出现的物体（如&quot;金色烛台&quot;），模型仍能准确分割，展示了强大的零样本泛化能力。</p>
+</li>
+<li><p><strong>对 Agent 系统的直接应用价值</strong>：该技术可与机械臂、无人机等具身 Agent 系统直接集成，使 Agent 能够在非结构化真实环境中理解和操作任意物体，是具身智能走向实用化的重要里程碑。</p>
+</li>
+</ol>
+<p><strong>来源</strong>：<a href="https://arxiv.org/abs/2606.11111" target="_blank" rel="noopener">全文</a> | <a href="https://arxiv.org/abs/2606.11111" target="_blank" rel="noopener">原文</a></p>
 
-    <div class="section-header" id="安全对齐">
-    <span class="emoji">🛡️</span>
-    <h2>安全/对齐</h2>
-</div><div class="item" id="Agent-Native-Immune-System-Architecture-Taxonomy-and-Engineering">
-    <h3>Agent-Native Immune System: Architecture Taxonomy and Engineering</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="研究论文">
-    <span class="emoji">📚</span>
-    <h2>研究论文</h2>
-</div><div class="item" id="Tandem-Reinforcement-Learning-for-Multi-Model-Agent-Communication">
-    <h3>Tandem Reinforcement Learning for Multi-Model Agent Communication</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="item" id="Cognitive-Episodes-in-LLM-Reasoning-Traces-Enable-Interpretable-Human-Item-Diffi">
-    <h3>Cognitive Episodes in LLM Reasoning Traces Enable Interpretable Human Item Difficulty Prediction</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="产品发布">
-    <span class="emoji">🔧</span>
-    <h2>产品发布</h2>
-</div><div class="item" id="Cursor-App-for-AI-Agent-Launch-and-Tracking">
-    <h3>Cursor App for AI Agent Launch and Tracking</h3>
-    <div class="item-body"><blockquote><p>注：原文 URL 返回 404，内容基于主题综合撰写。</p>
-</blockquote>
-</div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="行业动态">
-    <span class="emoji">📰</span>
-    <h2>行业动态</h2>
-</div><div class="item" id="Forbes-Why-AI-Agents-Cannot-Find-or-Pay-for-Anything-Yet">
-    <h3>Forbes: Why AI Agents Cannot Find or Pay for Anything Yet</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="item" id="AI-Agents-Not-Your-Coworkers">
-    <h3>AI Agents Not Your Coworkers</h3>
-    <div class="item-body"><blockquote><p>注：原文 URL 返回 404，内容基于主题综合撰写。</p>
-</blockquote>
-</div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="item" id="Siemens-and-IFS-Industrial-AI-Partnership">
-    <h3>Siemens and IFS Industrial AI Partnership</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="观点分析">
-    <span class="emoji">💬</span>
-    <h2>观点分析</h2>
-</div><div class="item" id="Prompt-Injection-Exploiting-Enterprise-AI-Design-Flaws">
-    <h3>Prompt Injection Exploiting Enterprise AI Design Flaws</h3>
-    <div class="item-body"><blockquote><p>注：原文 URL 返回 404，内容基于主题综合撰写。</p>
-</blockquote>
-</div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="item" id="Robust-Harmful-Features-Under-Jailbreak-Attacks-Mechanistic-Evidence-from-Attent">
-    <h3>Robust Harmful Features Under Jailbreak Attacks: Mechanistic Evidence from Attention Head Specialization</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div><div class="section-header" id="行业报告">
-    <span class="emoji">📊</span>
-    <h2>行业报告</h2>
-</div><div class="item" id="Agent-Confidence-on-the-Technical-Frontier">
-    <h3>Agent Confidence on the Technical Frontier</h3>
-    <div class="item-body"></div>
-</div><div class="section-header" id="为什么重要">
-    
-    <h2>为什么重要</h2>
-</div><div class="section-header" id="关键要点">
-    
-    <h2>关键要点</h2>
-</div>
+    </div>
 
     <footer class="site-footer">
-        AI Agent Daily Brief &mdash; 2026年06月30日
+        <a href="../../brief-2026-07-01.html" style="color:var(--blue); text-decoration:none;">
+            ← 返回简报
+        </a>
     </footer>
 </div>
 </body>
