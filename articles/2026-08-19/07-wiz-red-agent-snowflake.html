@@ -202,21 +202,15 @@ a:hover { text-decoration: underline; }
     </div>
 
     <div class="article-body">
-        <h1>Wiz Red Agent 发现 Snowflake GitHub Actions 注入漏洞：AI 辅助审查未能识别风险</h1>
+        <h1>Wiz Red Agent 发现 Snowflake GitHub Actions 注入漏洞</h1>
         <div class="source-line">📰 <a href="https://www.wiz.io/blog/red-agent-snowflake-copilot-cicd-bug" target="_blank" rel="noopener">Wiz Research</a></div>
-        <p>Wiz Research 披露，其自主安全研究工具 Red Agent 在 Snowflake 的公开仓库中发现 GitHub Actions 工作流注入漏洞。Wiz 称，Snowflake 在 2026 年 6 月 23 日收到负责任披露后当天修复漏洞、轮换受影响凭据，并确认暴露窗口内只有 Wiz 的测试活动。</p>
-<h2>原文要点</h2>
-<ul><li>漏洞位于 <code>snowflakedb/snowflake-connector-net</code> 仓库的 <code>jira_issue.yml</code>：工作流由新建 Issue 触发，并将攻击者可控的 Issue 标题直接插入 <code>run:</code> 中的 shell 脚本。</li>
-<li>Wiz 表示，任意未认证用户可通过精心构造的 Issue 标题在 GitHub Actions runner 中执行命令；相关 PR 于 6 月 18 日合并，漏洞在五天后被发现。</li>
-<li>GitHub Advanced Security 扫描了包含漏洞工作流的最终 PR 版本，但未标记该注入问题。Wiz 后续澄清：Copilot 是该 PR 的共同作者并给出「无问题」结论，但尚不清楚代码变更本身是否由 AI 协助生成。</li>
-<li>PoC 获取到的 Jira 令牌可读取 Snowflake 的部分内部项目。Snowflake 当天恢复安全的 <code>env:</code> 与 <code>jq --arg</code> 解析模式、随后轮换令牌；审计日志确认没有第三方未经授权访问。</li>
-</ul>
+        <p>Wiz Research 披露，其自主安全研究工具 Red Agent 在 Snowflake 公开仓库发现 GitHub Actions 工作流注入漏洞：Issue 标题中的不可信输入可被直接带入 shell <code>run:</code> 命令。Snowflake 表示已在收到披露当天修复并轮换凭据。</p>
 <h2>为什么重要</h2>
-<p>这起事件的关键不是把漏洞简单归因于 AI，而是说明 AI 参与的开发与审查流程仍可能遗漏传统的 shell 注入风险；与此同时，自动化安全智能体可将漏洞发现窗口压缩到数天甚至更短。团队需要对 CI/CD 中的不可信输入、工作流权限和密钥暴露实施可执行的防护规则，并缩短修复与凭据轮换周期。</p>
+<p>事件不意味着漏洞由 AI 造成，却显示 AI 参与的开发与审查仍可能遗漏传统 shell 注入风险；同时，自动化安全智能体可缩短发现窗口。CI/CD 的输入、权限和密钥都应落实为可执行的防护规则。</p>
 <h2>关键要点</h2>
-<ul><li>不可信事件字段不能直接插入 shell <code>run:</code> 语句。</li>
-<li>自动化扫描与 AI 审查不能替代针对工作流的安全审计。</li>
-<li>报道称 Snowflake 已当天修复并完成事后核查。</li>
+<ul><li>不可信事件字段不应直接插入 shell <code>run:</code> 语句。</li>
+<li>GitHub Advanced Security 与 AI 审查均未标记该问题。</li>
+<li>报道称 Snowflake 已完成修复、凭据轮换和审计核查。</li>
 </ul>
 
     </div>

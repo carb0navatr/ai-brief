@@ -202,21 +202,15 @@ a:hover { text-decoration: underline; }
     </div>
 
     <div class="article-body">
-        <h1>字节跳动 Seed 与清华 AIR 推出 CUDA Agent：让智能体迭代生成高性能 GPU 内核</h1>
-        <div class="source-line">📰 <a href="https://www.marktechpost.com/2026/08/17/bytedance-seed-and-tsinghua-air-introduces-cuda-agent-a-large-scale-agentic-rl-system-for-cuda-kernel-generation/" target="_blank" rel="noopener">MarkTechPost 报道</a></div>
-        <p>字节跳动 Seed 与清华大学智能产业研究院（AIR）发布 CUDA Agent，一个面向 CUDA 内核生成的智能体强化学习系统。其目标不只是让模型写出能运行的 CUDA 代码，而是让代码在真实性能测试中优于编译器生成的实现。</p>
-<h2>原文要点</h2>
-<ul><li>系统将模型置于带有代码编辑、编译、正确性校验和性能剖析能力的 CUDA 开发环境中，以「编写—测试—分析—迭代」方式完成任务。</li>
-<li>报道称，CUDA Agent 在 250 项 KernelBench 测试中达到 98.8% 的通过率；96.8% 的结果快于 <code>torch.compile</code>，相对 <code>torch.compile</code> 的几何平均加速比为 2.11 倍。</li>
-<li>训练采用离散里程碑奖励：正确性失败为负奖励，只有同时较 eager 与 <code>torch.compile</code> 快超过 5% 才获得最高奖励；团队还设置了锁定校验脚本、随机输入测试和禁止特定回退方式等限制以降低「刷分」。</li>
-<li>公开内容包括 CUDA-Agent-Ops-6K 数据集、技能说明与训练配方；报道指出，所训练模型权重并未公开。</li>
-</ul>
+        <h1>CUDA Agent：用强化学习迭代生成高性能 CUDA 内核</h1>
+        <div class="source-line">📰 <a href="https://www.marktechpost.com/2026/08/17/bytedance-seed-and-tsinghua-air-introduces-cuda-agent-a-large-scale-agentic-rl-system-for-cuda-kernel-generation/" target="_blank" rel="noopener">MarkTechPost，2026-08-17</a></div>
+        <p>字节跳动 Seed 与清华 AIR 发布 CUDA Agent，将代码编辑、编译、正确性校验和性能剖析整合为「编写—测试—分析—迭代」闭环。报道指出，该系统在 KernelBench 250 项测试中取得 98.8% 通过率，且 96.8% 的结果快于 <code>torch.compile</code>。</p>
 <h2>为什么重要</h2>
-<p>GPU 内核优化长期依赖稀缺的底层工程经验。若智能体能在受控环境中自行测量与修正，可能将部分性能工程从一次性人工调优变成可重复的工作流。不过，基准成绩并不等于生产可用性：结果仍需在目标硬件、真实模型和成本约束下验证，且完整复现所需的算力与闭源模型条件并不低。</p>
+<p>该工作将可执行验证和性能测量纳入智能体循环，显示性能工程可由一次性代码生成转向可复现的优化流程。基准结果仍需在目标硬件、真实模型和成本约束下独立复核。</p>
 <h2>关键要点</h2>
-<ul><li>重点是「性能正确性」而非仅生成可编译代码。</li>
-<li>数据集和方法可供研究参考，但模型权重未公开。</li>
-<li>部署时应把独立性能测试、数值正确性与防奖励投机作为必要门槛。</li>
+<ul><li>优化目标同时包含数值正确性与运行性能，而非仅生成可编译代码。</li>
+<li>训练采用正确性、相对性能及防奖励投机等约束。</li>
+<li>报道称数据集与方法公开，模型权重未公开。</li>
 </ul>
 
     </div>
