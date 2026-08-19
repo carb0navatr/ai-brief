@@ -202,16 +202,19 @@ a:hover { text-decoration: underline; }
     </div>
 
     <div class="article-body">
-        <h1>CUDA Agent：用强化学习迭代生成高性能 CUDA 内核</h1>
-        <div class="source-line">📰 <a href="https://www.marktechpost.com/2026/08/17/bytedance-seed-and-tsinghua-air-introduces-cuda-agent-a-large-scale-agentic-rl-system-for-cuda-kernel-generation/" target="_blank" rel="noopener">MarkTechPost，2026-08-17</a></div>
-        <p>字节跳动 Seed 与清华 AIR 发布 CUDA Agent，将代码编辑、编译、正确性校验和性能剖析整合为「编写—测试—分析—迭代」闭环。报道指出，该系统在 KernelBench 250 项测试中取得 98.8% 通过率，且 96.8% 的结果快于 <code>torch.compile</code>。</p>
-<h2>为什么重要</h2>
-<p>该工作将可执行验证和性能测量纳入智能体循环，显示性能工程可由一次性代码生成转向可复现的优化流程。基准结果仍需在目标硬件、真实模型和成本约束下独立复核。</p>
+        <h1>CUDA Agent：用智能体强化学习优化 CUDA 内核</h1>
+        <div class="source-line">📰 <a href="https://www.marktechpost.com/2026/08/17/bytedance-seed-and-tsinghua-air-introduces-cuda-agent-a-large-scale-agentic-rl-system-for-cuda-kernel-generation/" target="_blank" rel="noopener">MarkTechPost 报道</a></div>
+        <p>字节跳动 Seed 与清华大学 AIR 发布 CUDA Agent：一个把大模型置于真实 CUDA 开发环境中、通过智能体式强化学习生成并迭代 GPU 内核的系统。报道显示，系统会结合正确性检查、性能分析与受限沙箱，在 KernelBench 的 250 项任务上评估生成结果；其权重尚未公开，但数据集、技能说明和部分训练配方已发布。</p>
 <h2>关键要点</h2>
-<ul><li>优化目标同时包含数值正确性与运行性能，而非仅生成可编译代码。</li>
-<li>训练采用正确性、相对性能及防奖励投机等约束。</li>
-<li>报道称数据集与方法公开，模型权重未公开。</li>
+<ul><li>研究目标不只是生成可运行的 CUDA，而是让内核在基准条件下优于 <code>torch.compile</code>。</li>
+<li>系统将模型接入编写、编译、校验和 profiling 的循环，并以离散里程碑奖励约束正确性与性能。</li>
+<li>报道援引的结果为：98.8% 通过率、96.8% 的任务快于 <code>torch.compile</code>，几何平均加速比为 2.11×；这些是该研究的基准结果，不等同于所有生产负载表现。</li>
+<li>公开内容包括 CUDA-Agent-Ops-6K 数据集和训练/技能方案；训练后的模型权重未公开。</li>
 </ul>
+<h2>为什么重要</h2>
+<p>GPU 内核优化长期依赖稀缺的底层工程经验。若这种“生成—测量—修正”的智能体循环能在更多硬件和工作负载上复现，AI 基础设施团队可望把部分性能调优流程自动化。不过，它仍须面对硬件差异、数值精度、可维护性及生产验证等约束，不能仅以单一基准成绩替代上线评估。</p>
+<p><strong>全文链接：</strong> <a href="https://www.marktechpost.com/2026/08/17/bytedance-seed-and-tsinghua-air-introduces-cuda-agent-a-large-scale-agentic-rl-system-for-cuda-kernel-generation/" target="_blank" rel="noopener">MarkTechPost 报道</a><br />
+<strong>原文链接：</strong> <a href="https://arxiv.org/abs/2602.24286" target="_blank" rel="noopener">CUDA Agent 论文</a></p>
 
     </div>
 

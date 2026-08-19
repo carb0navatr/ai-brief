@@ -202,16 +202,19 @@ a:hover { text-decoration: underline; }
     </div>
 
     <div class="article-body">
-        <h1>Wiz Red Agent 发现 Snowflake GitHub Actions 注入漏洞</h1>
-        <div class="source-line">📰 <a href="https://www.wiz.io/blog/red-agent-snowflake-copilot-cicd-bug" target="_blank" rel="noopener">Wiz Research</a></div>
-        <p>Wiz Research 披露，其自主安全研究工具 Red Agent 在 Snowflake 公开仓库发现 GitHub Actions 工作流注入漏洞：Issue 标题中的不可信输入可被直接带入 shell <code>run:</code> 命令。Snowflake 表示已在收到披露当天修复并轮换凭据。</p>
-<h2>为什么重要</h2>
-<p>事件不意味着漏洞由 AI 造成，却显示 AI 参与的开发与审查仍可能遗漏传统 shell 注入风险；同时，自动化安全智能体可缩短发现窗口。CI/CD 的输入、权限和密钥都应落实为可执行的防护规则。</p>
+        <h1>Wiz Red Agent 发现 Snowflake GitHub Actions 工作流注入漏洞</h1>
+        <div class="source-line">📰 <a href="https://www.wiz.io/blog/red-agent-snowflake-copilot-cicd-bug" target="_blank" rel="noopener">Wiz Research 原始披露</a></div>
+        <p>Wiz Research 披露，其自主安全研究工具 Red Agent 在 Snowflake 的公开仓库 <code>snowflake-connector-net</code> 中发现一个 GitHub Actions 工作流漏洞。攻击者可通过带有特制标题的 GitHub Issue，将不受信任输入注入 <code>run:</code> 脚本，从而在 runner 上执行任意命令。Wiz 称已于 2026 年 6 月 23 日负责任披露，Snowflake 当天修复并轮换受影响凭证。</p>
 <h2>关键要点</h2>
-<ul><li>不可信事件字段不应直接插入 shell <code>run:</code> 语句。</li>
-<li>GitHub Advanced Security 与 AI 审查均未标记该问题。</li>
-<li>报道称 Snowflake 已完成修复、凭据轮换和审计核查。</li>
+<ul><li>易受攻击的工作流由 <code>issues: opened</code> 触发，直接将 Issue 标题插入 shell 脚本；原有较安全的 <code>env:</code> 与 <code>jq --arg</code> 处理模式被替换。</li>
+<li>Wiz 表示，GitHub Advanced Security 扫描了最终 PR，但没有标出该关键注入问题。</li>
+<li>Red Agent 在首次载荷因 shell 语法错误失败后，分析错误并调整载荷，完成了受控验证。</li>
+<li>Snowflake 称审计日志未发现外部第三方未经授权访问，异常查询均与 Wiz 测试 IP 匹配。</li>
 </ul>
+<h2>为什么重要</h2>
+<p>这一事件同时展示了自动化攻防的速度：漏洞上线五天内便被自动化工具发现和验证；也说明 AI 参与开发或审查并不能替代安全工程。企业需要对 CI/CD 中的外部输入、脚本拼接和权限令牌建立强制规则，并缩短凭证有效期和修复周期，使安全控制能跟上自动化发现能力。</p>
+<p><strong>全文链接：</strong> <a href="https://www.wiz.io/blog/red-agent-snowflake-copilot-cicd-bug" target="_blank" rel="noopener">Wiz Research 原始披露</a><br />
+<strong>原文链接：</strong> <a href="https://github.com/snowflakedb/snowflake-connector-net/blob/4a1b8cecd65b899540e4324715557d6b080ddeb5/.github/workflows/jira_issue.yml" target="_blank" rel="noopener">受影响工作流的历史版本</a></p>
 
     </div>
 

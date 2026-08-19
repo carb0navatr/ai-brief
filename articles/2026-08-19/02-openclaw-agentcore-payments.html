@@ -202,16 +202,19 @@ a:hover { text-decoration: underline; }
     </div>
 
     <div class="article-body">
-        <h1>AWS 展示 OpenClaw 接入 AgentCore Payments</h1>
+        <h1>AWS 展示 OpenClaw 接入 AgentCore 的受限支付方案</h1>
         <div class="source-line">📰 <a href="https://aws.amazon.com/blogs/machine-learning/build-openclaw-agents-that-transact-with-amazon-bedrock-agentcore-payments/" target="_blank" rel="noopener">AWS Machine Learning Blog</a></div>
-        <p>AWS 演示 OpenClaw 如何通过 Amazon Bedrock AgentCore Payments 处理 HTTP 402 付款请求。钱包、收款方批准和预算设置保留在人工管理路径，运行时仅可查看会话并请求已获准的付费内容。</p>
-<h2>为什么重要</h2>
-<p>支付自动化的关键不是让模型自由支出，而是将支付权拆为可审计、可限额且可到期的能力。这为智能体调用按次计费服务提供了最小权限的实现范式。</p>
+        <p>AWS 与 OpenClaw Foundation 发布集成指南，说明 OpenClaw 智能体如何通过 Amazon Bedrock AgentCore payments 处理需 HTTP 402 付费的服务。示例使用 x402 v2：由人工在受信任的管理路径中创建钱包和支付会话，智能体运行时只能在预先定义的收款方、资产、网络、单笔金额、累计预算及有效期限制内发起付款。</p>
 <h2>关键要点</h2>
-<ul><li>策略可限制收款方、资产、网络、单笔金额、总预算与有效期。</li>
-<li>运行时不能创建、延长或替换支付会话。</li>
-<li>提示注入仍是风险，端点、价格和收款方需要独立验证。</li>
+<ul><li>集成使用 <code>aws-agents-pay</code> 插件，向模型暴露会话状态查询和获取已批准付费内容两项工具。</li>
+<li>钱包凭证与创建、延长支付会话的权限不放在模型可见运行时；运行时不能扩大授权范围。</li>
+<li>插件会核验 HTTP 402 挑战的资源、网络、资产、收款方和金额，并采用幂等令牌降低重复支付风险。</li>
+<li>文中演示支持 Coinbase 钱包或 Stripe Privy 钱包连接，并以 Base Sepolia 作测试示例。</li>
 </ul>
+<h2>为什么重要</h2>
+<p>支付让智能体从“调用免费工具”走向可完成付费服务流程，但也把提示注入、越权消费和凭证泄露的风险带入运行环境。该方案的核心价值不在于让模型自由付款，而在于将支付权限压缩为可审计、可撤销、有限额的能力边界，为面向 API、内容和 MCP 服务的智能体交易提供一种工程实现路径。</p>
+<p><strong>全文链接：</strong> <a href="https://aws.amazon.com/blogs/machine-learning/build-openclaw-agents-that-transact-with-amazon-bedrock-agentcore-payments/" target="_blank" rel="noopener">AWS Machine Learning Blog</a><br />
+<strong>原文链接：</strong> <a href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/payments.html" target="_blank" rel="noopener">Amazon Bedrock AgentCore payments 文档</a></p>
 
     </div>
 
