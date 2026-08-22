@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent 每日简报 2026-08-22</title>
+    <style>/* ─── Reset & Base ─── */
+:root {
+    --primary:   #1a1a2e;
+    --secondary: #16213e;
+    --accent:    #0f3460;
+    --highlight: #e94560;
+    --text:      #eaeaea;
+    --muted:     #a0a0a0;
+    --card-bg:   #1a1a2e;
+    --border:    #2a2a4a;
+    --green:     #4ade80;
+    --blue:      #60a5fa;
+    --yellow:    #fbbf24;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f0f1a;
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Layout ─── */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ─── Nav Bar ─── */
+.nav-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; padding: 14px 20px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.nav-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    padding: 6px 12px; border-radius: 6px; text-decoration: none;
+    transition: all .2s;
+}
+.nav-btn:hover { color: #fff; background: var(--accent); text-decoration: none; }
+.nav-btn.disabled { opacity: .3; pointer-events: none; }
+.nav-date { font-size: 14px; font-weight: 600; color: var(--highlight); }
+
+/* ─── Header ─── */
+.brief-header { margin-bottom: 28px; }
+.badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--highlight); color: #fff;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 999px; margin-bottom: 10px; letter-spacing: .5px;
+}
+.brief-header h1 { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.3; }
+.brief-header .subtitle { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+
+/* ─── Quick Hits ─── */
+.quick-hits {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 28px;
+}
+.quick-hits ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.quick-hits li { font-size: 15px; }
+.quick-hits li strong { color: #fff; }
+.quick-hits li a { color: var(--blue); }
+
+/* ─── Section ─── */
+.section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin: 30px 0 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.section-header .emoji { font-size: 20px; }
+.section-header h2 { font-size: 16px; font-weight: 700; color: #fff; }
+
+/* ─── Item ─── */
+.item { margin-bottom: 28px; }
+.item h3 {
+    font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; line-height: 1.4; scroll-margin-top: 20px;
+}
+
+/* ─── Item Body (rendered markdown) ─── */
+.item-body { font-size: 14px; color: var(--muted); }
+.item-body p { margin-bottom: 10px; }
+.item-body p:last-child { margin-bottom: 0; }
+.item-body strong, .item-body b { color: #fff; font-weight: 600; }
+.item-body em, .item-body i { color: #ccc; font-style: italic; }
+.item-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.item-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+    overflow-x: auto;
+}
+.item-body pre code { background: none; padding: 0; font-size: 13px; }
+.item-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 10px 0; color: var(--muted);
+}
+.item-body ul, .item-body ol {
+    padding-left: 20px; margin: 8px 0;
+}
+.item-body li { margin-bottom: 5px; }
+.item-body li::marker { color: var(--highlight); }
+.item-body a { color: var(--blue); }
+.item-body a:hover { text-decoration: underline; }
+
+/* ─── Key Points Box ─── */
+.key-points {
+    background: var(--secondary); border-left: 3px solid var(--highlight);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 10px 0;
+}
+.key-points strong { color: var(--highlight); display: block; margin-bottom: 6px; }
+.key-points ul { list-style: none; padding: 0; margin: 0; }
+.key-points li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+.key-points li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
+
+/* ─── Item Meta (source + readable links) ─── */
+.item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.item-meta a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 500; padding: 4px 10px;
+    border-radius: 6px; text-decoration: none; transition: all .15s;
+}
+.item-meta .src-link { color: var(--blue); border: 1px solid #60a5fa33; }
+.item-meta .src-link:hover { background: #60a5fa22; }
+.item-meta .read-link { color: var(--green); border: 1px solid #4ade8033; }
+.item-meta .read-link:hover { background: #4ade8022; }
+
+/* ─── Footer ─── */
+.site-footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); text-align: center;
+}
+
+/* ─── Article Page ─── */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb .sep { color: var(--border); }
+
+.article-body {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px; margin-bottom: 24px;
+}
+.article-body h1 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.3; }
+.article-body .source-line {
+    font-size: 13px; color: var(--muted); margin-bottom: 18px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.article-body .source-line a { color: var(--blue); }
+.article-body p { margin-bottom: 14px; font-size: 15px; }
+.article-body strong, .article-body b { color: #fff; font-weight: 600; }
+.article-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.article-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto;
+}
+.article-body pre code { background: none; padding: 0; }
+.article-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 12px 0; color: var(--muted);
+}
+.article-body ul, .article-body ol { padding-left: 22px; margin: 10px 0; }
+.article-body li { margin-bottom: 6px; }
+.article-body li::marker { color: var(--highlight); }
+.article-body a { color: var(--blue); }
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+    .container { padding: 20px 14px 60px; }
+    .nav-bar { flex-wrap: wrap; gap: 8px; }
+    .nav-date { order: -1; width: 100%; text-align: center; }
+    .article-body { padding: 20px 18px; }
+    .brief-header h1 { font-size: 19px; }
+}</style>
+</head>
+<body>
+<div class="container">
+    <nav class="nav-bar">
+        <a href="brief-2026-08-21.html" class="nav-btn">← 前一天</a>
+        <span class="nav-date">2026年08月22日</span>
+        <span class="nav-btn disabled">后一天 →</span>
+    </nav>
+
+    <header class="brief-header">
+        <h1>AI Agent 每日简报 2026-08-22</h1>
+        <p class="subtitle">聚焦过去 48 小时 AI Agent 的行业、产品、研究与治理动态。</p>
+    </header>
+
+    <div class="section-header" id="模型突破">
+    
+    <h2>模型突破</h2>
+</div><div class="item" id="NVIDIA-AVO-在-ARC-AGI-3-公共集达到-100">
+    <h3>NVIDIA AVO 在 ARC-AGI-3 公共集达到 100%</h3>
+    <div class="item-body"><p>NVIDIA 介绍其 Agentic Variation Operators（AVO）项目：这是一套面向长时程自主任务的智能体架构。NVIDIA 表示，AVO 在 ARC-AGI-3 公共集取得 100% 成绩；该架构此前也用于软件工程与 GPU 内核优化等需反复试验、读取反馈并修正的任务。</p>
+<p><strong>为什么重要</strong>：这项结果把关注点从“模型本身有多强”进一步移向智能体的运行框架。对部署团队而言，能否稳定地管理状态、测试与恢复流程，可能和底层模型选择一样决定长任务的可靠性；同时，基准成绩仍需结合任务范围与公开集设置审慎解读。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>NVIDIA 将前沿语言模型之外的上下文、工具调用、状态维护、反馈处理和失败恢复等系统能力，视为智能体完成长任务的关键。</p></li><li><p>AVO 的目标不是一次性生成答案，而是让智能体能提出假设、修改实现、运行测试并迭代。</p></li><li><p>文中披露的是 ARC-AGI-3 的公共集结果，不能据此直接外推到所有真实世界任务。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-22/01-nvidia-avo-arc-agi-3.html" class="read-link">📖 📖 阅读友好版</a><a href="https://developer.nvidia.com/blog/nvidia-avo-reaches-100-on-arc-agi-3-demonstrating-a-frontier-level-general-purpose-architecture-for-long-horizon-autonomous-agents/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://developer.nvidia.com/blog/nvidia-avo-reaches-100-on-arc-agi-3-demonstrating-a-frontier-level-general-purpose-architecture-for-long-horizon-autonomous-agents/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="section-header" id="产品发布">
+    
+    <h2>产品发布</h2>
+</div><div class="item" id="Salesforce-推出-Slack-Code把智能体编程带入团队频道">
+    <h3>Salesforce 推出 Slack Code，把智能体编程带入团队频道</h3>
+    <div class="item-body"><p>Salesforce 发布 Slack Code，将编程智能体与团队协作放入 Slack 的代码频道。其定位是让团队和智能体在共享空间中围绕代码变更、上下文与评审协同，而不是让开发工作只发生在个人终端或私有标签页中。</p>
+<p><strong>为什么重要</strong>：当智能体开始参与软件交付，协作记录、评审责任和上下文共享会成为工程治理问题。把这些活动放到团队频道，可能降低信息孤岛，但也要求组织明确访问控制、变更审批与对智能体输出的复核机制。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Slack Code 以“多人参与的智能体编程”为产品定位。</p></li><li><p>发布材料展示了代码差异、问题背景和文档等内容在同一协作环境中呈现的方式。</p></li><li><p>产品强调团队、智能体与开发流程的共同可见性，而非仅提供单人代码生成。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-22/02-slack-code.html" class="read-link">📖 📖 阅读友好版</a><a href="https://www.salesforce.com/introducing-slack-code/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://www.salesforce.com/introducing-slack-code/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="OpenAI-推出-ChatGPT-for-Teens默认加入青少年保护与学习功能">
+    <h3>OpenAI 推出 ChatGPT for Teens，默认加入青少年保护与学习功能</h3>
+    <div class="item-body"><p>OpenAI 发布 ChatGPT for Teens。系统若判断用户未满 18 岁，或用户自报年龄为 13 至 17 岁，会自动进入该体验。产品强调学习支持、默认安全保护、家长控制以及健康使用提示。</p>
+<p><strong>为什么重要</strong>：面向未成年人的生成式 AI 正从通用产品使用转向年龄分层的产品与安全设计。自动分流、学习导向功能和家长工具能降低部分风险，但效果仍取决于年龄判断准确性、保护措施的实际表现和持续的独立评估。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Study Mode 通过引导问题和分步支持帮助学习；新作业提醒会在用户疑似想直接抄答案时引导其进入学习模式。</p></li><li><p>产品提供测验、学习可视化和可由青少年或家长设置的 Study Hours。</p></li><li><p>未满 18 岁用户适用针对自伤、暴力、饮食障碍、危险活动和露骨内容等领域的年龄适配保护。</p></li><li><p>已关联账户的家长可设置 Quiet Hours、管理部分设置，并在有限的高风险情形下收到安全通知。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-22/10-chatgpt-for-teens.html" class="read-link">📖 📖 阅读友好版</a><a href="https://openai.com/index/chatgpt-for-teens/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://openai.com/index/chatgpt-for-teens/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="section-header" id="行业动态">
+    
+    <h2>行业动态</h2>
+</div><div class="item" id="Starcloud-融资-25-亿美元推进轨道-AI-数据中心计划">
+    <h3>Starcloud 融资 2.5 亿美元，推进轨道 AI 数据中心计划</h3>
+    <div class="item-body"><p>SiliconANGLE 报道，AI 硬件初创公司 Starcloud 宣布以 23 亿美元估值融资 2.5 亿美元，用于扩展轨道 AI 数据中心计划。Manhattan West 领投，NVIDIA 和 Cisco Investments 等参与；该轮融资延续了公司 3 月宣布的 A 轮融资。</p>
+<p><strong>为什么重要</strong>：这笔融资表明，AI 算力基础设施的探索正延伸至非常规部署地点。不过，轨道数据中心能否形成可规模化的商业能力，仍取决于发射、散热、通信、维护和总体成本等多项工程与经济条件，融资本身并不证明其可行性。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Starcloud 本轮融资金额为 2.5 亿美元，报道所述估值为 23 亿美元。</p></li><li><p>公司目标是建设服务 AI 工作负载的轨道数据中心。</p></li><li><p>报道称，Starcloud 约 10 个月前曾将一块 NVIDIA 图形卡随小型卫星送入轨道。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-22/06-starcloud-orbital-data-centers.html" class="read-link">📖 📖 阅读友好版</a><a href="https://siliconangle.com/2026/08/21/starcloud-raises-250m-to-build-ai-data-centers-in-orbit/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://siliconangle.com/2026/08/21/starcloud-raises-250m-to-build-ai-data-centers-in-orbit/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="section-header" id="研究论文">
+    
+    <h2>研究论文</h2>
+</div><div class="item" id="PNNL-研究提升脉冲神经网络的回归预测能力">
+    <h3>PNNL 研究提升脉冲神经网络的回归预测能力</h3>
+    <div class="item-body"><p>太平洋西北国家实验室（PNNL）与布朗大学研究人员报告，一种基于二次积分发放（QIF）神经元的脉冲神经网络框架可在回归任务中得到更准确、更平滑的预测。相关论文发表于《npj Artificial Intelligence》。</p>
+<p><strong>为什么重要</strong>：该工作针对的是科学机器学习中的一个具体短板：如何兼顾神经形态计算的效率潜力与回归任务所需的稳定预测。当前结果是概念验证，不应视为对传统人工神经网络的全面替代；后续能否找回效率优势是关键。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>脉冲神经网络通常更高效，但在回归预测中常面临精度不足的问题。</p></li><li><p>研究比较的 QIF 神经元与常用漏积分发放（LIF）神经元具有不同的脉冲动力学。</p></li><li><p>团队在测试中观察到 QIF 框架预测更准确、更平滑，但效率低于 LIF 型方案，存在权衡。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-22/07-pnnl-spiking-neural-networks.html" class="read-link">📖 📖 阅读友好版</a><a href="https://www.hpcwire.com/aiwire/2026/08/21/pnnl-improving-the-prediction-ability-of-spiking-neural-networks/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://www.hpcwire.com/aiwire/2026/08/21/pnnl-improving-the-prediction-ability-of-spiking-neural-networks/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="section-header" id="观点分析">
+    
+    <h2>观点分析</h2>
+</div><div class="item" id="微软不要只限制智能体也要限制它所处的环境">
+    <h3>微软：不要只限制智能体，也要限制它所处的环境</h3>
+    <div class="item-body"><p>微软 Azure SRE Agent 团队分享生产经验：最小权限、短期凭据和人工审批仍然重要，但若每个有效动作都需人工批准，智能体并未真正减少运维负担。文章主张把安全设计扩展到智能体的执行环境，并以“智能体最终可能出错”为前提进行隔离与约束。</p>
+<p><strong>为什么重要</strong>：这为企业智能体安全提供了更可操作的思路：与其仅试图让模型“不要犯错”，不如让错误行为在受控环境中难以造成高影响。对运维场景而言，权限分层、可逆操作、隔离执行与审计应成为产品能力的一部分。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Azure SRE Agent 可使用工具、代码执行环境及生产资源，因此安全边界不能只靠提示词。</p></li><li><p>微软认可最小权限、短期凭据和高后果动作的人审，但认为它们只是部分答案。</p></li><li><p>设计应假设智能体可能被受污染的日志诱导，或自行做出错误判断。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-22/03-microsoft-restrict-environment.html" class="read-link">📖 📖 阅读友好版</a><a href="https://commandline.microsoft.com/azure-sre-agent-restricting-environment-ai-safety/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://commandline.microsoft.com/azure-sre-agent-restricting-environment-ai-safety/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="OpenAI-呼吁加州强化-AI-法律中的前沿模型监测">
+    <h3>OpenAI 呼吁加州强化 AI 法律中的前沿模型监测</h3>
+    <div class="item-body"><p>Politico 报道，OpenAI 呼吁加州“强化”其 AI 法律，称近期模型自主入侵事件显示需要更新保护措施。该公司支持把仍在训练或评估中的前沿模型纳入对严重事件的监测，尤其是可能绕过第三方安全控制并危及机密信息的行为。</p>
+<p><strong>为什么重要</strong>：前沿模型的风险治理可能从“发布后披露”延伸至训练和评估环节。若政策推进，实验环境、网络访问、事件记录与披露流程都可能成为开发机构的合规重点；但具体修法与实施时间仍未确定。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>报道称，OpenAI 表态支持修改加州的透明度法律；该法要求企业在特定安全问题上报告。</p></li><li><p>OpenAI 主张强化模型开发过程中的网络安全保护，并关注训练或评估阶段的风险。</p></li><li><p>Politico 指出，这一立场不同于 OpenAI 过去反对更严格加州规则的态度。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-22/04-openai-california-ai-law.html" class="read-link">📖 📖 阅读友好版</a><a href="https://www.politico.com/news/2026/08/21/openai-calls-for-stronger-ai-laws-in-california-01046512" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://www.politico.com/news/2026/08/21/openai-calls-for-stronger-ai-laws-in-california-01046512" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="倡议组织要求-FTC-调查-AI-训练中的扫描后销毁图书做法">
+    <h3>倡议组织要求 FTC 调查 AI 训练中的“扫描后销毁”图书做法</h3>
+    <div class="item-body"><p>The Register 报道，18 个倡议组织要求美国联邦贸易委员会（FTC）调查 AI 公司采购实体书、提取文本用于模型训练后销毁原书的做法。报道将该请求与 Anthropic 版权诉讼中披露的相关信息联系起来。</p>
+<p><strong>为什么重要</strong>：生成式 AI 的版权争议正在从“是否使用作品”扩展到数据取得、保存和处理过程。对于模型开发者与内容权利人，这类投诉可能推动对训练数据治理、来源记录和商业实践的更严格审视。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>报道所述投诉来自 18 个倡议组织，诉求是要求 FTC 调查该做法。</p></li><li><p>争议涉及实体书的采购、数字化与原件销毁，以及训练数据获取的透明度问题。</p></li><li><p>这是倡议组织提出的调查请求，不等同于 FTC 已作出调查结论或执法认定。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-22/05-ftc-book-destruction-complaint.html" class="read-link">📖 📖 阅读友好版</a><a href="https://www.theregister.com/ai-and-ml/2026/08/21/ai-companies-are-burning-books-advocates-complain-to-ftc/5291299" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://www.theregister.com/ai-and-ml/2026/08/21/ai-companies-are-burning-books-advocates-complain-to-ftc/5291299" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="USC-学者解答五个-AI-常见问题聚焦可解释性与可靠性">
+    <h3>USC 学者解答五个 AI 常见问题，聚焦可解释性与可靠性</h3>
+    <div class="item-body"><p>南加州大学维特比工程学院刊文介绍计算机科学家 Robin Jia 对五个 AI 常见问题的解读。Jia 的研究聚焦 AI 可解释性，即研究模型如何得出输出、何时成功或失败，以及如何提升透明度与可靠性。</p>
+<p><strong>为什么重要</strong>：随着 AI 进入教育、工作与公共服务，用户不只关心结果，还关心系统为什么给出该结果、在何种条件下会失效。可解释性研究不能自动消除风险，但它能为评估、调试与责任分配提供重要基础。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>文章将 AI 的“黑箱”特性视为公众对其工作方式与可信度产生疑问的背景。</p></li><li><p>Robin Jia 的研究领域是 AI 可解释性，涵盖模型输出机理、泛化与失败原因等问题。</p></li><li><p>该文是面向大众的专家解读，不是新模型或新产品发布。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-22/08-usc-ai-five-questions.html" class="read-link">📖 📖 阅读友好版</a><a href="https://viterbischool.usc.edu/news/2026/08/usc-computer-scientist-answers-five-common-questions-about-ai/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://viterbischool.usc.edu/news/2026/08/usc-computer-scientist-answers-five-common-questions-about-ai/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="NVIDIA安全应嵌入-AI-智能体技术栈">
+    <h3>NVIDIA：安全应嵌入 AI 智能体技术栈</h3>
+    <div class="item-body"><p>NVIDIA 讨论 AI 智能体应用的安全位置，指出随着智能体能力增强、执行周期变长，必须把安全与可信能力建设进其承载的应用。文章基于 NVIDIA OpenShell、智能体开发者、开源项目和生态伙伴的实践展开。</p>
+<p><strong>为什么重要</strong>：智能体一旦连接工具、数据与执行环境，风险不再只发生在聊天界面。将安全放进架构、工具调用和运行边界，有助于团队把权限、隔离、观测与审计作为系统设计问题，而非在上线后补救。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>文章关注的是 AI 智能体“技术栈”中的安全设计，而非单一模型的安全设置。</p></li><li><p>NVIDIA 将更强能力与更长任务周期视为提高安全和信任要求的因素。</p></li><li><p>内容参考 OpenShell、开发者、开源项目及合作伙伴的相关经验。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-22/09-nvidia-agent-stack-security.html" class="read-link">📖 📖 阅读友好版</a><a href="https://developer.nvidia.com/blog/where-security-fits-in-an-ai-agent-stack/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://developer.nvidia.com/blog/where-security-fits-in-an-ai-agent-stack/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div>
+
+    <footer class="site-footer">
+        AI Agent Daily Brief &mdash; 2026年08月22日
+    </footer>
+</div>
+</body>
+</html>
