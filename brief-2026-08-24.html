@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent 每日简报 2026-08-24</title>
+    <style>/* ─── Reset & Base ─── */
+:root {
+    --primary:   #1a1a2e;
+    --secondary: #16213e;
+    --accent:    #0f3460;
+    --highlight: #e94560;
+    --text:      #eaeaea;
+    --muted:     #a0a0a0;
+    --card-bg:   #1a1a2e;
+    --border:    #2a2a4a;
+    --green:     #4ade80;
+    --blue:      #60a5fa;
+    --yellow:    #fbbf24;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f0f1a;
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Layout ─── */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ─── Nav Bar ─── */
+.nav-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; padding: 14px 20px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.nav-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    padding: 6px 12px; border-radius: 6px; text-decoration: none;
+    transition: all .2s;
+}
+.nav-btn:hover { color: #fff; background: var(--accent); text-decoration: none; }
+.nav-btn.disabled { opacity: .3; pointer-events: none; }
+.nav-date { font-size: 14px; font-weight: 600; color: var(--highlight); }
+
+/* ─── Header ─── */
+.brief-header { margin-bottom: 28px; }
+.badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--highlight); color: #fff;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 999px; margin-bottom: 10px; letter-spacing: .5px;
+}
+.brief-header h1 { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.3; }
+.brief-header .subtitle { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+
+/* ─── Quick Hits ─── */
+.quick-hits {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 28px;
+}
+.quick-hits ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.quick-hits li { font-size: 15px; }
+.quick-hits li strong { color: #fff; }
+.quick-hits li a { color: var(--blue); }
+
+/* ─── Section ─── */
+.section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin: 30px 0 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.section-header .emoji { font-size: 20px; }
+.section-header h2 { font-size: 16px; font-weight: 700; color: #fff; }
+
+/* ─── Item ─── */
+.item { margin-bottom: 28px; }
+.item h3 {
+    font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; line-height: 1.4; scroll-margin-top: 20px;
+}
+
+/* ─── Item Body (rendered markdown) ─── */
+.item-body { font-size: 14px; color: var(--muted); }
+.item-body p { margin-bottom: 10px; }
+.item-body p:last-child { margin-bottom: 0; }
+.item-body strong, .item-body b { color: #fff; font-weight: 600; }
+.item-body em, .item-body i { color: #ccc; font-style: italic; }
+.item-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.item-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+    overflow-x: auto;
+}
+.item-body pre code { background: none; padding: 0; font-size: 13px; }
+.item-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 10px 0; color: var(--muted);
+}
+.item-body ul, .item-body ol {
+    padding-left: 20px; margin: 8px 0;
+}
+.item-body li { margin-bottom: 5px; }
+.item-body li::marker { color: var(--highlight); }
+.item-body a { color: var(--blue); }
+.item-body a:hover { text-decoration: underline; }
+
+/* ─── Key Points Box ─── */
+.key-points {
+    background: var(--secondary); border-left: 3px solid var(--highlight);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 10px 0;
+}
+.key-points strong { color: var(--highlight); display: block; margin-bottom: 6px; }
+.key-points ul { list-style: none; padding: 0; margin: 0; }
+.key-points li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+.key-points li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
+
+/* ─── Item Meta (source + readable links) ─── */
+.item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.item-meta a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 500; padding: 4px 10px;
+    border-radius: 6px; text-decoration: none; transition: all .15s;
+}
+.item-meta .src-link { color: var(--blue); border: 1px solid #60a5fa33; }
+.item-meta .src-link:hover { background: #60a5fa22; }
+.item-meta .read-link { color: var(--green); border: 1px solid #4ade8033; }
+.item-meta .read-link:hover { background: #4ade8022; }
+
+/* ─── Footer ─── */
+.site-footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); text-align: center;
+}
+
+/* ─── Article Page ─── */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb .sep { color: var(--border); }
+
+.article-body {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px; margin-bottom: 24px;
+}
+.article-body h1 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.3; }
+.article-body .source-line {
+    font-size: 13px; color: var(--muted); margin-bottom: 18px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.article-body .source-line a { color: var(--blue); }
+.article-body p { margin-bottom: 14px; font-size: 15px; }
+.article-body strong, .article-body b { color: #fff; font-weight: 600; }
+.article-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.article-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto;
+}
+.article-body pre code { background: none; padding: 0; }
+.article-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 12px 0; color: var(--muted);
+}
+.article-body ul, .article-body ol { padding-left: 22px; margin: 10px 0; }
+.article-body li { margin-bottom: 6px; }
+.article-body li::marker { color: var(--highlight); }
+.article-body a { color: var(--blue); }
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+    .container { padding: 20px 14px 60px; }
+    .nav-bar { flex-wrap: wrap; gap: 8px; }
+    .nav-date { order: -1; width: 100%; text-align: center; }
+    .article-body { padding: 20px 18px; }
+    .brief-header h1 { font-size: 19px; }
+}</style>
+</head>
+<body>
+<div class="container">
+    <nav class="nav-bar">
+        <a href="brief-2026-08-23.html" class="nav-btn">← 前一天</a>
+        <span class="nav-date">2026年08月24日</span>
+        <span class="nav-btn disabled">后一天 →</span>
+    </nav>
+
+    <header class="brief-header">
+        <h1>AI Agent 每日简报 2026-08-24</h1>
+        <p class="subtitle">聚焦过去 48 小时 AI、智能体、安全、科研与企业应用动态。</p>
+    </header>
+
+    <div class="section-header" id="模型与企业应用">
+    
+    <h2>模型与企业应用</h2>
+</div><div class="item" id="阿里巴巴发布-Wan30-AI-视频模型">
+    <h3>阿里巴巴发布 Wan3.0 AI 视频模型</h3>
+    <div class="item-body"><p>阿里巴巴在完成大规模融资后推出新一代视频生成模型，显示大型科技公司继续加码多模态生成式 AI。视频模型的能力、成本与商业化进度将影响内容制作、营销及电商等应用场景的竞争格局。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>阿里巴巴宣布推出 Wan3.0 AI 视频模型。</p></li><li><p>此次发布发生在其完成约 100 亿美元股份出售之后。</p></li><li><p>视频生成模型已成为大模型竞争的重要方向。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-24/001-alibaba-wan-3-0.html" class="read-link">📖 📖 阅读友好版</a><a href="https://www.reuters.com/business/retail-consumer/alibaba-launches-wan30-ai-video-model-after-10-billion-share-sale-2026-08-24/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://www.reuters.com/business/retail-consumer/alibaba-launches-wan30-ai-video-model-after-10-billion-share-sale-2026-08-24/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="汤森路透推出自研-AI-模型降低对大型科技公司的依赖">
+    <h3>汤森路透推出自研 AI 模型，降低对大型科技公司的依赖</h3>
+    <div class="item-body"><p>专业信息服务商自建模型，说明企业 AI 战略正从调用通用模型转向围绕专有数据、可控性和成本结构建立自主能力。对于法律、财经等高准确性行业，这也关系到数据治理与产品差异化。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>汤森路透推出自己的 AI 模型。</p></li><li><p>目标之一是减少对大型科技公司模型与平台的依赖。</p></li><li><p>策略强调以行业数据和专业工作流构建企业 AI 能力。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-24/003-thomson-reuters-custom-model.html" class="read-link">📖 📖 阅读友好版</a><a href="https://thelogic.co/news/thomson-reuters-custom-ai-launch/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://thelogic.co/news/thomson-reuters-custom-ai-launch/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="Anthropic-推进-Project-Glasswing并深化与-UpToDate-的合作">
+    <h3>Anthropic 推进 Project Glasswing，并深化与 UpToDate 的合作</h3>
+    <div class="item-body"><p>医疗 AI 的价值取决于能否安全嵌入临床信息与决策流程。Anthropic 与 UpToDate 的合作扩展，表明通用模型公司正通过权威医疗知识平台进入高监管、高风险的医疗应用领域。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>报道提到 Anthropic 的 Project Glasswing。</p></li><li><p>Anthropic 正深化与临床知识平台 UpToDate 的合作。</p></li><li><p>医疗 AI 更重视可信内容、工作流整合与风险控制。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-24/006-anthropic-glasswing-uptodate.html" class="read-link">📖 📖 阅读友好版</a><a href="https://www.fiercehealthcare.com/health-tech/more-tidbits-epic-ugm-anthropics-project-glasswing-and-deeper-partnership-uptodate" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://www.fiercehealthcare.com/health-tech/more-tidbits-epic-ugm-anthropics-project-glasswing-and-deeper-partnership-uptodate" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="Boostedai-推出多模型-AI-投资委员会">
+    <h3>Boosted.ai 推出多模型 AI 投资委员会</h3>
+    <div class="item-body"><p>在投资研究中使用多个模型协作，体现 AI 智能体正由单一问答工具走向可编排的专业工作流。机构客户将特别关注模型分工、可追溯性、偏差控制以及人工监督机制。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Boosted.ai 为部分机构合作伙伴推出多模型 AI 投资委员会。</p></li><li><p>产品定位为服务机构投资工作流。</p></li><li><p>多模型架构可整合不同模型的分析与决策支持能力。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-24/019-boosted-multimodel-investment-committee.html" class="read-link">📖 📖 阅读友好版</a><a href="https://www.businesswire.com/news/home/20260824772607/en/Boosted.ai-Introduces-a-Multi-Model-AI-Investment-Committee-for-Select-Institutional-Partners" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://www.businesswire.com/news/home/20260824772607/en/Boosted.ai-Introduces-a-Multi-Model-AI-Investment-Committee-for-Select-Institutional-Partners" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="Workday-设立-AI-研究团队聚焦可靠可信与高效的企业-AI">
+    <h3>Workday 设立 AI 研究团队，聚焦可靠、可信与高效的企业 AI</h3>
+    <div class="item-body"><p>企业软件厂商将可靠性、可信度和效率设为 AI 研究重点，表明企业客户对 AI 的要求已从“能用”转向可治理、可验证和可持续运营。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Workday 宣布成立 AI 研究团队。</p></li><li><p>团队重点推进可靠、可信且高效的企业 AI。</p></li><li><p>该举措回应企业客户对模型质量、治理和运行成本的需求。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-24/022-workday-ai-research-team.html" class="read-link">📖 📖 阅读友好版</a><a href="https://futurecio.tech/workday-unveils-ai-research-team-to-advance-reliable-trustworthy-and-efficient-enterprise-ai/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://futurecio.tech/workday-unveils-ai-research-team-to-advance-reliable-trustworthy-and-efficient-enterprise-ai/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="section-header" id="安全与治理">
+    
+    <h2>安全与治理</h2>
+</div><div class="item" id="网络安全岗位广告中要求-AI-技能的比例一年翻倍">
+    <h3>网络安全岗位广告中要求 AI 技能的比例一年翻倍</h3>
+    <div class="item-body"><p>招聘需求的变化是 AI 对劳动力市场产生实际影响的早期指标。网络安全行业对 AI 技能要求快速上升，意味着组织既在用 AI 提升防御，也需要人才应对 AI 驱动的新型攻击风险。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>一项研究显示，要求 AI 技能的网络安全招聘广告在一年内翻倍。</p></li><li><p>AI 能力正成为安全岗位的重要补充技能。</p></li><li><p>企业的人才培养、招聘标准和安全运营模式可能随之调整。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-24/005-cybersecurity-ai-skills-jobs.html" class="read-link">📖 📖 阅读友好版</a><a href="https://www.helpnetsecurity.com/2026/08/24/cybersecurity-job-ads-ai-skills-research/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://www.helpnetsecurity.com/2026/08/24/cybersecurity-job-ads-ai-skills-research/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="OpenAI-高管警示持续性-AI-网络攻击的威胁">
+    <h3>OpenAI 高管警示持续性 AI 网络攻击的威胁</h3>
+    <div class="item-body"><p>当 AI 能够支持更自动化、更长期的网络攻击活动时，传统依赖人工研判与周期性修补的防御模式将承受压力。企业需要将 AI 风险纳入威胁建模、监测和事件响应。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>OpenAI 领导层警告持续性 AI 网络攻击可能带来风险。</p></li><li><p>攻击自动化可能提高网络威胁的规模和持续时间。</p></li><li><p>企业需将此类风险纳入安全运营流程。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-24/007-openai-persistent-cyberattacks.html" class="read-link">📖 📖 阅读友好版</a><a href="https://www.theguardian.com/technology/2026/aug/23/openai-cyber-attacks-threat-chris-lehane" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://www.theguardian.com/technology/2026/aug/23/openai-cyber-attacks-threat-chris-lehane" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="NTT-DATA-与-Palo-Alto-Networks-结成-AI-网络安全联盟">
+    <h3>NTT DATA 与 Palo Alto Networks 结成 AI 网络安全联盟</h3>
+    <div class="item-body"><p>服务商与安全平台厂商合作，显示企业部署 AI 时正在寻求可规模化的安全能力组合。联盟模式可把咨询、集成与安全产品结合起来，加快 AI 安全方案进入客户环境。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>NTT DATA 和 Palo Alto Networks 宣布建立 AI 网络安全合作关系。</p></li><li><p>合作聚焦企业 AI 环境中的网络安全需求。</p></li><li><p>AI 部署与安全服务正在同步采购和集成。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-24/008-ntt-data-palo-alto-ai-security.html" class="read-link">📖 📖 阅读友好版</a><a href="https://www.telecomreviewasia.com/news/industry-news/30042-ntt-data-and-palo-alto-networks-forge-ai-cybersecurity-alliance/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://www.telecomreviewasia.com/news/industry-news/30042-ntt-data-and-palo-alto-networks-forge-ai-cybersecurity-alliance/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="中国将量子技术列入新的-2030-网络产业规划重点">
+    <h3>中国将量子技术列入新的 2030 网络产业规划重点</h3>
+    <div class="item-body"><p>将量子技术纳入网络产业长期规划，释放出量子计算、通信与网络安全协同发展的政策信号。量子能力可能重塑密码体系和关键基础设施安全，因此其产业布局具有战略影响。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>新的 2030 网络产业规划将量子技术列入优先事项。</p></li><li><p>规划把量子技术与网络产业、网络安全的长期发展联系起来。</p></li><li><p>相关政策将影响量子安全、密码迁移和产业投资节奏。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-24/009-china-2030-quantum-cyber-plan.html" class="read-link">📖 📖 阅读友好版</a><a href="https://thequantuminsider.com/2026/08/24/china-puts-quantum-technology-among-priorities-in-new-2030-cyber-industry-plan/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://thequantuminsider.com/2026/08/24/china-puts-quantum-technology-among-priorities-in-new-2030-cyber-industry-plan/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="汽车经销商仓促采用-AI可能暴露客户数据">
+    <h3>汽车经销商仓促采用 AI，可能暴露客户数据</h3>
+    <div class="item-body"><p>汽车零售和汽车金融同时处理身份、信用与交易等敏感信息。该案例说明行业在追求 AI 效率时，若缺少数据边界、供应商审查和访问控制，可能扩大隐私、欺诈和合规风险。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>报道关注经销商采用 AI 时的客户数据暴露风险。</p></li><li><p>风险涉及汽车零售、金融和网络安全的交叉环节。</p></li><li><p>AI 上线应配套数据最小化、权限管理和第三方风险评估。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-24/012-auto-dealers-ai-data-risk.html" class="read-link">📖 📖 阅读友好版</a><a href="https://www.autonews.com/retail/an-auto-finance-fraud-cybersecurity-0824/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://www.autonews.com/retail/an-auto-finance-fraud-cybersecurity-0824/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="在他人攻击前先攻击自己AI-安全准备的必要性">
+    <h3>在他人攻击前先“攻击自己”：AI 安全准备的必要性</h3>
+    <div class="item-body"><p>主动测试自身系统是提高 AI 与网络韧性的关键做法。随着攻击者也能使用 AI 扩大能力，组织需要通过红队测试、演练和漏洞管理更早发现薄弱环节。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>文章主张在对手行动前主动检验自身防御。</p></li><li><p>AI 时代的安全准备需要持续测试而非一次性审计。</p></li><li><p>红队、漏洞披露与应急演练是提升防御韧性的核心工具。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-24/013-hack-ourselves-ai-security.html" class="read-link">📖 📖 阅读友好版</a><a href="https://nationalinterest.org/blog/techland/why-we-should-hack-ourselves-before-someone-else-does" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://nationalinterest.org/blog/techland/why-we-should-hack-ourselves-before-someone-else-does" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="田纳西大学研究基金会起诉-Anthropic-专利侵权">
+    <h3>田纳西大学研究基金会起诉 Anthropic 专利侵权</h3>
+    <div class="item-body"><p>针对领先 AI 公司的专利诉讼提醒行业：模型、训练、部署和相关基础技术都可能面临知识产权风险。诉讼进展可能影响企业的专利尽调、研发合作和商业化策略。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>田纳西大学研究基金会已对 Anthropic 提起专利侵权诉讼。</p></li><li><p>事件属于 AI 行业治理与知识产权风险的一部分。</p></li><li><p>企业需持续评估核心技术、数据和合作安排的权利边界。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-24/021-ut-anthropic-patent-lawsuit.html" class="read-link">📖 📖 阅读友好版</a><a href="https://utdailybeacon.com/212857/news/ut-research-foundation-files-patent-infringement-lawsuit-against-ai-giant-anthropic/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://utdailybeacon.com/212857/news/ut-research-foundation-files-patent-infringement-lawsuit-against-ai-giant-anthropic/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="section-header" id="科研与基础设施">
+    
+    <h2>科研与基础设施</h2>
+</div><div class="item" id="AI-增强或为儿科心电图带来新的应用">
+    <h3>AI 增强或为儿科心电图带来新的应用</h3>
+    <div class="item-body"><p>儿科诊疗数据与成人数据存在显著差异，专门面向儿科心电图的 AI 研究有望帮助发现人工判读不易捕捉的信号。其临床价值仍需通过严谨验证和安全部署来确认。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>研究关注用 AI 增强儿科心电图的分析能力。</p></li><li><p>AI 可能拓展心电图在儿科中的潜在用途。</p></li><li><p>从研究到临床应用仍需要验证准确性、泛化性与可解释性。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-24/015-pediatric-ecg-ai.html" class="read-link">📖 📖 阅读友好版</a><a href="https://scienceblog.cincinnatichildrens.org/pediatric-ecg-may-find-new-uses-via-ai-enhancement/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://scienceblog.cincinnatichildrens.org/pediatric-ecg-may-find-new-uses-via-ai-enhancement/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="美光宣布投资-100-亿美元建设-AI-研究创新中心">
+    <h3>美光宣布投资 100 亿美元建设 AI 研究创新中心</h3>
+    <div class="item-body"><p>半导体厂商的大额 AI 研发投资显示，AI 竞争不仅在模型层，也在存储、算力和系统架构层展开。美光的布局可能影响 AI 基础设施供应链与研发资源配置。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>美光宣布设立面向 AI 研究的创新中心。</p></li><li><p>报道称该项目规模为 100 亿美元。</p></li><li><p>该投资强调半导体基础设施在 AI 发展中的战略地位。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-24/017-micron-ai-innovation-hub.html" class="read-link">📖 📖 阅读友好版</a><a href="https://americanbazaaronline.com/2026/08/24/sanjay-mehrotra-led-micron-unveils-10b-innovation-hub-for-ai-research-486903/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://americanbazaaronline.com/2026/08/24/sanjay-mehrotra-led-micron-unveils-10b-innovation-hub-for-ai-research-486903/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="微软-Skala-AI-模型接入-CP2K改进量子力学模拟">
+    <h3>微软 Skala AI 模型接入 CP2K，改进量子力学模拟</h3>
+    <div class="item-body"><p>把 AI 模型接入广泛使用的科学计算软件，有可能降低高精度模拟的计算成本并提升研究迭代速度。这类集成也显示 AI 正作为科研基础设施的一部分服务材料、化学和物理研究。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>微软的 Skala AI 模型加入 CP2K 生态。</p></li><li><p>目标是改善量子力学模拟工作。</p></li><li><p>AI 与科学计算软件结合可推动更高效的科研建模。</p></li></ul></div><div class="item-meta"><a href="articles/2026-08-24/020-microsoft-skala-cp2k.html" class="read-link">📖 📖 阅读友好版</a><a href="https://thequantuminsider.com/2026/08/24/microsofts-skala-ai-model-joins-cp2k-to-improve-quantum-mechanical-simulations/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://thequantuminsider.com/2026/08/24/microsofts-skala-ai-model-joins-cp2k-to-improve-quantum-mechanical-simulations/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div>
+
+    <footer class="site-footer">
+        AI Agent Daily Brief &mdash; 2026年08月24日
+    </footer>
+</div>
+</body>
+</html>
