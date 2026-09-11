@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent 每日简报｜2026-09-11</title>
+    <style>/* ─── Reset & Base ─── */
+:root {
+    --primary:   #1a1a2e;
+    --secondary: #16213e;
+    --accent:    #0f3460;
+    --highlight: #e94560;
+    --text:      #eaeaea;
+    --muted:     #a0a0a0;
+    --card-bg:   #1a1a2e;
+    --border:    #2a2a4a;
+    --green:     #4ade80;
+    --blue:      #60a5fa;
+    --yellow:    #fbbf24;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f0f1a;
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Layout ─── */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ─── Nav Bar ─── */
+.nav-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; padding: 14px 20px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.nav-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    padding: 6px 12px; border-radius: 6px; text-decoration: none;
+    transition: all .2s;
+}
+.nav-btn:hover { color: #fff; background: var(--accent); text-decoration: none; }
+.nav-btn.disabled { opacity: .3; pointer-events: none; }
+.nav-date { font-size: 14px; font-weight: 600; color: var(--highlight); }
+
+/* ─── Header ─── */
+.brief-header { margin-bottom: 28px; }
+.badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--highlight); color: #fff;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 999px; margin-bottom: 10px; letter-spacing: .5px;
+}
+.brief-header h1 { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.3; }
+.brief-header .subtitle { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+
+/* ─── Quick Hits ─── */
+.quick-hits {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 28px;
+}
+.quick-hits ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.quick-hits li { font-size: 15px; }
+.quick-hits li strong { color: #fff; }
+.quick-hits li a { color: var(--blue); }
+
+/* ─── Section ─── */
+.section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin: 30px 0 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.section-header .emoji { font-size: 20px; }
+.section-header h2 { font-size: 16px; font-weight: 700; color: #fff; }
+
+/* ─── Item ─── */
+.item { margin-bottom: 28px; }
+.item h3 {
+    font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; line-height: 1.4; scroll-margin-top: 20px;
+}
+
+/* ─── Item Body (rendered markdown) ─── */
+.item-body { font-size: 14px; color: var(--muted); }
+.item-body p { margin-bottom: 10px; }
+.item-body p:last-child { margin-bottom: 0; }
+.item-body strong, .item-body b { color: #fff; font-weight: 600; }
+.item-body em, .item-body i { color: #ccc; font-style: italic; }
+.item-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.item-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+    overflow-x: auto;
+}
+.item-body pre code { background: none; padding: 0; font-size: 13px; }
+.item-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 10px 0; color: var(--muted);
+}
+.item-body ul, .item-body ol {
+    padding-left: 20px; margin: 8px 0;
+}
+.item-body li { margin-bottom: 5px; }
+.item-body li::marker { color: var(--highlight); }
+.item-body a { color: var(--blue); }
+.item-body a:hover { text-decoration: underline; }
+
+/* ─── Key Points Box ─── */
+.key-points {
+    background: var(--secondary); border-left: 3px solid var(--highlight);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 10px 0;
+}
+.key-points strong { color: var(--highlight); display: block; margin-bottom: 6px; }
+.key-points ul { list-style: none; padding: 0; margin: 0; }
+.key-points li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+.key-points li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
+
+/* ─── Item Meta (source + readable links) ─── */
+.item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.item-meta a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 500; padding: 4px 10px;
+    border-radius: 6px; text-decoration: none; transition: all .15s;
+}
+.item-meta .src-link { color: var(--blue); border: 1px solid #60a5fa33; }
+.item-meta .src-link:hover { background: #60a5fa22; }
+.item-meta .read-link { color: var(--green); border: 1px solid #4ade8033; }
+.item-meta .read-link:hover { background: #4ade8022; }
+
+/* ─── Footer ─── */
+.site-footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); text-align: center;
+}
+
+/* ─── Article Page ─── */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb .sep { color: var(--border); }
+
+.article-body {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px; margin-bottom: 24px;
+}
+.article-body h1 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.3; }
+.article-body .source-line {
+    font-size: 13px; color: var(--muted); margin-bottom: 18px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.article-body .source-line a { color: var(--blue); }
+.article-body p { margin-bottom: 14px; font-size: 15px; }
+.article-body strong, .article-body b { color: #fff; font-weight: 600; }
+.article-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.article-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto;
+}
+.article-body pre code { background: none; padding: 0; }
+.article-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 12px 0; color: var(--muted);
+}
+.article-body ul, .article-body ol { padding-left: 22px; margin: 10px 0; }
+.article-body li { margin-bottom: 6px; }
+.article-body li::marker { color: var(--highlight); }
+.article-body a { color: var(--blue); }
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+    .container { padding: 20px 14px 60px; }
+    .nav-bar { flex-wrap: wrap; gap: 8px; }
+    .nav-date { order: -1; width: 100%; text-align: center; }
+    .article-body { padding: 20px 18px; }
+    .brief-header h1 { font-size: 19px; }
+}</style>
+</head>
+<body>
+<div class="container">
+    <nav class="nav-bar">
+        <a href="brief-2026-09-10.html" class="nav-btn">← 前一天</a>
+        <span class="nav-date">2026年09月11日</span>
+        <span class="nav-btn disabled">后一天 →</span>
+    </nav>
+
+    <header class="brief-header">
+        <h1>AI Agent 每日简报｜2026-09-11</h1>
+        <p class="subtitle">本期收录 12 条已筛选资讯，覆盖智能体平台、企业部署、推理基础设施、研究与治理。</p>
+    </header>
+
+    <div class="section-header" id="智能体与企业应用">
+    
+    <h2>智能体与企业应用</h2>
+</div><div class="item" id="1-OpenAI-推出-Agents-API-公测版">
+    <h3>1. OpenAI 推出 Agents API 公测版</h3>
+    <div class="item-body"><p>OpenAI 将 Agents API 以公开测试形式提供给开发者，将任务、模型、工具与运行环境纳入一次调用，并提供托管、自建或合作伙伴沙箱选择。平台化的重点不只在模型调用，也在长时任务的状态、工具编排和运行治理能否标准化。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Agents API 目前处于公开测试阶段。</p></li><li><p>API 覆盖任务、模型、工具与运行环境的配置。</p></li><li><p>支持 OpenAI 托管、自建及合作伙伴沙箱。</p></li><li><p>提供上下文压缩、工具搜索和多智能体能力。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-11/01-openai-agents-api.html" class="read-link">📖 📖 阅读友好版</a><a href="https://openai.com/index/introducing-the-agents-api/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://developers.openai.com/api/docs/guides/agents-api/overview" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="2-OpenAI-将-GPTLive1-引入-API面向全双工语音智能体">
+    <h3>2. OpenAI 将 GPT‑Live‑1 引入 API，面向全双工语音智能体</h3>
+    <div class="item-body"><p>OpenAI 宣布在 API 中推出 GPT‑Live‑1，用于同时听说的实时语音交互，并可将更深度推理和工具调用委派给后端文本模型。将实时对话层与任务执行层分开，有助于产品团队分别优化交互体验与工作流能力。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>GPT‑Live‑1 已通过 API 提供。</p></li><li><p>支持同时输入、输出音频的交互方式。</p></li><li><p>可委派推理与工具调用给后端模型。</p></li><li><p>官方列示的前端语音层价格为 0.05 美元/分钟。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-11/02-openai-gpt-live-1-api.html" class="read-link">📖 📖 阅读友好版</a><a href="https://openai.com/index/introducing-gpt-live-1-in-the-api/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://developers.openai.com/api/docs/guides/live" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="3-Salesforce-预览-Enterprise-AI-Harness-与-AI-Control-Plane">
+    <h3>3. Salesforce 预览 Enterprise AI Harness 与 AI Control Plane</h3>
+    <div class="item-body"><p>据报道，Salesforce 预览面向企业智能体的 Enterprise AI Harness 与 AI Control Plane，覆盖提示词、数据连接器等用于定制智能体的技术资产。企业部署的可治理性取决于上下文、数据连接、权限和运行控制，而非单独的模型能力。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Salesforce 预览两项企业智能体相关产品。</p></li><li><p>Enterprise AI Harness 聚焦可靠性与安全性。</p></li><li><p>报道称其涵盖用于定制智能体的技术资产。</p></li><li><p>后续功能的上线节奏以 Salesforce 公布信息为准。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-11/03-salesforce-enterprise-ai-harness.html" class="read-link">📖 📖 阅读友好版</a><a href="https://siliconangle.com/2026/09/10/salesforce-introduces-enterprise-ai-harness-ai-control-plane/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://www.salesforce.com/news/stories/enterprise-ai-harness/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="4-GitLab-Duo-Self-Hosted-支持接入-Microsoft-Foundry-模型">
+    <h3>4. GitLab Duo Self-Hosted 支持接入 Microsoft Foundry 模型</h3>
+    <div class="item-body"><p>GitLab 的教程展示 Duo Self-Hosted 如何通过 Microsoft Foundry 接入部署在用户自选基础设施上的模型。对有数据驻留和合规要求的团队，代码和提示词的路由与部署边界是采用 AI 编程工具的前提。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>GitLab Duo Self-Hosted 可连接用户控制的模型基础设施。</p></li><li><p>教程展示了 Microsoft Foundry 接入方式。</p></li><li><p>一个 AI Gateway 可服务多个模型部署。</p></li><li><p>模型可按功能分配，且必须核对 GitLab 支持矩阵。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-11/05-gitlab-duo-microsoft-foundry.html" class="read-link">📖 📖 阅读友好版</a><a href="https://about.gitlab.com/blog/gitlab-duo-self-hosted-models-on-microsoft-foundry/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://docs.gitlab.com/administration/gitlab_duo_self_hosted/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="section-header" id="基础设施与产业">
+    
+    <h2>基础设施与产业</h2>
+</div><div class="item" id="5-Positron-宣布完成-875-亿美元融资加码推理芯片">
+    <h3>5. Positron 宣布完成 8.75 亿美元融资，加码推理芯片</h3>
+    <div class="item-body"><p>据报道，推理设备开发商 Positron AI 宣布完成 8.75 亿美元 C 轮融资，融资后估值据称为 50 亿美元。资本投入表明市场仍在押注替代性推理硬件路径，但融资规模不等同于芯片性能或商业化结果。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Positron 宣布融资 8.75 亿美元。</p></li><li><p>报道所述融资后估值为 50 亿美元。</p></li><li><p>公司主张其推理设备不采用 HBM。</p></li><li><p>资金目标是推动下一代推理硅片上市。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-11/06-positron-series-c-inference.html" class="read-link">📖 📖 阅读友好版</a><a href="https://siliconangle.com/2026/09/10/chipmaker-positron-nabs-875m-to-speed-up-inference-with-consumer-grade-memory/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://www.prnewswire.com/news-releases/positron-ai-raises-875-million-at-a-5-billion-valuation-to-bring-its-next-generation-inference-silicon-to-market-302874601.html" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="6-DeepSeek-发布-V41-Flash并称其优于-V4-Pro">
+    <h3>6. DeepSeek 发布 V4.1-Flash，并称其优于 V4-Pro</h3>
+    <div class="item-body"><p>据报道，DeepSeek 发布开放权重的 V4.1-Flash，并称其在性能、成本、速度和总运行时间上优于更大的 V4-Pro。若较低成本的模型替换既有 API 路径，生产用户须用自身任务集复核输出差异、延迟和成本。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>DeepSeek 发布 V4.1-Flash，报道称其为开放权重模型。</p></li><li><p>“优于 V4-Pro”的结论为厂商经媒体转述的主张。</p></li><li><p>报道列示模型总参数量为 5520 亿。</p></li><li><p>V4-Pro API 的路由与计费调整以官方公告为准。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-11/12-deepseek-v41-flash.html" class="read-link">📖 📖 阅读友好版</a><a href="https://siliconangle.com/2026/09/10/deepseek-releases-v4-1-flash-says-it-outperforms-flagship-v4-pro/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://www.deepseek.com/en/news/deepseek-v4-1-flash/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="7-Swarmer-拟收购乌克兰无人地面车辆厂商-Ratel-Robotics">
+    <h3>7. Swarmer 拟收购乌克兰无人地面车辆厂商 Ratel Robotics</h3>
+    <div class="item-body"><p>Swarmer 称已签署协议拟收购 Ratel Robotics，报道标题称交易最高可达 2.24 亿美元。交易将无人地面平台制造与群体自主软件结合，显示国防机器人竞争也在于多平台协同和软硬件集成能力。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Swarmer 称已签署收购 Ratel Robotics 的协议。</p></li><li><p>报道标题标示交易最高可达 2.24 亿美元。</p></li><li><p>Ratel 的 UGV 覆盖多类高风险任务。</p></li><li><p>双方拟整合地面、空中与自主软件能力。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-11/04-swarmer-ratel-robotics-acquisition.html" class="read-link">📖 📖 阅读友好版</a><a href="https://www.therobotreport.com/swarmer-to-acquire-ukrainian-ugv-maker-ratel-robotics-for-up-to-224m/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://robots.com.ua/en/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="section-header" id="研究与安全治理">
+    
+    <h2>研究与安全治理</h2>
+</div><div class="item" id="8-边缘视觉语言模型在野外物种识别中面临明显域差距">
+    <h3>8. 边缘视觉语言模型在野外物种识别中面临明显域差距</h3>
+    <div class="item-body"><p>论文比较 2B–8B 的边缘视觉语言模型与领域模型 BioCLIP 在物种识别任务上的表现，发现野外相机陷阱图像带来明显性能下降。实际边缘部署不能只看模型规模，仍需以领域数据和现场条件验证。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>研究比较了 2B–8B 的四个视觉语言模型与 BioCLIP。</p></li><li><p>现场相机陷阱图像导致所有模型性能下降。</p></li><li><p>BioCLIP 在论文的扩展样本中优于所有被测 VLM。</p></li><li><p>开放集回答会产生并不存在的物种名称。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-11/07-edge-vlm-species-identification.html" class="read-link">📖 📖 阅读友好版</a><a href="https://arxiv.org/abs/2609.11916" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://arxiv.org/pdf/2609.11916" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="9-论文提出人工本我框架讨论智能体的持续性对齐">
+    <h3>9. 论文提出“人工本我”框架，讨论智能体的持续性对齐</h3>
+    <div class="item-body"><p>这篇论文讨论可跨任务保留状态并持续运行的智能体，提出“人工本我”作为行为持续、停止或改变的内部自适应驱动力。状态、权限和行为倾向能够累积时，对齐也必须覆盖长期状态的约束与追溯。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>论文提出 artificial id 作为持续行为控制的概念。</p></li><li><p>最小化实验显示适应性与非预期策略可能同时出现。</p></li><li><p>作者将持续状态视为对齐风险的重要来源。</p></li><li><p>文中建议为可信观测、权限、身份和硬约束设立持续性边界。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-11/08-artificial-id-persistent-alignment.html" class="read-link">📖 📖 阅读友好版</a><a href="https://arxiv.org/abs/2609.11911" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://arxiv.org/pdf/2609.11911" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="10-报道称-OpenAI-就行业协同放缓-AI-开发的法律问题询问国会">
+    <h3>10. 报道称 OpenAI 就行业协同放缓 AI 开发的法律问题询问国会</h3>
+    <div class="item-body"><p>The Decoder 援引知情人士称，OpenAI 正了解行业共同放缓前沿 AI 开发在美国反垄断法下是否可行。若风险控制需要跨公司协作，治理设计既须实现足够参与度，也须明确法律边界和公共监督。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>该报道称 OpenAI 正询问协同放缓的法律可行性。</p></li><li><p>讨论聚焦安全协作与反垄断风险的交叉。</p></li><li><p>文中信息主要来自匿名消息人士及二手报道。</p></li><li><p>相关法案仍处于审议阶段，政策结果未定。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-11/09-openai-shared-slowdown-congress.html" class="read-link">📖 📖 阅读友好版</a><a href="https://the-decoder.com/openai-floats-a-shared-ai-slowdown-takes-it-to-congress/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://www.bloomberg.com/news/articles/2026-09-11/openai-is-open-to-slowing-cutting-edge-ai-ceo-sam-altman-tells-staff" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="11-MAISI-计划以数学方法研究可证明的-AI-安全">
+    <h3>11. MAISI 计划以数学方法研究可证明的 AI 安全</h3>
+    <div class="item-body"><p>据报道，Mathematical A.I. Safety Institute 计划于 2027 年启动，以数学方法研究 AI 行为、多智能体结果和未知漏洞。可形式化、可验证的安全论证值得探索，但这仍是研究计划，而非已有的 AI 安全证明能力。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>报道称 MAISI 计划于 2027 年 1 月启动研究。</p></li><li><p>机构拟聚焦 AI 行为、多智能体结果和未知漏洞等问题。</p></li><li><p>零知识证明被提及为潜在研究工具。</p></li><li><p>该方向仍属研究计划，不应等同于已有证明能力。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-11/10-maisi-formal-ai-safety.html" class="read-link">📖 📖 阅读友好版</a><a href="https://the-decoder.com/the-mathematical-ai-safety-institute-wants-to-prove-ai-is-safe-the-way-cryptographers-prove-codes-are-unbreakable/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://maisi.org/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div><div class="item" id="12-Google-DeepMind-发布-Gemini-38-Flash-与-38-Flash-Cyber">
+    <h3>12. Google DeepMind 发布 Gemini 3.8 Flash 与 3.8 Flash Cyber</h3>
+    <div class="item-body"><p>Google DeepMind 的来源标题显示涉及 Gemini 3.8 Flash 与 Gemini 3.8 Flash Cyber；本次生成时所提供链接返回 404，无法核验正文。将可确认的发布信号与未确认的产品细节分开，可避免把推测写成事实。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>来源标题列出 Gemini 3.8 Flash 与 Gemini 3.8 Flash Cyber。</p></li><li><p>本次无法获取来源正文，链接返回 HTTP 404。</p></li><li><p>规格、能力和上线范围均未在本文中确认。</p></li><li><p>应以恢复后的官方公告或其他可核验一手资料为准。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-11/11-gemini-38-flash-cyber.html" class="read-link">📖 📖 阅读友好版</a><a href="https://deepmind.google/discover/blog/introducing-gemini-38-flash-and-38-flash-cyber/" target="_blank" rel="noopener" class="src-link">📰 全文</a><a href="https://deepmind.google/discover/blog/" target="_blank" rel="noopener" class="src-link">📰 原文</a></div></div>
+</div>
+
+    <footer class="site-footer">
+        AI Agent Daily Brief &mdash; 2026年09月11日
+    </footer>
+</div>
+</body>
+</html>
