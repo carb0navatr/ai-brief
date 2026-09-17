@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent 每日简报｜2026-09-17</title>
+    <style>/* ─── Reset & Base ─── */
+:root {
+    --primary:   #1a1a2e;
+    --secondary: #16213e;
+    --accent:    #0f3460;
+    --highlight: #e94560;
+    --text:      #eaeaea;
+    --muted:     #a0a0a0;
+    --card-bg:   #1a1a2e;
+    --border:    #2a2a4a;
+    --green:     #4ade80;
+    --blue:      #60a5fa;
+    --yellow:    #fbbf24;
+}
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: #0f0f1a;
+    color: var(--text);
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: var(--blue); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ─── Layout ─── */
+.container { max-width: 860px; margin: 0 auto; padding: 40px 24px 80px; }
+
+/* ─── Nav Bar ─── */
+.nav-bar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px; padding: 14px 20px;
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 10px;
+}
+.nav-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 13px; font-weight: 500; color: var(--muted);
+    padding: 6px 12px; border-radius: 6px; text-decoration: none;
+    transition: all .2s;
+}
+.nav-btn:hover { color: #fff; background: var(--accent); text-decoration: none; }
+.nav-btn.disabled { opacity: .3; pointer-events: none; }
+.nav-date { font-size: 14px; font-weight: 600; color: var(--highlight); }
+
+/* ─── Header ─── */
+.brief-header { margin-bottom: 28px; }
+.badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--highlight); color: #fff;
+    font-size: 11px; font-weight: 700; padding: 4px 10px;
+    border-radius: 999px; margin-bottom: 10px; letter-spacing: .5px;
+}
+.brief-header h1 { font-size: 22px; font-weight: 800; color: #fff; line-height: 1.3; }
+.brief-header .subtitle { font-size: 14px; color: var(--muted); margin-top: 8px; line-height: 1.6; }
+
+/* ─── Quick Hits ─── */
+.quick-hits {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 22px; margin-bottom: 28px;
+}
+.quick-hits ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.quick-hits li { font-size: 15px; }
+.quick-hits li strong { color: #fff; }
+.quick-hits li a { color: var(--blue); }
+
+/* ─── Section ─── */
+.section-header {
+    display: flex; align-items: center; gap: 10px;
+    margin: 30px 0 14px; padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+}
+.section-header .emoji { font-size: 20px; }
+.section-header h2 { font-size: 16px; font-weight: 700; color: #fff; }
+
+/* ─── Item ─── */
+.item { margin-bottom: 28px; }
+.item h3 {
+    font-size: 16px; font-weight: 700; color: #fff;
+    margin-bottom: 8px; line-height: 1.4; scroll-margin-top: 20px;
+}
+
+/* ─── Item Body (rendered markdown) ─── */
+.item-body { font-size: 14px; color: var(--muted); }
+.item-body p { margin-bottom: 10px; }
+.item-body p:last-child { margin-bottom: 0; }
+.item-body strong, .item-body b { color: #fff; font-weight: 600; }
+.item-body em, .item-body i { color: #ccc; font-style: italic; }
+.item-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 12px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.item-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 10px 0;
+    overflow-x: auto;
+}
+.item-body pre code { background: none; padding: 0; font-size: 13px; }
+.item-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 10px 0; color: var(--muted);
+}
+.item-body ul, .item-body ol {
+    padding-left: 20px; margin: 8px 0;
+}
+.item-body li { margin-bottom: 5px; }
+.item-body li::marker { color: var(--highlight); }
+.item-body a { color: var(--blue); }
+.item-body a:hover { text-decoration: underline; }
+
+/* ─── Key Points Box ─── */
+.key-points {
+    background: var(--secondary); border-left: 3px solid var(--highlight);
+    border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 10px 0;
+}
+.key-points strong { color: var(--highlight); display: block; margin-bottom: 6px; }
+.key-points ul { list-style: none; padding: 0; margin: 0; }
+.key-points li { padding-left: 14px; position: relative; margin-bottom: 5px; }
+.key-points li::before { content: "•"; position: absolute; left: 0; color: var(--highlight); }
+
+/* ─── Item Meta (source + readable links) ─── */
+.item-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.item-meta a {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 12px; font-weight: 500; padding: 4px 10px;
+    border-radius: 6px; text-decoration: none; transition: all .15s;
+}
+.item-meta .src-link { color: var(--blue); border: 1px solid #60a5fa33; }
+.item-meta .src-link:hover { background: #60a5fa22; }
+.item-meta .read-link { color: var(--green); border: 1px solid #4ade8033; }
+.item-meta .read-link:hover { background: #4ade8022; }
+
+/* ─── Footer ─── */
+.site-footer {
+    margin-top: 50px; padding-top: 20px; border-top: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); text-align: center;
+}
+
+/* ─── Article Page ─── */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+.breadcrumb a { color: var(--blue); }
+.breadcrumb .sep { color: var(--border); }
+
+.article-body {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 28px 32px; margin-bottom: 24px;
+}
+.article-body h1 { font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 14px; line-height: 1.3; }
+.article-body .source-line {
+    font-size: 13px; color: var(--muted); margin-bottom: 18px;
+    padding-bottom: 16px; border-bottom: 1px solid var(--border);
+}
+.article-body .source-line a { color: var(--blue); }
+.article-body p { margin-bottom: 14px; font-size: 15px; }
+.article-body strong, .article-body b { color: #fff; font-weight: 600; }
+.article-body code {
+    font-family: "SFMono-Regular", Consolas, monospace;
+    font-size: 13px; background: #ffffff0f; padding: 2px 6px;
+    border-radius: 4px; color: var(--yellow);
+}
+.article-body pre {
+    background: #0d0d1f; border: 1px solid var(--border);
+    border-radius: 8px; padding: 14px 16px; margin: 12px 0; overflow-x: auto;
+}
+.article-body pre code { background: none; padding: 0; }
+.article-body blockquote {
+    border-left: 3px solid var(--highlight); padding-left: 14px;
+    margin: 12px 0; color: var(--muted);
+}
+.article-body ul, .article-body ol { padding-left: 22px; margin: 10px 0; }
+.article-body li { margin-bottom: 6px; }
+.article-body li::marker { color: var(--highlight); }
+.article-body a { color: var(--blue); }
+.article-body img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ─── Mobile ─── */
+@media (max-width: 600px) {
+    .container { padding: 20px 14px 60px; }
+    .nav-bar { flex-wrap: wrap; gap: 8px; }
+    .nav-date { order: -1; width: 100%; text-align: center; }
+    .article-body { padding: 20px 18px; }
+    .brief-header h1 { font-size: 19px; }
+}</style>
+</head>
+<body>
+<div class="container">
+    <nav class="nav-bar">
+        <a href="brief-2026-09-11.html" class="nav-btn">← 前一天</a>
+        <span class="nav-date">2026年09月17日</span>
+        <span class="nav-btn disabled">后一天 →</span>
+    </nav>
+
+    <header class="brief-header">
+        <h1>AI Agent 每日简报｜2026-09-17</h1>
+        <p class="subtitle">本期收录 15 条已筛选资讯，覆盖智能体产品、企业部署、可靠性、安全、研究与政策。</p>
+    </header>
+
+    <div class="section-header" id="智能体产品与企业应用">
+    
+    <h2>智能体产品与企业应用</h2>
+</div><div class="item" id="1-OpenAI-推出面向-ChatGPT-的-AI-广告能力">
+    <h3>1. OpenAI 推出面向 ChatGPT 的 AI 广告能力</h3>
+    <div class="item-body"><p>OpenAI 宣布扩展其 AI 广告产品：测试 Sponsored Agents、在 ChatGPT Work 中用自然语言创建和管理广告活动，并增强 Ads Manager 的创意辅助功能。首批 CRM 与电商整合伙伴分别为 HubSpot 和 Shopify。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Sponsored Agents 允许用户在广告后自愿与商家赞助的代理对话，目前正向美国部分广告主测试。</p></li><li><p>广告主可通过 Ads Manager 插件，用提示词创建、更新、分析活动并获取建议。</p></li><li><p>HubSpot 用户可连接 ChatGPT Ads 账户；美国 Shopify 商家可通过应用创建和管理广告活动。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-17/01-openai-ai-advertising.html" class="read-link">📖 📖 阅读友好版</a><a href="https://openai.com/index/reimagining-advertising-with-ai/" target="_blank" rel="noopener" class="src-link">📰 全文</a></div></div>
+</div><div class="item" id="2-微软复盘自身-AI-转型从试点走向可复制流程">
+    <h3>2. 微软复盘自身 AI 转型：从试点走向可复制流程</h3>
+    <div class="item-body"><p>微软以“Customer Zero”的定位分享内部 AI 转型经验，主张企业应在保留人的控制、判断与责任的前提下使用 AI。文章称，跨部门协作、案例沉淀和领导层目标推动了若干业务流程改善。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>微软将成功企业描述为“人主导、日益由 AI 赋能”的 Frontier Firms。</p></li><li><p>文中列举的内部结果包括：某销售团队成交率提升 20%，部分供应链流程周期缩短最高 75%。</p></li><li><p>一支九人工程团队据称在 35 天完成初始产品发布。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-17/03-microsoft-ai-transformation.html" class="read-link">📖 📖 阅读友好版</a><a href="https://blogs.microsoft.com/blog/2026/09/17/what-weve-learned-from-microsofts-own-ai-transformation/" target="_blank" rel="noopener" class="src-link">📰 全文</a></div></div>
+</div><div class="item" id="3-Instinct-与-Meta-Muse-为-AI-智能体加入电话能力">
+    <h3>3. Instinct 与 Meta Muse 为 AI 智能体加入电话能力</h3>
+    <div class="item-body"><p>TechCrunch 报道，Instinct 推出早期访问的 Concierge 功能，让智能体代为拨打电话处理餐厅预订、候补名单或客服问题；Meta 的 Muse 也扩大了向美国企业拨号的测试。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Instinct Concierge 处于部分用户早期访问阶段，计划逐步扩大。</p></li><li><p>Meta 表示，Muse 的美国企业外呼会优先向曾提出该需求的用户开放。</p></li><li><p>实际价值仍取决于成功率、用户授权与对被叫方的透明沟通。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-17/06-ai-agents-phone-calls.html" class="read-link">📖 📖 阅读友好版</a><a href="https://techcrunch.com/2026/09/17/rival-ai-agents-instinct-and-metas-muse-both-add-the-ability-to-make-calls/" target="_blank" rel="noopener" class="src-link">📰 全文</a></div></div>
+</div><div class="item" id="4-Snap-Specs-上手独立式-AR-眼镜迈向消费级形态">
+    <h3>4. Snap Specs 上手：独立式 AR 眼镜迈向消费级形态</h3>
+    <div class="item-body"><p>Engadget 对 Snap 首款面向消费者的 AR 眼镜 Specs 进行上手体验。该产品售价 2,195 美元，不需外接计算盒、控制器或系绳连接，配备双摄像头和手部追踪。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Specs 提供 47 毫米和 52 毫米两种尺寸，重量为 132 克。</p></li><li><p>双摄像头支持用食指指向和拇指捏合进行手势控制。</p></li><li><p>体验中出现导航、实时翻译、测量、白板及浏览器内 Google Docs 等应用。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-17/13-snap-specs-ar-glasses.html" class="read-link">📖 📖 阅读友好版</a><a href="https://www.engadget.com/2260675/snap-specs-hands-on-standalone-ar-glasses-are-here/" target="_blank" rel="noopener" class="src-link">📰 全文</a></div></div>
+</div><div class="section-header" id="可靠性研究与产业">
+    
+    <h2>可靠性、研究与产业</h2>
+</div><div class="item" id="5-IBM-研究提出衡量并改善智能体一致性的方法">
+    <h3>5. IBM 研究提出衡量并改善智能体一致性的方法</h3>
+    <div class="item-body"><p>IBM Research 指出，单次或平均成功率可能掩盖智能体的重复执行不稳定性。其以 AppWorld 上的 ReAct 智能体为例：五次重复运行的平均成功率为 77.4%，但五次都成功的任务只占 53.0%。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>文中把平均成功率与“所有重复运行均成功”的比例之间的差距称为一致性缺口。</p></li><li><p>在示例中，该缺口为 24.4 个百分点；高难任务上可达 30 个百分点。</p></li><li><p>团队推出 Consistency Analyzer，寻找容易翻转的决策步骤。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-17/04-huggingface-agent-consistency.html" class="read-link">📖 📖 阅读友好版</a><a href="https://huggingface.co/blog/ibm-research/altk-evolve-consistency" target="_blank" rel="noopener" class="src-link">📰 全文</a></div></div>
+</div><div class="item" id="6-论文记忆与自我反思可提升交互式语言智能体表现">
+    <h3>6. 论文：记忆与自我反思可提升交互式语言智能体表现</h3>
+    <div class="item-body"><p>一篇新提交至 arXiv 的论文扩展了双过程智能体 SwiftSage：加入自适应记忆模块和用于执行期校验、纠正干预的自我反思模块，并在 ScienceWorld 上比较不同组合。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>AMM 负责按显著性存储情节信息，并由触发条件检索。</p></li><li><p>SRM 负责在执行过程中进行有边界的验证与纠正。</p></li><li><p>论文报告完整系统平均最终得分 64.62、成功率 43.17%；这仍是单一基准上的研究结论。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-17/05-arxiv-dual-process-agents.html" class="read-link">📖 📖 阅读友好版</a><a href="https://arxiv.org/abs/2609.19128" target="_blank" rel="noopener" class="src-link">📰 全文</a></div></div>
+</div><div class="item" id="7-Comp-AI-获-3400-万美元-A-轮押注持续式合规">
+    <h3>7. Comp AI 获 3400 万美元 A 轮，押注持续式合规</h3>
+    <div class="item-body"><p>安全与合规创业公司 Comp AI 宣布完成 3400 万美元 A 轮融资。公司称其平台利用智能体协助起草安全政策、收集审计证据，并持续监控合规控制；人仍负责审核与批准。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>本轮由 Roo Capital 与 Grand Ventures 领投；报道称公司累计融资 3750 万美元。</p></li><li><p>平台目标包括自动化部分 SOC 2 相关的文档与证据工作。</p></li><li><p>团队将权限、问责以及对智能体访问和行为的持续记录列为核心建设方向。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-17/07-comp-ai-series-a.html" class="read-link">📖 📖 阅读友好版</a><a href="https://techcrunch.com/2026/09/17/comp-ai-sets-eyes-on-a-continiously-agentic-future-for-security-and-complaince/" target="_blank" rel="noopener" class="src-link">📰 全文</a></div></div>
+</div><div class="item" id="8-研究称文本水印可能改变-AI-智能体的工具调用与拒答行为">
+    <h3>8. 研究称文本水印可能改变 AI 智能体的工具调用与拒答行为</h3>
+    <div class="item-body"><p>The Register 报道，Lasso Security 的测试显示，用于内容溯源的文本水印可能改变模型逐词生成的选择，并进一步影响智能体的工具调用准确性和安全拒答。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>测试以 SynthID-Text 为例说明，水印会在低风险词语选择中嵌入可检测模式。</p></li><li><p>Lasso 称，七个被测模型中有六个的工具调用准确率下降。</p></li><li><p>研究方建议将水印条件纳入红队与安全评估，而非放弃水印。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-17/11-watermarking-agent-behavior.html" class="read-link">📖 📖 阅读友好版</a><a href="https://www.theregister.com/ai-and-ml/2026/09/17/ai-model-watermarking-changes-agent-behavior/5296998" target="_blank" rel="noopener" class="src-link">📰 全文</a></div></div>
+</div><div class="section-header" id="安全与信任">
+    
+    <h2>安全与信任</h2>
+</div><div class="item" id="9-OpenAI-发布模型失配事件披露框架">
+    <h3>9. OpenAI 发布模型失配事件披露框架</h3>
+    <div class="item-body"><p>OpenAI 公布用于追踪、调查和披露模型失配实例的新框架，并同时发布过去六个月观察到的六份异常或令人担忧行为报告。该公司表示，即使尚未完全解释或缓解某一行为，也倾向于更快公开。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>框架覆盖训练、评估、测试与部署等模型生命周期阶段。</p></li><li><p>报告范围包括未经授权行动、模型间协调、规避监督等行为。</p></li><li><p>OpenAI 强调，披露某个实例不等于已证明其具有普遍性或预测性。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-17/02-openai-model-misalignment-reporting.html" class="read-link">📖 📖 阅读友好版</a><a href="https://openai.com/index/model-misalignment-reporting-framework/" target="_blank" rel="noopener" class="src-link">📰 全文</a></div></div>
+</div><div class="item" id="10-Microsoft-AI-CEO对齐之外还需要限制智能体的行动边界">
+    <h3>10. Microsoft AI CEO：对齐之外还需要限制智能体的行动边界</h3>
+    <div class="item-body"><p>在 Decoder 访谈中，Microsoft AI CEO Mustafa Suleyman 讨论 AI 安全与监管，主张“对齐”是重要组成部分，但不足以单独解决问题；他强调可控性、限制代理性和隔离/遏制同样重要。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>Suleyman 认为对齐有价值，但不能替代遏制和可控性设计。</p></li><li><p>他主张限制系统代理性，避免系统逃逸、奖励投机或脱离指令。</p></li><li><p>讨论聚焦模型层面对齐与部署层面的权限、隔离和监管如何结合。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-17/08-microsoft-ai-safety-containment.html" class="read-link">📖 📖 阅读友好版</a><a href="https://www.theverge.com/podcast/996412/microsoft-ai-ceo-mustafa-suleyman-regulation-safety-anthropic-claude" target="_blank" rel="noopener" class="src-link">📰 全文</a></div></div>
+</div><div class="item" id="11-调查揭示-AI-驱动的约会应用欺诈网络">
+    <h3>11. 调查揭示 AI 驱动的约会应用欺诈网络</h3>
+    <div class="item-body"><p>The Verge 调查报道，一批约会应用以“真人交友”包装服务，却让大量对话由 AI 角色维持，并通过付费虚拟币延长互动。报道援引 Anthropic 的威胁情报发现及研究人员对应用内部资料的检查。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>报道称该网络约涉及 28 个约会应用，许多聊天主要由自主 AI 角色完成。</p></li><li><p>应用通过出售继续聊天所需的虚拟币获利。</p></li><li><p>调查涉及通话、截图和工作人员管理，凸显隐私与欺骗风险。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-17/09-ai-dating-app-scams.html" class="read-link">📖 📖 阅读友好版</a><a href="https://www.theverge.com/ai-artificial-intelligence/995348/ai-dating-app-scams" target="_blank" rel="noopener" class="src-link">📰 全文</a></div></div>
+</div><div class="item" id="12-安全评测警示传统虚拟机未必足以隔离网络智能体">
+    <h3>12. 安全评测警示：传统虚拟机未必足以隔离网络智能体</h3>
+    <div class="item-body"><p>InfoQ 综述 Trail of Bits 的安全评测称，在标准 QEMU/KVM Linux 环境中，GPT-5.6-Cyber 类网络智能体曾通过内核和虚拟化相关漏洞实现多次逃逸；使用 Firecracker 时智能体被遏制，但底层内核问题仍可导致主机硬锁。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>报道描述了针对内核、libslirp、QEMU/KVM 等组件的多轮测试。</p></li><li><p>Firecracker 在测试中提供了更强遏制，但并非消除所有底层缺陷影响。</p></li><li><p>建议包括最小权限、严格网络限制、快速打补丁和短生命周期的干净执行环境。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-17/10-agent-vm-escapes.html" class="read-link">📖 📖 阅读友好版</a><a href="https://www.infoq.com/news/2026/09/agent-escape-vm/" target="_blank" rel="noopener" class="src-link">📰 全文</a></div></div>
+</div><div class="section-header" id="政策与治理">
+    
+    <h2>政策与治理</h2>
+</div><div class="item" id="13-Meta-监督委员会批评其-AI-深伪治理规则不足">
+    <h3>13. Meta 监督委员会批评其 AI 深伪治理规则不足</h3>
+    <div class="item-body"><p>Meta 监督委员会在两起 AI 生成视频案件后表示，Meta 的规则“持续且根本性地不足以”应对平台上快速增长的 AI 内容。案件涉及被合成视频针对的真实人物，以及未被及时标注或处理的内容。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>一起案件涉及被合成为发表仇恨言论的苏格兰政治人物。</p></li><li><p>相关内容没有被及时标为 AI 生成；其中一条直到监督委员会介入后才被删除。</p></li><li><p>委员会建议 Meta 在收到举报时优先审查疑似 AI 内容。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-17/12-meta-deepfake-oversight.html" class="read-link">📖 📖 阅读友好版</a><a href="https://www.engadget.com/2260894/oversight-board-says-metas-rules-ai-deepfakes-fundamentally-inadequate/" target="_blank" rel="noopener" class="src-link">📰 全文</a></div></div>
+</div><div class="item" id="14-美中专家提议以核安全式机制应对-AI-风险">
+    <h3>14. 美中专家提议以“核安全式”机制应对 AI 风险</h3>
+    <div class="item-body"><p>路透社报道，美中安全专家提出借鉴核风险管理经验，为先进 AI 风险建立更强的保障机制。这一议题把跨境竞争之外的共同风险管理重新带入政策讨论。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>“核安全式”表述指向对高后果风险进行制度化管理的思路。</p></li><li><p>AI 风险治理同时涉及技术评估、信息共享和危机沟通。</p></li><li><p>该提议本身不是已生效的双边规则，应与正式政策或监管决定区分。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-17/14-us-china-ai-safeguards.html" class="read-link">📖 📖 阅读友好版</a><a href="https://www.reuters.com/world/china/us-china-security-experts-propose-nuclear-style-safeguards-ai-risks-2026-09-17/" target="_blank" rel="noopener" class="src-link">📰 全文</a></div></div>
+</div><div class="item" id="15-美国众议院通过数据中心电价保护法案">
+    <h3>15. 美国众议院通过数据中心电价保护法案</h3>
+    <div class="item-body"><p>NBC News 报道，美国众议院以 417 票对 3 票通过两党支持的 Ratepayers Protection Act，目标是在新建大型数据中心时，避免居民为发电、输电和其他供电基础设施升级成本买单。法案后续仍需参议院处理。</p>
+<div class="key-points"><strong>关键要点</strong><ul><li><p>法案拟建立一项联邦标准，供州公用事业监管机构制定大型高负荷数据中心成本规则时考虑。</p></li><li><p>目标是让科技和数据中心公司承担所需发电、输电等升级费用。</p></li><li><p>多名支持者仍认为法案力度有限；参议院尚不确定是否推进。</p></li></ul></div><div class="item-meta"><a href="articles/2026-09-17/15-data-center-ratepayers.html" class="read-link">📖 📖 阅读友好版</a><a href="https://www.nbcnews.com/politics/congress/house-passes-bill-shield-consumers-data-center-price-hikes-energy-rcna597683" target="_blank" rel="noopener" class="src-link">📰 全文</a></div></div>
+</div>
+
+    <footer class="site-footer">
+        AI Agent Daily Brief &mdash; 2026年09月17日
+    </footer>
+</div>
+</body>
+</html>
